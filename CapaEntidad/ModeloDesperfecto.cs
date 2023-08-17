@@ -8,7 +8,7 @@ namespace CapaModelo
 {
     public class ModeloDesperfecto
     {
-        //private List<ModeloRepuesto> repuestos;
+        public double costoRepuestosDesperfecto { get; set; }
         public int Id { get; set; }
         public int IdPresupuesto { get; set; }
         public string Descripcion { get; set; }
@@ -22,8 +22,13 @@ namespace CapaModelo
             Descripcion = descripcion;
             ManoDeObra = Double.Parse(manoDeObra);
             Tiempo = Int32.Parse(tiempo);
+            costoRepuestosDesperfecto = 0;
         }
 
+        public void adicionarCostoRepuesto(double nuevoRepuesto)
+        {
+            costoRepuestosDesperfecto += nuevoRepuesto;
+        }
 
     }
 }

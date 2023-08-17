@@ -100,6 +100,10 @@ namespace CapaPresentación
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabControlPrincipal.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -636,6 +640,10 @@ namespace CapaPresentación
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.textBox2);
+            this.panel6.Controls.Add(this.label17);
+            this.panel6.Controls.Add(this.textBox1);
+            this.panel6.Controls.Add(this.label16);
             this.panel6.Controls.Add(this.button4);
             this.panel6.Controls.Add(this.button3);
             this.panel6.Controls.Add(this.txTotal);
@@ -652,27 +660,28 @@ namespace CapaPresentación
             this.panel6.Controls.Add(this.label11);
             this.panel6.Controls.Add(this.label8);
             this.panel6.Controls.Add(this.label7);
-            this.panel6.Location = new System.Drawing.Point(7, 54);
+            this.panel6.Location = new System.Drawing.Point(7, 21);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(833, 398);
+            this.panel6.Size = new System.Drawing.Size(833, 451);
             this.panel6.TabIndex = 0;
             // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.Lime;
-            this.button4.Location = new System.Drawing.Point(21, 320);
+            this.button4.Location = new System.Drawing.Point(0, 391);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(212, 57);
             this.button4.TabIndex = 22;
             this.button4.Text = "Presupuestar";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.DeepPink;
-            this.button3.Location = new System.Drawing.Point(639, 320);
+            this.button3.Location = new System.Drawing.Point(657, 391);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(176, 57);
             this.button3.TabIndex = 19;
@@ -717,6 +726,7 @@ namespace CapaPresentación
             this.label15.Size = new System.Drawing.Size(73, 29);
             this.label15.TabIndex = 17;
             this.label15.Text = "Total";
+            //this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // label14
             // 
@@ -805,6 +815,40 @@ namespace CapaPresentación
             // error
             // 
             this.error.ContainerControl = this;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(444, 280);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(73, 29);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "Total";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(624, 280);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(191, 26);
+            this.textBox1.TabIndex = 24;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(444, 343);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 29);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Total";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(624, 346);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(191, 26);
+            this.textBox2.TabIndex = 26;
             // 
             // Inicio
             // 
@@ -929,6 +973,10 @@ namespace CapaPresentación
         private TextBox txManoDeObra;
         private TextBox txBoxDescuento;
         private TextBox txBoxRecargo;
+        private TextBox textBox2;
+        private Label label17;
+        private TextBox textBox1;
+        private Label label16;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using CapaPersistencia;
+﻿using CapaModelo;
+using CapaPersistencia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,12 @@ namespace CapaLogica
             return presupuesto.ultimoPresupuesto();
         }
 
-        public static string Insertar(int id, string nombre, string apellido, string email, double total, int idVehiculo, ModeloPresupuesto modeloPresupuesto)
+        public static string Insertar(ModeloPresupuesto modeloPresupuesto)
         {
             PersistenciaPresupuesto datos = new PersistenciaPresupuesto();
-            return datos.Insertar(obj);
+            return datos.Insertar(modeloPresupuesto);
         }
+
+        
     }
 }

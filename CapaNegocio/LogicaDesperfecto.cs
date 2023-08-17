@@ -15,5 +15,11 @@ namespace CapaLogica
             PersistenciaDesperfecto datos = new PersistenciaDesperfecto();
             return datos.Listar();
         }
+
+        public static Double obtenerSubtotalRepuestos(int idDesperfecto)
+        {
+            PersistenciaDesperfecto datos = new PersistenciaDesperfecto();
+            return datos.subTotalRepuestos(idDesperfecto);
+        }
     }
 }

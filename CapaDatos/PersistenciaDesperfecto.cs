@@ -35,5 +35,32 @@ namespace CapaPersistencia
                 if (conexion.State == ConnectionState.Open) conexion.Close();
             }
         }
+
+        public double subTotalRepuestos(int idDesperfecto)
+        {
+            SqlConnection conexion = new SqlConnection(); 
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                SqlCommand cmd = new SqlCommand("subtotalDesperfecto", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                conexion.Open();
+                var returnParameter = cmd.Parameters.Add("@IdDesperfecto", SqlDbType.Int);               
+                cmd.ExecuteNonQuery();
+                var result = returnParameter.Value;
+                return (double) result;                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open) conexion.Close();
+            }
+                    
+        }
+
+        
     }
 }

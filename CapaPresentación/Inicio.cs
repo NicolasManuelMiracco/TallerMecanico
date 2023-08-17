@@ -27,11 +27,10 @@ namespace CapaPresentación
             InitializeComponent();
         }
 
-        //////////////////////////////////////////////////////
-        /// Parsing al Enumerator para el tipo de vehículo ///
-        /// /////////////////////////////////////////////////
-        /// 
-
+        //////////////////////////////////////////////////////////////////////////////////
+        /// Parsing al Enumerator para el tipo de vehículo -> Deprecado //////////////////
+        /// //////////////////////////////////////////////////////////////////////////////
+        
         private DataGridView parseGridTipoVehiculo(DataGridView dgvToParse)
         {
             for (int i = 0; i < dgvToParse.Rows.Count - 1; i++)
@@ -448,45 +447,6 @@ namespace CapaPresentación
             }
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label4_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Inicio_Load(object sender, EventArgs e)
         {
             this.listar();
@@ -755,6 +715,8 @@ namespace CapaPresentación
                     descripcion = dgvDesperfectos.Rows[i].Cells[2].Value.ToString();
                     manoDeObra = dgvDesperfectos.Rows[i].Cells[3].Value.ToString();
                     tiempo = dgvDesperfectos.Rows[i].Cells[4].Value.ToString();
+                    // Se incorporan los precios de los repuestos segun requerimientos funcionales
+                    //procesarRepuestos(idDesperfecto);
                     presupuesto.addDesperfecto(new ModeloDesperfecto(idDesperfecto, descripcion, manoDeObra, tiempo));
                 }
             }
@@ -773,26 +735,29 @@ namespace CapaPresentación
             private TextBox txManoDeObra;           
            
             */
-            
-            
+
+
             if (txBoxEmail.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del cliente");
                 error.SetError(txBoxEmail, "Ingrese el Email del Cliente");
                 return "FAIL";
-            }
+            }   else presupuesto.Email = txBoxEmail.Text; 
+            
             if (txBoxApellido.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del cliente");
                 error.SetError(txBoxApellido, "Ingrese el Apellido del Cliente");
                 return "FAIL";
-            }
+            }   else presupuesto.Apellido = txBoxApellido.Text;
+            
             if (txBoxNombre.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del cliente");
                 error.SetError(txBoxNombre, "Ingrese el Nombre del Cliente");
                 return "FAIL";
-            }
+            }   else presupuesto.Nombre = txBoxNombre.Text;
+
             if (txBoxDescuento.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del cliente");
@@ -808,11 +773,15 @@ namespace CapaPresentación
             return "OK";
         }
 
-        private string insertarPresupuesto()
+        /// <summary>
+        /// Se cierra la transacción presupuesto, esa es la lógica que se desarrolló para un concepto que se construye durante el ciclo de corrida de la aplicación.
+        /// </summary>
+        /// <returns></returns>
+        private string finalizarPresupuesto()
         {
             string respuesta = "";
-            respuesta = LogicaPresupuesto.Insertar(Convert.ToInt32(textBxIdAutomóvil.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text,
-                ElComboTipoAutomovil.Text, Convert.ToInt32(textPuertas.Text), Convert.ToInt32(textBxIdVehículo.Text));
+            /// Se persiste el presupuesto
+            respuesta = LogicaPresupuesto.Insertar(presupuesto);
             return respuesta;
         }
 
@@ -823,7 +792,7 @@ namespace CapaPresentación
             {
                 try
                 {
-                    respuesta = insertarPresupuesto();
+                    respuesta = finalizarPresupuesto();
                     if (respuesta == "OK")
                     {
                         this.MessageOk("Se insertó correctamente el presupuesto");
@@ -840,6 +809,16 @@ namespace CapaPresentación
         }
 
         /// <summary>
+        /// Se cargan los datos precalculados o por default. El usuario podrá modificarlos de manera parcial.
+        /// Aquí se podría definir perfilería para la administración de permisos de edición (ejemplo incrementar estacionamiento o mano de obra).
+        /// </summary>
+        private void preSeteoParametriaPresupuesto()
+        {
+
+        }
+
+
+        /// <summary>
         /// // Momento en que se seleccionaron los desperfectos para el vehículo, y se presiona sobre el botón Presupuestar en la pestaña 3 de la aplicación
         /// </summary>
 
@@ -851,15 +830,14 @@ namespace CapaPresentación
                 // Se valida la selección de al menos un desperfecto
                 if (this.incorporarDesperfectosAlPresupuesto() > 0)
                 {
-                    Opcion = MessageBox.Show("¿Confirma el presupuesto?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    Opcion = MessageBox.Show("¿Confirma el presupuesto? => Cargue sus datos", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (Opcion == DialogResult.OK)
                     {
-                        // Se cargan los datos del cliente y se persiste.
-                        cargaDelCliente();
-                        // Se pasa a la pestaña para cerrar el presupuesto. 
-                        this.tabControlPrincipal.SelectedIndex = 3;
-                        
 
+                        // Seteo de datos por default o precalculados para el presupuesto
+                        this.preSeteoParametriaPresupuesto();
+                        // Se pasa a la pestaña para cerrar el presupuesto. 
+                        this.tabControlPrincipal.SelectedIndex = 3;  
                     }
                 }
             }
@@ -904,6 +882,13 @@ namespace CapaPresentación
                 chkDesperfecto.Value = !Convert.ToBoolean(chkDesperfecto.Value);                
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cargaDelCliente();
+        }
+
+        
     }
 }
 
