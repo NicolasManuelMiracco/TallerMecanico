@@ -31,36 +31,22 @@ namespace CapaPresentación
         {
             for (int i = 0; i < dgvToParse.Rows.Count - 1; i++)
             {
-                String tipoAutomovil = dgvToParse.Rows[i].Cells[5].Value.ToString();
+                String tipoAutomovil = dgvToParse.Rows[i].Cells[8].Value.ToString();
                 if (!String.IsNullOrEmpty(tipoAutomovil))
                 {
                     Array values = (TipoAutomovil[])Enum.GetValues(typeof(TipoAutomovil));
-                    dgvToParse.Rows[i].Cells[5].Value = (TipoAutomovil)Enum.Parse(typeof(TipoAutomovil), tipoAutomovil);                    
+                    dgvToParse.Rows[i].Cells[8].Value = (TipoAutomovil)Enum.Parse(typeof(TipoAutomovil), tipoAutomovil);                    
                 }      
             }
             return dgvToParse;
-        }        
-        
-        private DataTable parseDataTableTipoVehiculo(DataTable dt)
-        {
-            foreach (DataRow row in dt.Rows)
-            {
-                String tipoAutomovil = row["Tipo"].ToString();
-                if (!String.IsNullOrEmpty(tipoAutomovil))
-                {
-                    Array values = (TipoAutomovil[])Enum.GetValues(typeof(TipoAutomovil));                                        
-                    row["Tipo"] = Enum.GetName(typeof(TipoAutomovil), 2).ToString();
-                }
-            }
-            return dt;
-        }        
+        }  
 
         private void listar()
         {
             try
             {
                 dgvDatos.DataSource = LogicaVehiculo.Listar();                
-                dgvDatos = parseGridTipoVehiculo(dgvDatos);
+                //dgvDatos = parseGridTipoVehiculo(dgvDatos);
                 this.formato();
                 labelTotal.Text = Convert.ToString(dgvDatos.Rows.Count);
                 this.limpiar();
@@ -74,15 +60,15 @@ namespace CapaPresentación
         private void formato()
         {
             dgvDatos.Columns[0].Visible = false;
-            dgvDatos.Columns[0].Width = 35;
-            //dgvDatos.Columns[1].Visible = true;
-            dgvDatos.Columns[1].Width = 35;
-            dgvDatos.Columns[2].Width = 90;
-            dgvDatos.Columns[3].Width = 90;
-            dgvDatos.Columns[4].Width = 90;
-            dgvDatos.Columns[5].Width = 90;
-            dgvDatos.Columns[6].Width = 90;
-            dgvDatos.Columns[7].Width = 90;
+            dgvDatos.Columns[0].Width = 35;            
+            dgvDatos.Columns[1].Width = 75;
+            dgvDatos.Columns[2].Width = 75;
+            dgvDatos.Columns[3].Width = 75;
+            dgvDatos.Columns[4].Width = 45;
+            dgvDatos.Columns[5].Width = 75;
+            dgvDatos.Columns[6].Width = 45;
+            dgvDatos.Columns[7].Width = 45;
+            dgvDatos.Columns[8].Width = 90;            
         }
 
         private void buscar()
@@ -90,7 +76,7 @@ namespace CapaPresentación
             try
             {
                 dgvDatos.DataSource = LogicaVehiculo.Buscar(txtBuscar.Text);
-                dgvDatos = parseGridTipoVehiculo(dgvDatos);
+                //dgvDatos = parseGridTipoVehiculo(dgvDatos);
                 this.formato();
                 labelTotal.Text = Convert.ToString(dgvDatos.Rows.Count);                
             }
@@ -140,7 +126,7 @@ namespace CapaPresentación
         private void button2_Click(object sender, EventArgs e)
         {
             this.limpiar();
-            tabControl1.SelectedIndex = 0;
+            tabControlPrincipal.SelectedIndex = 0;
         }
         */
 
@@ -161,7 +147,7 @@ namespace CapaPresentación
             textBxCilindrada.Clear();
             textPuertas.Clear();
             btInsertarVehículo.Visible = true;
-            btnActualizarVehículo.Visible = false;
+            btnActualizarVehículo.Visible = true;
             error.Clear();
             dgvDatos.Columns[0].Visible = false;
             Diagnose.Visible = false;
@@ -335,21 +321,37 @@ namespace CapaPresentación
 
         }
 
+        private void activarTabTipoVehiculo(string tipoAutomovil)
+        {
+            if (tipoAutomovil == string.Empty)
+            {
+                selectorTipoVehículo.SelectedIndex = 1; // Hace mantenimiento
+            }
+            else
+            {
+                selectorTipoVehículo.SelectedIndex = 0; // Hace mantenimiento
+            }
+        }
+
         private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 this.limpiar();
-                btnActualizarVehiculo.Visible = true;
+                btnActualizarVehículo.Visible = true;
                 btInsertarVehículo.Visible = false;
-                textBxIdVehículo.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Id"].Value);
+                activarTabTipoVehiculo(Convert.ToString(dgvDatos.CurrentRow.Cells["IdAuto"].Value));
+
+                textBxIdMoto.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["IdMoto"].Value);
+                textBxIdAutomóvil.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["IdAuto"].Value);
                 textBxMarca.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Marca"].Value);
                 textBxModelo.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Modelo"].Value);
                 textBxPatente.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Patente"].Value);
                 selectorTipoVehículo.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Tipo"].Value);
-                textPuertas.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["CantidadPuertas"].Value);
+                textPuertas.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Puertas"].Value);
                 textBxCilindrada.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Cilindrada"].Value);
-                tabControl1.SelectedIndex = 1; // Hace mantenimiento
+                //textBxIdVehículo.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Id"].Value);
+                tabControlPrincipal.SelectedIndex = 1; // Hace mantenimiento
             }
             catch (Exception)
             {
