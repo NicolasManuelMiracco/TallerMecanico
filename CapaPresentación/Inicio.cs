@@ -763,39 +763,80 @@ namespace CapaPresentación
 
         private string tratamientoDatosCliente()
         {
-            if (textBxIdVehículo.Text == string.Empty)
+            /*
+            
+           
+           
+            private Button button4;
+            private Button button3;
+            private TextBox txTotal;
+            private TextBox txManoDeObra;           
+           
+            */
+            
+            
+            if (txBoxEmail.Text == string.Empty)
             {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxIdVehículo, "Ingrese el Id del Vehiculo");
+                this.MessageError("Falta ingresar datos del cliente");
+                error.SetError(txBoxEmail, "Ingrese el Email del Cliente");
                 return "FAIL";
             }
-            if (textBxMarca.Text == string.Empty)
+            if (txBoxApellido.Text == string.Empty)
             {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxMarca, "Ingrese Marca del Vehiculo");
+                this.MessageError("Falta ingresar datos del cliente");
+                error.SetError(txBoxApellido, "Ingrese el Apellido del Cliente");
                 return "FAIL";
             }
-            if (textBxModelo.Text == string.Empty)
+            if (txBoxNombre.Text == string.Empty)
             {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxModelo, "Ingrese Modelo del Vehiculo");
+                this.MessageError("Falta ingresar datos del cliente");
+                error.SetError(txBoxNombre, "Ingrese el Nombre del Cliente");
                 return "FAIL";
             }
-            if (textBxPatente.Text == string.Empty)
+            if (txBoxDescuento.Text == string.Empty)
             {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxPatente, "Ingrese Patente del Vehiculo");
+                this.MessageError("Falta ingresar datos del cliente");
+                error.SetError(txBoxDescuento, "Ingrese un descuento para el Presupuesto");
+                return "FAIL";
+            }
+            if (txBoxRecargo.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del cliente");
+                error.SetError(txBoxRecargo, "Ingrese un recargo para el Presupuesto");
                 return "FAIL";
             }
             return "OK";
         }
 
+        private string insertarPresupuesto()
+        {
+            string respuesta = "";
+            respuesta = LogicaPresupuesto.Insertar(Convert.ToInt32(textBxIdAutomóvil.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text,
+                ElComboTipoAutomovil.Text, Convert.ToInt32(textPuertas.Text), Convert.ToInt32(textBxIdVehículo.Text));
+            return respuesta;
+        }
+
         private string cargaDelCliente()
         {
             string respuesta = tratamientoDatosCliente();
+            if (respuesta == "OK")
+            {
+                try
+                {
+                    respuesta = insertarPresupuesto();
+                    if (respuesta == "OK")
+                    {
+                        this.MessageOk("Se insertó correctamente el presupuesto");
+                        this.limpiar();
+                        this.listar();
+                    }
+                    else { this.MessageError(respuesta); }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
+                finally { }
+            }
+            else { this.MessageError("Verificar los datos del cliente, recargos y descuentos"); }
             return respuesta;
-
-
         }
 
         /// <summary>
@@ -813,10 +854,11 @@ namespace CapaPresentación
                     Opcion = MessageBox.Show("¿Confirma el presupuesto?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (Opcion == DialogResult.OK)
                     {
-                        // Se pasa a la pestaña para cerrar el presupuesto. 
-                        this.tabControlPrincipal.SelectedIndex = 3;
                         // Se cargan los datos del cliente y se persiste.
                         cargaDelCliente();
+                        // Se pasa a la pestaña para cerrar el presupuesto. 
+                        this.tabControlPrincipal.SelectedIndex = 3;
+                        
 
                     }
                 }
