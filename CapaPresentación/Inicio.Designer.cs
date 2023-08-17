@@ -74,6 +74,8 @@ namespace CapaPresentación
             this.Diagnose = new System.Windows.Forms.Button();
             this.chkSelect = new System.Windows.Forms.CheckBox();
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControlPrincipal.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
@@ -85,6 +87,7 @@ namespace CapaPresentación
             this.tabMoto.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlPrincipal
@@ -94,11 +97,12 @@ namespace CapaPresentación
             this.tabControlPrincipal.Location = new System.Drawing.Point(1, 12);
             this.tabControlPrincipal.Name = "tabControlPrincipal";
             this.tabControlPrincipal.SelectedIndex = 0;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(854, 575);
+            this.tabControlPrincipal.Size = new System.Drawing.Size(854, 547);
             this.tabControlPrincipal.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.panel4);
             this.tabPage1.Controls.Add(this.btnBuscador);
             this.tabPage1.Controls.Add(this.txtBuscar);
             this.tabPage1.Controls.Add(this.labelTotal);
@@ -106,7 +110,7 @@ namespace CapaPresentación
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(846, 542);
+            this.tabPage1.Size = new System.Drawing.Size(846, 514);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -126,7 +130,7 @@ namespace CapaPresentación
             // 
             this.txtBuscar.Location = new System.Drawing.Point(42, 29);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(521, 26);
+            this.txtBuscar.Size = new System.Drawing.Size(290, 26);
             this.txtBuscar.TabIndex = 2;
             // 
             // labelTotal
@@ -147,16 +151,16 @@ namespace CapaPresentación
             this.dgvDatos.ColumnHeadersHeight = 34;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select});
-            this.dgvDatos.Location = new System.Drawing.Point(3, 68);
+            this.dgvDatos.Location = new System.Drawing.Point(3, 89);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersWidth = 30;
             this.dgvDatos.RowTemplate.Height = 23;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(837, 468);
+            this.dgvDatos.Size = new System.Drawing.Size(687, 418);
             this.dgvDatos.TabIndex = 0;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick_1);
-            this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
+            this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
             // 
             // Select
             // 
@@ -173,7 +177,7 @@ namespace CapaPresentación
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(846, 542);
+            this.tabPage3.Size = new System.Drawing.Size(846, 532);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Mantenimiento";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -262,7 +266,6 @@ namespace CapaPresentación
             this.textBxIdVehículo.Name = "textBxIdVehículo";
             this.textBxIdVehículo.Size = new System.Drawing.Size(168, 26);
             this.textBxIdVehículo.TabIndex = 10;
-            
             // 
             // selectorTipoVehículo
             // 
@@ -459,9 +462,9 @@ namespace CapaPresentación
             // 
             // btEliminar
             // 
-            this.btEliminar.Location = new System.Drawing.Point(436, 593);
+            this.btEliminar.Location = new System.Drawing.Point(24, 107);
             this.btEliminar.Name = "btEliminar";
-            this.btEliminar.Size = new System.Drawing.Size(97, 46);
+            this.btEliminar.Size = new System.Drawing.Size(111, 46);
             this.btEliminar.TabIndex = 7;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = true;
@@ -469,7 +472,7 @@ namespace CapaPresentación
             // 
             // btnPresupuestar
             // 
-            this.btnPresupuestar.Location = new System.Drawing.Point(287, 593);
+            this.btnPresupuestar.Location = new System.Drawing.Point(20, 175);
             this.btnPresupuestar.Name = "btnPresupuestar";
             this.btnPresupuestar.Size = new System.Drawing.Size(123, 46);
             this.btnPresupuestar.TabIndex = 6;
@@ -479,9 +482,9 @@ namespace CapaPresentación
             // 
             // Diagnose
             // 
-            this.Diagnose.Location = new System.Drawing.Point(160, 593);
+            this.Diagnose.Location = new System.Drawing.Point(24, 243);
             this.Diagnose.Name = "Diagnose";
-            this.Diagnose.Size = new System.Drawing.Size(103, 46);
+            this.Diagnose.Size = new System.Drawing.Size(111, 46);
             this.Diagnose.TabIndex = 5;
             this.Diagnose.Text = "Dignosticar";
             this.Diagnose.UseVisualStyleBackColor = true;
@@ -490,11 +493,12 @@ namespace CapaPresentación
             // chkSelect
             // 
             this.chkSelect.AutoSize = true;
-            this.chkSelect.Location = new System.Drawing.Point(12, 605);
+            this.chkSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSelect.Location = new System.Drawing.Point(20, 18);
             this.chkSelect.Name = "chkSelect";
-            this.chkSelect.Size = new System.Drawing.Size(118, 24);
+            this.chkSelect.Size = new System.Drawing.Size(139, 24);
             this.chkSelect.TabIndex = 4;
-            this.chkSelect.Text = "Seleccionar";
+            this.chkSelect.Text = "Sel. to operate";
             this.chkSelect.UseVisualStyleBackColor = true;
             this.chkSelect.CheckedChanged += new System.EventHandler(this.chkSelect_CheckedChanged);
             // 
@@ -502,13 +506,32 @@ namespace CapaPresentación
             // 
             this.error.ContainerControl = this;
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Bisque;
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.Diagnose);
+            this.panel4.Controls.Add(this.chkSelect);
+            this.panel4.Controls.Add(this.btnPresupuestar);
+            this.panel4.Controls.Add(this.btEliminar);
+            this.panel4.Location = new System.Drawing.Point(684, 89);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(166, 418);
+            this.panel4.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(21, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(207, 26);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "doble click to update";
+            // 
             // Inicio
             // 
-            this.ClientSize = new System.Drawing.Size(857, 654);
-            this.Controls.Add(this.chkSelect);
-            this.Controls.Add(this.Diagnose);
-            this.Controls.Add(this.btnPresupuestar);
-            this.Controls.Add(this.btEliminar);
+            this.ClientSize = new System.Drawing.Size(857, 558);
             this.Controls.Add(this.tabControlPrincipal);
             this.Name = "Inicio";
             this.Text = "Taller Mecánico";
@@ -528,14 +551,15 @@ namespace CapaPresentación
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlPrincipal;
         private System.Windows.Forms.TabPage tabVehiculo;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnBuscar;
@@ -548,7 +572,7 @@ namespace CapaPresentación
         private System.Windows.Forms.Label txtPatente;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btInsertarVehículo;
-        private System.Windows.Forms.Button btnActualizarVehiculo;
+        private System.Windows.Forms.Button btnActualizarVehículo;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnDesactivar;
         private System.Windows.Forms.Button btnActivar;
@@ -566,8 +590,7 @@ namespace CapaPresentación
         private System.Windows.Forms.TextBox textBxCilindrada;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBxIdMoto;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TabControl tabControlPrincipal;
+        private System.Windows.Forms.Label label10;        
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.Label labelTotal;
@@ -588,7 +611,7 @@ namespace CapaPresentación
         private Label etiquetaIdMoto;
         private Label etiquetaCilindrada;
         
-        private Button btnActualizarVehículo;
+        //private Button btnActualizarVehículo;
         private Button btnCancelarInserción;
         private ErrorProvider error;
         private DataGridViewCheckBoxColumn Select;
@@ -597,6 +620,8 @@ namespace CapaPresentación
         private Button btnPresupuestar;
         private Button Diagnose;
         private ComboBox ElComboTipoAutomovil;
+        private Panel panel4;
+        private Label label6;
     }
 }
 

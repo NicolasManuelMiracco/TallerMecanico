@@ -140,7 +140,7 @@ namespace CapaPresentación
         private void button2_Click(object sender, EventArgs e)
         {
             this.limpiar();
-            tabControl1.SelectedIndex = 0;
+            tabControlPrincipal.SelectedIndex = 0;
         }
         */
 
@@ -161,7 +161,7 @@ namespace CapaPresentación
             textBxCilindrada.Clear();
             textPuertas.Clear();
             btInsertarVehículo.Visible = true;
-            btnActualizarVehículo.Visible = false;
+            btnActualizarVehículo.Visible = true;
             error.Clear();
             dgvDatos.Columns[0].Visible = false;
             Diagnose.Visible = false;
@@ -340,7 +340,7 @@ namespace CapaPresentación
             try
             {
                 this.limpiar();
-                btnActualizarVehiculo.Visible = true;
+                btnActualizarVehículo.Visible = true;
                 btInsertarVehículo.Visible = false;
                 textBxIdVehículo.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Id"].Value);
                 textBxMarca.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Marca"].Value);
@@ -349,7 +349,7 @@ namespace CapaPresentación
                 selectorTipoVehículo.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Tipo"].Value);
                 textPuertas.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["CantidadPuertas"].Value);
                 textBxCilindrada.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Cilindrada"].Value);
-                tabControl1.SelectedIndex = 1; // Hace mantenimiento
+                tabControlPrincipal.SelectedIndex = 1; // Hace mantenimiento
             }
             catch (Exception)
             {
