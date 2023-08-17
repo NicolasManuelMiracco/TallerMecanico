@@ -6,15 +6,33 @@ using System.Threading.Tasks;
 
 namespace CapaModelo
 {
-    public class EntidadPresupuesto
+    public class ModeloPresupuesto
     {
-
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Email { get; set; }
-        public Double ManoDeObra { get; set; }        
-        public Double Total { get; set; }
+        public int IdPresupuesto { get; set; }
+        public Double Descuento { get; set; }
         public int IdVehiculo { get; set; }
+        public Double Recargo { get; set; }
+        public int DiasReparacion { get; set; }
+        public Double ManoDeObra { get; set; }
+        public Double Total { get; set; }
+        public Boolean Completa { get; set; }
+        public Double CostoEstacionamiento { get; set; }
+        public List<ModeloDesperfecto> desperfectos { get; set; }
+
+        public ModeloPresupuesto(int idVehiculo, int ultimoPresupuesto)
+        {
+            this.Completa = false;
+            this.IdPresupuesto = ultimoPresupuesto;
+            this.IdVehiculo = idVehiculo;
+            this.CostoEstacionamiento = 130;
+            this.Descuento = 0;
+            this.Recargo = 0;
+            this.desperfectos = new List<ModeloDesperfecto>();
+        }
+
+        public void addDesperfecto(ModeloDesperfecto modeloDesperfecto)
+        {
+            this.desperfectos.Add(modeloDesperfecto);
+        }
     }
 }

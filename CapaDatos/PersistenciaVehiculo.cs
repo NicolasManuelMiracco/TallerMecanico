@@ -124,7 +124,6 @@ namespace CapaPersistencia
         public string Eliminar(int Id)
         {
             string respuesta = "";
-            SqlDataReader resultado;
             DataTable tabla = new DataTable();
             SqlConnection conexion = new SqlConnection();
             try

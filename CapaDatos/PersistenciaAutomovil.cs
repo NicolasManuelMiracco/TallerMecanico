@@ -11,7 +11,6 @@ namespace CapaPersistencia
 {
     public class PersistenciaAutomovil
     {
-        //id, marca, modelo, patente, tipo, cantidadPuertas, idVehiculo
         public string Insertar(ModeloAutomovil obj)
         {
             string respuesta = "";
@@ -33,7 +32,7 @@ namespace CapaPersistencia
                 comando.Parameters.Add("@Patente", SqlDbType.VarChar).Value = obj.Patente;
                 conexion.Open();
                 respuesta = comando.ExecuteNonQuery() >= 1 ? "OK" : "Insert Automóvil ERROR";
-                System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);
+                //System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);
             }
             catch (Exception ex)
             {

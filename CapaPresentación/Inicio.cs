@@ -17,6 +17,11 @@ namespace CapaPresentación
 {
     public partial class Inicio : Form
     {
+
+        /// <summary>
+        /// Referencia dinámica al presupuesto que se construye desde UI. Al cerrar la transacción se persiste.
+        /// </summary>
+        ModeloPresupuesto presupuesto;
         public Inicio()
         {
             InitializeComponent();
@@ -26,7 +31,7 @@ namespace CapaPresentación
         /// Parsing al Enumerator para el tipo de vehículo ///
         /// /////////////////////////////////////////////////
         /// 
-        
+
         private DataGridView parseGridTipoVehiculo(DataGridView dgvToParse)
         {
             for (int i = 0; i < dgvToParse.Rows.Count - 1; i++)
@@ -35,17 +40,17 @@ namespace CapaPresentación
                 if (!String.IsNullOrEmpty(tipoAutomovil))
                 {
                     Array values = (TipoAutomovil[])Enum.GetValues(typeof(TipoAutomovil));
-                    dgvToParse.Rows[i].Cells[8].Value = (TipoAutomovil)Enum.Parse(typeof(TipoAutomovil), tipoAutomovil);                    
-                }      
+                    dgvToParse.Rows[i].Cells[8].Value = (TipoAutomovil)Enum.Parse(typeof(TipoAutomovil), tipoAutomovil);
+                }
             }
             return dgvToParse;
-        }  
+        }
 
         private void listar()
         {
             try
             {
-                dgvDatos.DataSource = LogicaVehiculo.Listar();                
+                dgvDatos.DataSource = LogicaVehiculo.Listar();
                 //dgvDatos = parseGridTipoVehiculo(dgvDatos);
                 this.formato();
                 labelTotal.Text = Convert.ToString(dgvDatos.Rows.Count);
@@ -60,7 +65,7 @@ namespace CapaPresentación
         private void formato()
         {
             dgvDatos.Columns[0].Visible = false;
-            dgvDatos.Columns[0].Width = 35;            
+            dgvDatos.Columns[0].Width = 35;
             dgvDatos.Columns[1].Width = 75;
             dgvDatos.Columns[2].Width = 75;
             dgvDatos.Columns[3].Width = 75;
@@ -68,7 +73,7 @@ namespace CapaPresentación
             dgvDatos.Columns[5].Width = 75;
             dgvDatos.Columns[6].Width = 45;
             dgvDatos.Columns[7].Width = 45;
-            dgvDatos.Columns[8].Width = 90;            
+            dgvDatos.Columns[8].Width = 90;
         }
 
         private void buscar()
@@ -78,7 +83,7 @@ namespace CapaPresentación
                 dgvDatos.DataSource = LogicaVehiculo.Buscar(txtBuscar.Text);
                 //dgvDatos = parseGridTipoVehiculo(dgvDatos);
                 this.formato();
-                labelTotal.Text = Convert.ToString(dgvDatos.Rows.Count);                
+                labelTotal.Text = Convert.ToString(dgvDatos.Rows.Count);
             }
             catch (Exception ex)
             {
@@ -95,8 +100,6 @@ namespace CapaPresentación
         {
             this.listar();
         }
-
-        
 
         private void textListarVehiculo_TextChanged(object sender, EventArgs e)
         {
@@ -122,14 +125,7 @@ namespace CapaPresentación
         {
 
         }
-        /*
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.limpiar();
-            tabControlPrincipal.SelectedIndex = 0;
-        }
-        */
-
+      
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -167,7 +163,6 @@ namespace CapaPresentación
             MessageBox.Show(Message, "Control de Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        
         private string tratamientoDatosVehiculo()
         {
             if (textBxIdVehículo.Text == string.Empty)
@@ -196,7 +191,7 @@ namespace CapaPresentación
             }
             return "OK";
         }
-        
+
         private string insertarAutomovil()
         {
             string respuesta = "";
@@ -216,7 +211,7 @@ namespace CapaPresentación
         private string tratamientoDatosAutomovil()
         {
             //System.Diagnostics.Debug.WriteLine("Salida: " + "Automóvil selected");
-            
+
             if (textBxIdAutomóvil.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del registro");
@@ -235,7 +230,7 @@ namespace CapaPresentación
                 error.SetError(ElComboTipoAutomovil, "Ingrese el tipo de Vehículo");
                 return "FAIL";
             }
-            return "OK";            
+            return "OK";
         }
 
         private string tratamientoDatosMoto()
@@ -252,7 +247,7 @@ namespace CapaPresentación
                 error.SetError(textBxCilindrada, "Ingrese la cilindrada de la Moto");
                 return "FAIL";
             }
-            return "OK";            
+            return "OK";
         }
 
         private void btInsertarVehículo_Click_1(object sender, EventArgs e)
@@ -318,7 +313,6 @@ namespace CapaPresentación
                 chkEliminar.Value = !Convert.ToBoolean(chkEliminar.Value);
                 //System.Diagnostics.Debug.WriteLine("Salida: " + dgvDatos.Rows[e.RowIndex].Cells["Select"] + " Value: " + chkEliminar.Value);
             }
-
         }
 
         private void activarTabTipoVehiculo(string tipoAutomovil)
@@ -356,7 +350,7 @@ namespace CapaPresentación
             {
                 MessageBox.Show("Debe seleccionar desde la celda Id");
             }
-              
+
         }
 
         private void btnActualizarVehiculo_Click(object sender, EventArgs e)
@@ -412,24 +406,8 @@ namespace CapaPresentación
             }
         }
 
-
-        private void chkSeleccionarVehiculo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkSeleccionarVehiculo.Checked)
-            {
-                dgvDatos.Columns[0].Visible = true;
-                btnEliminar.Visible = true;
-            }
-            else
-            {
-                dgvDatos.Columns[0].Visible = false;                
-                btnEliminar.Visible = false;
-            }
-
-        }
-
         private void btnEliminar_Click(object sender, EventArgs e)
-        {            
+        {
             try
             {
                 DialogResult Opcion;
@@ -438,7 +416,7 @@ namespace CapaPresentación
                 Opcion = MessageBox.Show("¿Eliminar el registro?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Opcion == DialogResult.OK)
                 {
-                    Boolean res; 
+                    Boolean res;
                     foreach (DataGridViewRow row in dgvDatos.Rows)
                     {
                         res = Convert.ToBoolean(dgvDatos.Rows[row.Index].Cells["Select"].Value);
@@ -458,11 +436,11 @@ namespace CapaPresentación
                                 this.MessageError(respuesta);
                             }
                         }
-                         
+
                     }
                     this.listar();
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -487,7 +465,7 @@ namespace CapaPresentación
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-                    }
+        }
 
         private void label4_Click_1(object sender, EventArgs e)
         {
@@ -527,19 +505,16 @@ namespace CapaPresentación
         private void tabPage1_Click_2(object sender, EventArgs e)
         {
 
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
+        }        
 
         private void dgvDatos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == dgvDatos.Columns["Select"].Index)
+            if (e.ColumnIndex == dgvDatos.Columns["Select"].Index) // Press on select
             {
+
                 DataGridViewCheckBoxCell chkEliminar = (DataGridViewCheckBoxCell)dgvDatos.Rows[e.RowIndex].Cells["Select"];
                 chkEliminar.Value = !Convert.ToBoolean(chkEliminar.Value);
+                //System.Diagnostics.Debug.WriteLine("Salida: " + e.RowIndex);
             }
         }
 
@@ -556,17 +531,12 @@ namespace CapaPresentación
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void btInsertarVehículo_Click(object sender, EventArgs e)
-        {
-            
-        }
+        }        
 
         private void btnCancelarInserción_Click(object sender, EventArgs e)
         {
-            this.listar();
             this.tabControlPrincipal.SelectedIndex = 0;
+            this.listar();
         }
 
         private void btnActualizarVehículo_Click(object sender, EventArgs e)
@@ -681,44 +651,69 @@ namespace CapaPresentación
             }
         }
 
+        private void listarDesperfectos()
+        {
+            try
+            {
+                dgvDesperfectos.DataSource = LogicaDesperfecto.Listar();
+                this.formato();
+                labelTotal.Text = Convert.ToString(dgvDatos.Rows.Count);
+                this.limpiar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        /// <summary>
+        /// Generación de instancia PRESUPUESTO
+        /// </summary>
+
+        private void iniciarPresupuesto(int automovilSeleccionado)
+        {
+            /// Se consulta el último presupuesto cargado secuencial.
+            this.presupuesto = new ModeloPresupuesto(automovilSeleccionado, LogicaPresupuesto.ultimoPresupuesto() + 1);
+            listarDesperfectos();
+            
+        }
+
+        private int autosSeleccionados()
+        {
+            int cantidad = 0, ultimaUbicacion = 0;
+            for (int i = 0; i < dgvDatos.Rows.Count - 1; i++)
+            {
+                if (dgvDatos.Rows[i].Cells[0].Selected)
+                {
+                    ultimaUbicacion = i;
+                    cantidad += 1;
+                }
+            }
+            if (cantidad != 1) return -1; // Flag indicando que se ha seleccionado más de 1 vehículo
+                                            //System.Diagnostics.Debug.WriteLine("Salida: " + cantidad);
+            return ultimaUbicacion; // Se retorna la ubicación del elemento seleccionado            
+        }
+
+
         private void btnDeactivate_Click(object sender, EventArgs e)
         {
             try
             {
-                DialogResult Opcion;
-                string respuesta = "";
-                int codigo;
-                Opcion = MessageBox.Show("¿Presupuestar el Vehículo?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (Opcion == DialogResult.OK)
-                {
-                    Boolean res;
-                    foreach (DataGridViewRow row in dgvDatos.Rows)
-                    {
-                        res = Convert.ToBoolean(dgvDatos.Rows[row.Index].Cells["Select"].Value);
-                        //System.Diagnostics.Debug.WriteLine("Salida: " + res.Equals(true));
-
-                        System.Diagnostics.Debug.WriteLine("Turno: " + new RandomTurno(5) + " Vehículo: " + Convert.ToString(row.Cells[1].Value));
-                        if (res.Equals(true))
-                        {
-                            codigo = Convert.ToInt32(row.Cells[1].Value);
-                            //System.Diagnostics.Debug.WriteLine("Salida: " + codigo);
-                            //respuesta = LogicaVehiculo.Presupuestar(codigo);
-                            if (respuesta.Equals("OK"))
-                            {
-                                System.Diagnostics.Debug.WriteLine("Turno: " + new RandomTurno(5).Next().ToString() + " Vehículo: " + Convert.ToString(row.Cells[1].Value));
-                                //MessageBox messageBox = new MessageBox("Turno: " + new RandomTurno(5) + " Vehículo: " + Convert.ToString(row.Cells[1].Value));
-                                
-                            }
-                            else
-                            {
-                                this.MessageError(respuesta);
-                            }
-                        }
-
-                    }
-                    this.listar();
+                int flag = autosSeleccionados(); // Flag -1 indica que no se ha seleccionado 1 elemento
+                if (flag == -1) {
+                    MessageError("Seleccinar SOLO 1 Veículo");
                 }
-
+                else
+                {
+                    DialogResult Opcion;
+                    Opcion = MessageBox.Show("¿Presupuestar el Vehículo?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (Opcion == DialogResult.OK)
+                    {
+                        iniciarPresupuesto(flag);
+                        this.tabControlPrincipal.SelectedIndex = 2;
+                        //System.Diagnostics.Debug.WriteLine("Salida: " + flag);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -735,5 +730,139 @@ namespace CapaPresentación
         {
             textBxIdVehículo.Text = textBxIdMoto.Text;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.tabControlPrincipal.SelectedIndex = 0;
+            this.listar();
+        }
+
+        /// <summary>
+        /// A partir de los desperfectos seleccionados en la grilla, se construye el presupuesto. 
+        /// </summary>
+        /// <returns></returns>
+        
+        private int incorporarDesperfectosAlPresupuesto()
+        {
+            int cantidadDesperfectos = 0;
+            string idDesperfecto, descripcion, manoDeObra, tiempo;
+            for (int i = 0; i < dgvDesperfectos.Rows.Count - 1; i++)
+            {
+                if (dgvDatos.Rows[i].Cells[0].Selected)
+                {
+                    cantidadDesperfectos++;
+                    idDesperfecto = dgvDesperfectos.Rows[i].Cells[1].Value.ToString();
+                    descripcion = dgvDesperfectos.Rows[i].Cells[2].Value.ToString();
+                    manoDeObra = dgvDesperfectos.Rows[i].Cells[3].Value.ToString();
+                    tiempo = dgvDesperfectos.Rows[i].Cells[4].Value.ToString();
+                    presupuesto.addDesperfecto(new ModeloDesperfecto(idDesperfecto, descripcion, manoDeObra, tiempo));
+                }
+            }
+            return cantidadDesperfectos;
+        }
+
+        private string tratamientoDatosCliente()
+        {
+            if (textBxIdVehículo.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del registro");
+                error.SetError(textBxIdVehículo, "Ingrese el Id del Vehiculo");
+                return "FAIL";
+            }
+            if (textBxMarca.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del registro");
+                error.SetError(textBxMarca, "Ingrese Marca del Vehiculo");
+                return "FAIL";
+            }
+            if (textBxModelo.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del registro");
+                error.SetError(textBxModelo, "Ingrese Modelo del Vehiculo");
+                return "FAIL";
+            }
+            if (textBxPatente.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del registro");
+                error.SetError(textBxPatente, "Ingrese Patente del Vehiculo");
+                return "FAIL";
+            }
+            return "OK";
+        }
+
+        private string cargaDelCliente()
+        {
+            string respuesta = tratamientoDatosCliente();
+            return respuesta;
+
+
+        }
+
+        /// <summary>
+        /// // Momento en que se seleccionaron los desperfectos para el vehículo, y se presiona sobre el botón Presupuestar en la pestaña 3 de la aplicación
+        /// </summary>
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult Opcion;                
+                // Se valida la selección de al menos un desperfecto
+                if (this.incorporarDesperfectosAlPresupuesto() > 0)
+                {
+                    Opcion = MessageBox.Show("¿Confirma el presupuesto?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (Opcion == DialogResult.OK)
+                    {
+                        // Se pasa a la pestaña para cerrar el presupuesto. 
+                        this.tabControlPrincipal.SelectedIndex = 3;
+                        // Se cargan los datos del cliente y se persiste.
+                        cargaDelCliente();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.tabControlPrincipal.SelectedIndex = 0;
+            this.listar();
+        }
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvDesperfectos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvDesperfectos.Columns["SelectDesperfecto"].Index) // Press on select
+            {
+
+                DataGridViewCheckBoxCell chkDesperfecto = (DataGridViewCheckBoxCell)dgvDesperfectos.Rows[e.RowIndex].Cells["SelectDesperfecto"];
+                chkDesperfecto.Value = !Convert.ToBoolean(chkDesperfecto.Value);                
+            }
+        }
     }
 }
+
+
