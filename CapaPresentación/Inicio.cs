@@ -350,7 +350,7 @@ namespace CapaPresentación
                 selectorTipoVehículo.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Tipo"].Value);
                 textPuertas.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Puertas"].Value);
                 textBxCilindrada.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Cilindrada"].Value);
-                tabControl1.SelectedIndex = 1; // Hace mantenimiento
+                tabControlPrincipal.SelectedIndex = 1; // Hace mantenimiento
             }
             catch (Exception)
             {
