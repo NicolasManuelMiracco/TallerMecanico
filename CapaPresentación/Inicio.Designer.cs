@@ -205,7 +205,7 @@ namespace CapaPresentación
             this.btnPresupuestar.TabIndex = 6;
             this.btnPresupuestar.Text = "Presupuestar";
             this.btnPresupuestar.UseVisualStyleBackColor = true;
-            this.btnPresupuestar.Click += new System.EventHandler(this.btnDeactivate_Click);
+            this.btnPresupuestar.Click += new System.EventHandler(this.btnPresupuestar_Click);
             // 
             // btEliminar
             // 
@@ -260,17 +260,19 @@ namespace CapaPresentación
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatos.Size = new System.Drawing.Size(675, 418);
             this.dgvDatos.TabIndex = 0;
-            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
-            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick_1);
+            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
             // 
             // Select
             // 
+            this.Select.FalseValue = "";
             this.Select.HeaderText = "Select";
+            this.Select.IndeterminateValue = "";
             this.Select.MinimumWidth = 8;
             this.Select.Name = "Select";
             this.Select.ReadOnly = true;
             this.Select.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Select.TrueValue = "";
             this.Select.Width = 150;
             // 
             // tabPage3
@@ -433,7 +435,6 @@ namespace CapaPresentación
             this.textBxIdAutomóvil.Name = "textBxIdAutomóvil";
             this.textBxIdAutomóvil.Size = new System.Drawing.Size(168, 28);
             this.textBxIdAutomóvil.TabIndex = 14;
-            this.textBxIdAutomóvil.TextChanged += new System.EventHandler(this.actualizarIdVehículoFromAutomovil);
             // 
             // etiquetaTipo
             // 
@@ -500,7 +501,6 @@ namespace CapaPresentación
             this.textBxIdMoto.Name = "textBxIdMoto";
             this.textBxIdMoto.Size = new System.Drawing.Size(168, 28);
             this.textBxIdMoto.TabIndex = 8;
-            this.textBxIdMoto.TextChanged += new System.EventHandler(this.actualizarIdVehículoFromMoto);
             // 
             // etiquetaCilindrada
             // 
@@ -605,15 +605,19 @@ namespace CapaPresentación
             this.dgvDesperfectos.Name = "dgvDesperfectos";
             this.dgvDesperfectos.RowHeadersWidth = 62;
             this.dgvDesperfectos.RowTemplate.Height = 28;
+            this.dgvDesperfectos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDesperfectos.Size = new System.Drawing.Size(831, 359);
             this.dgvDesperfectos.TabIndex = 19;
             this.dgvDesperfectos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDesperfectos_CellContentClick);
             // 
             // SelectDesperfecto
             // 
+            this.SelectDesperfecto.FalseValue = "";
             this.SelectDesperfecto.HeaderText = "Select";
+            this.SelectDesperfecto.IndeterminateValue = "";
             this.SelectDesperfecto.MinimumWidth = 8;
             this.SelectDesperfecto.Name = "SelectDesperfecto";
+            this.SelectDesperfecto.TrueValue = "";
             this.SelectDesperfecto.Width = 150;
             // 
             // button1
@@ -708,7 +712,7 @@ namespace CapaPresentación
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(212, 57);
             this.button4.TabIndex = 22;
-            this.button4.Text = "Presupuestar";
+            this.button4.Text = "Confirma";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -758,7 +762,7 @@ namespace CapaPresentación
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(444, 219);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(369, 44);
+            this.label15.Size = new System.Drawing.Size(246, 29);
             this.label15.TabIndex = 17;
             this.label15.Text = "$ parking ($130/día)";
             this.label15.Click += new System.EventHandler(this.label15_Click);
@@ -769,7 +773,7 @@ namespace CapaPresentación
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(444, 151);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(293, 44);
+            this.label14.Size = new System.Drawing.Size(195, 29);
             this.label14.TabIndex = 16;
             this.label14.Text = "$ mano de obra";
             // 
@@ -942,7 +946,6 @@ namespace CapaPresentación
         //private Button btnActualizarVehículo;
         private Button btnCancelarInserción;
         private ErrorProvider error;
-        private DataGridViewCheckBoxColumn Select;
         private CheckBox chkSelect;
         private Button btEliminar;
         private Button btnPresupuestar;
@@ -954,7 +957,6 @@ namespace CapaPresentación
         private Panel panel5;
         private Button button1;
         private DataGridView dgvDesperfectos;
-        private DataGridViewCheckBoxColumn SelectDesperfecto;
         private Button button2;
         private TabPage tabPage5;
         private Panel panel6;
@@ -978,6 +980,8 @@ namespace CapaPresentación
         private Label label17;
         private TextBox txRepuestosTotal;
         private Label label16;
+        private DataGridViewCheckBoxColumn Select;
+        private DataGridViewCheckBoxColumn SelectDesperfecto;
     }
 }
 

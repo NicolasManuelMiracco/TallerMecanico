@@ -121,7 +121,7 @@ namespace CapaPersistencia
             return respuesta;
         }
 
-        public string Eliminar(int Id)
+        public string Eliminar(int IdMoto, int idAutomovil)
         {
             string respuesta = "";
             DataTable tabla = new DataTable();
@@ -131,9 +131,10 @@ namespace CapaPersistencia
                 conexion = Conexion.crearInstancia().crearConexion();
                 SqlCommand comando = new SqlCommand("eliminarVehiculo", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@Id", SqlDbType.Int).Value = Id;                
+                comando.Parameters.Add("@IdMoto", SqlDbType.Int).Value = IdMoto;
+                comando.Parameters.Add("@IdAutomovil", SqlDbType.Int).Value = idAutomovil;                
                 conexion.Open();
-                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Delete Vehículo ERROR";
+                respuesta = comando.ExecuteNonQuery() >= 1 ? "OK" : "Delete Vehículo ERROR";
             }
             catch (Exception ex)
             {

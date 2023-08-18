@@ -24,6 +24,7 @@ namespace CapaModelo
         public int TiempoTotal { get; set; }
         public double CostoTotal { get; set; }
         public double Estacionamiento { get; set; }
+        public double PrecioFinal { get; set; }
 
         public ModeloPresupuesto(int idVehiculo, int ultimoPresupuesto)
         {

@@ -37,10 +37,10 @@ namespace CapaLogica
             return datos.Actualizar(obj);
         }
 
-        public static string Eliminar(int Id)
+        public static string Eliminar(int IdMoto, int idAutomovil)
         {
             PersistenciaVehiculo datos = new PersistenciaVehiculo();
-            return datos.Eliminar(Id);
+            return datos.Eliminar(IdMoto, idAutomovil);
         }
     }
 }

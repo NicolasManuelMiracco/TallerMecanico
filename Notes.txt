@@ -1,0 +1,7 @@
+Inserción correcta: evidenciado y testeado.
+Testeada la actualización de vehículos, resta evidenciar.
+Testeado eliminación de vehículos, resta evidenciar.
+Completar Presupuesto
+
+
+Line 869 -> Cierre.

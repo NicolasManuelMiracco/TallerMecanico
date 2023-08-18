@@ -19,6 +19,7 @@ namespace CapaLogica
         public static Double obtenerSubtotalRepuestos(int idDesperfecto)
         {
             PersistenciaDesperfecto datos = new PersistenciaDesperfecto();
+            System.Diagnostics.Debug.WriteLine("Salida: " + datos.subTotalRepuestos(idDesperfecto));
             return datos.subTotalRepuestos(idDesperfecto);
         }
     }
