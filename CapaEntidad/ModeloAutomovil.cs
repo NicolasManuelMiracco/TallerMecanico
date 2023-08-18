@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CapaModelo
+﻿namespace CapaModelo
 {
-    
+
     /// <summary>
     /// Tipo enumerado público segun requerimiento
     /// </summary>
