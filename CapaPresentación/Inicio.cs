@@ -33,25 +33,7 @@ namespace CapaPresentación
         public Inicio()
         {
             InitializeComponent();
-        }
-
-        //////////////////////////////////////////////////////////////////////////////////
-        /// Parsing al Enumerator para el tipo de vehículo -> Deprecado //////////////////
-        /// //////////////////////////////////////////////////////////////////////////////
-        
-        private DataGridView parseGridTipoVehiculo(DataGridView dgvToParse)
-        {
-            for (int i = 0; i < dgvToParse.Rows.Count - 1; i++)
-            {
-                String tipoAutomovil = dgvToParse.Rows[i].Cells[8].Value.ToString();
-                if (!String.IsNullOrEmpty(tipoAutomovil))
-                {
-                    Array values = (TipoAutomovil[])Enum.GetValues(typeof(TipoAutomovil));
-                    dgvToParse.Rows[i].Cells[8].Value = (TipoAutomovil)Enum.Parse(typeof(TipoAutomovil), tipoAutomovil);
-                }
-            }
-            return dgvToParse;
-        }
+        }        
 
         private void listar()
         {
@@ -416,7 +398,7 @@ namespace CapaPresentación
                 if (textBxModelo.Text == string.Empty)
                 {
                     this.MessageError("Falta ingresar datos del registro");
-                    error.SetError(txtModelo, "Ingrese Modelo del Vehiculo");
+                    error.SetError(TxtModelo, "Ingrese Modelo del Vehiculo");
                     return;
                 }
                 if (textBxPatente.Text == string.Empty)

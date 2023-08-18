@@ -526,6 +526,7 @@ namespace CapaPresentación
             // etiquetaPatente
             // 
             this.etiquetaPatente.AutoSize = true;
+            this.etiquetaPatente.BackColor = System.Drawing.Color.Gainsboro;
             this.etiquetaPatente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.etiquetaPatente.Location = new System.Drawing.Point(28, 278);
             this.etiquetaPatente.Name = "etiquetaPatente";
@@ -536,6 +537,7 @@ namespace CapaPresentación
             // etiquetaModelo
             // 
             this.etiquetaModelo.AutoSize = true;
+            this.etiquetaModelo.BackColor = System.Drawing.Color.Gainsboro;
             this.etiquetaModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.etiquetaModelo.Location = new System.Drawing.Point(28, 203);
             this.etiquetaModelo.Name = "etiquetaModelo";
@@ -547,6 +549,7 @@ namespace CapaPresentación
             // etiquetaMarca
             // 
             this.etiquetaMarca.AutoSize = true;
+            this.etiquetaMarca.BackColor = System.Drawing.Color.Gainsboro;
             this.etiquetaMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.etiquetaMarca.Location = new System.Drawing.Point(28, 127);
             this.etiquetaMarca.Name = "etiquetaMarca";
@@ -894,37 +897,30 @@ namespace CapaPresentación
         #endregion
 
         private System.Windows.Forms.TabControl tabControlPrincipal;
-        private System.Windows.Forms.TabPage tabVehiculo;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label txtMarca;
+
+        public Inicio(Label txtMarca, Label txtModelo, Label txtPatente)
+        {
+            this.txtMarca = txtMarca;
+            this.txtModelo = txtModelo;
+            this.txtPatente = txtPatente;
+            this.Select = new DataGridViewCheckBoxColumn();
+        }
+
         private System.Windows.Forms.Label txtModelo;
         private System.Windows.Forms.TextBox textBxModelo;
         private System.Windows.Forms.TextBox textBxMarca;
         private System.Windows.Forms.TextBox textBxIdVehículo;
         private System.Windows.Forms.TextBox textBxPatente;
         private System.Windows.Forms.Label txtPatente;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btInsertarVehículo;
         private System.Windows.Forms.Button btnActualizarVehículo;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnDesactivar;
-        private System.Windows.Forms.Button btnActivar;
-        private System.Windows.Forms.CheckBox chkSeleccionarVehiculo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl selectorTipoVehículo;
         private System.Windows.Forms.TabPage tabAutomóvil;
         private System.Windows.Forms.TextBox textBxIdAutomóvil;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textPuertas;
-        private System.Windows.Forms.TabPage tabPageMoto;
         private System.Windows.Forms.TextBox textBxCilindrada;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBxIdMoto;
-        private System.Windows.Forms.Label label10;        
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.Label labelTotal;
@@ -944,8 +940,6 @@ namespace CapaPresentación
         private Panel panel3;
         private Label etiquetaIdMoto;
         private Label etiquetaCilindrada;
-        
-        //private Button btnActualizarVehículo;
         private Button btnCancelarInserción;
         private ErrorProvider error;
         private CheckBox chkSelect;
@@ -982,8 +976,12 @@ namespace CapaPresentación
         private Label label17;
         private TextBox txRepuestosTotal;
         private Label label16;
+#pragma warning disable CS0108 // El miembro oculta el miembro heredado. Falta una contraseña nueva
         private DataGridViewCheckBoxColumn Select;
+#pragma warning restore CS0108 // El miembro oculta el miembro heredado. Falta una contraseña nueva
         private DataGridViewCheckBoxColumn SelectDesperfecto;
+
+        public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
 }
 
