@@ -638,29 +638,32 @@ namespace CapaPresentación
             
         }
 
-        private int autosSeleccionados()
+        private List<int> rowsSelected(DataGridView dgv)
         {
-            int cantidad = 0, ultimaUbicacion = 0;
-            for (int i = 0; i < dgvDatos.Rows.Count - 1; i++)
+            List<int> indicesSeleccionados = new List<int>();
+            for (int i = 0; i < dgv.Rows.Count; i++)
             {
-                if (dgvDatos.Rows[i].Cells[0].Selected)
-                {
-                    ultimaUbicacion = i;
-                    cantidad += 1;
-                }
+                if (dgvDatos.Rows[i].Cells[0].Selected) { indicesSeleccionados.Add(i); }   
             }
-            if (cantidad != 1) return -1; // Flag indicando que se ha seleccionado más de 1 vehículo
-                                            //System.Diagnostics.Debug.WriteLine("Salida: " + cantidad);
-            return ultimaUbicacion; // Se retorna la ubicación del elemento seleccionado            
+            return indicesSeleccionados;
         }
 
+        private int getSelectedRow(List<int> indicesSeleccionados)
+        {
+            int encontro = 0;
+            for (int i = 0; encontro == 00 && i < indicesSeleccionados.Count; i++)
+            {
+                if (dgvDatos.Rows[i].Cells[0].Selected) { encontro = i; }
+            }
+            return encontro;
+        }
 
         private void btnDeactivate_Click(object sender, EventArgs e)
         {
             try
             {
-                int flag = autosSeleccionados(); // Flag -1 indica que no se ha seleccionado 1 elemento
-                if (flag == -1) {
+                List<int> rowsSelected = this.rowsSelected(dgvDatos);
+                if (rowsSelected.Count != 1) {
                     MessageError("Seleccinar SOLO 1 Veículo");
                 }
                 else
@@ -669,16 +672,13 @@ namespace CapaPresentación
                     Opcion = MessageBox.Show("¿Presupuestar el Vehículo?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (Opcion == DialogResult.OK)
                     {
-                        iniciarPresupuesto(flag);
+                        iniciarPresupuesto(getSelectedRow(rowsSelected));
                         this.tabControlPrincipal.SelectedIndex = 2;
                         //System.Diagnostics.Debug.WriteLine("Salida: " + flag);
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
+            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
         }
 
         private void actualizarIdVehículoFromAutomovil(object sender, EventArgs e)
@@ -722,46 +722,54 @@ namespace CapaPresentación
             }
             return cantidadDesperfectos;
         }
-
-        private string tratamientoDatosCliente()
+        
+        /// <summary>
+        /// Se cargan los Text Box con valores por default del presupuesto
+        /// </summary>
+        private void seteosDefaultPresupuesto()
         {
-            /*
-            
-           
-           
-            private Button button4;
-            private Button button3;
-            private TextBox txTotal;
-            private TextBox txManoDeObra;           
-           
-            */
 
+        }
 
+        private string tratamientoDatosPresupuesto()
+        {
             if (txBoxEmail.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del cliente");
-                error.SetError(txBoxEmail, "Ingrese el Email del Cliente");
+                error.SetError(txBoxEmail, "Ingrese el Email");
                 return "FAIL";
             }   else presupuesto.Email = txBoxEmail.Text; 
             
             if (txBoxApellido.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del cliente");
-                error.SetError(txBoxApellido, "Ingrese el Apellido del Cliente");
+                error.SetError(txBoxApellido, "Ingrese el Apellido");
                 return "FAIL";
             }   else presupuesto.Apellido = txBoxApellido.Text;
             
             if (txBoxNombre.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del cliente");
-                error.SetError(txBoxNombre, "Ingrese el Nombre del Cliente");
+                error.SetError(txBoxNombre, "Ingrese el Nombre");
                 return "FAIL";
             }   else presupuesto.Nombre = txBoxNombre.Text;
 
             if (txBoxDescuento.Text == string.Empty)
             {
-                this.MessageError("Falta ingresar datos del cliente");
-                error.SetError(txBoxDescuento, "Ingrese un descuento para el Presupuesto");
+                this.MessageError("Falta ingresar datos del Presupuesto");
+                error.SetError(txBoxDescuento, "Ingrese un Descuento");
+                return "FAIL";
+            }
+            if (txBoxRecargo.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Presupuesto");
+                error.SetError(txBoxRecargo, "Ingrese un Recargo");
+                return "FAIL";
+            }
+            if (txBoxEstacionamiento.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Presupuesto");
+                error.SetError(txBoxEstacionamiento, "Ingrese un Estacionamiento");
                 return "FAIL";
             }
             if (txBoxRecargo.Text == string.Empty)
@@ -787,7 +795,8 @@ namespace CapaPresentación
 
         private string cargaDelCliente()
         {
-            string respuesta = tratamientoDatosCliente();
+            seteosDefaultPresupuesto();
+            string respuesta = tratamientoDatosPresupuesto();
             if (respuesta == "OK")
             {
                 try
@@ -814,7 +823,11 @@ namespace CapaPresentación
         /// </summary>
         private void preSeteoParametriaPresupuesto()
         {
-
+            txBoxEmail.Text = this.presupuesto.Email.ToString();
+            txBoxDescuento.Text = this.presupuesto.Descuento.ToString(); ;
+            txBoxRecargo.Text = this.presupuesto.Recargo.ToString(); ;
+            txBoxEstacionamiento.Text = this.presupuesto.Estacionamiento.ToString(); 
+            txBoxRecargo.Text = this.presupuesto.Recargo.ToString(); 
         }
 
 
@@ -888,7 +901,10 @@ namespace CapaPresentación
             cargaDelCliente();
         }
 
-        
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
