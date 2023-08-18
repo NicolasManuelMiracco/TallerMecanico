@@ -13,8 +13,7 @@ namespace CapaPersistencia
     {
         public string Insertar(ModeloAutomovil obj)
         {
-            string respuesta = "";
-            SqlDataReader resultado;
+            string respuesta = "";           
             DataTable tabla = new DataTable();
             SqlConnection conexion = new SqlConnection();            
             try

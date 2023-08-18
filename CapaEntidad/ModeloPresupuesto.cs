@@ -47,6 +47,10 @@ namespace CapaModelo
             Desperfectos = new List<ModeloDesperfecto>();
         }
 
+        /// <summary>
+        /// Incorporación de desperfectos al presupuesto y actualización
+        /// </summary>
+        
         public void addDesperfecto(ModeloDesperfecto modeloDesperfecto)
         {
             this.Desperfectos.Add(modeloDesperfecto);

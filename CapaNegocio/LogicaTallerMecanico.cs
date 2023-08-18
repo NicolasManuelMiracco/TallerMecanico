@@ -23,17 +23,20 @@ namespace CapaLogica
         public void ingresarAutomovil(ModeloAutomovil nuevoAutomovil)
         {
             vehiculos.Add(nuevoAutomovil);
-            new PersistenciaAutomovil().Insertar(nuevoAutomovil);
-            //this.desperfectos = desperfectos;
+            new PersistenciaAutomovil().Insertar(nuevoAutomovil);            
         }
 
         public void ingresarMoto(ModeloMoto nuevaMoto)
         {
             vehiculos.Add(nuevaMoto);
-            new PersistenciaMoto().Insertar(nuevaMoto);
-            //this.desperfectos = desperfectos;
+            new PersistenciaMoto().Insertar(nuevaMoto);            
         }
 
+
+        /// <summary>
+        /// Lógica principal para la generación del presupuesto
+        /// </summary>
+        
         public void emitirPresupuesto(ModeloVehiculo nuevoVehiculo, List<ModeloDesperfecto> desperfectos)
         {
             vehiculos.Add(nuevoVehiculo);

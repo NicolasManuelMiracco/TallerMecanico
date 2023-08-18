@@ -10,6 +10,10 @@ namespace CapaLogica
 {
     public class LogicaAutomovil
     {
+        /// <summary>
+        ///  Gestión lógica para la inserción de Automóvil
+        /// </summary>
+        
         public static string Insertar(int id, string marca, string modelo, string patente, string tipo, int cantidadPuertas, int idVehiculo)
         {
             PersistenciaAutomovil datos = new PersistenciaAutomovil();

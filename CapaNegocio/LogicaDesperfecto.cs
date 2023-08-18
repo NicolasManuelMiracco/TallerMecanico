@@ -16,6 +16,10 @@ namespace CapaLogica
             return datos.Listar();
         }
 
+        /// <summary>
+        /// Definición lógica para recuperar el costo de repuestos por desperfecto
+        /// </summary>
+        
         public static Double obtenerSubtotalRepuestos(int idDesperfecto)
         {
             PersistenciaDesperfecto datos = new PersistenciaDesperfecto();

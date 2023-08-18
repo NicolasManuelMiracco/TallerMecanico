@@ -12,6 +12,10 @@ namespace CapaModelo
         public int IdVehiculo { get; set; }
         public string Cilindrada { get; set; }
 
+        /// <summary>
+        /// Constructor parametrizado, quien llama al padre manteniendo coherencia en su instanciación
+        /// </summary>
+        
         public ModeloMoto(int id, string marca, string modelo, string patente, int idVehiculo, string cilindrada)
             : base(idVehiculo, marca, modelo, patente)
         {

@@ -34,6 +34,7 @@ namespace CapaPresentación
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -859,6 +860,7 @@ namespace CapaPresentación
             // 
             this.ClientSize = new System.Drawing.Size(857, 558);
             this.Controls.Add(this.tabControlPrincipal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Inicio";
             this.Text = "Taller Mecánico";
             this.Load += new System.EventHandler(this.Inicio_Load);

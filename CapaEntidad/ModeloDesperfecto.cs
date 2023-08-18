@@ -25,6 +25,10 @@ namespace CapaModelo
             costoRepuestosDesperfecto = 0;
         }
 
+        /// <summary>
+        /// Incorporación del costo de repuesto al desperfecto
+        /// </summary>
+        /// <param name="nuevoRepuesto"></param>
         public void adicionarCostoRepuesto(double nuevoRepuesto)
         {
             costoRepuestosDesperfecto += nuevoRepuesto;

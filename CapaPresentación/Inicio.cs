@@ -11,6 +11,14 @@ using CapaLogica;
 using CapaModelo;
 using CapaNegocio;
 
+
+/// <summary>
+/// Desarrollo Taller Mecánico 
+/// Entrega Preliminar
+/// Author: Nicolás Manuel Miracco
+/// Challenge .NET 
+/// </summary>
+
 // Form según aspect ratio 16:9, de 1361 x 765 pixels, sin maximización ni resize.
 
 namespace CapaPresentación
@@ -93,42 +101,7 @@ namespace CapaPresentación
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            this.listar();
-        }
-
-        private void textListarVehiculo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-      
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        }               
 
         private void limpiar()
         {
@@ -154,7 +127,6 @@ namespace CapaPresentación
         private void MessageError(string Message)
         {
             MessageBox.Show(Message, "Control de Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
         }
 
         private void MessageOk(string Message)
@@ -294,16 +266,6 @@ namespace CapaPresentación
             }
         }
 
-        private void Marca_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMarca_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void activarTabTipoVehiculo(string tipoAutomovil)
         {
             if (tipoAutomovil == string.Empty)
@@ -384,11 +346,6 @@ namespace CapaPresentación
         private void Inicio_Load(object sender, EventArgs e)
         {
             this.listar();
-        }
-
-        private void tabPage1_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void btnBuscador_Click(object sender, EventArgs e)
@@ -597,6 +554,11 @@ namespace CapaPresentación
             return indicesSeleccionados;
         }
 
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        /// <param name="indicesSeleccionados"></param>
+        
         private int getFirstSelectedRow(List<int> indicesSeleccionados)
         {
             int encontro = 0;
@@ -607,14 +569,16 @@ namespace CapaPresentación
             return encontro;
         }
 
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        
         private void btnDeactivate_Click(object sender, EventArgs e)
         {
             try
             {
                 List<int> rowsSelected = this.rowsSelected(dgvDatos);
-                //System.Diagnostics.Debug.WriteLine("Salida: " + rowsSelected.Count);
-
-                //System.Diagnostics.Debug.WriteLine("Salida: " + (Int32)dgvDatos.GetCellCount(DataGridViewElementStates.Selected));
+                
                 if (dgvDatos.Rows.GetRowCount(DataGridViewElementStates.Selected) != 1) {
                     MessageError("Seleccionar SOLO 1 Veículo");
                 }
@@ -823,11 +787,7 @@ namespace CapaPresentación
             this.tabControlPrincipal.SelectedIndex = 0;
             this.listar();
         }
-
-        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {

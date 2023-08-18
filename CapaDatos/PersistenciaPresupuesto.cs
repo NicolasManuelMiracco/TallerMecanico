@@ -36,7 +36,6 @@ namespace CapaPersistencia
         public string Insertar(ModeloPresupuesto modeloPresupuesto)
         {
             string respuesta = "";
-            SqlDataReader resultado;
             DataTable tabla = new DataTable();
             SqlConnection conexion = new SqlConnection();
             try

@@ -38,7 +38,6 @@ namespace CapaPersistencia
         public string Insertar (ModeloVehiculo obj) 
         {
             string respuesta = "";
-            SqlDataReader resultado;
             DataTable tabla = new DataTable();
             SqlConnection conexion = new SqlConnection();
             try
@@ -94,7 +93,6 @@ namespace CapaPersistencia
         public string Actualizar(ModeloVehiculo obj)
         {
             string respuesta = "";
-            SqlDataReader resultado;
             DataTable tabla = new DataTable();
             SqlConnection conexion = new SqlConnection();
             try
