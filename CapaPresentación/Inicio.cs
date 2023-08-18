@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaLogica;
 using CapaModelo;
-using CapaNegocio;
-
 
 /// <summary>
 /// Desarrollo Taller Mecánico 
@@ -79,12 +71,7 @@ namespace CapaPresentación
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }               
-
+        
         private void limpiar()
         {
             txtBuscar.Clear();
@@ -351,11 +338,6 @@ namespace CapaPresentación
             }
         }
 
-        private void label6_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void tabPage3_Click(object sender, EventArgs e)
         {
 
@@ -549,39 +531,7 @@ namespace CapaPresentación
                 if (dgvDatos.Rows[i].Cells[0].Selected) { encontro = i; }
             }
             return encontro;
-        }
-
-        /// <summary>
-        /// Deprecated
-        /// </summary>
-        
-        private void btnDeactivate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                List<int> rowsSelected = this.rowsSelected(dgvDatos);
-                
-                if (dgvDatos.Rows.GetRowCount(DataGridViewElementStates.Selected) != 1) {
-                    MessageError("Seleccionar SOLO 1 Veículo");
-                }
-                else
-                {
-                    //System.Diagnostics.Debug.WriteLine("Salida: " + getFirstSelectedRow(rowsSelected));
-                    DialogResult Opcion;
-                    Opcion = MessageBox.Show("¿Presupuestar el Vehículo?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (Opcion == DialogResult.OK)
-                    {
-                        //System.Diagnostics.Debug.WriteLine("Salida: " + rowsSelected[0]);
-                        iniciarPresupuesto(rowsSelected[0]);
-                        this.tabControlPrincipal.SelectedIndex = 2;
-                        
-                    }
-                    //System.Diagnostics.Debug.WriteLine("Salida: " + getSelectedRow(rowsSelected));
-                }
-                //System.Diagnostics.Debug.WriteLine("Salida: " + getSelectedRow(rowsSelected));
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
-        }
+        }        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -753,12 +703,7 @@ namespace CapaPresentación
         {
             cargaDelCliente();            
         }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void label12_Click(object sender, EventArgs e)
         {
 
@@ -770,12 +715,6 @@ namespace CapaPresentación
             this.listar();
         }
         
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgvDesperfectos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //System.Diagnostics.Debug.WriteLine("Salida: " + dgvDesperfectos.Rows.GetRowCount(DataGridViewElementStates.Selected));
@@ -785,17 +724,10 @@ namespace CapaPresentación
                 chkDesperfecto.Value = !Convert.ToBoolean(chkDesperfecto.Value);                
             }
         }        
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         /// <summary>
         /// Selección del contenido para el Datagrid de Vehículos
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //System.Diagnostics.Debug.WriteLine("Salida: " + dgvDesperfectos.Rows.GetRowCount(DataGridViewElementStates.Selected));
@@ -806,46 +738,46 @@ namespace CapaPresentación
             }
         }
 
+        ///// <summary>
+        ///// Inicio de la construcción del presupuesto
+        ///// </summary>
 
-        /// <summary>
-        /// Punto de revisión
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnPresupuestar_Click(object sender, EventArgs e)
         {
             try
             {
-                DialogResult Opcion;
-                string respuesta = "";
-                int codigoMoto = 0, codigoAutomovil = 0;
-                Opcion = MessageBox.Show("¿Presupuestar el vehículo?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (Opcion == DialogResult.OK)
+                int cantidadVehiculos = 0, lastSelected = 0;
+                foreach (DataGridViewRow row in dgvDatos.Rows)
                 {
-                    foreach (DataGridViewRow row in dgvDatos.Rows)
+                    if (Convert.ToBoolean(row.Cells[0].Value))
                     {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                            if (!String.IsNullOrEmpty(row.Cells[4].Value.ToString())) codigoMoto = Int32.Parse(row.Cells[4].Value.ToString());
-                            else codigoAutomovil = Int32.Parse(row.Cells[6].Value.ToString());
-                            respuesta = LogicaVehiculo.Eliminar(codigoMoto, codigoAutomovil);
-                            if (respuesta.Equals("OK"))
-                            {
-                                this.MessageOk("Se eliminó el registro correctamente: " + Convert.ToString(row.Cells[1].Value));
-                            }
-                            else
-                            {
-                                this.MessageError("Error BD: " + respuesta);
-                            }
-
-                        }
+                        lastSelected = row.Index;
+                        cantidadVehiculos++;
                     }
-                    this.listar();
+                }
+                DialogResult Opcion;               
+                if (cantidadVehiculos == 1) 
+                {
+                    Opcion = MessageBox.Show("¿Presupuestar el vehículo?", "Control de Vehiculos", MessageBoxButtons.OKCancel);
+                    if (Opcion == DialogResult.OK)
+                    {
+                        //Se inicia el presupuesto y se incorpora el vehículo a presupuestar.
+                        iniciarPresupuesto(lastSelected);
+                        //Pasamos a la pestaña de selección de desperfectos. 
+                        this.tabControlPrincipal.SelectedIndex = 2;
+                    }
+                    else
+                    {
+                        this.listar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccionar 1 (un) vehículo.", "Control de Vehiculos", MessageBoxButtons.OK);
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
-        }      
-        
+        }
     }
 }
 

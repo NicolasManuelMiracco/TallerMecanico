@@ -543,8 +543,7 @@ namespace CapaPresentación
             this.etiquetaModelo.Name = "etiquetaModelo";
             this.etiquetaModelo.Size = new System.Drawing.Size(101, 29);
             this.etiquetaModelo.TabIndex = 2;
-            this.etiquetaModelo.Text = "Modelo";
-            this.etiquetaModelo.Click += new System.EventHandler(this.label6_Click_1);
+            this.etiquetaModelo.Text = "Modelo";            
             // 
             // etiquetaMarca
             // 
@@ -768,8 +767,7 @@ namespace CapaPresentación
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(246, 29);
             this.label15.TabIndex = 17;
-            this.label15.Text = "$ parking ($130/día)";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
+            this.label15.Text = "$ parking ($130/día)";            
             // 
             // label14
             // 
@@ -822,7 +820,6 @@ namespace CapaPresentación
             this.txBoxNombre.Name = "txBoxNombre";
             this.txBoxNombre.Size = new System.Drawing.Size(262, 26);
             this.txBoxNombre.TabIndex = 11;
-            this.txBoxNombre.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label11
             // 
@@ -842,8 +839,7 @@ namespace CapaPresentación
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(110, 29);
             this.label8.TabIndex = 2;
-            this.label8.Text = "Apellido";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            this.label8.Text = "Apellido";            
             // 
             // label7
             // 
@@ -980,7 +976,6 @@ namespace CapaPresentación
         private DataGridViewCheckBoxColumn Select;
 #pragma warning restore CS0108 // El miembro oculta el miembro heredado. Falta una contraseña nueva
         private DataGridViewCheckBoxColumn SelectDesperfecto;
-
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
 }
