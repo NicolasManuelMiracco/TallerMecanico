@@ -54,7 +54,8 @@ namespace CapaPresentación
             dgvDatos.Columns[5].Width = 75;
             dgvDatos.Columns[6].Width = 45;
             dgvDatos.Columns[7].Width = 45;
-            dgvDatos.Columns[8].Width = 75;            
+            dgvDatos.Columns[8].Width = 75;
+            dgvDatos.Columns[9].Width = 75;
         }
 
         private void buscar()
@@ -478,6 +479,9 @@ namespace CapaPresentación
 
         }
 
+        /// <summary>
+        /// SE exhibe la lista de desperfectos a seleccionar para el presupuesto
+        /// </summary>
 
         private void listarDesperfectos()
         {
@@ -751,14 +755,14 @@ namespace CapaPresentación
                 {
                     if (Convert.ToBoolean(row.Cells[0].Value))
                     {
-                        lastSelected = row.Index;
+                        lastSelected = Int32.Parse(row.Cells[9].Value.ToString());
                         cantidadVehiculos++;
                     }
                 }
                 DialogResult Opcion;               
                 if (cantidadVehiculos == 1) 
                 {
-                    Opcion = MessageBox.Show("¿Presupuestar el vehículo?", "Control de Vehiculos", MessageBoxButtons.OKCancel);
+                    Opcion = MessageBox.Show("¿Presupuestar el Id vehículo: " + lastSelected + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel);
                     if (Opcion == DialogResult.OK)
                     {
                         //Se inicia el presupuesto y se incorpora el vehículo a presupuestar.
@@ -778,6 +782,9 @@ namespace CapaPresentación
             }
             catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
         }
+
+        /// El Id del vehiculo para la nueva moto o automovil no puede existir. Tiene que ser nuevo.
+
     }
 }
 

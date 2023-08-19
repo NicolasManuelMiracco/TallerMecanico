@@ -1,7 +1,4 @@
-﻿
-using CapaModelo;
-using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace CapaPresentación
 {
@@ -979,4 +976,3 @@ namespace CapaPresentación
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
 }
-
