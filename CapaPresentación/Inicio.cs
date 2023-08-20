@@ -285,30 +285,43 @@ namespace CapaPresentación
             {
                 DialogResult Opcion;
                 string respuesta = "";
-                int codigoMoto = 0, codigoAutomovil = 0;
-                Opcion = MessageBox.Show("¿Eliminar el registro?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (Opcion == DialogResult.OK)
+                int codigoMoto = 0, codigoAutomovil = 0, vehiculosSeleccionados = 0, vehiculosEliminados = 0, vehiculosAbortados = 0;                
+                foreach (DataGridViewRow row in dgvDatos.Rows)
                 {
-                    foreach (DataGridViewRow row in dgvDatos.Rows)
+                    if (Convert.ToBoolean(row.Cells[0].Value))
                     {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        vehiculosSeleccionados++; // Se registra la cantidad de seleccionados para UI usuario cuando es 0
+                        // Aquí siempre tenemos un valor en columna 4 (Moto) OR exclusivo en columna 6 (Automovil)
+                        if (!String.IsNullOrEmpty(row.Cells[4].Value.ToString())) // Es una Moto
                         {
-                            if (!String.IsNullOrEmpty(row.Cells[4].Value.ToString())) codigoMoto = Int32.Parse(row.Cells[4].Value.ToString()); 
-                            else codigoAutomovil = Int32.Parse(row.Cells[6].Value.ToString());
-                            respuesta = LogicaVehiculo.Eliminar(codigoMoto, codigoAutomovil);
-                            if (respuesta.Equals("OK"))
-                            {
-                                this.MessageOk("Se eliminó el registro correctamente: " + Convert.ToString(row.Cells[1].Value));
-                            }
-                            else
-                            {
-                                this.MessageError("Error BD: " + respuesta);
-                            }
+                            codigoMoto = Int32.Parse(row.Cells[4].Value.ToString());
+                            Opcion = MessageBox.Show("¿Eliminar la moto: " + codigoMoto + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                                               
+                        }
+                        else // Es un Automóvil
+                        {
+                            codigoAutomovil = Int32.Parse(row.Cells[6].Value.ToString());
+                            Opcion = MessageBox.Show("¿Eliminar el automóvil: " + codigoAutomovil + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);                            
+                        }
 
+                        respuesta = Opcion == DialogResult.OK ? LogicaVehiculo.Eliminar(codigoMoto, codigoAutomovil) : "ABORTED";
+                        if (respuesta.Equals("OK"))
+                        {
+                            vehiculosEliminados++;
+                        }
+                        else if (respuesta.Equals("ABORTED"))
+                        {
+                            vehiculosAbortados++;
+                        } 
+                        else
+                        {
+                            this.MessageError("Error BD: " + respuesta);
                         }
                     }
-                    this.listar();
                 }
+                if (vehiculosSeleccionados == 0) this.MessageError("Ingresar al menos un Vehículo");
+                else this.MessageError("Vehículos eliminados: " + vehiculosEliminados + " y abortados: " + vehiculosAbortados);
+                this.listar();                
             }
             catch (Exception ex) {  MessageBox.Show(ex.Message + ex.StackTrace);  }
         }
@@ -783,6 +796,11 @@ namespace CapaPresentación
             catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
         }
 
+        
+        
+        /// Todos los id de las tablas deben ser autonumber
+        /// Armar SP de cargaMasiva para toda la tabla
+        /// Gestionar restricciones de integridad al insertar (IdVehiculo autonumber), o actualizar (no se modifica IdVehiculo oculto)
         /// El Id del vehiculo para la nueva moto o automovil no puede existir. Tiene que ser nuevo.
 
     }
