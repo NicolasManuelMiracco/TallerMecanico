@@ -43,6 +43,8 @@ namespace CapaPresentación
             }
         }
 
+
+
         private void formato()
         {
             dgvDatos.Columns[0].Visible = false;
@@ -431,42 +433,37 @@ namespace CapaPresentación
         {
             try
             {
-                DialogResult Opcion;
-                string respuesta = "";
-                int codigo;
-                Opcion = MessageBox.Show("¿Diagnosticar el Vehículo?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (Opcion == DialogResult.OK)
+                int cantidadVehiculos = 0, lastSelected = 0;
+                foreach (DataGridViewRow row in dgvDatos.Rows)
                 {
-                    Boolean res;
-                    foreach (DataGridViewRow row in dgvDatos.Rows)
+                    if (Convert.ToBoolean(row.Cells[0].Value))
                     {
-                        res = Convert.ToBoolean(dgvDatos.Rows[row.Index].Cells["Select"].Value);
-                        //System.Diagnostics.Debug.WriteLine("Salida: " + res.Equals(true));
-
-                        if (res.Equals(true))
-                        {
-                            codigo = Convert.ToInt32(row.Cells[1].Value);
-                            //System.Diagnostics.Debug.WriteLine("Salida: " + codigo);
-                            //respuesta = LogicaVehiculo.Diagnosticar(codigo);
-                            if (respuesta.Equals("OK"))
-                            {
-                                this.MessageOk("Se incorporó un diagnóstico para el vehículo: " + Convert.ToString(row.Cells[1].Value));
-                            }
-                            else
-                            {
-                                this.MessageError(respuesta);
-                            }
-                        }
-
+                        lastSelected = Int32.Parse(row.Cells[9].Value.ToString());
+                        cantidadVehiculos++;
                     }
-                    this.listar();
                 }
-
+                DialogResult Opcion;
+                if (cantidadVehiculos == 1)
+                {
+                    Opcion = MessageBox.Show("¿Presupuestar el Id vehículo: " + lastSelected + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel);
+                    if (Opcion == DialogResult.OK)
+                    {
+                        //Se inicia el presupuesto y se incorpora el vehículo a presupuestar.
+                        iniciarPresupuesto(lastSelected);
+                        //Pasamos a la pestaña de selección de desperfectos. 
+                        this.tabControlPrincipal.SelectedIndex = 4;
+                    }
+                    else
+                    {
+                        this.listar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccionar 1 (un) vehículo.", "Control de Vehiculos", MessageBoxButtons.OK);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
+            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
         }
 
         private void chkSelect_CheckedChanged(object sender, EventArgs e)
@@ -517,11 +514,19 @@ namespace CapaPresentación
 
         private void iniciarPresupuesto(int automovilSeleccionado)
         {
-            /// Se consulta el último presupuesto cargado secuencial.
-            this.presupuesto = new ModeloPresupuesto(automovilSeleccionado, LogicaPresupuesto.ultimoPresupuesto() + 1);
-            //System.Diagnostics.Debug.WriteLine("Salida: " + automovilSeleccionado);
-            listarDesperfectos();
-            
+            this.presupuesto = new ModeloPresupuesto(automovilSeleccionado);
+            string respuesta = LogicaPresupuesto.IniciarPresupuesto(this.presupuesto);
+            if (respuesta.Equals("OK"))
+            {
+                this.MessageOk("Se inició correctamente el presupuesto con Id: " + this.presupuesto.Id + " para el Vehiculo: " + this.presupuesto.IdVehiculo);
+                //this.limpiar();
+                //this.listar();
+            }
+            else
+            {
+                this.MessageError(respuesta);
+
+            }
         }
 
         private List<int> rowsSelected(DataGridView dgv)
@@ -634,7 +639,7 @@ namespace CapaPresentación
         {
             string respuesta = "";
             /// Se persiste el presupuesto
-            respuesta = LogicaPresupuesto.Insertar(presupuesto);
+            //respuesta = LogicaPresupuesto.Insertar(presupuesto);
             actualizarCamposCalculadosPresupuesto();
             return respuesta;
         }
@@ -672,7 +677,7 @@ namespace CapaPresentación
             txBoxEmail.Text = this.presupuesto.Email.ToString();
             txBoxDescuento.Text = this.presupuesto.Descuento.ToString(); ;
             txBoxRecargo.Text = this.presupuesto.Recargo.ToString(); ;
-            txBoxEstacionamiento.Text = this.presupuesto.Estacionamiento.ToString(); 
+            //txBoxEstacionamiento.Text = this.presupuesto.Estacionamiento.ToString(); 
             txBoxRecargo.Text = this.presupuesto.Recargo.ToString(); 
         }
         

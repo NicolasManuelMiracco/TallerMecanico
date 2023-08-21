@@ -102,6 +102,18 @@ namespace CapaPresentación
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
+            this.tabPageDiagnóstico = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.labelNuevoDesperfecto = new System.Windows.Forms.Label();
+            this.labelDesperfectosAsignados = new System.Windows.Forms.Label();
+            this.labelDescripcionDesperfecto = new System.Windows.Forms.Label();
+            this.labelDesperfectoManoDeObra = new System.Windows.Forms.Label();
+            this.labelDesperfectoTiempo = new System.Windows.Forms.Label();
+            this.textBoxDesperfectoDescripcion = new System.Windows.Forms.TextBox();
+            this.textBoxDesperfectoManoDeObra = new System.Windows.Forms.TextBox();
+            this.textBoxDesperfectoTiempo = new System.Windows.Forms.TextBox();
+            this.buttonAgregarDesperfecto = new System.Windows.Forms.Button();
             this.tabControlPrincipal.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -119,6 +131,9 @@ namespace CapaPresentación
             this.tabPage5.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
+            this.tabPageDiagnóstico.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlPrincipal
@@ -127,6 +142,7 @@ namespace CapaPresentación
             this.tabControlPrincipal.Controls.Add(this.tabPage3);
             this.tabControlPrincipal.Controls.Add(this.tabPage4);
             this.tabControlPrincipal.Controls.Add(this.tabPage5);
+            this.tabControlPrincipal.Controls.Add(this.tabPageDiagnóstico);
             this.tabControlPrincipal.Location = new System.Drawing.Point(1, 12);
             this.tabControlPrincipal.Name = "tabControlPrincipal";
             this.tabControlPrincipal.SelectedIndex = 0;
@@ -540,7 +556,7 @@ namespace CapaPresentación
             this.etiquetaModelo.Name = "etiquetaModelo";
             this.etiquetaModelo.Size = new System.Drawing.Size(101, 29);
             this.etiquetaModelo.TabIndex = 2;
-            this.etiquetaModelo.Text = "Modelo";            
+            this.etiquetaModelo.Text = "Modelo";
             // 
             // etiquetaMarca
             // 
@@ -764,7 +780,7 @@ namespace CapaPresentación
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(246, 29);
             this.label15.TabIndex = 17;
-            this.label15.Text = "$ parking ($130/día)";            
+            this.label15.Text = "$ parking ($130/día)";
             // 
             // label14
             // 
@@ -836,7 +852,7 @@ namespace CapaPresentación
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(110, 29);
             this.label8.TabIndex = 2;
-            this.label8.Text = "Apellido";            
+            this.label8.Text = "Apellido";
             // 
             // label7
             // 
@@ -851,6 +867,124 @@ namespace CapaPresentación
             // error
             // 
             this.error.ContainerControl = this;
+            // 
+            // tabPageDiagnóstico
+            // 
+            this.tabPageDiagnóstico.Controls.Add(this.panel8);
+            this.tabPageDiagnóstico.Controls.Add(this.panel7);
+            this.tabPageDiagnóstico.Location = new System.Drawing.Point(4, 29);
+            this.tabPageDiagnóstico.Name = "tabPageDiagnóstico";
+            this.tabPageDiagnóstico.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDiagnóstico.Size = new System.Drawing.Size(846, 514);
+            this.tabPageDiagnóstico.TabIndex = 4;
+            this.tabPageDiagnóstico.Text = "Diagnóstico";
+            this.tabPageDiagnóstico.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.buttonAgregarDesperfecto);
+            this.panel7.Controls.Add(this.textBoxDesperfectoTiempo);
+            this.panel7.Controls.Add(this.textBoxDesperfectoManoDeObra);
+            this.panel7.Controls.Add(this.textBoxDesperfectoDescripcion);
+            this.panel7.Controls.Add(this.labelDesperfectoTiempo);
+            this.panel7.Controls.Add(this.labelDesperfectoManoDeObra);
+            this.panel7.Controls.Add(this.labelDescripcionDesperfecto);
+            this.panel7.Controls.Add(this.labelNuevoDesperfecto);
+            this.panel7.Location = new System.Drawing.Point(7, 6);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(384, 349);
+            this.panel7.TabIndex = 0;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.labelDesperfectosAsignados);
+            this.panel8.Location = new System.Drawing.Point(397, 6);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(443, 437);
+            this.panel8.TabIndex = 1;
+            // 
+            // labelNuevoDesperfecto
+            // 
+            this.labelNuevoDesperfecto.AutoSize = true;
+            this.labelNuevoDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNuevoDesperfecto.Location = new System.Drawing.Point(104, 10);
+            this.labelNuevoDesperfecto.Name = "labelNuevoDesperfecto";
+            this.labelNuevoDesperfecto.Size = new System.Drawing.Size(193, 25);
+            this.labelNuevoDesperfecto.TabIndex = 0;
+            this.labelNuevoDesperfecto.Text = "Nuevo desperfecto";
+            // 
+            // labelDesperfectosAsignados
+            // 
+            this.labelDesperfectosAsignados.AutoSize = true;
+            this.labelDesperfectosAsignados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesperfectosAsignados.Location = new System.Drawing.Point(93, 10);
+            this.labelDesperfectosAsignados.Name = "labelDesperfectosAsignados";
+            this.labelDesperfectosAsignados.Size = new System.Drawing.Size(244, 25);
+            this.labelDesperfectosAsignados.TabIndex = 1;
+            this.labelDesperfectosAsignados.Text = "Desperfectos asignados";
+            // 
+            // labelDescripcionDesperfecto
+            // 
+            this.labelDescripcionDesperfecto.AutoSize = true;
+            this.labelDescripcionDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescripcionDesperfecto.Location = new System.Drawing.Point(3, 75);
+            this.labelDescripcionDesperfecto.Name = "labelDescripcionDesperfecto";
+            this.labelDescripcionDesperfecto.Size = new System.Drawing.Size(115, 22);
+            this.labelDescripcionDesperfecto.TabIndex = 1;
+            this.labelDescripcionDesperfecto.Text = "Descripción";
+            // 
+            // labelDesperfectoManoDeObra
+            // 
+            this.labelDesperfectoManoDeObra.AutoSize = true;
+            this.labelDesperfectoManoDeObra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesperfectoManoDeObra.Location = new System.Drawing.Point(3, 220);
+            this.labelDesperfectoManoDeObra.Name = "labelDesperfectoManoDeObra";
+            this.labelDesperfectoManoDeObra.Size = new System.Drawing.Size(132, 22);
+            this.labelDesperfectoManoDeObra.TabIndex = 2;
+            this.labelDesperfectoManoDeObra.Text = "Mano de obra";
+            // 
+            // labelDesperfectoTiempo
+            // 
+            this.labelDesperfectoTiempo.AutoSize = true;
+            this.labelDesperfectoTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesperfectoTiempo.Location = new System.Drawing.Point(3, 264);
+            this.labelDesperfectoTiempo.Name = "labelDesperfectoTiempo";
+            this.labelDesperfectoTiempo.Size = new System.Drawing.Size(76, 22);
+            this.labelDesperfectoTiempo.TabIndex = 3;
+            this.labelDesperfectoTiempo.Text = "Tiempo";
+            // 
+            // textBoxDesperfectoDescripcion
+            // 
+            this.textBoxDesperfectoDescripcion.Location = new System.Drawing.Point(7, 109);
+            this.textBoxDesperfectoDescripcion.Multiline = true;
+            this.textBoxDesperfectoDescripcion.Name = "textBoxDesperfectoDescripcion";
+            this.textBoxDesperfectoDescripcion.Size = new System.Drawing.Size(368, 95);
+            this.textBoxDesperfectoDescripcion.TabIndex = 4;
+            // 
+            // textBoxDesperfectoManoDeObra
+            // 
+            this.textBoxDesperfectoManoDeObra.Location = new System.Drawing.Point(198, 216);
+            this.textBoxDesperfectoManoDeObra.Name = "textBoxDesperfectoManoDeObra";
+            this.textBoxDesperfectoManoDeObra.Size = new System.Drawing.Size(177, 26);
+            this.textBoxDesperfectoManoDeObra.TabIndex = 5;
+            // 
+            // textBoxDesperfectoTiempo
+            // 
+            this.textBoxDesperfectoTiempo.Location = new System.Drawing.Point(198, 264);
+            this.textBoxDesperfectoTiempo.Name = "textBoxDesperfectoTiempo";
+            this.textBoxDesperfectoTiempo.Size = new System.Drawing.Size(177, 26);
+            this.textBoxDesperfectoTiempo.TabIndex = 6;
+            // 
+            // buttonAgregarDesperfecto
+            // 
+            this.buttonAgregarDesperfecto.BackColor = System.Drawing.Color.LimeGreen;
+            this.buttonAgregarDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAgregarDesperfecto.Location = new System.Drawing.Point(7, 315);
+            this.buttonAgregarDesperfecto.Name = "buttonAgregarDesperfecto";
+            this.buttonAgregarDesperfecto.Size = new System.Drawing.Size(84, 31);
+            this.buttonAgregarDesperfecto.TabIndex = 7;
+            this.buttonAgregarDesperfecto.Text = "Agregar";
+            this.buttonAgregarDesperfecto.UseVisualStyleBackColor = false;
             // 
             // Inicio
             // 
@@ -883,6 +1017,11 @@ namespace CapaPresentación
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
+            this.tabPageDiagnóstico.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -973,6 +1112,19 @@ namespace CapaPresentación
         private DataGridViewCheckBoxColumn Select;
 #pragma warning restore CS0108 // El miembro oculta el miembro heredado. Falta una contraseña nueva
         private DataGridViewCheckBoxColumn SelectDesperfecto;
+        private TabPage tabPageDiagnóstico;
+        private Panel panel8;
+        private Panel panel7;
+        private Label labelNuevoDesperfecto;
+        private Label labelDesperfectosAsignados;
+        private Label labelDescripcionDesperfecto;
+        private Label labelDesperfectoManoDeObra;
+        private Label labelDesperfectoTiempo;
+        private TextBox textBoxDesperfectoDescripcion;
+        private TextBox textBoxDesperfectoManoDeObra;
+        private TextBox textBoxDesperfectoTiempo;
+        private Button buttonAgregarDesperfecto;
+
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
 }

@@ -11,10 +11,11 @@ namespace CapaLogica
             return presupuesto.ultimoPresupuesto();
         }
 
-        public static string Insertar(ModeloPresupuesto modeloPresupuesto)
+        public static string IniciarPresupuesto(ModeloPresupuesto nuevoPresupuesto)
         {
+            //ModeloPresupuesto nuevoPresupuesto = new ModeloPresupuesto(idVehiculo);
             PersistenciaPresupuesto datos = new PersistenciaPresupuesto();
-            return datos.Insertar(modeloPresupuesto);
+            return datos.Insertar(nuevoPresupuesto);
         }
 
         

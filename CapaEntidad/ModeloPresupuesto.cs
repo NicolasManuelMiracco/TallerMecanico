@@ -20,19 +20,24 @@ namespace CapaModelo
         public List<ModeloDesperfecto> Desperfectos { get; set; }
         public int TiempoTotal { get; set; }
         public double CostoTotal { get; set; }
-        public double Estacionamiento { get; set; }
-        public double PrecioFinal { get; set; }
+        
 
-        public ModeloPresupuesto(int idVehiculo, int ultimoPresupuesto)
+        public ModeloPresupuesto(int idVehiculo)
         {
-            init(idVehiculo, ultimoPresupuesto);
+            init(idVehiculo);
         }
 
-        private void init(int idVehiculo, int ultimoPresupuesto)
+        /// <summary>
+        /// Se genera el modelo sin el Id, que será ingresado después de la persistencia del nuevo Presupuesto, dado que se genera de forma autonumérica
+        /// </summary>        
+        
+        private void init(int idVehiculo)
         {
             Email = "@gmail.com";
+            Apellido = "";
+            Nombre = "";
             Completa = false;
-            Id = ultimoPresupuesto;
+            Id = -1; // Este flag indica que el presupuesto aún no esta en BD, es coherente con Completa en false
             IdVehiculo = idVehiculo;
             CostoEstacionamiento = 130;
             Descuento = 0;
@@ -41,6 +46,7 @@ namespace CapaModelo
             ManoDeObra = 0;
             TiempoTotal = 0;
             CostoTotal = 0;
+            Total = 0;
             Desperfectos = new List<ModeloDesperfecto>();
         }
 
