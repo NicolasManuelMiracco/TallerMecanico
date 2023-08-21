@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaModelo;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -6,7 +7,7 @@ namespace CapaPersistencia
 {
     public class PersistenciaDesperfecto
     {
-        public DataTable Listar()
+        public DataTable Listar(int idPresupuesto)
         {
             SqlDataReader resultado;
             DataTable tabla = new DataTable();
@@ -16,6 +17,7 @@ namespace CapaPersistencia
                 conexion = Conexion.crearInstancia().crearConexion();
                 SqlCommand comando = new SqlCommand("listarDesperfectos", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@IdPresupuesto", SqlDbType.Int).Value = idPresupuesto;
                 conexion.Open();
                 resultado = comando.ExecuteReader();
                 tabla.Load(resultado);
@@ -52,10 +54,40 @@ namespace CapaPersistencia
             finally
             {
                 if (conexion.State == ConnectionState.Open) conexion.Close();
-            }
-                    
+            }                    
         }
 
-        
+        public string Insertar(ModeloDesperfecto obj)
+        {
+            string respuesta = "";
+            DataTable tabla = new DataTable();
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                //System.Diagnostics.Debug.WriteLine("Salida: " + (string)obj.Marca);
+                SqlCommand comando = new SqlCommand("insertarDesperfecto", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@IdPresupuesto", SqlDbType.Int).Value = obj.IdPresupuesto;
+                comando.Parameters.Add("@Descripcion", SqlDbType.VarChar).Value = obj.Descripcion;
+                comando.Parameters.Add("@ManoDeObra", SqlDbType.Int).Value = obj.ManoDeObra;
+                comando.Parameters.Add("@Tiempo", SqlDbType.Int).Value = obj.Tiempo;
+                conexion.Open();
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert Desperfecto ERROR";
+                //System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open) conexion.Close();
+            }
+            return respuesta;
+        }
+
+
     }
 }

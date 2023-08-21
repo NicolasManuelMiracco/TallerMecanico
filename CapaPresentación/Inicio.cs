@@ -452,6 +452,7 @@ namespace CapaPresentación
                         iniciarPresupuesto(lastSelected);
                         //Pasamos a la pestaña de selección de desperfectos. 
                         this.tabControlPrincipal.SelectedIndex = 4;
+                        this.labelDesperfectosAsignados.Text = this.labelDesperfectosAsignados.Text + " Id Vehículo: " + this.presupuesto.IdVehiculo;
                     }
                     else
                     {
@@ -490,25 +491,6 @@ namespace CapaPresentación
         }
 
         /// <summary>
-        /// SE exhibe la lista de desperfectos a seleccionar para el presupuesto
-        /// </summary>
-
-        private void listarDesperfectos()
-        {
-            try
-            {
-                dgvDesperfectos.DataSource = LogicaDesperfecto.Listar();
-                this.formato();
-                labelTotal.Text = Convert.ToString(dgvDatos.Rows.Count);
-                this.limpiar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
-        }
-
-        /// <summary>
         /// Generación de instancia PRESUPUESTO
         /// </summary>
 
@@ -516,17 +498,10 @@ namespace CapaPresentación
         {
             this.presupuesto = new ModeloPresupuesto(automovilSeleccionado);
             string respuesta = LogicaPresupuesto.IniciarPresupuesto(this.presupuesto);
-            if (respuesta.Equals("OK"))
-            {
-                this.MessageOk("Se inició correctamente el presupuesto con Id: " + this.presupuesto.Id + " para el Vehiculo: " + this.presupuesto.IdVehiculo);
-                //this.limpiar();
-                //this.listar();
-            }
-            else
+            if (!respuesta.Equals("OK"))
             {
                 this.MessageError(respuesta);
-
-            }
+            }           
         }
 
         private List<int> rowsSelected(DataGridView dgv)
@@ -706,9 +681,9 @@ namespace CapaPresentación
                             tiempo = row.Cells[4].Value.ToString();
                             // Se incorporan los precios de los repuestos segun requerimientos funcionales
                             //procesarRepuestos(idDesperfecto);
-                            modeloDesperfecto = new ModeloDesperfecto(idDesperfecto, descripcion, manoDeObra, tiempo);
-                            modeloDesperfecto.adicionarCostoRepuesto(LogicaDesperfecto.obtenerSubtotalRepuestos(idDesperfecto));                                         
-                            presupuesto.addDesperfecto(modeloDesperfecto);
+                            //modeloDesperfecto = new ModeloDesperfecto(idDesperfecto, descripcion, manoDeObra, tiempo);
+                            //modeloDesperfecto.adicionarCostoRepuesto(LogicaDesperfecto.obtenerSubtotalRepuestos(idDesperfecto));                                         
+                            //presupuesto.addDesperfecto(modeloDesperfecto);
                          }
                     }
                 }
@@ -786,7 +761,7 @@ namespace CapaPresentación
                         //Se inicia el presupuesto y se incorpora el vehículo a presupuestar.
                         iniciarPresupuesto(lastSelected);
                         //Pasamos a la pestaña de selección de desperfectos. 
-                        this.tabControlPrincipal.SelectedIndex = 2;
+                        this.tabControlPrincipal.SelectedIndex = 2;                        
                     }
                     else
                     {
@@ -801,8 +776,119 @@ namespace CapaPresentación
             catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
         }
 
+        private string tratamientoDatosDesperfecto()
+        {
+            if (textBoxDesperfectoDescripcion.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Desperfecto");
+                error.SetError(textBoxDesperfectoDescripcion, "Ingrese la descripción del desperfecto");
+                return "FAIL";
+            }
+            if (textBoxDesperfectoManoDeObra.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Desperfecto");
+                error.SetError(textBoxDesperfectoManoDeObra, "Ingrese el costo de mano de obra del desperfecto");
+                return "FAIL";
+            }
+            if (textBoxDesperfectoTiempo.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Desperfecto");
+                error.SetError(textBoxDesperfectoTiempo, "Ingrese el tiempo en días para el desperfecto");
+                return "FAIL";
+            }
+            return "OK";
+        }
+
+        private string insertarDesperfecto()
+        {
+            string respuesta = "";
+            respuesta = LogicaDesperfecto.Insertar(presupuesto.Id, textBoxDesperfectoDescripcion.Text, Convert.ToDouble(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
+            return respuesta;
+        }
+
+        /// <summary>
+        /// Se le da formato al listado de Desperfectos, que componen el diagnóstico del Presupuesto
+        /// </summary>
+
+        private void formatoDesperfectos()
+        {
+            dataGridViewDesperfectos.Columns[0].Visible = true;
+            dataGridViewDesperfectos.Columns[0].Width = 30;
+            dataGridViewDesperfectos.Columns[1].Width = 30;
+            dataGridViewDesperfectos.Columns[2].Width = 185;
+            dataGridViewDesperfectos.Columns[3].Width = 75;
+            dataGridViewDesperfectos.Columns[4].Width = 50;            
+        }
+
+        /// <summary>
+        /// Se actualiza la lista de desperfectos que se agregan al presupuesto
+        /// </summary>
+
+        private void listarDesperfectos()
+        {
+            try
+            {
+                dataGridViewDesperfectos.DataSource = LogicaDesperfecto.Listar(presupuesto.Id);
+                this.formatoDesperfectos();
+                labelTotal.Text = Convert.ToString(dataGridViewDesperfectos.Rows.Count);
+                //this.limpiar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        /// <summary>
+        /// Se limpia información del último desperfecto cargado
+        /// </summary>
+        private void limpiarDesperfecto()
+        {
+            textBoxDesperfectoDescripcion.Clear();
+            textBoxDesperfectoManoDeObra.Clear();
+            textBoxDesperfectoTiempo.Clear();
+            //btInsertarVehículo.Visible = true;
+            //btnActualizarVehículo.Visible = true;
+            //error.Clear();
+            //Diagnose.Visible = false;
+            //btnPresupuestar.Visible = false;
+            //btEliminar.Visible = false;
+            //chkSelect.Checked = false;
+        }
+
+        private void buttonAgregarDesperfecto_Click(object sender, EventArgs e)
+        {
+            if (tratamientoDatosDesperfecto() == "OK")
+            {
+                try
+                {
+                    if (insertarDesperfecto() == "OK")
+                    {
+                        //this.MessageOk("Se insertó correctamente el Desperfecto");
+                        this.listarDesperfectos();
+                        this.limpiarDesperfecto();
+                    }
+                    else { this.MessageError("No se pudo insertar el Desperfecto"); }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
+                finally { }
+            }
+            else { this.MessageError("Existen errores en los datos del Desperfecto"); }
+        }
+
+        /// <summary>
+        /// Cambio del estado de selección para las casillas de cada desperfecto
+        /// </summary>
         
-        
+        private void dataGridViewDesperfectos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridViewDesperfectos.Columns["SeleccionarDesperfecto"].Index) // Press on select
+            {
+                DataGridViewCheckBoxCell chkDesperfecto = (DataGridViewCheckBoxCell)dataGridViewDesperfectos.Rows[e.RowIndex].Cells["SeleccionarDesperfecto"];
+                chkDesperfecto.Value = !Convert.ToBoolean(chkDesperfecto.Value);
+            }
+        }
+
         /// Todos los id de las tablas deben ser autonumber
         /// Armar SP de cargaMasiva para toda la tabla
         /// Gestionar restricciones de integridad al insertar (IdVehiculo autonumber), o actualizar (no se modifica IdVehiculo oculto)

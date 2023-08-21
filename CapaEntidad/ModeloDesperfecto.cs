@@ -12,12 +12,12 @@ namespace CapaModelo
         public int Tiempo { get; set; }       
 
         
-        public ModeloDesperfecto(int idDesperfecto, String descripcion, String manoDeObra, String tiempo)
+        public ModeloDesperfecto(int idPresupuesto, String descripcion, Double manoDeObra, int tiempo)
         {
-            Id = idDesperfecto;
+            IdPresupuesto = idPresupuesto;
             Descripcion = descripcion;
-            ManoDeObra = Double.Parse(manoDeObra);
-            Tiempo = Int32.Parse(tiempo);
+            ManoDeObra = manoDeObra;
+            Tiempo = tiempo;
             costoRepuestosDesperfecto = 0;
         }
 
