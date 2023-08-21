@@ -330,6 +330,8 @@ namespace CapaPresentación
 
         private void Inicio_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'masterDataSet.Repuesto' Puede moverla o quitarla según sea necesario.
+            this.repuestoTableAdapter.Fill(this.masterDataSet.Repuesto);
             this.listar();
         }
 
@@ -887,6 +889,61 @@ namespace CapaPresentación
                 DataGridViewCheckBoxCell chkDesperfecto = (DataGridViewCheckBoxCell)dataGridViewDesperfectos.Rows[e.RowIndex].Cells["SeleccionarDesperfecto"];
                 chkDesperfecto.Value = !Convert.ToBoolean(chkDesperfecto.Value);
             }
+        }
+
+        /// <summary>
+        /// Cambio del estado de selección para las casillas de cada repuesto
+        /// </summary>
+
+        private void dgvRepuestos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvRepuestos.Columns["SelRepuesto"].Index) // Press on select
+            {
+                DataGridViewCheckBoxCell chkDesperfecto = (DataGridViewCheckBoxCell)dgvRepuestos.Rows[e.RowIndex].Cells["SelRepuesto"];
+                chkDesperfecto.Value = !Convert.ToBoolean(chkDesperfecto.Value);
+            }
+        }
+
+        private string tratamientoRepuestoExistente()
+        {
+            if (comboBoxRepuestosExistentes.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Repuesto");
+                error.SetError(comboBoxRepuestosExistentes, "Ingrese un repuesto existente válido");
+                return "FAIL";
+            }            
+            return "OK";
+        }
+
+        private string insertarRepuestoExistente()
+        {
+            string respuesta = "";
+            respuesta = LogicaDesperfecto.Insertar(presupuesto.Id, textBoxDesperfectoDescripcion.Text, Convert.ToDouble(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
+            return respuesta;
+        }
+
+        /// <summary>
+        /// Selección de repuesto existente
+        /// </summary>        
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (tratamientoRepuestoExistente() == "OK")
+            {
+                try
+                {
+                    if (insertarRepuestoExistente() == "OK")
+                    {
+                        //this.MessageOk("Se agregó correctamente el repuesto existente");
+                        //this.listarRepuestos();
+                        //this.limpiarRepuestoExistente();
+                    }
+                    else { this.MessageError("No se pudo insertar el Desperfecto"); }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
+                finally { }
+            }
+            else { this.MessageError("Existen errores en los datos del Repuesto"); }
         }
 
         /// Todos los id de las tablas deben ser autonumber
