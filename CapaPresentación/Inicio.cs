@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 using CapaLogica;
 using CapaModelo;
@@ -920,9 +921,47 @@ namespace CapaPresentación
             return "OK";
         }
 
+        /// <summary>
+        /// Se da formato al DataGridView dgvRepuestos
+        /// </summary>
+
+        private void formatoRepuestos()
+        {
+
+        }
+
+
+        /// <summary>
+        /// Se limpia la entrada para el próximo repuesto
+        /// </summary>
+        /// 
+        private void limpiarRepuestoExistente()
+        {
+
+        }
+
+        /// <summary>
+        /// Se actualiza el DataGridView dgvRepuestos con el nuevo repuesto para el Desperfecto
+        /// </summary>
+
+        private void listarRepuestosDelDesperfecto()
+        {
+            try
+            {
+                
+                dgvRepuestos.DataSource = presupuesto.getCurrentDesperfecto().ListarRepuestos();                
+                this.formatoRepuestos();
+                labelTotal.Text = Convert.ToString(dgvRepuestos.Rows.Count);
+                this.limpiarRepuestoExistente();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }        
+
         private ModeloRepuesto insertarRepuestoExistente()
         {
-            string respuesta = "";
             // Se obtiene el Id del repuesto existente seleccionado
             return (ModeloRepuesto) LogicaRepuesto.agregarRepuestoExistenteAlDesperfectoActual(presupuesto, Convert.ToInt32(comboBoxRepuestosExistentes.ValueMember));            
         }
@@ -940,8 +979,7 @@ namespace CapaPresentación
                     if (insertarRepuestoExistente() != null)
                     {
                         //this.MessageOk("Se agregó correctamente el repuesto existente");
-                        //this.listarRepuestosDelDesperfecto();
-                        //this.limpiarRepuestoExistente();
+                        this.listarRepuestosDelDesperfecto();                        
                     }
                     else { this.MessageError("No se pudo incorporar el repuesto existente al desperfecto que está configurando"); }
                 }
