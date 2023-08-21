@@ -25,7 +25,7 @@ namespace CapaPresentación
         public Inicio()
         {
             InitializeComponent();
-        }        
+        }
 
         private void listar()
         {
@@ -74,7 +74,7 @@ namespace CapaPresentación
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-        
+
         private void limpiar()
         {
             txtBuscar.Clear();
@@ -287,7 +287,7 @@ namespace CapaPresentación
             {
                 DialogResult Opcion;
                 string respuesta = "";
-                int codigoMoto = 0, codigoAutomovil = 0, vehiculosSeleccionados = 0, vehiculosEliminados = 0, vehiculosAbortados = 0;                
+                int codigoMoto = 0, codigoAutomovil = 0, vehiculosSeleccionados = 0, vehiculosEliminados = 0, vehiculosAbortados = 0;
                 foreach (DataGridViewRow row in dgvDatos.Rows)
                 {
                     if (Convert.ToBoolean(row.Cells[0].Value))
@@ -298,12 +298,12 @@ namespace CapaPresentación
                         {
                             codigoMoto = Int32.Parse(row.Cells[4].Value.ToString());
                             Opcion = MessageBox.Show("¿Eliminar la moto: " + codigoMoto + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                                               
+
                         }
                         else // Es un Automóvil
                         {
                             codigoAutomovil = Int32.Parse(row.Cells[6].Value.ToString());
-                            Opcion = MessageBox.Show("¿Eliminar el automóvil: " + codigoAutomovil + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);                            
+                            Opcion = MessageBox.Show("¿Eliminar el automóvil: " + codigoAutomovil + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                         }
 
                         respuesta = Opcion == DialogResult.OK ? LogicaVehiculo.Eliminar(codigoMoto, codigoAutomovil) : "ABORTED";
@@ -314,7 +314,7 @@ namespace CapaPresentación
                         else if (respuesta.Equals("ABORTED"))
                         {
                             vehiculosAbortados++;
-                        } 
+                        }
                         else
                         {
                             this.MessageError("Error BD: " + respuesta);
@@ -323,9 +323,9 @@ namespace CapaPresentación
                 }
                 if (vehiculosSeleccionados == 0) this.MessageError("Ingresar al menos un Vehículo");
                 else this.MessageError("Vehículos eliminados: " + vehiculosEliminados + " y abortados: " + vehiculosAbortados);
-                this.listar();                
+                this.listar();
             }
-            catch (Exception ex) {  MessageBox.Show(ex.Message + ex.StackTrace);  }
+            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
         }
 
         private void Inicio_Load(object sender, EventArgs e)
@@ -343,7 +343,7 @@ namespace CapaPresentación
         private void tabPage1_Click_2(object sender, EventArgs e)
         {
 
-        }        
+        }
 
         private void dgvDatos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -364,7 +364,7 @@ namespace CapaPresentación
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
-        }        
+        }
 
         private void btnCancelarInserción_Click(object sender, EventArgs e)
         {
@@ -430,7 +430,7 @@ namespace CapaPresentación
 
             }
         }
-        
+
         private void Activate_Click(object sender, EventArgs e)
         {
             try
@@ -503,7 +503,7 @@ namespace CapaPresentación
             if (!respuesta.Equals("OK"))
             {
                 this.MessageError(respuesta);
-            }           
+            }
         }
 
         private List<int> rowsSelected(DataGridView dgv)
@@ -511,7 +511,7 @@ namespace CapaPresentación
             List<int> indicesSeleccionados = new List<int>();
             for (int i = 0; i < dgv.Rows.Count; i++)
             {
-                if (dgv.Rows[i].Cells[0].Selected) { indicesSeleccionados.Add(i); }   
+                if (dgv.Rows[i].Cells[0].Selected) { indicesSeleccionados.Add(i); }
             }
             System.Diagnostics.Debug.WriteLine("Salida: " + indicesSeleccionados.Count);
             return indicesSeleccionados;
@@ -521,7 +521,7 @@ namespace CapaPresentación
         /// Deprecated
         /// </summary>
         /// <param name="indicesSeleccionados"></param>
-        
+
         private int getFirstSelectedRow(List<int> indicesSeleccionados)
         {
             int encontro = 0;
@@ -530,7 +530,7 @@ namespace CapaPresentación
                 if (dgvDatos.Rows[i].Cells[0].Selected) { encontro = i; }
             }
             return encontro;
-        }        
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -542,9 +542,9 @@ namespace CapaPresentación
         /// A partir de los desperfectos seleccionados en la grilla, se construye el presupuesto. 
         /// </summary>
         /// <returns></returns>
-        
-        
-        
+
+
+
         /// <summary>
         /// Se cargan los Text Box con valores por default del presupuesto
         /// </summary>
@@ -565,21 +565,24 @@ namespace CapaPresentación
                 this.MessageError("Falta ingresar datos del cliente");
                 error.SetError(txBoxEmail, "Ingrese el Email");
                 return "FAIL";
-            }   else presupuesto.Email = txBoxEmail.Text; 
-            
+            }
+            else presupuesto.Email = txBoxEmail.Text;
+
             if (txBoxApellido.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del cliente");
                 error.SetError(txBoxApellido, "Ingrese el Apellido");
                 return "FAIL";
-            }   else presupuesto.Apellido = txBoxApellido.Text;
-            
+            }
+            else presupuesto.Apellido = txBoxApellido.Text;
+
             if (txBoxNombre.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del cliente");
                 error.SetError(txBoxNombre, "Ingrese el Nombre");
                 return "FAIL";
-            }   else presupuesto.Nombre = txBoxNombre.Text;
+            }
+            else presupuesto.Nombre = txBoxNombre.Text;
 
             if (txBoxDescuento.Text == string.Empty)
             {
@@ -655,9 +658,9 @@ namespace CapaPresentación
             txBoxDescuento.Text = this.presupuesto.Descuento.ToString(); ;
             txBoxRecargo.Text = this.presupuesto.Recargo.ToString(); ;
             //txBoxEstacionamiento.Text = this.presupuesto.Estacionamiento.ToString(); 
-            txBoxRecargo.Text = this.presupuesto.Recargo.ToString(); 
+            txBoxRecargo.Text = this.presupuesto.Recargo.ToString();
         }
-        
+
         /// <summary>
         /// // Momento en que se seleccionaron los desperfectos para el vehículo, y se presiona sobre el botón Presupuestar en la pestaña 3 de la aplicación
         /// </summary>
@@ -686,7 +689,7 @@ namespace CapaPresentación
                             //modeloDesperfecto = new ModeloDesperfecto(idDesperfecto, descripcion, manoDeObra, tiempo);
                             //modeloDesperfecto.adicionarCostoRepuesto(LogicaDesperfecto.obtenerSubtotalRepuestos(idDesperfecto));                                         
                             //presupuesto.addDesperfecto(modeloDesperfecto);
-                         }
+                        }
                     }
                 }
             }
@@ -700,9 +703,9 @@ namespace CapaPresentación
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
-            cargaDelCliente();            
+            cargaDelCliente();
         }
-        
+
         private void label12_Click(object sender, EventArgs e)
         {
 
@@ -713,17 +716,17 @@ namespace CapaPresentación
             this.tabControlPrincipal.SelectedIndex = 0;
             this.listar();
         }
-        
+
         private void dgvDesperfectos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //System.Diagnostics.Debug.WriteLine("Salida: " + dgvDesperfectos.Rows.GetRowCount(DataGridViewElementStates.Selected));
             if (e.ColumnIndex == dgvDesperfectos.Columns["SelectDesperfecto"].Index) // Press on select
             {
                 DataGridViewCheckBoxCell chkDesperfecto = (DataGridViewCheckBoxCell)dgvDesperfectos.Rows[e.RowIndex].Cells["SelectDesperfecto"];
-                chkDesperfecto.Value = !Convert.ToBoolean(chkDesperfecto.Value);                
+                chkDesperfecto.Value = !Convert.ToBoolean(chkDesperfecto.Value);
             }
-        }        
-        
+        }
+
         /// <summary>
         /// Selección del contenido para el Datagrid de Vehículos
         /// </summary>
@@ -754,8 +757,8 @@ namespace CapaPresentación
                         cantidadVehiculos++;
                     }
                 }
-                DialogResult Opcion;               
-                if (cantidadVehiculos == 1) 
+                DialogResult Opcion;
+                if (cantidadVehiculos == 1)
                 {
                     Opcion = MessageBox.Show("¿Presupuestar el Id vehículo: " + lastSelected + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel);
                     if (Opcion == DialogResult.OK)
@@ -763,7 +766,7 @@ namespace CapaPresentación
                         //Se inicia el presupuesto y se incorpora el vehículo a presupuestar.
                         iniciarPresupuesto(lastSelected);
                         //Pasamos a la pestaña de selección de desperfectos. 
-                        this.tabControlPrincipal.SelectedIndex = 2;                        
+                        this.tabControlPrincipal.SelectedIndex = 2;
                     }
                     else
                     {
@@ -804,7 +807,8 @@ namespace CapaPresentación
         private string insertarDesperfecto()
         {
             string respuesta = "";
-            respuesta = LogicaDesperfecto.Insertar(presupuesto.Id, textBoxDesperfectoDescripcion.Text, Convert.ToDouble(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
+            // Se agrega el desperfecto que está siendo configurado, al presupuesto que está siendo creado
+            respuesta = LogicaDesperfecto.Insertar(presupuesto, textBoxDesperfectoDescripcion.Text, Convert.ToDouble(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
             return respuesta;
         }
 
@@ -815,11 +819,12 @@ namespace CapaPresentación
         private void formatoDesperfectos()
         {
             dataGridViewDesperfectos.Columns[0].Visible = true;
-            dataGridViewDesperfectos.Columns[0].Width = 30;
-            dataGridViewDesperfectos.Columns[1].Width = 30;
-            dataGridViewDesperfectos.Columns[2].Width = 185;
-            dataGridViewDesperfectos.Columns[3].Width = 75;
-            dataGridViewDesperfectos.Columns[4].Width = 50;            
+            dataGridViewDesperfectos.Columns[0].Width = 25;
+            dataGridViewDesperfectos.Columns[1].Width = 40;
+            dataGridViewDesperfectos.Columns[2].Width = 30;
+            dataGridViewDesperfectos.Columns[3].Width = 250;
+            dataGridViewDesperfectos.Columns[4].Width = 75;
+            dataGridViewDesperfectos.Columns[5].Width = 50;
         }
 
         /// <summary>
@@ -881,7 +886,7 @@ namespace CapaPresentación
         /// <summary>
         /// Cambio del estado de selección para las casillas de cada desperfecto
         /// </summary>
-        
+
         private void dataGridViewDesperfectos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dataGridViewDesperfectos.Columns["SeleccionarDesperfecto"].Index) // Press on select
@@ -911,15 +916,15 @@ namespace CapaPresentación
                 this.MessageError("Falta ingresar datos del Repuesto");
                 error.SetError(comboBoxRepuestosExistentes, "Ingrese un repuesto existente válido");
                 return "FAIL";
-            }            
+            }
             return "OK";
         }
 
-        private string insertarRepuestoExistente()
+        private ModeloRepuesto insertarRepuestoExistente()
         {
             string respuesta = "";
-            respuesta = LogicaDesperfecto.Insertar(presupuesto.Id, textBoxDesperfectoDescripcion.Text, Convert.ToDouble(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
-            return respuesta;
+            // Se obtiene el Id del repuesto existente seleccionado
+            return (ModeloRepuesto) LogicaRepuesto.agregarRepuestoExistenteAlDesperfectoActual(presupuesto, Convert.ToInt32(comboBoxRepuestosExistentes.ValueMember));            
         }
 
         /// <summary>
@@ -932,13 +937,13 @@ namespace CapaPresentación
             {
                 try
                 {
-                    if (insertarRepuestoExistente() == "OK")
+                    if (insertarRepuestoExistente() != null)
                     {
                         //this.MessageOk("Se agregó correctamente el repuesto existente");
-                        //this.listarRepuestos();
+                        //this.listarRepuestosDelDesperfecto();
                         //this.limpiarRepuestoExistente();
                     }
-                    else { this.MessageError("No se pudo insertar el Desperfecto"); }
+                    else { this.MessageError("No se pudo incorporar el repuesto existente al desperfecto que está configurando"); }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
                 finally { }
@@ -946,11 +951,26 @@ namespace CapaPresentación
             else { this.MessageError("Existen errores en los datos del Repuesto"); }
         }
 
+        /// <summary>
+        /// Incorporación de repuestos a un desperfecto
+        /// </summary>        
+
+        private void dataGridViewDesperfectos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int desperfectoToAddRepuestos = Convert.ToInt32(dataGridViewDesperfectos.CurrentRow.Cells["Id"].Value);
+            //Pasamos a la pestaña de selección de repuestos
+            this.tabControlPrincipal.SelectedIndex = 5;
+            this.labelRapuestosAsignados.Text = this.labelRapuestosAsignados.Text + " Id Desperfecto: " + desperfectoToAddRepuestos;
+            //Se inicia la carga de repuestos para el desperfecto seleccionado
+            //cargarRepuestos(desperfectoToAddRepuestos);
+
+        }
+
+        
         /// Todos los id de las tablas deben ser autonumber
         /// Armar SP de cargaMasiva para toda la tabla
         /// Gestionar restricciones de integridad al insertar (IdVehiculo autonumber), o actualizar (no se modifica IdVehiculo oculto)
         /// El Id del vehiculo para la nueva moto o automovil no puede existir. Tiene que ser nuevo.
-
     }
 }
 

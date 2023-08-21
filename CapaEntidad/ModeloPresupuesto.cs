@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CapaModelo
 {
@@ -53,7 +54,7 @@ namespace CapaModelo
         /// <summary>
         /// Incorporación de desperfectos al presupuesto y actualización
         /// </summary>
-        
+
         public void addDesperfecto(ModeloDesperfecto modeloDesperfecto)
         {
             this.Desperfectos.Add(modeloDesperfecto);
@@ -67,6 +68,10 @@ namespace CapaModelo
 
         public void cerrarPresupuesto() { Completa = true;  }
 
+        public ModeloDesperfecto getCurrentDesperfecto()
+        {
+            return (ModeloDesperfecto) Desperfectos.Last();
+        }
           
     }
 }
