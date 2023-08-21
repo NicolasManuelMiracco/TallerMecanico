@@ -41,7 +41,7 @@ Diseño e implementación (a extender):
 - Manejo de excepciones (resta extender).
 - Comentarios en código.
 - Tratamiento de UI y control de errores (resta completar).
-- Construcción de storeprocedures para la persistencia y presentación de servicios DB.
+- 
 
 Pendientes: 
 - Prueba final generación de presupuesto: evidenciación y testing.
