@@ -16,10 +16,28 @@ namespace CapaModelo
         public Boolean Cerrado { get; set; }
         public List<ModeloRepuesto> Repuestos { get; set; }
 
-        
+        /// <summary>
+        /// RESTA AGREGAR Id
+        /// </summary>
+               
         public ModeloDesperfecto(int idPresupuesto, String descripcion, Double manoDeObra, int tiempo)
         {
             IdPresupuesto = idPresupuesto;
+            Descripcion = descripcion;
+            ManoDeObra = manoDeObra;
+            Tiempo = tiempo;
+            // Indica que el desperfecto está siendo tratado
+            Cerrado = false;
+            costoRepuestosDesperfecto = 0;
+            Repuestos = new List<ModeloRepuesto>();
+        }
+
+        /// <summary>
+        /// Constructor sin idDesperfecto ni idPresupuesto, dado que aún no se confirmó persistencia
+        /// </summary>
+
+        public ModeloDesperfecto(String descripcion, Double manoDeObra, int tiempo)
+        {
             Descripcion = descripcion;
             ManoDeObra = manoDeObra;
             Tiempo = tiempo;

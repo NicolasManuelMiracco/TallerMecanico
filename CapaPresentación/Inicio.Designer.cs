@@ -1095,7 +1095,7 @@ namespace CapaPresentación
             // 
             // comboBoxRepuestosExistentes
             // 
-            this.comboBoxRepuestosExistentes.DataSource = this.repuestoBindingSource1;
+            this.comboBoxRepuestosExistentes.DataSource = this.repuestoBindingSource;
             this.comboBoxRepuestosExistentes.DisplayMember = "Nombre";
             this.comboBoxRepuestosExistentes.FormattingEnabled = true;
             this.comboBoxRepuestosExistentes.Location = new System.Drawing.Point(124, 51);

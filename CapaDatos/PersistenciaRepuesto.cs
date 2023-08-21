@@ -51,25 +51,30 @@ namespace CapaPersistencia
         /// <summary>
         ///  Se obtiene el modelo Repuesto existente a partir de su Id
         /// </summary>
-        public ModeloRepuesto buscarRepuesto(int IdRepuestoExistente)
+        public ModeloRepuesto buscarRepuesto(int idRepuestoExistente)
         {
+            //System.Diagnostics.Debug.WriteLine("Idrepuesto: " + idRepuestoExistente);
             string respuesta;
             DataTable tabla = new DataTable();
             SqlConnection conexion = new SqlConnection();
             try
             {
+                //System.Diagnostics.Debug.WriteLine("Entra a buscar repuesto");
+
                 conexion = Conexion.crearInstancia().crearConexion();
                 //System.Diagnostics.Debug.WriteLine("Salida: " + (string)obj.Marca);
                 SqlCommand comando = new SqlCommand("buscarRepuesto", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@Id", SqlDbType.Int).Value = IdRepuestoExistente;
-                comando.Parameters.Add("@Nombre", SqlDbType.VarChar).Direction = ParameterDirection.Output;
+                comando.Parameters.Add("@Id", SqlDbType.Int).Value = idRepuestoExistente;
+                comando.Parameters.Add("@Nombre", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
                 comando.Parameters.Add("@Precio", SqlDbType.Decimal).Direction = ParameterDirection.Output;
                 conexion.Open();
-                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Select Repuesto ERROR";
+                // -1 es la salida para un select
+                respuesta = comando.ExecuteNonQuery() == -1 ? "OK" : "Select Repuesto ERROR";
                 if (respuesta == "OK")
                 {
-                    return new ModeloRepuesto(IdRepuestoExistente, Convert.ToString(comando.Parameters["@Nombre"].Value), Convert.ToDecimal(comando.Parameters["@Precio"].Value));
+                    //System.Diagnostics.Debug.WriteLine("RESPONDE !! ");
+                    return new ModeloRepuesto(idRepuestoExistente, Convert.ToString(comando.Parameters["@Nombre"].Value), Convert.ToDecimal(comando.Parameters["@Precio"].Value));
                 }
                 else return null;
                 //System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);

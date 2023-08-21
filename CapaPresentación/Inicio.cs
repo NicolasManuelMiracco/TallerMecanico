@@ -962,8 +962,10 @@ namespace CapaPresentación
 
         private ModeloRepuesto insertarRepuestoExistente()
         {
+
+            //System.Diagnostics.Debug.WriteLine("El repuesto es: " + Convert.ToInt32(comboBoxRepuestosExistentes.SelectedValue.ToString()));
             // Se obtiene el Id del repuesto existente seleccionado
-            return (ModeloRepuesto) LogicaRepuesto.agregarRepuestoExistenteAlDesperfectoActual(presupuesto, Convert.ToInt32(comboBoxRepuestosExistentes.ValueMember));            
+            return (ModeloRepuesto) LogicaRepuesto.agregarRepuestoExistenteAlDesperfectoActual(presupuesto, Convert.ToInt32(comboBoxRepuestosExistentes.SelectedValue.ToString()));            
         }
 
         /// <summary>
@@ -976,6 +978,7 @@ namespace CapaPresentación
             {
                 try
                 {
+                    //System.Diagnostics.Debug.WriteLine("Pasa el tratamiento de repuesto");
                     if (insertarRepuestoExistente() != null)
                     {
                         //this.MessageOk("Se agregó correctamente el repuesto existente");

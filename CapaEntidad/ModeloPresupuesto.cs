@@ -68,10 +68,27 @@ namespace CapaModelo
 
         public void cerrarPresupuesto() { Completa = true;  }
 
+        ///// <summary>
+        ///// Generador de nuevo desperfecto para el Presupuesto en construcción
+        ///// </summary>
+        //private ModeloDesperfecto generarNuevoDesperfecto()
+        //{
+            
+        //    return new ModeloDesperfecto()
+        //}
+
         public ModeloDesperfecto getCurrentDesperfecto()
         {
-            return (ModeloDesperfecto) Desperfectos.Last();
+            //if (Desperfectos.Count == 0)
+            //{
+            //    Desperfectos.Add(generarNuevoDesperfecto());
+            //}
+            System.Diagnostics.Debug.WriteLine("ENTRAAAAAAAAAAAAAAAAAAAAAAA");
+            System.Diagnostics.Debug.WriteLine("Cantidad desperfectos: " + Desperfectos.Count);
+            return (ModeloDesperfecto)Desperfectos.Last();            
         }
+
+
           
     }
 }
