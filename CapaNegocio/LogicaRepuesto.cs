@@ -19,14 +19,22 @@ namespace CapaLogica
             PersistenciaRepuesto datos = new PersistenciaRepuesto();
                        
             // Se obtiene el desperfecto que se esta configurando del presupuesto en curso
-            ModeloDesperfecto desperfectoEnConstruccion = presupuesto.getCurrentDesperfecto();
+            ModeloDesperfecto desperfectoEnConstruccion = presupuesto.CurrentDesperfecto;
 
             // Se obtiene una instancia del Modelo Repuesto existente en BD desde el Id de repuesto
             modeloRepuesto = (ModeloRepuesto) datos.buscarRepuesto(idRepuestoExistente);
 
-            // Se agrega el Modelo Repuesto al Modelo Desperfecto
-            desperfectoEnConstruccion.agregarRepuesto(modeloRepuesto);
-            return modeloRepuesto;
+            if (!desperfectoEnConstruccion.contains(modeloRepuesto))
+            {
+                // Se agrega el Modelo Repuesto al Modelo Desperfecto
+                desperfectoEnConstruccion.agregarRepuesto(modeloRepuesto);
+                return modeloRepuesto;
+            }
+            else
+            {
+                return null;
+            }
+
         }
 
         public static ModeloRepuesto agregarRepuestoNuevoAlDesperfectoActual(ModeloPresupuesto presupuesto, String nombre, Decimal precio)
@@ -35,7 +43,7 @@ namespace CapaLogica
             PersistenciaRepuesto datos = new PersistenciaRepuesto();
 
             // Se obtiene el desperfecto que se esta configurando del presupuesto en curso
-            ModeloDesperfecto desperfectoEnConstruccion = presupuesto.getCurrentDesperfecto();
+            ModeloDesperfecto desperfectoEnConstruccion = presupuesto.CurrentDesperfecto;
 
             int ultimoIdRepuesto = (int) datos.Insertar(nombre, precio);
             
@@ -43,9 +51,16 @@ namespace CapaLogica
             // Se crea una instancia del nuevo Modelo Repuesto. El true indica que aún está a la espera de confirmación, dado que el presupuesto está en curso.
             modeloRepuesto = new ModeloRepuesto(ultimoIdRepuesto, nombre, precio, true);
 
-            // Se agrega el Modelo Repuesto al Modelo Desperfecto
-            desperfectoEnConstruccion.agregarRepuesto(modeloRepuesto);
-            return modeloRepuesto;
+            if (!desperfectoEnConstruccion.contains(modeloRepuesto))
+            {
+                // Se agrega el Modelo Repuesto al Modelo Desperfecto
+                desperfectoEnConstruccion.agregarRepuesto(modeloRepuesto);
+                return modeloRepuesto;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

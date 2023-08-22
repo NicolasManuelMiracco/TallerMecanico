@@ -22,5 +22,10 @@ namespace CapaModelo
             Precio = precio;
             EnEspera = enEspera;
         }
+
+        public Boolean Equals(ModeloRepuesto otroModeloRepuesto)
+        {
+            return Id == otroModeloRepuesto.Id;
+        }
     }
 }

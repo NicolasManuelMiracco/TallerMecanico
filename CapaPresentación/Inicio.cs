@@ -23,9 +23,11 @@ namespace CapaPresentación
         /// Referencia dinámica al presupuesto que se construye desde UI. Al cerrar la transacción se persiste.
         /// </summary>
         ModeloPresupuesto presupuesto;
+        LogicaDesperfecto logicaDesperfecto;
         public Inicio()
         {
             InitializeComponent();
+            logicaDesperfecto = new LogicaDesperfecto();
         }
 
         private void listar()
@@ -809,7 +811,7 @@ namespace CapaPresentación
         {
             string respuesta = "";
             // Se agrega el desperfecto que está siendo configurado, al presupuesto que está siendo creado
-            respuesta = LogicaDesperfecto.Insertar(presupuesto, textBoxDesperfectoDescripcion.Text, Convert.ToDouble(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
+            respuesta = logicaDesperfecto.Insertar(presupuesto, textBoxDesperfectoDescripcion.Text, Convert.ToDouble(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
             return respuesta;
         }
 
@@ -836,7 +838,7 @@ namespace CapaPresentación
         {
             try
             {
-                dataGridViewDesperfectos.DataSource = LogicaDesperfecto.Listar(presupuesto.Id);
+                dataGridViewDesperfectos.DataSource = logicaDesperfecto.Listar(presupuesto.Id);
                 this.formatoDesperfectos();
                 labelTotal.Text = Convert.ToString(dataGridViewDesperfectos.Rows.Count);
                 //this.limpiar();
@@ -903,9 +905,9 @@ namespace CapaPresentación
 
         private void dgvRepuestos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvRepuestos.Columns["SelRepuesto"].Index) // Press on select
+            if (e.ColumnIndex == dgvRepuestos.Columns["Sel"].Index) // Press on select
             {
-                DataGridViewCheckBoxCell chkDesperfecto = (DataGridViewCheckBoxCell)dgvRepuestos.Rows[e.RowIndex].Cells["SelRepuesto"];
+                DataGridViewCheckBoxCell chkDesperfecto = (DataGridViewCheckBoxCell)dgvRepuestos.Rows[e.RowIndex].Cells["Sel"];
                 chkDesperfecto.Value = !Convert.ToBoolean(chkDesperfecto.Value);
             }
         }
@@ -954,7 +956,7 @@ namespace CapaPresentación
         {
             try
             {
-                dgvRepuestos.DataSource = presupuesto.getCurrentDesperfecto().ListarRepuestos();                
+                dgvRepuestos.DataSource = presupuesto.CurrentDesperfecto.ListarRepuestos();                
                 this.formatoRepuestos();
                 labelTotal.Text = Convert.ToString(dgvRepuestos.Rows.Count);                
             }
@@ -981,12 +983,15 @@ namespace CapaPresentación
                 try
                 {
                     //System.Diagnostics.Debug.WriteLine("Pasa el tratamiento de repuesto");
-                    if (insertarRepuestoExistente() != null)
+                    ModeloRepuesto nuevoRepuestoExistente = insertarRepuestoExistente();
+                    if (nuevoRepuestoExistente != null)
                     {
+                        //Se elimina el ítem seleccionado para que no sea incorporado mas de una vez por Desperfecto
+                        //comboBoxRepuestosExistentes.Items.Remove(comboBoxRepuestosExistentes.SelectedItem);
                         //this.MessageOk("Se agregó correctamente el repuesto existente");
                         this.listarRepuestosDelDesperfecto();                        
                     }
-                    else { this.MessageError("No se pudo incorporar el repuesto existente al desperfecto que está configurando"); }
+                    else { this.MessageError("El repuesto existe o es erróneo"); }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
                 finally { }
@@ -1001,6 +1006,9 @@ namespace CapaPresentación
         private void dataGridViewDesperfectos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int desperfectoToAddRepuestos = Convert.ToInt32(dataGridViewDesperfectos.CurrentRow.Cells["Id"].Value);
+            presupuesto.setIdCurrentDesperfecto(desperfectoToAddRepuestos);
+
+
             //Pasamos a la pestaña de selección de repuestos
             this.tabControlPrincipal.SelectedIndex = 5;
             this.labelRapuestosAsignados.Text = this.labelRapuestosAsignados.Text + " Id Desperfecto: " + desperfectoToAddRepuestos;
@@ -1045,7 +1053,7 @@ namespace CapaPresentación
                         this.listarRepuestosDelDesperfecto();
                         this.limpiarRepuestoNuevo();
                     }
-                    else { this.MessageError("No se pudo incorporar el nuevo repuesto al desperfecto que está configurando"); }
+                    else { this.MessageError("El repuesto existe o es erróneo"); }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
                 finally { }
@@ -1059,7 +1067,7 @@ namespace CapaPresentación
         
         private void actualizarRepuestosEnDesperfecto(List<int> repuestosExistentes, List<int> repuestosEnEspera)
         {
-            LogicaDesperfecto.agregarRepuestos(presupuesto, repuestosExistentes, repuestosEnEspera); 
+            logicaDesperfecto.agregarRepuestos(presupuesto, repuestosExistentes, repuestosEnEspera); 
         }
 
         /// <summary>

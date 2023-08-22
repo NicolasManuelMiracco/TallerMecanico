@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IObserver.cs" />
+    <Compile Include="ISubject.cs" />
     <Compile Include="LogicaAutomovil.cs" />
     <Compile Include="LogicaDesperfecto.cs" />
     <Compile Include="LogicaMoto.cs" />

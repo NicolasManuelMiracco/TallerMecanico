@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CapaNegocio
+namespace CapaLogica
 {
     /// <summary>
     /// Implementación patrón Strategy para la definición dinámica de la forma en que se asigna un turno

@@ -32,6 +32,15 @@ namespace CapaModelo
             Repuestos = new List<ModeloRepuesto>();
         }
 
+        public Boolean contains(ModeloRepuesto modeloRepuesto)
+        {
+            foreach (ModeloRepuesto repuesto in Repuestos)
+            {
+                if (repuesto.Equals(modeloRepuesto)) return true;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Constructor sin idDesperfecto ni idPresupuesto, dado que aún no se confirmó persistencia
         /// </summary>

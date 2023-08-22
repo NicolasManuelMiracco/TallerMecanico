@@ -16,6 +16,7 @@ namespace CapaPersistencia
 
         public string Insertar(int idRepuesto, int idDesperfecto)
         {
+            System.Diagnostics.Debug.WriteLine("Salida ID: " + idDesperfecto + " IR: " + idRepuesto);
             string respuesta = "";            
             SqlConnection conexion = new SqlConnection();
             try
@@ -23,10 +24,11 @@ namespace CapaPersistencia
                 conexion = Conexion.crearInstancia().crearConexion();
                 SqlCommand comando = new SqlCommand("insertarDesperfectoRepuesto", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@idDesperfecto", SqlDbType.Int).Value = idDesperfecto;
                 comando.Parameters.Add("@IdRepuesto", SqlDbType.Int).Value = idRepuesto;
-                comando.Parameters.Add("@idDesperfecto", SqlDbType.Int).Value = idDesperfecto;                
                 conexion.Open();
-                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert DesperfectoRepuesto ERROR";                
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert DesperfectoRepuesto ERROR";
+                System.Diagnostics.Debug.WriteLine("Salida ID: " + idDesperfecto + " IR: " + idRepuesto);
             }
             catch (Exception ex)
             {

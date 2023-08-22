@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CapaNegocio
+namespace CapaLogica
 {
     /// <summary>
     /// Interface padre que define el comportamiento base para definir turnos
