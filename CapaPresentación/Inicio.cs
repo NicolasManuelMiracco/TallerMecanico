@@ -24,10 +24,13 @@ namespace CapaPresentación
         /// </summary>
         ModeloPresupuesto presupuesto;
         LogicaDesperfecto logicaDesperfecto;
+        
         public Inicio()
         {
             InitializeComponent();
             logicaDesperfecto = new LogicaDesperfecto();
+            // Se asocia el Observer DataGridView con la lógica del desperfecto
+            this.dataGridViewDesperfectos.setSubjec(logicaDesperfecto);
         }
 
         private void listar()
@@ -516,7 +519,7 @@ namespace CapaPresentación
             {
                 if (dgv.Rows[i].Cells[0].Selected) { indicesSeleccionados.Add(i); }
             }
-            System.Diagnostics.Debug.WriteLine("Salida: " + indicesSeleccionados.Count);
+            //System.Diagnostics.Debug.WriteLine("Salida: " + indicesSeleccionados.Count);
             return indicesSeleccionados;
         }
 
@@ -1000,14 +1003,22 @@ namespace CapaPresentación
         }
 
         /// <summary>
+        /// Se limpia el listado de repuestos anterior, para cargar el siguiente Desperfecto
+        /// </summary>
+        private void limpiarRepuestos()
+        {
+            dgvRepuestos.DataSource = null;            
+        }
+
+        /// <summary>
         /// Incorporación de repuestos a un desperfecto
         /// </summary>        
 
         private void dataGridViewDesperfectos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            this.limpiarRepuestos();
             int desperfectoToAddRepuestos = Convert.ToInt32(dataGridViewDesperfectos.CurrentRow.Cells["Id"].Value);
             presupuesto.setIdCurrentDesperfecto(desperfectoToAddRepuestos);
-
 
             //Pasamos a la pestaña de selección de repuestos
             this.tabControlPrincipal.SelectedIndex = 5;

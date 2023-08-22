@@ -45,11 +45,12 @@ namespace CapaLogica
             PersistenciaDesperfecto datos = new PersistenciaDesperfecto();
             modeloDesperfecto = new ModeloDesperfecto(presupuesto.Id, descripcion, manoDeObra, tiempo);
             
-            this.NotificarObservers();
+            
             // Se incorpora el nuevo desperfecto al modelo presupuesto, para continuar componiendo la instancia presupuesto
             presupuesto.addDesperfecto(modeloDesperfecto);
             // Se persiste el desperfecto en BD
             return datos.Insertar(modeloDesperfecto);
+            this.NotificarObservers();
         }        
 
         /// <summary>
@@ -74,6 +75,7 @@ namespace CapaLogica
                 respuesta = datos.Insertar(repuestoEnEspera, idDesperfectoActivo);
                 if (respuesta != "OK") return respuesta;
             }
+            this.NotificarObservers();
             return respuesta;
         }
 
