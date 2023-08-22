@@ -927,7 +927,12 @@ namespace CapaPresentación
 
         private void formatoRepuestos()
         {
-
+            dgvRepuestos.Columns[0].Visible = true;
+            dgvRepuestos.Columns[0].Width = 60;
+            dgvRepuestos.Columns[1].Width = 30;
+            dgvRepuestos.Columns[2].Width = 80;
+            dgvRepuestos.Columns[3].Width = 60;
+            dgvRepuestos.Columns[4].Width = 60;            
         }
 
 
@@ -935,9 +940,10 @@ namespace CapaPresentación
         /// Se limpia la entrada para el próximo repuesto
         /// </summary>
         /// 
-        private void limpiarRepuestoExistente()
+        private void limpiarRepuestoNuevo()
         {
-
+            textBoxNombreNuevoRepuesto.Clear();
+            textBoxPrecioNuevoRepuesto.Clear();
         }
 
         /// <summary>
@@ -948,11 +954,9 @@ namespace CapaPresentación
         {
             try
             {
-                
                 dgvRepuestos.DataSource = presupuesto.getCurrentDesperfecto().ListarRepuestos();                
                 this.formatoRepuestos();
-                labelTotal.Text = Convert.ToString(dgvRepuestos.Rows.Count);
-                this.limpiarRepuestoExistente();
+                labelTotal.Text = Convert.ToString(dgvRepuestos.Rows.Count);                
             }
             catch (Exception ex)
             {
@@ -962,8 +966,6 @@ namespace CapaPresentación
 
         private ModeloRepuesto insertarRepuestoExistente()
         {
-
-            //System.Diagnostics.Debug.WriteLine("El repuesto es: " + Convert.ToInt32(comboBoxRepuestosExistentes.SelectedValue.ToString()));
             // Se obtiene el Id del repuesto existente seleccionado
             return (ModeloRepuesto) LogicaRepuesto.agregarRepuestoExistenteAlDesperfectoActual(presupuesto, Convert.ToInt32(comboBoxRepuestosExistentes.SelectedValue.ToString()));            
         }
@@ -1007,7 +1009,50 @@ namespace CapaPresentación
 
         }
 
-        
+        private string tratamientoRepuestoNuevo()
+        {
+            if (textBoxNombreNuevoRepuesto.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Repuesto");
+                error.SetError(textBoxNombreNuevoRepuesto, "Ingrese un nombre de Repuesto");
+                return "FAIL";
+            }
+            if (textBoxPrecioNuevoRepuesto.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Repuesto");
+                error.SetError(textBoxPrecioNuevoRepuesto, "Ingrese un precio para el Repuesto");
+                return "FAIL";
+            }
+            return "OK";
+        }
+
+        private ModeloRepuesto insertarRepuestoNuevo()
+        {
+            // Se obtiene el Id del repuesto existente seleccionado
+            return (ModeloRepuesto)LogicaRepuesto.agregarRepuestoNuevoAlDesperfectoActual(presupuesto, Convert.ToString(textBoxNombreNuevoRepuesto.Text), Convert.ToDecimal(textBoxPrecioNuevoRepuesto.Text));
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (tratamientoRepuestoNuevo() == "OK")
+            {
+                try
+                {
+                    //System.Diagnostics.Debug.WriteLine("Pasa el tratamiento de repuesto");
+                    if (insertarRepuestoNuevo() != null)
+                    {
+                        //this.MessageOk("Se agregó correctamente el repuesto existente");
+                        this.listarRepuestosDelDesperfecto();
+                        this.limpiarRepuestoNuevo();
+                    }
+                    else { this.MessageError("No se pudo incorporar el nuevo repuesto al desperfecto que está configurando"); }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
+                finally { }
+            }
+            else { this.MessageError("Existen errores en los datos del Repuesto"); }
+        }
+
         /// Todos los id de las tablas deben ser autonumber
         /// Armar SP de cargaMasiva para toda la tabla
         /// Gestionar restricciones de integridad al insertar (IdVehiculo autonumber), o actualizar (no se modifica IdVehiculo oculto)

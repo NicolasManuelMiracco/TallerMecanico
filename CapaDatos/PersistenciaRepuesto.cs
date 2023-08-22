@@ -14,10 +14,10 @@ namespace CapaPersistencia
     {
         
         /// <summary>
-        ///  Se agregan los repuestos en el desperfecto vigente (under construction) para el presupuesto activo.
+        ///  Inserción de registro en tabla Repuesto. El Stored procedure retorna el Id autonumérico generado.
         /// </summary>
         //seguir aca
-        public string Insertar(ModeloDesperfecto obj)
+        public int Insertar(String nombre, Decimal precio)
         {
             string respuesta = "";
             DataTable tabla = new DataTable();
@@ -25,27 +25,22 @@ namespace CapaPersistencia
             try
             {
                 conexion = Conexion.crearInstancia().crearConexion();
-                //System.Diagnostics.Debug.WriteLine("Salida: " + (string)obj.Marca);
-                SqlCommand comando = new SqlCommand("insertarDesperfecto", conexion);
+                SqlCommand comando = new SqlCommand("insertarRepuesto", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@IdPresupuesto", SqlDbType.Int).Value = obj.IdPresupuesto;
-                comando.Parameters.Add("@Descripcion", SqlDbType.VarChar).Value = obj.Descripcion;
-                comando.Parameters.Add("@ManoDeObra", SqlDbType.Int).Value = obj.ManoDeObra;
-                comando.Parameters.Add("@Tiempo", SqlDbType.Int).Value = obj.Tiempo;
+                comando.Parameters.Add("@Nombre", SqlDbType.VarChar, 100).Value = nombre;
+                comando.Parameters.Add("@Precio", SqlDbType.Decimal).Value = precio;
+                comando.Parameters.Add("@IdRepuesto", SqlDbType.Int).Direction = ParameterDirection.Output;
                 conexion.Open();
                 respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert Desperfecto ERROR";
-                //System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);
+                if (respuesta == "OK") return Convert.ToInt32(comando.Parameters["@IdRepuesto"].Value);
+                else return -1; // Indica error en la salida
             }
             catch (Exception ex)
             {
                 respuesta = ex.Message;
                 throw ex;
             }
-            finally
-            {
-                if (conexion.State == ConnectionState.Open) conexion.Close();
-            }
-            return respuesta;
+            finally {   if (conexion.State == ConnectionState.Open) conexion.Close();   }           
         }
 
         /// <summary>
@@ -53,41 +48,28 @@ namespace CapaPersistencia
         /// </summary>
         public ModeloRepuesto buscarRepuesto(int idRepuestoExistente)
         {
-            //System.Diagnostics.Debug.WriteLine("Idrepuesto: " + idRepuestoExistente);
             string respuesta;
             DataTable tabla = new DataTable();
             SqlConnection conexion = new SqlConnection();
             try
             {
-                //System.Diagnostics.Debug.WriteLine("Entra a buscar repuesto");
-
                 conexion = Conexion.crearInstancia().crearConexion();
-                //System.Diagnostics.Debug.WriteLine("Salida: " + (string)obj.Marca);
                 SqlCommand comando = new SqlCommand("buscarRepuesto", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Add("@Id", SqlDbType.Int).Value = idRepuestoExistente;
                 comando.Parameters.Add("@Nombre", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
                 comando.Parameters.Add("@Precio", SqlDbType.Decimal).Direction = ParameterDirection.Output;
                 conexion.Open();
-                // -1 es la salida para un select
-                respuesta = comando.ExecuteNonQuery() == -1 ? "OK" : "Select Repuesto ERROR";
-                if (respuesta == "OK")
-                {
-                    //System.Diagnostics.Debug.WriteLine("RESPONDE !! ");
-                    return new ModeloRepuesto(idRepuestoExistente, Convert.ToString(comando.Parameters["@Nombre"].Value), Convert.ToDecimal(comando.Parameters["@Precio"].Value));
-                }
+                respuesta = comando.ExecuteNonQuery() == -1 ? "OK" : "Select Repuesto ERROR"; // -1 es la salida para un select
+                if (respuesta == "OK") return new ModeloRepuesto(idRepuestoExistente, Convert.ToString(comando.Parameters["@Nombre"].Value), Convert.ToDecimal(comando.Parameters["@Precio"].Value));
                 else return null;
-                //System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);
             }
             catch (Exception ex)
             {
                 respuesta = ex.Message;
                 throw ex;
             }
-            finally
-            {
-                if (conexion.State == ConnectionState.Open) conexion.Close();
-            }            
+            finally { if (conexion.State == ConnectionState.Open) conexion.Close(); }            
         }
 
     }

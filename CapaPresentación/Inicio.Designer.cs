@@ -127,7 +127,6 @@ namespace CapaPresentación
             this.labelSeleccionarRepuestoExistente = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.dgvRepuestos = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.labelRapuestosAsignados = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -139,6 +138,7 @@ namespace CapaPresentación
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.repuestoTableAdapter = new CapaPresentación.masterDataSetTableAdapters.RepuestoTableAdapter();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControlPrincipal.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -1090,7 +1090,7 @@ namespace CapaPresentación
             this.panel11.Controls.Add(this.labelSeleccionarRepuestoExistente);
             this.panel11.Location = new System.Drawing.Point(7, 208);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(384, 235);
+            this.panel11.Size = new System.Drawing.Size(283, 235);
             this.panel11.TabIndex = 8;
             // 
             // comboBoxRepuestosExistentes
@@ -1100,7 +1100,7 @@ namespace CapaPresentación
             this.comboBoxRepuestosExistentes.FormattingEnabled = true;
             this.comboBoxRepuestosExistentes.Location = new System.Drawing.Point(124, 51);
             this.comboBoxRepuestosExistentes.Name = "comboBoxRepuestosExistentes";
-            this.comboBoxRepuestosExistentes.Size = new System.Drawing.Size(251, 28);
+            this.comboBoxRepuestosExistentes.Size = new System.Drawing.Size(142, 28);
             this.comboBoxRepuestosExistentes.TabIndex = 8;
             this.comboBoxRepuestosExistentes.ValueMember = "Id";
             // 
@@ -1140,7 +1140,7 @@ namespace CapaPresentación
             // 
             this.labelSeleccionarRepuestoExistente.AutoSize = true;
             this.labelSeleccionarRepuestoExistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSeleccionarRepuestoExistente.Location = new System.Drawing.Point(92, 10);
+            this.labelSeleccionarRepuestoExistente.Location = new System.Drawing.Point(38, 10);
             this.labelSeleccionarRepuestoExistente.Name = "labelSeleccionarRepuestoExistente";
             this.labelSeleccionarRepuestoExistente.Size = new System.Drawing.Size(196, 25);
             this.labelSeleccionarRepuestoExistente.TabIndex = 0;
@@ -1150,9 +1150,9 @@ namespace CapaPresentación
             // 
             this.panel10.Controls.Add(this.dgvRepuestos);
             this.panel10.Controls.Add(this.labelRapuestosAsignados);
-            this.panel10.Location = new System.Drawing.Point(397, 6);
+            this.panel10.Location = new System.Drawing.Point(296, 6);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(443, 437);
+            this.panel10.Size = new System.Drawing.Size(544, 437);
             this.panel10.TabIndex = 2;
             // 
             // dgvRepuestos
@@ -1168,19 +1168,9 @@ namespace CapaPresentación
             this.dgvRepuestos.ReadOnly = true;
             this.dgvRepuestos.RowHeadersWidth = 62;
             this.dgvRepuestos.RowTemplate.Height = 28;
-            this.dgvRepuestos.Size = new System.Drawing.Size(437, 383);
+            this.dgvRepuestos.Size = new System.Drawing.Size(538, 383);
             this.dgvRepuestos.TabIndex = 2;
             this.dgvRepuestos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRepuestos_CellContentClick);
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "SelRepuesto";
-            this.dataGridViewCheckBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewCheckBoxColumn1.Width = 150;
             // 
             // labelRapuestosAsignados
             // 
@@ -1202,7 +1192,7 @@ namespace CapaPresentación
             this.panel9.Controls.Add(this.labelAgregarNuevoRepuesto);
             this.panel9.Location = new System.Drawing.Point(7, 6);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(384, 196);
+            this.panel9.Size = new System.Drawing.Size(283, 196);
             this.panel9.TabIndex = 1;
             // 
             // button5
@@ -1215,19 +1205,20 @@ namespace CapaPresentación
             this.button5.TabIndex = 7;
             this.button5.Text = "Agregar nuevo";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // textBoxPrecioNuevoRepuesto
             // 
-            this.textBoxPrecioNuevoRepuesto.Location = new System.Drawing.Point(163, 101);
+            this.textBoxPrecioNuevoRepuesto.Location = new System.Drawing.Point(97, 101);
             this.textBoxPrecioNuevoRepuesto.Name = "textBoxPrecioNuevoRepuesto";
-            this.textBoxPrecioNuevoRepuesto.Size = new System.Drawing.Size(212, 26);
+            this.textBoxPrecioNuevoRepuesto.Size = new System.Drawing.Size(154, 26);
             this.textBoxPrecioNuevoRepuesto.TabIndex = 6;
             // 
             // textBoxNombreNuevoRepuesto
             // 
-            this.textBoxNombreNuevoRepuesto.Location = new System.Drawing.Point(163, 51);
+            this.textBoxNombreNuevoRepuesto.Location = new System.Drawing.Point(97, 51);
             this.textBoxNombreNuevoRepuesto.Name = "textBoxNombreNuevoRepuesto";
-            this.textBoxNombreNuevoRepuesto.Size = new System.Drawing.Size(212, 26);
+            this.textBoxNombreNuevoRepuesto.Size = new System.Drawing.Size(154, 26);
             this.textBoxNombreNuevoRepuesto.TabIndex = 5;
             // 
             // labelPrecioRepuesto
@@ -1254,7 +1245,7 @@ namespace CapaPresentación
             // 
             this.labelAgregarNuevoRepuesto.AutoSize = true;
             this.labelAgregarNuevoRepuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAgregarNuevoRepuesto.Location = new System.Drawing.Point(103, 10);
+            this.labelAgregarNuevoRepuesto.Location = new System.Drawing.Point(55, 10);
             this.labelAgregarNuevoRepuesto.Name = "labelAgregarNuevoRepuesto";
             this.labelAgregarNuevoRepuesto.Size = new System.Drawing.Size(168, 25);
             this.labelAgregarNuevoRepuesto.TabIndex = 0;
@@ -1272,6 +1263,16 @@ namespace CapaPresentación
             // repuestoTableAdapter
             // 
             this.repuestoTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Sel";
+            this.dataGridViewCheckBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewCheckBoxColumn1.Width = 150;
             // 
             // Inicio
             // 
@@ -1444,10 +1445,10 @@ namespace CapaPresentación
         private BindingSource repuestoBindingSource;
         private masterDataSetTableAdapters.RepuestoTableAdapter repuestoTableAdapter;
         private BindingSource repuestoBindingSource1;
-        private DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private DataGridViewCheckBoxColumn SeleccionarDesperfecto;
         private DataGridViewCheckBoxColumn Rep;
         private Label labelDobleClickRepuestos;
+        private DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
 
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
