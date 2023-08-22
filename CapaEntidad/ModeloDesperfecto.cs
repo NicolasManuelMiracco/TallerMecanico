@@ -15,7 +15,8 @@ namespace CapaModelo
         public int Tiempo { get; set; }       
         public Boolean Cerrado { get; set; }
         public List<ModeloRepuesto> Repuestos { get; set; }
-
+        public int CantidadRepuestos { get; set; }
+        
         /// <summary>
         /// RESTA AGREGAR Id
         /// </summary>
@@ -29,9 +30,10 @@ namespace CapaModelo
             // Indica que el desperfecto está siendo tratado
             Cerrado = false;
             costoRepuestosDesperfecto = 0;
+            CantidadRepuestos = 0;
             Repuestos = new List<ModeloRepuesto>();
         }
-
+               
         public Boolean contains(ModeloRepuesto modeloRepuesto)
         {
             foreach (ModeloRepuesto repuesto in Repuestos)
@@ -59,6 +61,7 @@ namespace CapaModelo
         public void agregarRepuesto(ModeloRepuesto nuevoRepuesto)
         {
             Repuestos.Add(nuevoRepuesto);
+            CantidadRepuestos++;
         }
 
         /// <summary>

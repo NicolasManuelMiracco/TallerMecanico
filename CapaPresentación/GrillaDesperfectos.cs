@@ -36,15 +36,16 @@ namespace CapaPresentación
 
         void IObserver.update(object obj)
         {
-            System.Diagnostics.Debug.WriteLine("ENTRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-
             //tabla.Load(resultado);
             //dataGridViewDesperfectos.DataSource = logicaDesperfecto.Listar(presupuesto.Id);
             //this.DataSource = (ModeloDesperfecto)o;
             ModeloDesperfecto modeloDesperfecto = (CapaModelo.ModeloDesperfecto)(obj);
             //this.DataSource = new DataTable().Load(modeloDesperfecto.Repuestos);
             //this.DataSource = modeloDesperfecto.Repuestos;
-            this.Rows[0].Cells[2].Value = 'Z';
+            this.Rows[0].Cells[1].ReadOnly = false;
+            this.Rows[0].Cells[1].Value = modeloDesperfecto.CantidadRepuestos;
+
+            // Cambiar el color, incoporporar el tipo de repuesto y poder actualizar el desperfecto
 
         }
     }
