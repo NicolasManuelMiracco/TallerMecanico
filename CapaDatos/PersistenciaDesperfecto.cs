@@ -64,8 +64,7 @@ namespace CapaPersistencia
             SqlConnection conexion = new SqlConnection();
             try
             {
-                conexion = Conexion.crearInstancia().crearConexion();
-                //System.Diagnostics.Debug.WriteLine("Salida: " + (string)obj.Marca);
+                conexion = Conexion.crearInstancia().crearConexion();                
                 SqlCommand comando = new SqlCommand("insertarDesperfecto", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Add("@IdPresupuesto", SqlDbType.Int).Value = obj.IdPresupuesto;
@@ -73,8 +72,7 @@ namespace CapaPersistencia
                 comando.Parameters.Add("@ManoDeObra", SqlDbType.Int).Value = obj.ManoDeObra;
                 comando.Parameters.Add("@Tiempo", SqlDbType.Int).Value = obj.Tiempo;
                 conexion.Open();
-                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert Desperfecto ERROR";
-                //System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert Desperfecto ERROR";                
             }
             catch (Exception ex)
             {

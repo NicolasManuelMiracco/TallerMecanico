@@ -20,7 +20,5 @@ namespace CapaLogica
         public DateTime Next() { 
             return turno.AddDays(gen.Next(range)).AddHours(gen.Next(0, 24)).AddMinutes(gen.Next(0, 60)).AddSeconds(gen.Next(0, 60)); 
         }
-    }
-
-    
+    }    
 }

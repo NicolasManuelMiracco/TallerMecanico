@@ -14,7 +14,5 @@
             this.Modelo = modelo;
             this.Patente = patente;
         }
-          
-        
     }
 }

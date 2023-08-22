@@ -31,8 +31,7 @@ namespace CapaModelo
 
         /// <summary>
         /// Se genera el modelo sin el Id, que será ingresado después de la persistencia del nuevo Presupuesto, dado que se genera de forma autonumérica
-        /// </summary>        
-        
+        /// </summary> 
         private void init(int idVehiculo)
         {
             Email = "@gmail.com";
@@ -61,7 +60,6 @@ namespace CapaModelo
         /// <summary>
         /// Incorporación de desperfectos al presupuesto y actualización
         /// </summary>
-
         public void addDesperfecto(ModeloDesperfecto modeloDesperfecto)
         {
             this.Desperfectos.Add(modeloDesperfecto);
@@ -73,7 +71,6 @@ namespace CapaModelo
             // Se acumula el costo total de mano de obra para cada desperfecto tratado
             ManoDeObra += modeloDesperfecto.ManoDeObra;
         }
-
         public void cerrarPresupuesto() { Completa = true;  }     
     }
 }

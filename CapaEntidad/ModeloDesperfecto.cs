@@ -19,8 +19,7 @@ namespace CapaModelo
         
         /// <summary>
         /// RESTA AGREGAR Id
-        /// </summary>
-               
+        /// </summary>               
         public ModeloDesperfecto(int idPresupuesto, String descripcion, Double manoDeObra, int tiempo)
         {
             IdPresupuesto = idPresupuesto;
@@ -46,7 +45,6 @@ namespace CapaModelo
         /// <summary>
         /// Constructor sin idDesperfecto ni idPresupuesto, dado que aún no se confirmó persistencia
         /// </summary>
-
         public ModeloDesperfecto(String descripcion, Double manoDeObra, int tiempo)
         {
             Descripcion = descripcion;
@@ -67,7 +65,6 @@ namespace CapaModelo
         /// <summary>
         /// Se cierra el desperfecto, es decir se le asignaron los repuestos.
         /// </summary>
-
         public void cerrarDesperfecto()
         {
             Cerrado = true;
@@ -76,7 +73,6 @@ namespace CapaModelo
         /// <summary>
         /// Usando Reflection: creación del DataTable para repuestos a partir de la lista de repuestos existentes en el modelo Desperfecto
         /// </summary>        
-
         private DataTable CreateDataTable<T>(IEnumerable<T> list)
         {
             Type type = typeof(T);
@@ -104,8 +100,7 @@ namespace CapaModelo
 
         /// <summary>
         /// Retorna un DataTable con el listado de repuestos asignados al desperfecto en curso para el Presupuesto que se construye dinámicamente
-        /// </summary>              
-
+        /// </summary> 
         public DataTable ListarRepuestos()
         {            
             return CreateDataTable(Repuestos);            

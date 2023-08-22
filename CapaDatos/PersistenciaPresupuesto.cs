@@ -15,8 +15,7 @@ namespace CapaPersistencia
                 conexion = Conexion.crearInstancia().crearConexion();
                 SqlCommand comando = new SqlCommand(query, conexion);                
                 conexion.Open();
-                int res = (int)comando.ExecuteScalar();
-                //System.Diagnostics.Debug.WriteLine("Salida: " + res);                
+                int res = (int)comando.ExecuteScalar();                     
                 return res;
             }
             catch (Exception ex)
@@ -31,8 +30,7 @@ namespace CapaPersistencia
 
         /// <summary>
         /// Se persiste el presupuesto en la BD
-        /// </summary>
-        
+        /// </summary>        
         public string Insertar(ModeloPresupuesto modeloPresupuesto)
         {
             string respuesta = "";            
@@ -52,7 +50,6 @@ namespace CapaPersistencia
                 conexion.Open();
                 respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert Presupuesto ERROR";modeloPresupuesto.Id = Convert.ToInt32(comando.Parameters["@Identity"].Value); /* Se asigna al modelo el Id autonumérico retornado por el stored procedure */
                 System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);    
-
             }
             catch (Exception ex)
             {

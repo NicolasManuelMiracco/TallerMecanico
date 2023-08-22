@@ -13,7 +13,6 @@ namespace CapaLogica
 
         public static string IniciarPresupuesto(ModeloPresupuesto nuevoPresupuesto)
         {
-            //ModeloPresupuesto nuevoPresupuesto = new ModeloPresupuesto(idVehiculo);
             PersistenciaPresupuesto datos = new PersistenciaPresupuesto();
             return datos.Insertar(nuevoPresupuesto);
         }

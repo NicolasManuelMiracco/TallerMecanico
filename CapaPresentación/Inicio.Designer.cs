@@ -1445,8 +1445,7 @@ namespace CapaPresentación
         private TextBox textBoxDesperfectoDescripcion;
         private TextBox textBoxDesperfectoManoDeObra;
         private TextBox textBoxDesperfectoTiempo;
-        private Button buttonAgregarDesperfecto;
-        //private DataGridView dataGridViewDesperfectos;
+        private Button buttonAgregarDesperfecto;        
         private GrillaDesperfectos dataGridViewDesperfectos;
         private TabPage tabPageRepuestos;
         private Panel panel10;
@@ -1474,7 +1473,6 @@ namespace CapaPresentación
         private DataGridViewCheckBoxColumn SeleccionarDesperfecto;
         private DataGridViewTextBoxColumn Rep;
         private DataGridViewCheckBoxColumn Sel;
-
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
 }

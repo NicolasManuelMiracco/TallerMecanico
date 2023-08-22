@@ -13,7 +13,6 @@ namespace CapaLogica
         {
             vehiculos = new List<ModeloVehiculo>();
             desperfectos = new List<ModeloDesperfecto>();
-
         }
 
         public void ingresarAutomovil(ModeloAutomovil nuevoAutomovil)
@@ -28,19 +27,13 @@ namespace CapaLogica
             new PersistenciaMoto().Insertar(nuevaMoto);            
         }
 
-
         /// <summary>
         /// Lógica principal para la generación del presupuesto
         /// </summary>
-        
         public void emitirPresupuesto(ModeloVehiculo nuevoVehiculo, List<ModeloDesperfecto> desperfectos)
         {
             vehiculos.Add(nuevoVehiculo);
             this.desperfectos = desperfectos;
-
         }
-
-
-
     }
 }

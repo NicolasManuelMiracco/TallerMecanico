@@ -15,7 +15,6 @@ namespace CapaPersistencia
             try
             {
                 conexion = Conexion.crearInstancia().crearConexion();
-                //System.Diagnostics.Debug.WriteLine("Salida: " + (string)obj.Marca);
                 SqlCommand comando = new SqlCommand("insertarAutomovil", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Add("@Id", SqlDbType.Int).Value = obj.IdAutomovil;
@@ -26,8 +25,7 @@ namespace CapaPersistencia
                 comando.Parameters.Add("@Modelo", SqlDbType.VarChar).Value = obj.Modelo;
                 comando.Parameters.Add("@Patente", SqlDbType.VarChar).Value = obj.Patente;
                 conexion.Open();
-                respuesta = comando.ExecuteNonQuery() >= 1 ? "OK" : "Insert Automóvil ERROR";
-                //System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);
+                respuesta = comando.ExecuteNonQuery() >= 1 ? "OK" : "Insert Automóvil ERROR";                
             }
             catch (Exception ex)
             {

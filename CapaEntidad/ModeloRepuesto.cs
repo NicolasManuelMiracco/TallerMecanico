@@ -11,10 +11,8 @@ namespace CapaModelo
 
         /// <summary>
         /// El constructor de repuestos, permite parametrizar si el mismo está a la espera de confirmación. 
-        /// Es usado cuando el presupuesto o el desperfecto que lo contiene se cancela, y por lo tanto debe quitarse de la BD.
-        /// El valor por default es false.
+        /// Es usado cuando el presupuesto o el desperfecto que lo contiene se cancela, y por lo tanto debe quitarse de la BD. El valor por default es false.
         /// </summary>        
-        
         public ModeloRepuesto(int IdRepuesto, String nombre, Decimal precio, Boolean enEspera = false)
         {
             Id = IdRepuesto;

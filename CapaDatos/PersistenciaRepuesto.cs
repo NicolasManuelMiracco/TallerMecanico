@@ -1,12 +1,7 @@
 ﻿using CapaModelo;
-using CapaPersistencia;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaPersistencia
 {
@@ -15,8 +10,7 @@ namespace CapaPersistencia
         
         /// <summary>
         ///  Persistencia en BD tabla Repuesto. El Stored procedure retorna el Id autonumérico generado.
-        /// </summary>
-        
+        /// </summary>        
         public int Insertar(String nombre, Decimal precio)
         {
             string respuesta = "";

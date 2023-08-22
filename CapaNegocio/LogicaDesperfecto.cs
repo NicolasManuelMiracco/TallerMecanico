@@ -27,25 +27,20 @@ namespace CapaLogica
 
         /// <summary>
         /// Definición lógica para recuperar el costo de repuestos por desperfecto
-        /// </summary>
-        
+        /// </summary>        
         public Double obtenerSubtotalRepuestos(int idDesperfecto)
         {
-            PersistenciaDesperfecto datos = new PersistenciaDesperfecto();
-            System.Diagnostics.Debug.WriteLine("Salida: " + datos.subTotalRepuestos(idDesperfecto));
+            PersistenciaDesperfecto datos = new PersistenciaDesperfecto();            
             return datos.subTotalRepuestos(idDesperfecto);
         }
 
         /// <summary>
         /// Tratamiento lógico para la inserción de desperfectos, a partir de un modelo de presupuesto que se construye durante el flujo de ejecución
-        /// </summary>
-        
+        /// </summary>        
         public string Insertar(ModeloPresupuesto presupuesto, string descripcion, double manoDeObra, int tiempo)
         {
             PersistenciaDesperfecto datos = new PersistenciaDesperfecto();
-            modeloDesperfecto = new ModeloDesperfecto(presupuesto.Id, descripcion, manoDeObra, tiempo);
-            
-            
+            modeloDesperfecto = new ModeloDesperfecto(presupuesto.Id, descripcion, manoDeObra, tiempo);  
             // Se incorpora el nuevo desperfecto al modelo presupuesto, para continuar componiendo la instancia presupuesto
             presupuesto.addDesperfecto(modeloDesperfecto);
             // Se persiste el desperfecto en BD
@@ -58,7 +53,6 @@ namespace CapaLogica
         /// En LogicaRepuesto se agregan los repuestos para el desperfecto activo.
         /// Cualquier error en la inserción, desencadena un error general.
         /// </summary>
-
         public string agregarRepuestos(ModeloPresupuesto modeloPresupuesto, List<int> repuestosExistentes, List<int> repuestosEnEspera)
         {
             string respuesta = "OK";
@@ -97,9 +91,7 @@ namespace CapaLogica
             IObserver observer;
             foreach (Object o in suscriptores)
             {
-                // Invocamos el metodo Update de cada observer, pasandole el array con el estado
-                // del subject como parametro.
-                // Cada observer ya hara lo que estime necesario con esa informacion.
+                // Se invoca al update de cada Observer, pasándo el estado que interesa observar                
                 observer = (IObserver)o;
                 observer.update(modeloDesperfecto); // Aquí se pasa el estado modificado
             }

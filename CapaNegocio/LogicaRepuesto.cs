@@ -1,10 +1,6 @@
 ﻿using CapaModelo;
 using CapaPersistencia;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaLogica
 {
@@ -45,8 +41,7 @@ namespace CapaLogica
             // Se obtiene el desperfecto que se esta configurando del presupuesto en curso
             ModeloDesperfecto desperfectoEnConstruccion = presupuesto.CurrentDesperfecto;
 
-            int ultimoIdRepuesto = (int) datos.Insertar(nombre, precio);
-            
+            int ultimoIdRepuesto = (int) datos.Insertar(nombre, precio);            
             
             // Se crea una instancia del nuevo Modelo Repuesto. El true indica que aún está a la espera de confirmación, dado que el presupuesto está en curso.
             modeloRepuesto = new ModeloRepuesto(ultimoIdRepuesto, nombre, precio, true);
