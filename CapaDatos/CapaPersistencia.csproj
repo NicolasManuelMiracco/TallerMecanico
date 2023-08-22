@@ -44,6 +44,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="PersistenciaAutomovil.cs" />
     <Compile Include="PersistenciaDesperfecto.cs" />
+    <Compile Include="PersistenciaDesperfectoRepuesto.cs" />
     <Compile Include="PersistenciaMoto.cs" />
     <Compile Include="PersistenciaPresupuesto.cs" />
     <Compile Include="PersistenciaRepuesto.cs" />

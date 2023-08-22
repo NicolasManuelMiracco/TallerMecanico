@@ -105,8 +105,6 @@ namespace CapaPresentación
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelDobleClickRepuestos = new System.Windows.Forms.Label();
             this.dataGridViewDesperfectos = new System.Windows.Forms.DataGridView();
-            this.SeleccionarDesperfecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Rep = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.labelDesperfectosAsignados = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.buttonAgregarDesperfecto = new System.Windows.Forms.Button();
@@ -118,15 +116,18 @@ namespace CapaPresentación
             this.labelDescripcionDesperfecto = new System.Windows.Forms.Label();
             this.labelNuevoDesperfecto = new System.Windows.Forms.Label();
             this.tabPageRepuestos = new System.Windows.Forms.TabPage();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.buttonAgregarRepuestosDesperfecto = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.comboBoxRepuestosExistentes = new System.Windows.Forms.ComboBox();
-            this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDataSet = new CapaPresentación.masterDataSet();
             this.button6 = new System.Windows.Forms.Button();
             this.labelNombreRepuestoExistente = new System.Windows.Forms.Label();
             this.labelSeleccionarRepuestoExistente = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.dgvRepuestos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.labelRapuestosAsignados = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -135,10 +136,11 @@ namespace CapaPresentación
             this.labelPrecioRepuesto = new System.Windows.Forms.Label();
             this.labelNombreRepuesto = new System.Windows.Forms.Label();
             this.labelAgregarNuevoRepuesto = new System.Windows.Forms.Label();
+            this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
-            this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.repuestoTableAdapter = new CapaPresentación.masterDataSetTableAdapters.RepuestoTableAdapter();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SeleccionarDesperfecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Rep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlPrincipal.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -160,14 +162,15 @@ namespace CapaPresentación
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDesperfectos)).BeginInit();
             this.panel7.SuspendLayout();
             this.tabPageRepuestos.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRepuestos)).BeginInit();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlPrincipal
@@ -950,26 +953,6 @@ namespace CapaPresentación
             this.dataGridViewDesperfectos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDesperfectos_CellContentClick);
             this.dataGridViewDesperfectos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDesperfectos_CellDoubleClick);
             // 
-            // SeleccionarDesperfecto
-            // 
-            this.SeleccionarDesperfecto.HeaderText = "Sel";
-            this.SeleccionarDesperfecto.MinimumWidth = 8;
-            this.SeleccionarDesperfecto.Name = "SeleccionarDesperfecto";
-            this.SeleccionarDesperfecto.ReadOnly = true;
-            this.SeleccionarDesperfecto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SeleccionarDesperfecto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.SeleccionarDesperfecto.Width = 150;
-            // 
-            // Rep
-            // 
-            this.Rep.HeaderText = "Rep";
-            this.Rep.MinimumWidth = 8;
-            this.Rep.Name = "Rep";
-            this.Rep.ReadOnly = true;
-            this.Rep.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Rep.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Rep.Width = 150;
-            // 
             // labelDesperfectosAsignados
             // 
             this.labelDesperfectosAsignados.AutoSize = true;
@@ -1071,6 +1054,7 @@ namespace CapaPresentación
             // 
             // tabPageRepuestos
             // 
+            this.tabPageRepuestos.Controls.Add(this.panel12);
             this.tabPageRepuestos.Controls.Add(this.panel11);
             this.tabPageRepuestos.Controls.Add(this.panel10);
             this.tabPageRepuestos.Controls.Add(this.panel9);
@@ -1082,6 +1066,27 @@ namespace CapaPresentación
             this.tabPageRepuestos.Text = "Repuestos";
             this.tabPageRepuestos.UseVisualStyleBackColor = true;
             // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.buttonAgregarRepuestosDesperfecto);
+            this.panel12.Location = new System.Drawing.Point(7, 366);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(252, 139);
+            this.panel12.TabIndex = 9;
+            // 
+            // buttonAgregarRepuestosDesperfecto
+            // 
+            this.buttonAgregarRepuestosDesperfecto.BackColor = System.Drawing.Color.OliveDrab;
+            this.buttonAgregarRepuestosDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAgregarRepuestosDesperfecto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonAgregarRepuestosDesperfecto.Location = new System.Drawing.Point(30, 46);
+            this.buttonAgregarRepuestosDesperfecto.Name = "buttonAgregarRepuestosDesperfecto";
+            this.buttonAgregarRepuestosDesperfecto.Size = new System.Drawing.Size(191, 50);
+            this.buttonAgregarRepuestosDesperfecto.TabIndex = 9;
+            this.buttonAgregarRepuestosDesperfecto.Text = "Agregar repuestos al desperfecto";
+            this.buttonAgregarRepuestosDesperfecto.UseVisualStyleBackColor = false;
+            this.buttonAgregarRepuestosDesperfecto.Click += new System.EventHandler(this.buttonAgregarRepuestosDesperfecto_Click_1);
+            // 
             // panel11
             // 
             this.panel11.Controls.Add(this.comboBoxRepuestosExistentes);
@@ -1090,7 +1095,7 @@ namespace CapaPresentación
             this.panel11.Controls.Add(this.labelSeleccionarRepuestoExistente);
             this.panel11.Location = new System.Drawing.Point(7, 208);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(283, 235);
+            this.panel11.Size = new System.Drawing.Size(252, 152);
             this.panel11.TabIndex = 8;
             // 
             // comboBoxRepuestosExistentes
@@ -1098,16 +1103,16 @@ namespace CapaPresentación
             this.comboBoxRepuestosExistentes.DataSource = this.repuestoBindingSource;
             this.comboBoxRepuestosExistentes.DisplayMember = "Nombre";
             this.comboBoxRepuestosExistentes.FormattingEnabled = true;
-            this.comboBoxRepuestosExistentes.Location = new System.Drawing.Point(124, 51);
+            this.comboBoxRepuestosExistentes.Location = new System.Drawing.Point(114, 50);
             this.comboBoxRepuestosExistentes.Name = "comboBoxRepuestosExistentes";
-            this.comboBoxRepuestosExistentes.Size = new System.Drawing.Size(142, 28);
+            this.comboBoxRepuestosExistentes.Size = new System.Drawing.Size(131, 28);
             this.comboBoxRepuestosExistentes.TabIndex = 8;
             this.comboBoxRepuestosExistentes.ValueMember = "Id";
             // 
-            // repuestoBindingSource1
+            // repuestoBindingSource
             // 
-            this.repuestoBindingSource1.DataMember = "Repuesto";
-            this.repuestoBindingSource1.DataSource = this.masterDataSet;
+            this.repuestoBindingSource.DataMember = "Repuesto";
+            this.repuestoBindingSource.DataSource = this.masterDataSet;
             // 
             // masterDataSet
             // 
@@ -1118,7 +1123,7 @@ namespace CapaPresentación
             // 
             this.button6.BackColor = System.Drawing.Color.LimeGreen;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(7, 156);
+            this.button6.Location = new System.Drawing.Point(40, 104);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(166, 31);
             this.button6.TabIndex = 7;
@@ -1140,7 +1145,7 @@ namespace CapaPresentación
             // 
             this.labelSeleccionarRepuestoExistente.AutoSize = true;
             this.labelSeleccionarRepuestoExistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSeleccionarRepuestoExistente.Location = new System.Drawing.Point(38, 10);
+            this.labelSeleccionarRepuestoExistente.Location = new System.Drawing.Point(10, 12);
             this.labelSeleccionarRepuestoExistente.Name = "labelSeleccionarRepuestoExistente";
             this.labelSeleccionarRepuestoExistente.Size = new System.Drawing.Size(196, 25);
             this.labelSeleccionarRepuestoExistente.TabIndex = 0;
@@ -1150,9 +1155,9 @@ namespace CapaPresentación
             // 
             this.panel10.Controls.Add(this.dgvRepuestos);
             this.panel10.Controls.Add(this.labelRapuestosAsignados);
-            this.panel10.Location = new System.Drawing.Point(296, 6);
+            this.panel10.Location = new System.Drawing.Point(265, 6);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(544, 437);
+            this.panel10.Size = new System.Drawing.Size(575, 502);
             this.panel10.TabIndex = 2;
             // 
             // dgvRepuestos
@@ -1163,14 +1168,24 @@ namespace CapaPresentación
             this.dgvRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRepuestos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn1});
-            this.dgvRepuestos.Location = new System.Drawing.Point(3, 51);
+            this.dgvRepuestos.Location = new System.Drawing.Point(0, 51);
             this.dgvRepuestos.Name = "dgvRepuestos";
             this.dgvRepuestos.ReadOnly = true;
             this.dgvRepuestos.RowHeadersWidth = 62;
             this.dgvRepuestos.RowTemplate.Height = 28;
-            this.dgvRepuestos.Size = new System.Drawing.Size(538, 383);
+            this.dgvRepuestos.Size = new System.Drawing.Size(572, 448);
             this.dgvRepuestos.TabIndex = 2;
             this.dgvRepuestos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRepuestos_CellContentClick);
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Sel";
+            this.dataGridViewCheckBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewCheckBoxColumn1.Width = 150;
             // 
             // labelRapuestosAsignados
             // 
@@ -1192,14 +1207,14 @@ namespace CapaPresentación
             this.panel9.Controls.Add(this.labelAgregarNuevoRepuesto);
             this.panel9.Location = new System.Drawing.Point(7, 6);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(283, 196);
+            this.panel9.Size = new System.Drawing.Size(252, 196);
             this.panel9.TabIndex = 1;
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.LimeGreen;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(7, 156);
+            this.button5.Location = new System.Drawing.Point(40, 151);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(166, 31);
             this.button5.TabIndex = 7;
@@ -1209,14 +1224,14 @@ namespace CapaPresentación
             // 
             // textBoxPrecioNuevoRepuesto
             // 
-            this.textBoxPrecioNuevoRepuesto.Location = new System.Drawing.Point(97, 101);
+            this.textBoxPrecioNuevoRepuesto.Location = new System.Drawing.Point(80, 101);
             this.textBoxPrecioNuevoRepuesto.Name = "textBoxPrecioNuevoRepuesto";
             this.textBoxPrecioNuevoRepuesto.Size = new System.Drawing.Size(154, 26);
             this.textBoxPrecioNuevoRepuesto.TabIndex = 6;
             // 
             // textBoxNombreNuevoRepuesto
             // 
-            this.textBoxNombreNuevoRepuesto.Location = new System.Drawing.Point(97, 51);
+            this.textBoxNombreNuevoRepuesto.Location = new System.Drawing.Point(80, 51);
             this.textBoxNombreNuevoRepuesto.Name = "textBoxNombreNuevoRepuesto";
             this.textBoxNombreNuevoRepuesto.Size = new System.Drawing.Size(154, 26);
             this.textBoxNombreNuevoRepuesto.TabIndex = 5;
@@ -1245,34 +1260,43 @@ namespace CapaPresentación
             // 
             this.labelAgregarNuevoRepuesto.AutoSize = true;
             this.labelAgregarNuevoRepuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAgregarNuevoRepuesto.Location = new System.Drawing.Point(55, 10);
+            this.labelAgregarNuevoRepuesto.Location = new System.Drawing.Point(38, 10);
             this.labelAgregarNuevoRepuesto.Name = "labelAgregarNuevoRepuesto";
             this.labelAgregarNuevoRepuesto.Size = new System.Drawing.Size(168, 25);
             this.labelAgregarNuevoRepuesto.TabIndex = 0;
             this.labelAgregarNuevoRepuesto.Text = "Repuesto nuevo";
             // 
+            // repuestoBindingSource1
+            // 
+            this.repuestoBindingSource1.DataMember = "Repuesto";
+            this.repuestoBindingSource1.DataSource = this.masterDataSet;
+            // 
             // error
             // 
             this.error.ContainerControl = this;
-            // 
-            // repuestoBindingSource
-            // 
-            this.repuestoBindingSource.DataMember = "Repuesto";
-            this.repuestoBindingSource.DataSource = this.masterDataSet;
             // 
             // repuestoTableAdapter
             // 
             this.repuestoTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridViewCheckBoxColumn1
+            // SeleccionarDesperfecto
             // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Sel";
-            this.dataGridViewCheckBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewCheckBoxColumn1.Width = 150;
+            this.SeleccionarDesperfecto.HeaderText = "Sel";
+            this.SeleccionarDesperfecto.MinimumWidth = 8;
+            this.SeleccionarDesperfecto.Name = "SeleccionarDesperfecto";
+            this.SeleccionarDesperfecto.ReadOnly = true;
+            this.SeleccionarDesperfecto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SeleccionarDesperfecto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SeleccionarDesperfecto.Width = 150;
+            // 
+            // Rep
+            // 
+            this.Rep.HeaderText = "Rep";
+            this.Rep.MinimumWidth = 8;
+            this.Rep.Name = "Rep";
+            this.Rep.ReadOnly = true;
+            this.Rep.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Rep.Width = 150;
             // 
             // Inicio
             // 
@@ -1311,17 +1335,18 @@ namespace CapaPresentación
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.tabPageRepuestos.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRepuestos)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1445,10 +1470,12 @@ namespace CapaPresentación
         private BindingSource repuestoBindingSource;
         private masterDataSetTableAdapters.RepuestoTableAdapter repuestoTableAdapter;
         private BindingSource repuestoBindingSource1;
-        private DataGridViewCheckBoxColumn SeleccionarDesperfecto;
-        private DataGridViewCheckBoxColumn Rep;
         private Label labelDobleClickRepuestos;
         private DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private Panel panel12;
+        private Button buttonAgregarRepuestosDesperfecto;
+        private DataGridViewCheckBoxColumn SeleccionarDesperfecto;
+        private DataGridViewTextBoxColumn Rep;
 
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }

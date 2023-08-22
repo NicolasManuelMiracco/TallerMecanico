@@ -29,6 +29,10 @@ namespace CapaPersistencia
             }
         }
 
+        /// <summary>
+        /// Se persiste el presupuesto en la BD
+        /// </summary>
+        
         public string Insertar(ModeloPresupuesto modeloPresupuesto)
         {
             string respuesta = "";            

@@ -1053,10 +1053,58 @@ namespace CapaPresentación
             else { this.MessageError("Existen errores en los datos del Repuesto"); }
         }
 
-        /// Todos los id de las tablas deben ser autonumber
-        /// Armar SP de cargaMasiva para toda la tabla
-        /// Gestionar restricciones de integridad al insertar (IdVehiculo autonumber), o actualizar (no se modifica IdVehiculo oculto)
-        /// El Id del vehiculo para la nueva moto o automovil no puede existir. Tiene que ser nuevo.
+        /// <summary>
+        /// Se desencadena persistencia para tabla DesperfectoRepuesto
+        /// </summary>
+        
+        private void actualizarRepuestosEnDesperfecto(List<int> repuestosExistentes, List<int> repuestosEnEspera)
+        {
+            LogicaDesperfecto.agregarRepuestos(presupuesto, repuestosExistentes, repuestosEnEspera); 
+        }
+
+        /// <summary>
+        /// Tratamiento de los repuestos para el desperfecto en curso. Se retornan los seleccionados, se incorporan al desperfecto y se persisten los inexistentes (marca EnEspera).
+        /// </summary>
+
+        private void buttonAgregarRepuestosDesperfecto_Click_1(object sender, EventArgs e)
+        {
+            List<int> repuestosExistentes = new List<int>();
+            List<int> repuestosEnEspera = new List<int>();
+            try
+            {
+                foreach (DataGridViewRow row in dgvRepuestos.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[0].Value))
+                    {
+                        if (Convert.ToBoolean(row.Cells[4].Value))
+                        {
+                            repuestosEnEspera.Add(Int32.Parse(row.Cells[1].Value.ToString())); // Se trata de un nuevo repuesto en espera del proveedor.                            
+                        }
+                        else
+                        {
+                            repuestosExistentes.Add(Int32.Parse(row.Cells[1].Value.ToString())); // Se trata de un nuevo repuesto en stock.
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
+            if ((repuestosEnEspera.Count + repuestosExistentes.Count) == 0)
+            {
+                this.MessageError("Ingresar al menos un Repuesto");
+            }
+            else
+            {
+                this.MessageOk("Se incorporan al desperfecto, " + repuestosExistentes.Count + " rep. existentes y " + repuestosEnEspera.Count + " en espera de entrega.");
+                // Se incorporan los repuestos para el desperfecto en contrucción
+                this.actualizarRepuestosEnDesperfecto(repuestosExistentes, repuestosEnEspera);
+                this.tabControlPrincipal.SelectedIndex = 4;
+
+                // Resta agregar la cantidad de repuestos asociado al desperfecto
+                //this.dataGridViewDesperfectos.Rows[]
+
+                //return repuestosExistentes.Count + repuestosEnEspera.Count;
+            }
+        }
     }
 }
 

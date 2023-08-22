@@ -1,6 +1,7 @@
 ﻿using CapaModelo;
 using CapaPersistencia;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace CapaLogica
@@ -34,7 +35,33 @@ namespace CapaLogica
             ModeloDesperfecto modeloDesperfecto = new ModeloDesperfecto(presupuesto.Id, descripcion, manoDeObra, tiempo);
             // Se incorpora el nuevo desperfecto al modelo presupuesto, para continuar componiendo la instancia presupuesto
             presupuesto.addDesperfecto(modeloDesperfecto);
+            // Se persiste el desperfecto en BD
             return datos.Insertar(modeloDesperfecto);
+        }
+
+        /// <summary>
+        /// Se gestiona la incorporación de repuestos al desperfecto en construcción, por medio de la tabla DesperfectoRepuesto.
+        /// En LogicaRepuesto se agregan los repuestos para el desperfecto activo.
+        /// Cualquier error en la inserción, desencadena un error general.
+        /// </summary>
+        
+        public static string agregarRepuestos(ModeloPresupuesto modeloPresupuesto, List<int> repuestosExistentes, List<int> repuestosEnEspera)
+        {
+            string respuesta = "OK";
+            PersistenciaDesperfectoRepuesto datos = new PersistenciaDesperfectoRepuesto();            
+                        
+            int idDesperfectoActivo = ((ModeloDesperfecto) modeloPresupuesto.getCurrentDesperfecto()).Id;
+            foreach (int repuestoExistente in repuestosExistentes)
+            {
+                respuesta = datos.Insertar(repuestoExistente, idDesperfectoActivo);
+                if (respuesta != "OK") return respuesta;
+            }
+            foreach (int repuestoEnEspera in repuestosEnEspera)
+            {
+                datos.Insertar(repuestoEnEspera, idDesperfectoActivo);
+                if (respuesta != "OK") return respuesta;
+            }
+            return respuesta;
         }
     }
 }

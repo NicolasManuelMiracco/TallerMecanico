@@ -14,9 +14,9 @@ namespace CapaPersistencia
     {
         
         /// <summary>
-        ///  Inserción de registro en tabla Repuesto. El Stored procedure retorna el Id autonumérico generado.
+        ///  Persistencia en BD tabla Repuesto. El Stored procedure retorna el Id autonumérico generado.
         /// </summary>
-        //seguir aca
+        
         public int Insertar(String nombre, Decimal precio)
         {
             string respuesta = "";

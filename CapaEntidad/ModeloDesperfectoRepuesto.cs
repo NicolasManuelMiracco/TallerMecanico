@@ -4,6 +4,8 @@
     {
         public int IdRepuesto { get; set; }
         public int IdDesperfecto { get; set; }
+
+        
     }
 }
 
