@@ -14,17 +14,17 @@ namespace CapaModelo
         public int IdVehiculo { get; set; }
         public decimal Recargo { get; set; }
         public decimal ManoDeObra { get; set; }
-        public decimal Total { get; set; }
+        public decimal TotalReparacion { get; set; }
         public Boolean Completa { get; set; }
         public decimal CostoEstacionamiento { get; set; }
         public List<ModeloDesperfecto> Desperfectos { get; set; }
         public int TiempoTotal { get; set; }
-        public decimal CostoTotal { get; set; }        
+        public decimal CostoRepuestos { get; set; }        
         public int IdCurrentDesperfecto { get; set; }        
         public List<int> DesperfectosAPresupuestar { get; set; }
         public decimal gananciaTaller { get; set; }
         public decimal TotalConRecargosDescuentos { get; set; }
-        public decimal TotalConGanancia { get; set; }
+        public decimal TotalAlConsumidor { get; set; }
 
         public ModeloPresupuesto(int idVehiculo)
         {
@@ -48,8 +48,11 @@ namespace CapaModelo
             Recargo = 0;
             ManoDeObra = 0;
             TiempoTotal = 0;
-            CostoTotal = 0;
-            Total = 0;
+            CostoRepuestos = 0;
+            TotalReparacion = 0;
+            TotalReparacion = 0;
+            TotalConRecargosDescuentos = 0;
+            TotalAlConsumidor = 0;
             Desperfectos = new List<ModeloDesperfecto>();            
         }
 
@@ -75,20 +78,21 @@ namespace CapaModelo
         public void addDesperfecto(ModeloDesperfecto modeloDesperfecto)
         {
             this.Desperfectos.Add(modeloDesperfecto);
-            //CurrentDesperfecto = modeloDesperfecto;
-            // Se incorpora al presupuesto el costo total de los repuestos
-            CostoTotal += modeloDesperfecto.CostoRepuestosDesperfecto;
-            // Se acumula el tiempo total para cada desperfecto tratado
+            ///CurrentDesperfecto = modeloDesperfecto;
+            /// Se incorpora al presupuesto el costo total de los repuestos
+            CostoRepuestos += modeloDesperfecto.CostoRepuestosDesperfecto;
+            /// Se acumula el tiempo total para cada desperfecto tratado
             TiempoTotal += modeloDesperfecto.Tiempo;
-            // Se acumula el costo total de mano de obra para cada desperfecto tratado
+            CostoEstacionamiento = TiempoTotal * CostoEstacionamiento; /// Calculo el precio de estacionamiento según la cantidad de días
+            /// Se acumula el costo total de mano de obra para cada desperfecto tratado
             ManoDeObra += modeloDesperfecto.ManoDeObra;
         }
         public void cerrarPresupuesto() { 
-            Completa = true;
-            CostoEstacionamiento = TiempoTotal * CostoEstacionamiento; /// Calculo el precio de estacionamiento según la cantidad de días
-            Total = CostoTotal + ManoDeObra + CostoEstacionamiento;
-            TotalConRecargosDescuentos = Total + Total * Recargo - Total * Descuento;
-            TotalConGanancia = TotalConRecargosDescuentos + TotalConRecargosDescuentos * gananciaTaller;
+            Completa = true;            
+            /// Costo base de reparación
+            TotalReparacion = CostoRepuestos + ManoDeObra + CostoEstacionamiento;
+            TotalConRecargosDescuentos = TotalReparacion + TotalReparacion * Recargo - TotalReparacion * Descuento;
+            TotalAlConsumidor = TotalConRecargosDescuentos + TotalConRecargosDescuentos * gananciaTaller;
 
         }     
     }

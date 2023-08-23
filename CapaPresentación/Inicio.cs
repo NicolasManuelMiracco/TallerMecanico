@@ -1070,10 +1070,10 @@ namespace CapaPresentación
         {
             txBoxRecargo.Text = presupuesto.Recargo.ToString();
             txBoxEstacionamiento.Text = presupuesto.CostoEstacionamiento.ToString();
-            txRepuestosTotal.Text = presupuesto.CostoTotal.ToString();
+            txRepuestosTotal.Text = presupuesto.CostoRepuestos.ToString();
             txManoDeObra.Text = presupuesto.ManoDeObra.ToString();
             textBoxSubTotal.Text = presupuesto.TotalConRecargosDescuentos.ToString();
-            TotalPresupuesto.Text = presupuesto.TotalConGanancia.ToString();
+            TotalPresupuesto.Text = presupuesto.TotalAlConsumidor.ToString();
         }
 
         /// <summary>
@@ -1084,11 +1084,6 @@ namespace CapaPresentación
             seteosDefaultPresupuesto();
             actualizarTextBoxesPresupuesto();
             cargaDelCliente();
-        }
-
-        private void setearParametriaPresupuestoFinal(List<int> idDesperfectosAPresupuestar) {
-            //System.Diagnostics.Debug.WriteLine(idDesperfectosAPresupuestar.Count + " vs " + presupuesto.Desperfectos.Count);
-            presupuesto.cerrarPresupuesto();
         }
 
         private void buttonPresupuestar_Click(object sender, EventArgs e)
@@ -1116,8 +1111,9 @@ namespace CapaPresentación
                         /// Seteo de parametría por default.
                         this.preSeteoParametriaPresupuesto();
                         /// Se setea el modelo con los desperfectos seleccionados.
-                        this.presupuesto.DesperfectosAPresupuestar = idDesperfectosAPresupuestar;
-                        this.setearParametriaPresupuestoFinal(idDesperfectosAPresupuestar);                                            
+                        this.presupuesto.DesperfectosAPresupuestar = idDesperfectosAPresupuestar;                    
+                        /// Se calculan los totales del modelo Presupuesto
+                        this.presupuesto.cerrarPresupuesto();
                     }
                     else
                     {

@@ -44,7 +44,7 @@ namespace CapaPersistencia
                 comando.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = modeloPresupuesto.Nombre;
                 comando.Parameters.Add("@Apellido", SqlDbType.VarChar).Value = modeloPresupuesto.Apellido;
                 comando.Parameters.Add("@Email", SqlDbType.VarChar).Value = modeloPresupuesto.Email;
-                comando.Parameters.Add("@Total", SqlDbType.Decimal).Value = modeloPresupuesto.Total;
+                comando.Parameters.Add("@Total", SqlDbType.Decimal).Value = modeloPresupuesto.TotalAlConsumidor;
                 comando.Parameters.Add("@IdVehiculo", SqlDbType.Int).Value = modeloPresupuesto.IdVehiculo;
                 comando.Parameters.Add("@Identity", SqlDbType.Int).Direction = ParameterDirection.Output;                
                 conexion.Open();
