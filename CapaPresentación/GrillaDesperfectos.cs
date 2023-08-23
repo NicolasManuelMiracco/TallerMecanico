@@ -3,6 +3,7 @@ using CapaModelo;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,16 +35,50 @@ namespace CapaPresentación
             subject.RegistrarObserver(this);
         }
 
+        private int obtenerFilaGrillaDesperfectos(int desperfectoNuevo)
+        {
+            int indice = -1;
+            try
+            {
+                Boolean encontre = false;
+                foreach (DataGridViewRow row in this.Rows) if (!encontre)
+                {
+                    if (Convert.ToInt32(row.Cells[3].Value) == desperfectoNuevo)
+                    {
+                        encontre = true;
+                        indice = row.Index;
+                    }
+                }                
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
+            return indice;
+        }
+
         void IObserver.update(object obj)
         {
+                   
             //tabla.Load(resultado);
             //dataGridViewDesperfectos.DataSource = logicaDesperfecto.Listar(presupuesto.Id);
             //this.DataSource = (ModeloDesperfecto)o;
             ModeloDesperfecto modeloDesperfecto = (CapaModelo.ModeloDesperfecto)(obj);
             //this.DataSource = new DataTable().Load(modeloDesperfecto.Repuestos);
             //this.DataSource = modeloDesperfecto.Repuestos;
-            this.Rows[0].Cells[1].ReadOnly = false;
-            this.Rows[0].Cells[1].Value = modeloDesperfecto.CantidadRepuestos;
+
+            int filaGrillaDesperfectos = obtenerFilaGrillaDesperfectos(modeloDesperfecto.Id);
+            if (filaGrillaDesperfectos != -1) // La grilla se actualizó con el nuevo desperfecto
+            {
+                //System.Diagnostics.Debug.WriteLine("Id : " + modeloDesperfecto.Id);
+                //System.Diagnostics.Debug.WriteLine("Fila : " + filaGrillaDesperfectos);
+                this.Rows[filaGrillaDesperfectos].Cells[1].ReadOnly = false;
+                this.Rows[filaGrillaDesperfectos].Cells[1].Value = modeloDesperfecto.CantidadRepuestosExistentes;
+                this.Rows[filaGrillaDesperfectos].Cells[2].ReadOnly = false;
+                this.Rows[filaGrillaDesperfectos].Cells[2].Value = modeloDesperfecto.CantidadRepuestosFaltantes;
+                /// Se definen Colores por defecto Verde y Rojo para repuestos en Stock y Faltantes respectivamente
+                this.Rows[filaGrillaDesperfectos].DefaultCellStyle.BackColor = Color.Yellow;                
+            }
+
+
+
 
             // Cambiar el color, incoporporar el tipo de repuesto y poder actualizar el desperfecto
 

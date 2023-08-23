@@ -62,23 +62,26 @@ namespace CapaPersistencia
             string respuesta = "";
             DataTable tabla = new DataTable();
             SqlConnection conexion = new SqlConnection();
+            SqlCommand comando;
             try
             {
                 conexion = Conexion.crearInstancia().crearConexion();                
-                SqlCommand comando = new SqlCommand("insertarDesperfecto", conexion);
+                comando = new SqlCommand("insertarDesperfecto", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Add("@IdPresupuesto", SqlDbType.Int).Value = obj.IdPresupuesto;
                 comando.Parameters.Add("@Descripcion", SqlDbType.VarChar).Value = obj.Descripcion;
                 comando.Parameters.Add("@ManoDeObra", SqlDbType.Int).Value = obj.ManoDeObra;
                 comando.Parameters.Add("@Tiempo", SqlDbType.Int).Value = obj.Tiempo;
+                comando.Parameters.Add("@lastDesperfecto", SqlDbType.Int).Direction = ParameterDirection.Output;
                 conexion.Open();
-                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert Desperfecto ERROR";                
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert Desperfecto ERROR";
+                ((ModeloDesperfecto)obj).Id = Convert.ToInt32(comando.Parameters["@lastDesperfecto"].Value); //Actualizo el modeloDesperfecto con el id según el autonumérico
             }
             catch (Exception ex)
             {
                 respuesta = ex.Message;
                 throw ex;
-            }
+            }            
             finally
             {
                 if (conexion.State == ConnectionState.Open) conexion.Close();

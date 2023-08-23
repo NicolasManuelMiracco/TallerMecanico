@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using CapaLogica;
 using CapaModelo;
@@ -793,10 +794,16 @@ namespace CapaPresentación
             dataGridViewDesperfectos.Columns[0].Visible = true;
             dataGridViewDesperfectos.Columns[0].Width = 25;
             dataGridViewDesperfectos.Columns[1].Width = 40;
-            dataGridViewDesperfectos.Columns[2].Width = 30;
-            dataGridViewDesperfectos.Columns[3].Width = 250;
-            dataGridViewDesperfectos.Columns[4].Width = 75;
-            dataGridViewDesperfectos.Columns[5].Width = 50;
+            dataGridViewDesperfectos.Columns[2].Width = 40;
+            dataGridViewDesperfectos.Columns[3].Width = 30;
+            dataGridViewDesperfectos.Columns[4].Width = 250;
+            dataGridViewDesperfectos.Columns[5].Width = 75;
+            dataGridViewDesperfectos.Columns[6].Width = 50;
+            /// Se restablecen colores originales.
+            //this.dataGridViewDesperfectos.Columns[1].DefaultCellStyle.BackColor = Color.Green;
+            //this.dataGridViewDesperfectos.Columns[2].DefaultCellStyle.BackColor = Color.Red;
+            //this.dataGridViewDesperfectos.Refresh();
+            //this.dataGridViewDesperfectos.Update();
         }
 
         /// <summary>
@@ -973,13 +980,10 @@ namespace CapaPresentación
         private void dataGridViewDesperfectos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.limpiarRepuestos();
-            int desperfectoToAddRepuestos = Convert.ToInt32(dataGridViewDesperfectos.CurrentRow.Cells["Id"].Value);
-            System.Diagnostics.Debug.WriteLine("Id desperfecto: " + desperfectoToAddRepuestos);
+            int desperfectoToAddRepuestos = Convert.ToInt32(dataGridViewDesperfectos.CurrentRow.Cells["Id"].Value);            
             presupuesto.setIdCurrentDesperfecto(desperfectoToAddRepuestos);
-
-            //Pasamos a la pestaña de selección de repuestos
-            this.tabControlPrincipal.SelectedIndex = 5;
-            this.labelRapuestosAsignados.Text = this.labelRapuestosAsignados.Text + " Id Desperfecto: " + desperfectoToAddRepuestos;
+            this.tabControlPrincipal.SelectedIndex = 5;  //Pasamos a la pestaña de selección de repuestos
+            this.labelRapuestosAsignados.Text = "Desperfectos asignados Id Desperfecto: " + desperfectoToAddRepuestos;
             //Se inicia la carga de repuestos para el desperfecto seleccionado
             //cargarRepuestos(desperfectoToAddRepuestos);
 
@@ -1071,11 +1075,9 @@ namespace CapaPresentación
                 // Se incorporan los repuestos para el desperfecto en contrucción
                 this.actualizarRepuestosEnDesperfecto(repuestosExistentes, repuestosEnEspera);
                 this.tabControlPrincipal.SelectedIndex = 4;
-
-                // Resta agregar la cantidad de repuestos asociado al desperfecto
-                //this.dataGridViewDesperfectos.Rows[]
-
-                //return repuestosExistentes.Count + repuestosEnEspera.Count;
+                // limpiar Desperfectos???
+                this.formatoDesperfectos();
+                
             }
         }
     }

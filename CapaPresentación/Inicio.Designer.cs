@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace CapaPresentación
 {
@@ -105,8 +106,6 @@ namespace CapaPresentación
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelDobleClickRepuestos = new System.Windows.Forms.Label();
             this.dataGridViewDesperfectos = new CapaPresentación.GrillaDesperfectos();
-            this.SeleccionarDesperfecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Rep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelDesperfectosAsignados = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.buttonAgregarDesperfecto = new System.Windows.Forms.Button();
@@ -141,6 +140,9 @@ namespace CapaPresentación
             this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.repuestoTableAdapter = new CapaPresentación.masterDataSetTableAdapters.RepuestoTableAdapter();
+            this.SeleccionarDesperfecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.RE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlPrincipal.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -942,32 +944,19 @@ namespace CapaPresentación
             this.dataGridViewDesperfectos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDesperfectos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SeleccionarDesperfecto,
-            this.Rep});
+            this.RE,
+            this.RF});
             this.dataGridViewDesperfectos.Location = new System.Drawing.Point(3, 51);
             this.dataGridViewDesperfectos.Name = "dataGridViewDesperfectos";
             this.dataGridViewDesperfectos.RowHeadersWidth = 62;
             this.dataGridViewDesperfectos.RowTemplate.Height = 28;
             this.dataGridViewDesperfectos.Size = new System.Drawing.Size(528, 383);
             this.dataGridViewDesperfectos.TabIndex = 2;
+            /// Se definen Colores por defecto Verde y Rojo para repuestos en Stock y Faltantes respectivamente
+            this.dataGridViewDesperfectos.Columns[1].DefaultCellStyle.BackColor = Color.Green;
+            this.dataGridViewDesperfectos.Columns[2].DefaultCellStyle.BackColor = Color.Red;
             this.dataGridViewDesperfectos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDesperfectos_CellContentClick);
             this.dataGridViewDesperfectos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDesperfectos_CellDoubleClick);
-            // 
-            // SeleccionarDesperfecto
-            // 
-            this.SeleccionarDesperfecto.HeaderText = "Sel";
-            this.SeleccionarDesperfecto.MinimumWidth = 8;
-            this.SeleccionarDesperfecto.Name = "SeleccionarDesperfecto";
-            this.SeleccionarDesperfecto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SeleccionarDesperfecto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.SeleccionarDesperfecto.Width = 150;
-            // 
-            // Rep
-            // 
-            this.Rep.HeaderText = "Rep";
-            this.Rep.MinimumWidth = 8;
-            this.Rep.Name = "Rep";
-            this.Rep.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Rep.Width = 150;
             // 
             // labelDesperfectosAsignados
             // 
@@ -1295,6 +1284,32 @@ namespace CapaPresentación
             // 
             this.repuestoTableAdapter.ClearBeforeFill = true;
             // 
+            // SeleccionarDesperfecto
+            // 
+            this.SeleccionarDesperfecto.HeaderText = "Sel";
+            this.SeleccionarDesperfecto.MinimumWidth = 8;
+            this.SeleccionarDesperfecto.Name = "SeleccionarDesperfecto";
+            this.SeleccionarDesperfecto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SeleccionarDesperfecto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SeleccionarDesperfecto.Width = 150;
+            // 
+            // RE
+            // 
+            this.RE.HeaderText = "RE";
+            this.RE.MinimumWidth = 8;
+            this.RE.Name = "RE";
+            this.RE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.RE.ToolTipText = "Repuestos en Stock";
+            this.RE.Width = 150;
+            // 
+            // RF
+            // 
+            this.RF.HeaderText = "RF";
+            this.RF.MinimumWidth = 8;
+            this.RF.Name = "RF";
+            this.RF.ToolTipText = "Repuestos en espera de proveedor";
+            this.RF.Width = 150;
+            // 
             // Inicio
             // 
             this.ClientSize = new System.Drawing.Size(857, 558);
@@ -1470,9 +1485,11 @@ namespace CapaPresentación
         private Label labelDobleClickRepuestos;
         private Panel panel12;
         private Button buttonAgregarRepuestosDesperfecto;
-        private DataGridViewCheckBoxColumn SeleccionarDesperfecto;
-        private DataGridViewTextBoxColumn Rep;
         private DataGridViewCheckBoxColumn Sel;
+        private DataGridViewCheckBoxColumn SeleccionarDesperfecto;
+        private DataGridViewTextBoxColumn RE;
+        private DataGridViewTextBoxColumn RF;
+
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
 }

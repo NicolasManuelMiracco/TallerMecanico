@@ -16,7 +16,9 @@ namespace CapaModelo
         public Boolean Cerrado { get; set; }
         public List<ModeloRepuesto> Repuestos { get; set; }
         public int CantidadRepuestos { get; set; }
-        
+        public int CantidadRepuestosExistentes { get; set; }
+        public int CantidadRepuestosFaltantes { get; set; }
+
         /// <summary>
         /// RESTA AGREGAR Id
         /// </summary>               
@@ -30,6 +32,8 @@ namespace CapaModelo
             Cerrado = false;
             costoRepuestosDesperfecto = 0;
             CantidadRepuestos = 0;
+            CantidadRepuestosExistentes = 0;
+            CantidadRepuestosFaltantes = 0;
             Repuestos = new List<ModeloRepuesto>();
         }
                
