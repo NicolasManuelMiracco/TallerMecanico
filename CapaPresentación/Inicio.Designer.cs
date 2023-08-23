@@ -33,6 +33,7 @@ namespace CapaPresentación
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDataSet = new CapaPresentación.masterDataSet();
             this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -42,6 +43,7 @@ namespace CapaPresentación
             this.panel15 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.labelDesperfecto = new System.Windows.Forms.Label();
             this.buttonRegresarMenuDesperfectos = new System.Windows.Forms.Button();
             this.buttonAgregarRepuestosDesperfecto = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -83,29 +85,35 @@ namespace CapaPresentación
             this.labelDesperfectoManoDeObra = new System.Windows.Forms.Label();
             this.labelDescripcionDesperfecto = new System.Windows.Forms.Label();
             this.labelNuevoDesperfecto = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPresupuestacion = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.TotalPresupuesto = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txBoxNombre = new System.Windows.Forms.TextBox();
+            this.txBoxApellido = new System.Windows.Forms.TextBox();
+            this.txBoxEmail = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.labelTotalConsumidor = new System.Windows.Forms.Label();
+            this.TotalPresupuestoConsumidor = new System.Windows.Forms.TextBox();
+            this.textBoxTiempoTotal = new System.Windows.Forms.TextBox();
+            this.labelTiempoTotal = new System.Windows.Forms.Label();
+            this.textBoxSubTotal = new System.Windows.Forms.TextBox();
+            this.labelSubTotal = new System.Windows.Forms.Label();
             this.txRepuestosTotal = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.labelCostoRepuestos = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.txBoxEstacionamiento = new System.Windows.Forms.TextBox();
             this.txManoDeObra = new System.Windows.Forms.TextBox();
             this.txBoxDescuento = new System.Windows.Forms.TextBox();
             this.txBoxRecargo = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.labelCostoEstacionamiento = new System.Windows.Forms.Label();
+            this.labelManoDeObra = new System.Windows.Forms.Label();
+            this.labelDescuento = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txBoxEmail = new System.Windows.Forms.TextBox();
-            this.txBoxApellido = new System.Windows.Forms.TextBox();
-            this.txBoxNombre = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabMantenimiento = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelarInserción = new System.Windows.Forms.Button();
             this.btnActualizarVehículo = new System.Windows.Forms.Button();
@@ -133,7 +141,7 @@ namespace CapaPresentación
             this.etiquetaModelo = new System.Windows.Forms.Label();
             this.etiquetaMarca = new System.Windows.Forms.Label();
             this.etiquetaIdVehiculo = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabVehiculos = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.Diagnose = new System.Windows.Forms.Button();
             this.chkSelect = new System.Windows.Forms.CheckBox();
@@ -144,8 +152,6 @@ namespace CapaPresentación
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
-            this.labelSubTotal = new System.Windows.Forms.Label();
-            this.textBoxSubTotal = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
@@ -163,16 +169,18 @@ namespace CapaPresentación
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDesperfectos)).BeginInit();
             this.panel7.SuspendLayout();
-            this.tabPage5.SuspendLayout();
+            this.tabPresupuestacion.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.tabMantenimiento.SuspendLayout();
             this.panel1.SuspendLayout();
             this.selectorTipoVehículo.SuspendLayout();
             this.tabAutomóvil.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabMoto.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabVehiculos.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.tabControlPrincipal.SuspendLayout();
@@ -208,10 +216,10 @@ namespace CapaPresentación
             this.tabPageRepuestos.Controls.Add(this.panel11);
             this.tabPageRepuestos.Controls.Add(this.panel10);
             this.tabPageRepuestos.Controls.Add(this.panel9);
-            this.tabPageRepuestos.Location = new System.Drawing.Point(4, 29);
+            this.tabPageRepuestos.Location = new System.Drawing.Point(4, 34);
             this.tabPageRepuestos.Name = "tabPageRepuestos";
             this.tabPageRepuestos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRepuestos.Size = new System.Drawing.Size(846, 514);
+            this.tabPageRepuestos.Size = new System.Drawing.Size(847, 509);
             this.tabPageRepuestos.TabIndex = 5;
             this.tabPageRepuestos.Text = "Repuestos";
             this.tabPageRepuestos.UseVisualStyleBackColor = true;
@@ -219,9 +227,9 @@ namespace CapaPresentación
             // panel15
             // 
             this.panel15.Controls.Add(this.textBox1);
-            this.panel15.Location = new System.Drawing.Point(219, 452);
+            this.panel15.Location = new System.Drawing.Point(238, 452);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(631, 62);
+            this.panel15.Size = new System.Drawing.Size(612, 62);
             this.panel15.TabIndex = 10;
             // 
             // textBox1
@@ -229,7 +237,7 @@ namespace CapaPresentación
             this.textBox1.Location = new System.Drawing.Point(3, 3);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(618, 53);
+            this.textBox1.Size = new System.Drawing.Size(603, 53);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Es posible seleccionar repuestos existentes (desde el desplegable) o solicitar nu" +
     "evos repuestos (proveedor). Después de cargar los repuestos es necesario selecci" +
@@ -237,21 +245,33 @@ namespace CapaPresentación
             // 
             // panel12
             // 
+            this.panel12.BackColor = System.Drawing.Color.Lavender;
+            this.panel12.Controls.Add(this.labelDesperfecto);
             this.panel12.Controls.Add(this.buttonRegresarMenuDesperfectos);
             this.panel12.Controls.Add(this.buttonAgregarRepuestosDesperfecto);
             this.panel12.Location = new System.Drawing.Point(7, 366);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(206, 139);
+            this.panel12.Size = new System.Drawing.Size(225, 139);
             this.panel12.TabIndex = 9;
+            // 
+            // labelDesperfecto
+            // 
+            this.labelDesperfecto.AutoSize = true;
+            this.labelDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesperfecto.Location = new System.Drawing.Point(3, 9);
+            this.labelDesperfecto.Name = "labelDesperfecto";
+            this.labelDesperfecto.Size = new System.Drawing.Size(199, 37);
+            this.labelDesperfecto.TabIndex = 9;
+            this.labelDesperfecto.Text = "Desperfecto";
             // 
             // buttonRegresarMenuDesperfectos
             // 
             this.buttonRegresarMenuDesperfectos.BackColor = System.Drawing.Color.OrangeRed;
             this.buttonRegresarMenuDesperfectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRegresarMenuDesperfectos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonRegresarMenuDesperfectos.Location = new System.Drawing.Point(25, 86);
+            this.buttonRegresarMenuDesperfectos.Location = new System.Drawing.Point(32, 99);
             this.buttonRegresarMenuDesperfectos.Name = "buttonRegresarMenuDesperfectos";
-            this.buttonRegresarMenuDesperfectos.Size = new System.Drawing.Size(157, 50);
+            this.buttonRegresarMenuDesperfectos.Size = new System.Drawing.Size(157, 37);
             this.buttonRegresarMenuDesperfectos.TabIndex = 10;
             this.buttonRegresarMenuDesperfectos.Text = "Regresar Menú Desperfectos";
             this.buttonRegresarMenuDesperfectos.UseVisualStyleBackColor = false;
@@ -262,9 +282,9 @@ namespace CapaPresentación
             this.buttonAgregarRepuestosDesperfecto.BackColor = System.Drawing.Color.OliveDrab;
             this.buttonAgregarRepuestosDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAgregarRepuestosDesperfecto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonAgregarRepuestosDesperfecto.Location = new System.Drawing.Point(25, 13);
+            this.buttonAgregarRepuestosDesperfecto.Location = new System.Drawing.Point(32, 58);
             this.buttonAgregarRepuestosDesperfecto.Name = "buttonAgregarRepuestosDesperfecto";
-            this.buttonAgregarRepuestosDesperfecto.Size = new System.Drawing.Size(157, 50);
+            this.buttonAgregarRepuestosDesperfecto.Size = new System.Drawing.Size(157, 35);
             this.buttonAgregarRepuestosDesperfecto.TabIndex = 9;
             this.buttonAgregarRepuestosDesperfecto.Text = "Agregar repuestos al desperfecto";
             this.buttonAgregarRepuestosDesperfecto.UseVisualStyleBackColor = false;
@@ -272,13 +292,14 @@ namespace CapaPresentación
             // 
             // panel11
             // 
+            this.panel11.BackColor = System.Drawing.Color.LemonChiffon;
             this.panel11.Controls.Add(this.comboBoxRepuestosExistentes);
             this.panel11.Controls.Add(this.button6);
             this.panel11.Controls.Add(this.labelNombreRepuestoExistente);
             this.panel11.Controls.Add(this.labelSeleccionarRepuestoExistente);
             this.panel11.Location = new System.Drawing.Point(7, 208);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(206, 152);
+            this.panel11.Size = new System.Drawing.Size(225, 152);
             this.panel11.TabIndex = 8;
             // 
             // comboBoxRepuestosExistentes
@@ -288,7 +309,7 @@ namespace CapaPresentación
             this.comboBoxRepuestosExistentes.FormattingEnabled = true;
             this.comboBoxRepuestosExistentes.Location = new System.Drawing.Point(43, 50);
             this.comboBoxRepuestosExistentes.Name = "comboBoxRepuestosExistentes";
-            this.comboBoxRepuestosExistentes.Size = new System.Drawing.Size(145, 28);
+            this.comboBoxRepuestosExistentes.Size = new System.Drawing.Size(145, 30);
             this.comboBoxRepuestosExistentes.TabIndex = 8;
             this.comboBoxRepuestosExistentes.ValueMember = "Id";
             // 
@@ -296,9 +317,9 @@ namespace CapaPresentación
             // 
             this.button6.BackColor = System.Drawing.Color.LimeGreen;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(25, 104);
+            this.button6.Location = new System.Drawing.Point(32, 107);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(157, 45);
+            this.button6.Size = new System.Drawing.Size(156, 32);
             this.button6.TabIndex = 7;
             this.button6.Text = "Agregar existente";
             this.button6.UseVisualStyleBackColor = false;
@@ -317,10 +338,10 @@ namespace CapaPresentación
             // labelSeleccionarRepuestoExistente
             // 
             this.labelSeleccionarRepuestoExistente.AutoSize = true;
-            this.labelSeleccionarRepuestoExistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSeleccionarRepuestoExistente.Location = new System.Drawing.Point(3, 9);
+            this.labelSeleccionarRepuestoExistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSeleccionarRepuestoExistente.Location = new System.Drawing.Point(2, 9);
             this.labelSeleccionarRepuestoExistente.Name = "labelSeleccionarRepuestoExistente";
-            this.labelSeleccionarRepuestoExistente.Size = new System.Drawing.Size(196, 25);
+            this.labelSeleccionarRepuestoExistente.Size = new System.Drawing.Size(216, 26);
             this.labelSeleccionarRepuestoExistente.TabIndex = 0;
             this.labelSeleccionarRepuestoExistente.Text = "Repuesto existente";
             // 
@@ -328,9 +349,9 @@ namespace CapaPresentación
             // 
             this.panel10.Controls.Add(this.dgvRepuestos);
             this.panel10.Controls.Add(this.labelRapuestosAsignados);
-            this.panel10.Location = new System.Drawing.Point(219, 6);
+            this.panel10.Location = new System.Drawing.Point(238, 6);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(621, 440);
+            this.panel10.Size = new System.Drawing.Size(602, 440);
             this.panel10.TabIndex = 2;
             // 
             // dgvRepuestos
@@ -339,12 +360,12 @@ namespace CapaPresentación
             this.dgvRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRepuestos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Sel});
-            this.dgvRepuestos.Location = new System.Drawing.Point(0, 51);
+            this.dgvRepuestos.Location = new System.Drawing.Point(3, 51);
             this.dgvRepuestos.Name = "dgvRepuestos";
             this.dgvRepuestos.ReadOnly = true;
             this.dgvRepuestos.RowHeadersWidth = 62;
             this.dgvRepuestos.RowTemplate.Height = 28;
-            this.dgvRepuestos.Size = new System.Drawing.Size(607, 386);
+            this.dgvRepuestos.Size = new System.Drawing.Size(604, 386);
             this.dgvRepuestos.TabIndex = 2;
             this.dgvRepuestos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRepuestos_CellContentClick);
             // 
@@ -370,6 +391,7 @@ namespace CapaPresentación
             // 
             // panel9
             // 
+            this.panel9.BackColor = System.Drawing.Color.PeachPuff;
             this.panel9.Controls.Add(this.button5);
             this.panel9.Controls.Add(this.textBoxPrecioNuevoRepuesto);
             this.panel9.Controls.Add(this.textBoxNombreNuevoRepuesto);
@@ -378,16 +400,16 @@ namespace CapaPresentación
             this.panel9.Controls.Add(this.labelAgregarNuevoRepuesto);
             this.panel9.Location = new System.Drawing.Point(7, 6);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(206, 196);
+            this.panel9.Size = new System.Drawing.Size(225, 196);
             this.panel9.TabIndex = 1;
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.LimeGreen;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(25, 149);
+            this.button5.Location = new System.Drawing.Point(31, 153);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(157, 44);
+            this.button5.Size = new System.Drawing.Size(157, 31);
             this.button5.TabIndex = 7;
             this.button5.Text = "Agregar nuevo";
             this.button5.UseVisualStyleBackColor = false;
@@ -397,14 +419,14 @@ namespace CapaPresentación
             // 
             this.textBoxPrecioNuevoRepuesto.Location = new System.Drawing.Point(66, 100);
             this.textBoxPrecioNuevoRepuesto.Name = "textBoxPrecioNuevoRepuesto";
-            this.textBoxPrecioNuevoRepuesto.Size = new System.Drawing.Size(122, 26);
+            this.textBoxPrecioNuevoRepuesto.Size = new System.Drawing.Size(122, 29);
             this.textBoxPrecioNuevoRepuesto.TabIndex = 6;
             // 
             // textBoxNombreNuevoRepuesto
             // 
             this.textBoxNombreNuevoRepuesto.Location = new System.Drawing.Point(80, 51);
             this.textBoxNombreNuevoRepuesto.Name = "textBoxNombreNuevoRepuesto";
-            this.textBoxNombreNuevoRepuesto.Size = new System.Drawing.Size(108, 26);
+            this.textBoxNombreNuevoRepuesto.Size = new System.Drawing.Size(108, 29);
             this.textBoxNombreNuevoRepuesto.TabIndex = 5;
             // 
             // labelPrecioRepuesto
@@ -430,10 +452,10 @@ namespace CapaPresentación
             // labelAgregarNuevoRepuesto
             // 
             this.labelAgregarNuevoRepuesto.AutoSize = true;
-            this.labelAgregarNuevoRepuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAgregarNuevoRepuesto.Location = new System.Drawing.Point(20, 10);
+            this.labelAgregarNuevoRepuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAgregarNuevoRepuesto.Location = new System.Drawing.Point(2, 10);
             this.labelAgregarNuevoRepuesto.Name = "labelAgregarNuevoRepuesto";
-            this.labelAgregarNuevoRepuesto.Size = new System.Drawing.Size(168, 25);
+            this.labelAgregarNuevoRepuesto.Size = new System.Drawing.Size(184, 26);
             this.labelAgregarNuevoRepuesto.TabIndex = 0;
             this.labelAgregarNuevoRepuesto.Text = "Repuesto nuevo";
             // 
@@ -443,10 +465,10 @@ namespace CapaPresentación
             this.tabPageDesperfectos.Controls.Add(this.panel13);
             this.tabPageDesperfectos.Controls.Add(this.panel8);
             this.tabPageDesperfectos.Controls.Add(this.panel7);
-            this.tabPageDesperfectos.Location = new System.Drawing.Point(4, 29);
+            this.tabPageDesperfectos.Location = new System.Drawing.Point(4, 34);
             this.tabPageDesperfectos.Name = "tabPageDesperfectos";
             this.tabPageDesperfectos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDesperfectos.Size = new System.Drawing.Size(846, 514);
+            this.tabPageDesperfectos.Size = new System.Drawing.Size(847, 509);
             this.tabPageDesperfectos.TabIndex = 4;
             this.tabPageDesperfectos.Text = "Desperfectos";
             this.tabPageDesperfectos.UseVisualStyleBackColor = true;
@@ -461,8 +483,9 @@ namespace CapaPresentación
             // 
             // buttonPresupuestar
             // 
-            this.buttonPresupuestar.BackColor = System.Drawing.Color.LimeGreen;
+            this.buttonPresupuestar.BackColor = System.Drawing.Color.DarkGreen;
             this.buttonPresupuestar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPresupuestar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonPresupuestar.Location = new System.Drawing.Point(34, 3);
             this.buttonPresupuestar.Name = "buttonPresupuestar";
             this.buttonPresupuestar.Size = new System.Drawing.Size(188, 72);
@@ -595,7 +618,7 @@ namespace CapaPresentación
             // 
             // buttonCancelarDesperfecto
             // 
-            this.buttonCancelarDesperfecto.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.buttonCancelarDesperfecto.BackColor = System.Drawing.Color.LightPink;
             this.buttonCancelarDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelarDesperfecto.Location = new System.Drawing.Point(7, 309);
             this.buttonCancelarDesperfecto.Name = "buttonCancelarDesperfecto";
@@ -607,7 +630,7 @@ namespace CapaPresentación
             // 
             // buttonAgregarDesperfecto
             // 
-            this.buttonAgregarDesperfecto.BackColor = System.Drawing.Color.LimeGreen;
+            this.buttonAgregarDesperfecto.BackColor = System.Drawing.Color.YellowGreen;
             this.buttonAgregarDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAgregarDesperfecto.Location = new System.Drawing.Point(141, 309);
             this.buttonAgregarDesperfecto.Name = "buttonAgregarDesperfecto";
@@ -621,14 +644,14 @@ namespace CapaPresentación
             // 
             this.textBoxDesperfectoTiempo.Location = new System.Drawing.Point(144, 260);
             this.textBoxDesperfectoTiempo.Name = "textBoxDesperfectoTiempo";
-            this.textBoxDesperfectoTiempo.Size = new System.Drawing.Size(99, 26);
+            this.textBoxDesperfectoTiempo.Size = new System.Drawing.Size(99, 29);
             this.textBoxDesperfectoTiempo.TabIndex = 6;
             // 
             // textBoxDesperfectoManoDeObra
             // 
             this.textBoxDesperfectoManoDeObra.Location = new System.Drawing.Point(144, 216);
             this.textBoxDesperfectoManoDeObra.Name = "textBoxDesperfectoManoDeObra";
-            this.textBoxDesperfectoManoDeObra.Size = new System.Drawing.Size(99, 26);
+            this.textBoxDesperfectoManoDeObra.Size = new System.Drawing.Size(99, 29);
             this.textBoxDesperfectoManoDeObra.TabIndex = 5;
             // 
             // textBoxDesperfectoDescripcion
@@ -679,239 +702,302 @@ namespace CapaPresentación
             this.labelNuevoDesperfecto.TabIndex = 0;
             this.labelNuevoDesperfecto.Text = "Nuevo desperfecto";
             // 
-            // tabPage5
+            // tabPresupuestacion
             // 
-            this.tabPage5.Controls.Add(this.panel6);
-            this.tabPage5.Location = new System.Drawing.Point(4, 29);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(846, 514);
-            this.tabPage5.TabIndex = 3;
-            this.tabPage5.Text = "Presupuestación";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPresupuestacion.Controls.Add(this.panel6);
+            this.tabPresupuestacion.Location = new System.Drawing.Point(4, 34);
+            this.tabPresupuestacion.Name = "tabPresupuestacion";
+            this.tabPresupuestacion.Size = new System.Drawing.Size(847, 509);
+            this.tabPresupuestacion.TabIndex = 3;
+            this.tabPresupuestacion.Text = "Presupuestación";
+            this.tabPresupuestacion.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.panel16);
+            this.panel6.Controls.Add(this.panel5);
+            this.panel6.Controls.Add(this.textBoxTiempoTotal);
+            this.panel6.Controls.Add(this.labelTiempoTotal);
             this.panel6.Controls.Add(this.textBoxSubTotal);
             this.panel6.Controls.Add(this.labelSubTotal);
-            this.panel6.Controls.Add(this.TotalPresupuesto);
-            this.panel6.Controls.Add(this.label17);
             this.panel6.Controls.Add(this.txRepuestosTotal);
-            this.panel6.Controls.Add(this.label16);
+            this.panel6.Controls.Add(this.labelCostoRepuestos);
             this.panel6.Controls.Add(this.button4);
             this.panel6.Controls.Add(this.button3);
             this.panel6.Controls.Add(this.txBoxEstacionamiento);
             this.panel6.Controls.Add(this.txManoDeObra);
             this.panel6.Controls.Add(this.txBoxDescuento);
             this.panel6.Controls.Add(this.txBoxRecargo);
-            this.panel6.Controls.Add(this.label15);
-            this.panel6.Controls.Add(this.label14);
-            this.panel6.Controls.Add(this.label13);
+            this.panel6.Controls.Add(this.labelCostoEstacionamiento);
+            this.panel6.Controls.Add(this.labelManoDeObra);
+            this.panel6.Controls.Add(this.labelDescuento);
             this.panel6.Controls.Add(this.label12);
-            this.panel6.Controls.Add(this.txBoxEmail);
-            this.panel6.Controls.Add(this.txBoxApellido);
-            this.panel6.Controls.Add(this.txBoxNombre);
-            this.panel6.Controls.Add(this.label11);
-            this.panel6.Controls.Add(this.label8);
-            this.panel6.Controls.Add(this.label7);
-            this.panel6.Location = new System.Drawing.Point(7, 21);
+            this.panel6.Location = new System.Drawing.Point(3, 21);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(833, 451);
+            this.panel6.Size = new System.Drawing.Size(837, 490);
             this.panel6.TabIndex = 0;
             // 
-            // TotalPresupuesto
+            // panel16
             // 
-            this.TotalPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalPresupuesto.Location = new System.Drawing.Point(237, 280);
-            this.TotalPresupuesto.Name = "TotalPresupuesto";
-            this.TotalPresupuesto.Size = new System.Drawing.Size(168, 26);
-            this.TotalPresupuesto.TabIndex = 26;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(16, 280);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(73, 29);
-            this.label17.TabIndex = 25;
-            this.label17.Text = "Total";
-            // 
-            // txRepuestosTotal
-            // 
-            this.txRepuestosTotal.Location = new System.Drawing.Point(647, 280);
-            this.txRepuestosTotal.Name = "txRepuestosTotal";
-            this.txRepuestosTotal.Size = new System.Drawing.Size(168, 26);
-            this.txRepuestosTotal.TabIndex = 24;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(444, 280);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(150, 29);
-            this.label16.TabIndex = 23;
-            this.label16.Text = "$ repuestos";
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Lime;
-            this.button4.Location = new System.Drawing.Point(0, 391);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(212, 57);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Confirma";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.DeepPink;
-            this.button3.Location = new System.Drawing.Point(657, 391);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 57);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // txBoxEstacionamiento
-            // 
-            this.txBoxEstacionamiento.Location = new System.Drawing.Point(647, 219);
-            this.txBoxEstacionamiento.Name = "txBoxEstacionamiento";
-            this.txBoxEstacionamiento.Size = new System.Drawing.Size(168, 26);
-            this.txBoxEstacionamiento.TabIndex = 21;
-            // 
-            // txManoDeObra
-            // 
-            this.txManoDeObra.Location = new System.Drawing.Point(647, 155);
-            this.txManoDeObra.Name = "txManoDeObra";
-            this.txManoDeObra.Size = new System.Drawing.Size(168, 26);
-            this.txManoDeObra.TabIndex = 20;
-            // 
-            // txBoxDescuento
-            // 
-            this.txBoxDescuento.Location = new System.Drawing.Point(647, 84);
-            this.txBoxDescuento.Name = "txBoxDescuento";
-            this.txBoxDescuento.Size = new System.Drawing.Size(170, 26);
-            this.txBoxDescuento.TabIndex = 19;
-            // 
-            // txBoxRecargo
-            // 
-            this.txBoxRecargo.Location = new System.Drawing.Point(647, 26);
-            this.txBoxRecargo.Name = "txBoxRecargo";
-            this.txBoxRecargo.Size = new System.Drawing.Size(170, 26);
-            this.txBoxRecargo.TabIndex = 18;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(444, 219);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(246, 29);
-            this.label15.TabIndex = 17;
-            this.label15.Text = "$ parking ($130/día)";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(444, 151);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(195, 29);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "$ mano de obra";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(444, 88);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(164, 29);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "% descuento";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(444, 23);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(133, 29);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "% recargo";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
-            // 
-            // txBoxEmail
-            // 
-            this.txBoxEmail.Location = new System.Drawing.Point(143, 151);
-            this.txBoxEmail.Name = "txBoxEmail";
-            this.txBoxEmail.Size = new System.Drawing.Size(262, 26);
-            this.txBoxEmail.TabIndex = 13;
-            // 
-            // txBoxApellido
-            // 
-            this.txBoxApellido.Location = new System.Drawing.Point(143, 88);
-            this.txBoxApellido.Name = "txBoxApellido";
-            this.txBoxApellido.Size = new System.Drawing.Size(262, 26);
-            this.txBoxApellido.TabIndex = 12;
-            // 
-            // txBoxNombre
-            // 
-            this.txBoxNombre.Location = new System.Drawing.Point(143, 23);
-            this.txBoxNombre.Name = "txBoxNombre";
-            this.txBoxNombre.Size = new System.Drawing.Size(262, 26);
-            this.txBoxNombre.TabIndex = 11;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(16, 151);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 29);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Email";
+            this.panel16.BackColor = System.Drawing.SystemColors.Info;
+            this.panel16.Controls.Add(this.label8);
+            this.panel16.Controls.Add(this.label7);
+            this.panel16.Controls.Add(this.label11);
+            this.panel16.Controls.Add(this.txBoxNombre);
+            this.panel16.Controls.Add(this.txBoxApellido);
+            this.panel16.Controls.Add(this.txBoxEmail);
+            this.panel16.Font = new System.Drawing.Font("Webdings", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.panel16.Location = new System.Drawing.Point(4, 9);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(409, 262);
+            this.panel16.TabIndex = 32;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(16, 84);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 110);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 29);
+            this.label8.Size = new System.Drawing.Size(127, 32);
             this.label8.TabIndex = 2;
             this.label8.Text = "Apellido";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(16, 19);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 29);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 29);
+            this.label7.Size = new System.Drawing.Size(121, 32);
             this.label7.TabIndex = 1;
             this.label7.Text = "Nombre";
             // 
-            // tabPage3
+            // label11
             // 
-            this.tabPage3.Controls.Add(this.panel1);
-            this.tabPage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(846, 514);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "Mantenimiento";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 202);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(92, 32);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Email";
+            // 
+            // txBoxNombre
+            // 
+            this.txBoxNombre.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txBoxNombre.Location = new System.Drawing.Point(147, 29);
+            this.txBoxNombre.Name = "txBoxNombre";
+            this.txBoxNombre.Size = new System.Drawing.Size(254, 32);
+            this.txBoxNombre.TabIndex = 11;
+            // 
+            // txBoxApellido
+            // 
+            this.txBoxApellido.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txBoxApellido.Location = new System.Drawing.Point(147, 110);
+            this.txBoxApellido.Name = "txBoxApellido";
+            this.txBoxApellido.Size = new System.Drawing.Size(254, 32);
+            this.txBoxApellido.TabIndex = 12;
+            // 
+            // txBoxEmail
+            // 
+            this.txBoxEmail.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txBoxEmail.Location = new System.Drawing.Point(147, 202);
+            this.txBoxEmail.Name = "txBoxEmail";
+            this.txBoxEmail.Size = new System.Drawing.Size(254, 32);
+            this.txBoxEmail.TabIndex = 13;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel5.Controls.Add(this.labelTotalConsumidor);
+            this.panel5.Controls.Add(this.TotalPresupuestoConsumidor);
+            this.panel5.Location = new System.Drawing.Point(3, 277);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(410, 147);
+            this.panel5.TabIndex = 31;
+            // 
+            // labelTotalConsumidor
+            // 
+            this.labelTotalConsumidor.AutoSize = true;
+            this.labelTotalConsumidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalConsumidor.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.labelTotalConsumidor.Location = new System.Drawing.Point(74, 19);
+            this.labelTotalConsumidor.Name = "labelTotalConsumidor";
+            this.labelTotalConsumidor.Size = new System.Drawing.Size(249, 32);
+            this.labelTotalConsumidor.TabIndex = 25;
+            this.labelTotalConsumidor.Text = "Total consumidor";
+            // 
+            // TotalPresupuestoConsumidor
+            // 
+            this.TotalPresupuestoConsumidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalPresupuestoConsumidor.ForeColor = System.Drawing.Color.ForestGreen;
+            this.TotalPresupuestoConsumidor.Location = new System.Drawing.Point(58, 82);
+            this.TotalPresupuestoConsumidor.Name = "TotalPresupuestoConsumidor";
+            this.TotalPresupuestoConsumidor.Size = new System.Drawing.Size(284, 44);
+            this.TotalPresupuestoConsumidor.TabIndex = 26;
+            // 
+            // textBoxTiempoTotal
+            // 
+            this.textBoxTiempoTotal.Location = new System.Drawing.Point(657, 11);
+            this.textBoxTiempoTotal.Name = "textBoxTiempoTotal";
+            this.textBoxTiempoTotal.Size = new System.Drawing.Size(168, 29);
+            this.textBoxTiempoTotal.TabIndex = 30;
+            // 
+            // labelTiempoTotal
+            // 
+            this.labelTiempoTotal.AutoSize = true;
+            this.labelTiempoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTiempoTotal.Location = new System.Drawing.Point(426, 9);
+            this.labelTiempoTotal.Name = "labelTiempoTotal";
+            this.labelTiempoTotal.Size = new System.Drawing.Size(177, 29);
+            this.labelTiempoTotal.TabIndex = 29;
+            this.labelTiempoTotal.Text = "Tiempo (días)";
+            // 
+            // textBoxSubTotal
+            // 
+            this.textBoxSubTotal.Location = new System.Drawing.Point(657, 445);
+            this.textBoxSubTotal.Name = "textBoxSubTotal";
+            this.textBoxSubTotal.Size = new System.Drawing.Size(168, 29);
+            this.textBoxSubTotal.TabIndex = 28;
+            // 
+            // labelSubTotal
+            // 
+            this.labelSubTotal.AutoSize = true;
+            this.labelSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSubTotal.Location = new System.Drawing.Point(429, 443);
+            this.labelSubTotal.Name = "labelSubTotal";
+            this.labelSubTotal.Size = new System.Drawing.Size(119, 29);
+            this.labelSubTotal.TabIndex = 27;
+            this.labelSubTotal.Text = "SubTotal";
+            // 
+            // txRepuestosTotal
+            // 
+            this.txRepuestosTotal.Location = new System.Drawing.Point(657, 369);
+            this.txRepuestosTotal.Name = "txRepuestosTotal";
+            this.txRepuestosTotal.Size = new System.Drawing.Size(168, 29);
+            this.txRepuestosTotal.TabIndex = 24;
+            // 
+            // labelCostoRepuestos
+            // 
+            this.labelCostoRepuestos.AutoSize = true;
+            this.labelCostoRepuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCostoRepuestos.Location = new System.Drawing.Point(429, 367);
+            this.labelCostoRepuestos.Name = "labelCostoRepuestos";
+            this.labelCostoRepuestos.Size = new System.Drawing.Size(213, 29);
+            this.labelCostoRepuestos.TabIndex = 23;
+            this.labelCostoRepuestos.Text = "Costo Repuestos";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Linen;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.Lime;
+            this.button4.Location = new System.Drawing.Point(3, 430);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(212, 57);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Confirma";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Linen;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.DeepPink;
+            this.button3.Location = new System.Drawing.Point(221, 430);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(192, 57);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Cancelar";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // txBoxEstacionamiento
+            // 
+            this.txBoxEstacionamiento.Location = new System.Drawing.Point(657, 296);
+            this.txBoxEstacionamiento.Name = "txBoxEstacionamiento";
+            this.txBoxEstacionamiento.Size = new System.Drawing.Size(168, 29);
+            this.txBoxEstacionamiento.TabIndex = 21;
+            // 
+            // txManoDeObra
+            // 
+            this.txManoDeObra.Location = new System.Drawing.Point(657, 219);
+            this.txManoDeObra.Name = "txManoDeObra";
+            this.txManoDeObra.Size = new System.Drawing.Size(168, 29);
+            this.txManoDeObra.TabIndex = 20;
+            // 
+            // txBoxDescuento
+            // 
+            this.txBoxDescuento.Location = new System.Drawing.Point(657, 84);
+            this.txBoxDescuento.Name = "txBoxDescuento";
+            this.txBoxDescuento.Size = new System.Drawing.Size(168, 29);
+            this.txBoxDescuento.TabIndex = 19;
+            // 
+            // txBoxRecargo
+            // 
+            this.txBoxRecargo.Location = new System.Drawing.Point(657, 151);
+            this.txBoxRecargo.Name = "txBoxRecargo";
+            this.txBoxRecargo.Size = new System.Drawing.Size(168, 29);
+            this.txBoxRecargo.TabIndex = 18;
+            // 
+            // labelCostoEstacionamiento
+            // 
+            this.labelCostoEstacionamiento.AutoSize = true;
+            this.labelCostoEstacionamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCostoEstacionamiento.Location = new System.Drawing.Point(426, 294);
+            this.labelCostoEstacionamiento.Name = "labelCostoEstacionamiento";
+            this.labelCostoEstacionamiento.Size = new System.Drawing.Size(245, 29);
+            this.labelCostoEstacionamiento.TabIndex = 17;
+            this.labelCostoEstacionamiento.Text = "Estacionamiento ($)";
+            // 
+            // labelManoDeObra
+            // 
+            this.labelManoDeObra.AutoSize = true;
+            this.labelManoDeObra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelManoDeObra.Location = new System.Drawing.Point(429, 217);
+            this.labelManoDeObra.Name = "labelManoDeObra";
+            this.labelManoDeObra.Size = new System.Drawing.Size(174, 29);
+            this.labelManoDeObra.TabIndex = 16;
+            this.labelManoDeObra.Text = "Mano de obra";
+            // 
+            // labelDescuento
+            // 
+            this.labelDescuento.AutoSize = true;
+            this.labelDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescuento.Location = new System.Drawing.Point(426, 82);
+            this.labelDescuento.Name = "labelDescuento";
+            this.labelDescuento.Size = new System.Drawing.Size(185, 29);
+            this.labelDescuento.TabIndex = 15;
+            this.labelDescuento.Text = "Descuento (%)";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(426, 149);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(160, 29);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Recargo (%)";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // tabMantenimiento
+            // 
+            this.tabMantenimiento.Controls.Add(this.panel1);
+            this.tabMantenimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabMantenimiento.Location = new System.Drawing.Point(4, 34);
+            this.tabMantenimiento.Name = "tabMantenimiento";
+            this.tabMantenimiento.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMantenimiento.Size = new System.Drawing.Size(847, 509);
+            this.tabMantenimiento.TabIndex = 1;
+            this.tabMantenimiento.Text = "Mantenimiento";
+            this.tabMantenimiento.UseVisualStyleBackColor = true;
+            this.tabMantenimiento.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.btnCancelarInserción);
             this.panel1.Controls.Add(this.btnActualizarVehículo);
             this.panel1.Controls.Add(this.btInsertarVehículo);
@@ -926,7 +1012,7 @@ namespace CapaPresentación
             this.panel1.Controls.Add(this.etiquetaIdVehiculo);
             this.panel1.Location = new System.Drawing.Point(7, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(833, 471);
+            this.panel1.Size = new System.Drawing.Size(833, 494);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -934,7 +1020,7 @@ namespace CapaPresentación
             // 
             this.btnCancelarInserción.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarInserción.ForeColor = System.Drawing.Color.DeepPink;
-            this.btnCancelarInserción.Location = new System.Drawing.Point(631, 388);
+            this.btnCancelarInserción.Location = new System.Drawing.Point(578, 409);
             this.btnCancelarInserción.Name = "btnCancelarInserción";
             this.btnCancelarInserción.Size = new System.Drawing.Size(176, 57);
             this.btnCancelarInserción.TabIndex = 16;
@@ -946,7 +1032,7 @@ namespace CapaPresentación
             // 
             this.btnActualizarVehículo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizarVehículo.ForeColor = System.Drawing.Color.Lime;
-            this.btnActualizarVehículo.Location = new System.Drawing.Point(199, 388);
+            this.btnActualizarVehículo.Location = new System.Drawing.Point(317, 409);
             this.btnActualizarVehículo.Name = "btnActualizarVehículo";
             this.btnActualizarVehículo.Size = new System.Drawing.Size(176, 57);
             this.btnActualizarVehículo.TabIndex = 15;
@@ -958,7 +1044,7 @@ namespace CapaPresentación
             // 
             this.btInsertarVehículo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btInsertarVehículo.ForeColor = System.Drawing.Color.Lime;
-            this.btInsertarVehículo.Location = new System.Drawing.Point(33, 388);
+            this.btInsertarVehículo.Location = new System.Drawing.Point(80, 409);
             this.btInsertarVehículo.Name = "btInsertarVehículo";
             this.btInsertarVehículo.Size = new System.Drawing.Size(146, 57);
             this.btInsertarVehículo.TabIndex = 14;
@@ -1017,6 +1103,7 @@ namespace CapaPresentación
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.CornflowerBlue;
             this.panel2.Controls.Add(this.ElComboTipoAutomovil);
             this.panel2.Controls.Add(this.textPuertas);
             this.panel2.Controls.Add(this.textBxIdAutomóvil);
@@ -1030,6 +1117,7 @@ namespace CapaPresentación
             // 
             // ElComboTipoAutomovil
             // 
+            this.ElComboTipoAutomovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ElComboTipoAutomovil.FormattingEnabled = true;
             this.ElComboTipoAutomovil.Items.AddRange(new object[] {
             "compacto",
@@ -1037,54 +1125,58 @@ namespace CapaPresentación
             "monovolumen",
             "utilitario",
             "lujo"});
-            this.ElComboTipoAutomovil.Location = new System.Drawing.Point(233, 169);
+            this.ElComboTipoAutomovil.Location = new System.Drawing.Point(250, 220);
             this.ElComboTipoAutomovil.Name = "ElComboTipoAutomovil";
-            this.ElComboTipoAutomovil.Size = new System.Drawing.Size(159, 30);
+            this.ElComboTipoAutomovil.Size = new System.Drawing.Size(159, 37);
             this.ElComboTipoAutomovil.TabIndex = 16;
             this.ElComboTipoAutomovil.Text = "compacto";
             this.ElComboTipoAutomovil.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textPuertas
             // 
-            this.textPuertas.Location = new System.Drawing.Point(233, 80);
+            this.textPuertas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPuertas.ForeColor = System.Drawing.Color.YellowGreen;
+            this.textPuertas.Location = new System.Drawing.Point(210, 121);
             this.textPuertas.Name = "textPuertas";
-            this.textPuertas.Size = new System.Drawing.Size(168, 28);
+            this.textPuertas.Size = new System.Drawing.Size(199, 35);
             this.textPuertas.TabIndex = 15;
             // 
             // textBxIdAutomóvil
             // 
-            this.textBxIdAutomóvil.Location = new System.Drawing.Point(233, 21);
+            this.textBxIdAutomóvil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBxIdAutomóvil.ForeColor = System.Drawing.Color.YellowGreen;
+            this.textBxIdAutomóvil.Location = new System.Drawing.Point(233, 30);
             this.textBxIdAutomóvil.Name = "textBxIdAutomóvil";
-            this.textBxIdAutomóvil.Size = new System.Drawing.Size(168, 28);
+            this.textBxIdAutomóvil.Size = new System.Drawing.Size(176, 35);
             this.textBxIdAutomóvil.TabIndex = 14;
             // 
             // etiquetaTipo
             // 
             this.etiquetaTipo.AutoSize = true;
-            this.etiquetaTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.etiquetaTipo.Location = new System.Drawing.Point(3, 165);
+            this.etiquetaTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.etiquetaTipo.Location = new System.Drawing.Point(3, 219);
             this.etiquetaTipo.Name = "etiquetaTipo";
-            this.etiquetaTipo.Size = new System.Drawing.Size(67, 29);
+            this.etiquetaTipo.Size = new System.Drawing.Size(75, 32);
             this.etiquetaTipo.TabIndex = 8;
             this.etiquetaTipo.Text = "Tipo";
             // 
             // etiquetaPuertasAutomóvil
             // 
             this.etiquetaPuertasAutomóvil.AutoSize = true;
-            this.etiquetaPuertasAutomóvil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.etiquetaPuertasAutomóvil.Location = new System.Drawing.Point(3, 76);
+            this.etiquetaPuertasAutomóvil.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.etiquetaPuertasAutomóvil.Location = new System.Drawing.Point(3, 121);
             this.etiquetaPuertasAutomóvil.Name = "etiquetaPuertasAutomóvil";
-            this.etiquetaPuertasAutomóvil.Size = new System.Drawing.Size(102, 29);
+            this.etiquetaPuertasAutomóvil.Size = new System.Drawing.Size(120, 32);
             this.etiquetaPuertasAutomóvil.TabIndex = 6;
             this.etiquetaPuertasAutomóvil.Text = "Puertas";
             // 
             // etiquetaIdAutomóvil
             // 
             this.etiquetaIdAutomóvil.AutoSize = true;
-            this.etiquetaIdAutomóvil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.etiquetaIdAutomóvil.Location = new System.Drawing.Point(3, 17);
+            this.etiquetaIdAutomóvil.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.etiquetaIdAutomóvil.Location = new System.Drawing.Point(3, 30);
             this.etiquetaIdAutomóvil.Name = "etiquetaIdAutomóvil";
-            this.etiquetaIdAutomóvil.Size = new System.Drawing.Size(156, 29);
+            this.etiquetaIdAutomóvil.Size = new System.Drawing.Size(183, 32);
             this.etiquetaIdAutomóvil.TabIndex = 5;
             this.etiquetaIdAutomóvil.Text = "Id Automóvil";
             // 
@@ -1101,6 +1193,7 @@ namespace CapaPresentación
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.Beige;
             this.panel3.Controls.Add(this.textBxCilindrada);
             this.panel3.Controls.Add(this.textBxIdMoto);
             this.panel3.Controls.Add(this.etiquetaCilindrada);
@@ -1112,35 +1205,37 @@ namespace CapaPresentación
             // 
             // textBxCilindrada
             // 
-            this.textBxCilindrada.Location = new System.Drawing.Point(244, 93);
+            this.textBxCilindrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBxCilindrada.Location = new System.Drawing.Point(198, 105);
             this.textBxCilindrada.Name = "textBxCilindrada";
-            this.textBxCilindrada.Size = new System.Drawing.Size(168, 28);
+            this.textBxCilindrada.Size = new System.Drawing.Size(214, 35);
             this.textBxCilindrada.TabIndex = 9;
             // 
             // textBxIdMoto
             // 
-            this.textBxIdMoto.Location = new System.Drawing.Point(244, 17);
+            this.textBxIdMoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBxIdMoto.Location = new System.Drawing.Point(198, 14);
             this.textBxIdMoto.Name = "textBxIdMoto";
-            this.textBxIdMoto.Size = new System.Drawing.Size(168, 28);
+            this.textBxIdMoto.Size = new System.Drawing.Size(214, 35);
             this.textBxIdMoto.TabIndex = 8;
             // 
             // etiquetaCilindrada
             // 
             this.etiquetaCilindrada.AutoSize = true;
-            this.etiquetaCilindrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.etiquetaCilindrada.Location = new System.Drawing.Point(14, 89);
+            this.etiquetaCilindrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.etiquetaCilindrada.Location = new System.Drawing.Point(14, 105);
             this.etiquetaCilindrada.Name = "etiquetaCilindrada";
-            this.etiquetaCilindrada.Size = new System.Drawing.Size(133, 29);
+            this.etiquetaCilindrada.Size = new System.Drawing.Size(155, 32);
             this.etiquetaCilindrada.TabIndex = 7;
             this.etiquetaCilindrada.Text = "Cilindrada";
             // 
             // etiquetaIdMoto
             // 
             this.etiquetaIdMoto.AutoSize = true;
-            this.etiquetaIdMoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.etiquetaIdMoto.Location = new System.Drawing.Point(14, 17);
+            this.etiquetaIdMoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.etiquetaIdMoto.Location = new System.Drawing.Point(14, 19);
             this.etiquetaIdMoto.Name = "etiquetaIdMoto";
-            this.etiquetaIdMoto.Size = new System.Drawing.Size(100, 29);
+            this.etiquetaIdMoto.Size = new System.Drawing.Size(115, 32);
             this.etiquetaIdMoto.TabIndex = 6;
             this.etiquetaIdMoto.Text = "Id Moto";
             // 
@@ -1187,22 +1282,23 @@ namespace CapaPresentación
             this.etiquetaIdVehiculo.TabIndex = 0;
             this.etiquetaIdVehiculo.Text = "Id Vehiculo";
             // 
-            // tabPage1
+            // tabVehiculos
             // 
-            this.tabPage1.Controls.Add(this.panel4);
-            this.tabPage1.Controls.Add(this.btnBuscador);
-            this.tabPage1.Controls.Add(this.txtBuscar);
-            this.tabPage1.Controls.Add(this.labelTotal);
-            this.tabPage1.Controls.Add(this.dgvDatos);
-            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(846, 514);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Listado";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click_2);
+            this.tabVehiculos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabVehiculos.BackgroundImage")));
+            this.tabVehiculos.Controls.Add(this.panel4);
+            this.tabVehiculos.Controls.Add(this.btnBuscador);
+            this.tabVehiculos.Controls.Add(this.txtBuscar);
+            this.tabVehiculos.Controls.Add(this.labelTotal);
+            this.tabVehiculos.Controls.Add(this.dgvDatos);
+            this.tabVehiculos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabVehiculos.Location = new System.Drawing.Point(4, 34);
+            this.tabVehiculos.Name = "tabVehiculos";
+            this.tabVehiculos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabVehiculos.Size = new System.Drawing.Size(847, 509);
+            this.tabVehiculos.TabIndex = 0;
+            this.tabVehiculos.Text = "Vehículos";
+            this.tabVehiculos.UseVisualStyleBackColor = true;
+            this.tabVehiculos.Click += new System.EventHandler(this.tabPage1_Click_2);
             // 
             // panel4
             // 
@@ -1210,16 +1306,16 @@ namespace CapaPresentación
             this.panel4.Controls.Add(this.Diagnose);
             this.panel4.Controls.Add(this.chkSelect);
             this.panel4.Controls.Add(this.btEliminar);
-            this.panel4.Location = new System.Drawing.Point(721, 89);
+            this.panel4.Location = new System.Drawing.Point(488, 13);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(129, 418);
+            this.panel4.Size = new System.Drawing.Size(352, 33);
             this.panel4.TabIndex = 4;
             // 
             // Diagnose
             // 
-            this.Diagnose.Location = new System.Drawing.Point(5, 63);
+            this.Diagnose.Location = new System.Drawing.Point(136, 3);
             this.Diagnose.Name = "Diagnose";
-            this.Diagnose.Size = new System.Drawing.Size(118, 35);
+            this.Diagnose.Size = new System.Drawing.Size(113, 26);
             this.Diagnose.TabIndex = 5;
             this.Diagnose.Text = "Dignosticar";
             this.Diagnose.UseVisualStyleBackColor = true;
@@ -1228,20 +1324,21 @@ namespace CapaPresentación
             // chkSelect
             // 
             this.chkSelect.AutoSize = true;
+            this.chkSelect.BackColor = System.Drawing.Color.YellowGreen;
             this.chkSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelect.Location = new System.Drawing.Point(5, 13);
+            this.chkSelect.Location = new System.Drawing.Point(12, 5);
             this.chkSelect.Name = "chkSelect";
             this.chkSelect.Size = new System.Drawing.Size(118, 24);
             this.chkSelect.TabIndex = 4;
             this.chkSelect.Text = "Seleccionar";
-            this.chkSelect.UseVisualStyleBackColor = true;
+            this.chkSelect.UseVisualStyleBackColor = false;
             this.chkSelect.CheckedChanged += new System.EventHandler(this.chkSelect_CheckedChanged);
             // 
             // btEliminar
             // 
-            this.btEliminar.Location = new System.Drawing.Point(5, 117);
+            this.btEliminar.Location = new System.Drawing.Point(255, 4);
             this.btEliminar.Name = "btEliminar";
-            this.btEliminar.Size = new System.Drawing.Size(118, 36);
+            this.btEliminar.Size = new System.Drawing.Size(94, 25);
             this.btEliminar.TabIndex = 7;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = true;
@@ -1249,17 +1346,18 @@ namespace CapaPresentación
             // 
             // btnBuscador
             // 
-            this.btnBuscador.Location = new System.Drawing.Point(637, 23);
+            this.btnBuscador.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnBuscador.Location = new System.Drawing.Point(312, 13);
             this.btnBuscador.Name = "btnBuscador";
-            this.btnBuscador.Size = new System.Drawing.Size(170, 39);
+            this.btnBuscador.Size = new System.Drawing.Size(170, 33);
             this.btnBuscador.TabIndex = 3;
             this.btnBuscador.Text = "Buscar";
-            this.btnBuscador.UseVisualStyleBackColor = true;
+            this.btnBuscador.UseVisualStyleBackColor = false;
             this.btnBuscador.Click += new System.EventHandler(this.btnBuscador_Click);
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(42, 29);
+            this.txtBuscar.Location = new System.Drawing.Point(16, 14);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(290, 28);
             this.txtBuscar.TabIndex = 2;
@@ -1282,13 +1380,21 @@ namespace CapaPresentación
             this.dgvDatos.ColumnHeadersHeight = 34;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select});
-            this.dgvDatos.Location = new System.Drawing.Point(3, 89);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.OldLace;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvDatos.Location = new System.Drawing.Point(70, 65);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersWidth = 30;
             this.dgvDatos.RowTemplate.Height = 23;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(712, 418);
+            this.dgvDatos.Size = new System.Drawing.Size(709, 422);
             this.dgvDatos.TabIndex = 0;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
@@ -1307,33 +1413,19 @@ namespace CapaPresentación
             // 
             // tabControlPrincipal
             // 
-            this.tabControlPrincipal.Controls.Add(this.tabPage1);
-            this.tabControlPrincipal.Controls.Add(this.tabPage3);
+            this.tabControlPrincipal.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
+            this.tabControlPrincipal.Appearance = System.Windows.Forms.TabAppearance.Buttons;
+            this.tabControlPrincipal.Controls.Add(this.tabVehiculos);
+            this.tabControlPrincipal.Controls.Add(this.tabMantenimiento);
             this.tabControlPrincipal.Controls.Add(this.tabPageDesperfectos);
             this.tabControlPrincipal.Controls.Add(this.tabPageRepuestos);
-            this.tabControlPrincipal.Controls.Add(this.tabPage5);
+            this.tabControlPrincipal.Controls.Add(this.tabPresupuestacion);
+            this.tabControlPrincipal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControlPrincipal.Location = new System.Drawing.Point(1, 12);
             this.tabControlPrincipal.Name = "tabControlPrincipal";
             this.tabControlPrincipal.SelectedIndex = 0;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(854, 547);
+            this.tabControlPrincipal.Size = new System.Drawing.Size(855, 547);
             this.tabControlPrincipal.TabIndex = 0;
-            // 
-            // labelSubTotal
-            // 
-            this.labelSubTotal.AutoSize = true;
-            this.labelSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSubTotal.Location = new System.Drawing.Point(16, 219);
-            this.labelSubTotal.Name = "labelSubTotal";
-            this.labelSubTotal.Size = new System.Drawing.Size(119, 29);
-            this.labelSubTotal.TabIndex = 27;
-            this.labelSubTotal.Text = "SubTotal";
-            // 
-            // textBoxSubTotal
-            // 
-            this.textBoxSubTotal.Location = new System.Drawing.Point(237, 223);
-            this.textBoxSubTotal.Name = "textBoxSubTotal";
-            this.textBoxSubTotal.Size = new System.Drawing.Size(168, 26);
-            this.textBoxSubTotal.TabIndex = 28;
             // 
             // Inicio
             // 
@@ -1351,6 +1443,7 @@ namespace CapaPresentación
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -1367,10 +1460,14 @@ namespace CapaPresentación
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDesperfectos)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
+            this.tabPresupuestacion.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.tabMantenimiento.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.selectorTipoVehículo.ResumeLayout(false);
@@ -1380,8 +1477,8 @@ namespace CapaPresentación
             this.tabMoto.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabVehiculos.ResumeLayout(false);
+            this.tabVehiculos.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
@@ -1411,7 +1508,7 @@ namespace CapaPresentación
         private masterDataSetTableAdapters.RepuestoTableAdapter repuestoTableAdapter;
         private BindingSource repuestoBindingSource1;
         private TabControl tabControlPrincipal;
-        private TabPage tabPage1;
+        private TabPage tabVehiculos;
         private Panel panel4;
         private Button Diagnose;
         private CheckBox chkSelect;
@@ -1421,7 +1518,7 @@ namespace CapaPresentación
         private Label labelTotal;
         private DataGridView dgvDatos;
         private new DataGridViewCheckBoxColumn Select;
-        private TabPage tabPage3;
+        private TabPage tabMantenimiento;
         private Panel panel1;
         private Button btnCancelarInserción;
         private Button btnActualizarVehículo;
@@ -1494,21 +1591,21 @@ namespace CapaPresentación
         private Label labelPrecioRepuesto;
         private Label labelNombreRepuesto;
         private Label labelAgregarNuevoRepuesto;
-        private TabPage tabPage5;
+        private TabPage tabPresupuestacion;
         private Panel panel6;
-        private TextBox TotalPresupuesto;
-        private Label label17;
+        private TextBox TotalPresupuestoConsumidor;
+        private Label labelTotalConsumidor;
         private TextBox txRepuestosTotal;
-        private Label label16;
+        private Label labelCostoRepuestos;
         private Button button4;
         private Button button3;
         private TextBox txBoxEstacionamiento;
         private TextBox txManoDeObra;
         private TextBox txBoxDescuento;
         private TextBox txBoxRecargo;
-        private Label label15;
-        private Label label14;
-        private Label label13;
+        private Label labelCostoEstacionamiento;
+        private Label labelManoDeObra;
+        private Label labelDescuento;
         private Label label12;
         private TextBox txBoxEmail;
         private TextBox txBoxApellido;
@@ -1518,6 +1615,11 @@ namespace CapaPresentación
         private Label label7;
         private TextBox textBoxSubTotal;
         private Label labelSubTotal;
+        private TextBox textBoxTiempoTotal;
+        private Label labelTiempoTotal;
+        private Panel panel5;
+        private Panel panel16;
+        private Label labelDesperfecto;
 
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
