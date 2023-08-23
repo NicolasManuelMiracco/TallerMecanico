@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using CapaLogica;
@@ -778,12 +779,10 @@ namespace CapaPresentación
             return "OK";
         }
 
-        private string insertarDesperfecto()
+        private ModeloDesperfecto insertarDesperfecto()
         {
-            string respuesta = "";
-            // Se agrega el desperfecto que está siendo configurado, al presupuesto que está siendo creado
-            respuesta = logicaDesperfecto.Insertar(presupuesto, textBoxDesperfectoDescripcion.Text, Convert.ToDouble(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
-            return respuesta;
+            // Se agrega el desperfecto que está siendo configurado, al presupuesto que está siendo creado y se retorna para ser agregado como nuevo desperfecto del presupuesto
+            return logicaDesperfecto.Insertar(presupuesto, textBoxDesperfectoDescripcion.Text, Convert.ToDouble(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
         }
 
         /// <summary>
@@ -841,15 +840,32 @@ namespace CapaPresentación
             //chkSelect.Checked = false;
         }
 
+        private void agregarADesperfectos(ModeloDesperfecto nuevoModeloDesperfecto)
+        {
+            try
+            {
+                //dataGridViewDesperfectos.DataSource = logicaDesperfecto.Listar(presupuesto.Id);
+                
+                //this.dataGridViewDesperfectos.Rows.Add("Sel", "RE", "RF", "Id", "Descripcion", "ManoDeObra", "Tiempo");
+                this.dataGridViewDesperfectos.Rows.Insert(0, false, "", "", nuevoModeloDesperfecto.Id.ToString(), nuevoModeloDesperfecto.Descripcion.ToString(), nuevoModeloDesperfecto.ManoDeObra.ToString(), nuevoModeloDesperfecto.Tiempo.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
         private void buttonAgregarDesperfecto_Click(object sender, EventArgs e)
         {
             if (tratamientoDatosDesperfecto() == "OK")
             {
                 try
                 {
-                    if (insertarDesperfecto() == "OK")
+                    ModeloDesperfecto nuevoModeloDesperfecto = this.insertarDesperfecto();
+                    if (nuevoModeloDesperfecto != null)
                     {
                         //this.MessageOk("Se insertó correctamente el Desperfecto");
+                        //this.agregarADesperfectos(nuevoModeloDesperfecto);
                         this.listarDesperfectos();
                         this.limpiarDesperfecto();
                     }
@@ -1080,6 +1096,34 @@ namespace CapaPresentación
                 // limpiar Desperfectos???
                 this.formatoDesperfectos();
                 
+            }
+        }
+        /// <summary>
+        /// Se cancela modificación de repuestos para el desperfecto activo y se regresa a pestaña Desperfectos
+        /// </summary>        
+        private void buttonRegresarMenuDesperfectos_Click(object sender, EventArgs e)
+        {
+            this.tabControlPrincipal.SelectedIndex = 4;            
+            this.formatoDesperfectos();
+        }
+
+        private void buttonCancelarDesperfecto_Click(object sender, EventArgs e)
+        {
+            DialogResult Opcion = MessageBox.Show("¿Abandonar la carga de Desperfectos?", "Tratamiento de Desperfectos", MessageBoxButtons.OKCancel);
+            if (Opcion == DialogResult.OK)
+            {
+                //Regreso a la pestaña de selección de Vehículos. 
+                this.tabControlPrincipal.SelectedIndex = 0;
+            }            
+        }
+
+        private void buttonPresupuestar_Click(object sender, EventArgs e)
+        {
+            DialogResult Opcion = MessageBox.Show("¿Confirma el Presupuesto?", "Tratamiento de Desperfectos", MessageBoxButtons.OKCancel);
+            if (Opcion == DialogResult.OK)
+            {
+                //Regreso a la pestaña de selección de Vehículos. 
+                this.tabControlPrincipal.SelectedIndex = 3;
             }
         }
     }

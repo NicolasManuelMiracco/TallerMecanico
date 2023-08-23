@@ -33,19 +33,81 @@ namespace CapaPresentación
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            this.tabControlPrincipal = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Diagnose = new System.Windows.Forms.Button();
-            this.chkSelect = new System.Windows.Forms.CheckBox();
-            this.btnPresupuestar = new System.Windows.Forms.Button();
-            this.btEliminar = new System.Windows.Forms.Button();
-            this.btnBuscador = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.labelTotal = new System.Windows.Forms.Label();
-            this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.masterDataSet = new CapaPresentación.masterDataSet();
+            this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.error = new System.Windows.Forms.ErrorProvider(this.components);
+            this.repuestoTableAdapter = new CapaPresentación.masterDataSetTableAdapters.RepuestoTableAdapter();
+            this.tabPageRepuestos = new System.Windows.Forms.TabPage();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.buttonRegresarMenuDesperfectos = new System.Windows.Forms.Button();
+            this.buttonAgregarRepuestosDesperfecto = new System.Windows.Forms.Button();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.comboBoxRepuestosExistentes = new System.Windows.Forms.ComboBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.labelNombreRepuestoExistente = new System.Windows.Forms.Label();
+            this.labelSeleccionarRepuestoExistente = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.dgvRepuestos = new System.Windows.Forms.DataGridView();
+            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.labelRapuestosAsignados = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBoxPrecioNuevoRepuesto = new System.Windows.Forms.TextBox();
+            this.textBoxNombreNuevoRepuesto = new System.Windows.Forms.TextBox();
+            this.labelPrecioRepuesto = new System.Windows.Forms.Label();
+            this.labelNombreRepuesto = new System.Windows.Forms.Label();
+            this.labelAgregarNuevoRepuesto = new System.Windows.Forms.Label();
+            this.tabPageDesperfectos = new System.Windows.Forms.TabPage();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.buttonPresupuestar = new System.Windows.Forms.Button();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.labelInfoContexto = new System.Windows.Forms.Label();
+            this.labelDobleClickRepuestos = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.dataGridViewDesperfectos = new CapaPresentación.GrillaDesperfectos();
+            this.SeleccionarDesperfecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.RE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelDesperfectosAsignados = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.buttonCancelarDesperfecto = new System.Windows.Forms.Button();
+            this.buttonAgregarDesperfecto = new System.Windows.Forms.Button();
+            this.textBoxDesperfectoTiempo = new System.Windows.Forms.TextBox();
+            this.textBoxDesperfectoManoDeObra = new System.Windows.Forms.TextBox();
+            this.textBoxDesperfectoDescripcion = new System.Windows.Forms.TextBox();
+            this.labelDesperfectoTiempo = new System.Windows.Forms.Label();
+            this.labelDesperfectoManoDeObra = new System.Windows.Forms.Label();
+            this.labelDescripcionDesperfecto = new System.Windows.Forms.Label();
+            this.labelNuevoDesperfecto = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.TotalPresupuesto = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txRepuestosTotal = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.txBoxEstacionamiento = new System.Windows.Forms.TextBox();
+            this.txManoDeObra = new System.Windows.Forms.TextBox();
+            this.txBoxDescuento = new System.Windows.Forms.TextBox();
+            this.txBoxRecargo = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txBoxEmail = new System.Windows.Forms.TextBox();
+            this.txBoxApellido = new System.Windows.Forms.TextBox();
+            this.txBoxNombre = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dgvDesperfectos = new System.Windows.Forms.DataGridView();
+            this.SelectDesperfecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelarInserción = new System.Windows.Forms.Button();
@@ -74,79 +136,40 @@ namespace CapaPresentación
             this.etiquetaModelo = new System.Windows.Forms.Label();
             this.etiquetaMarca = new System.Windows.Forms.Label();
             this.etiquetaIdVehiculo = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dgvDesperfectos = new System.Windows.Forms.DataGridView();
-            this.SelectDesperfecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.TotalPresupuesto = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txRepuestosTotal = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.txBoxEstacionamiento = new System.Windows.Forms.TextBox();
-            this.txManoDeObra = new System.Windows.Forms.TextBox();
-            this.txBoxDescuento = new System.Windows.Forms.TextBox();
-            this.txBoxRecargo = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txBoxEmail = new System.Windows.Forms.TextBox();
-            this.txBoxApellido = new System.Windows.Forms.TextBox();
-            this.txBoxNombre = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tabPageDiagnóstico = new System.Windows.Forms.TabPage();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.labelDobleClickRepuestos = new System.Windows.Forms.Label();
-            this.dataGridViewDesperfectos = new CapaPresentación.GrillaDesperfectos();
-            this.SeleccionarDesperfecto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.RE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelDesperfectosAsignados = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.buttonAgregarDesperfecto = new System.Windows.Forms.Button();
-            this.textBoxDesperfectoTiempo = new System.Windows.Forms.TextBox();
-            this.textBoxDesperfectoManoDeObra = new System.Windows.Forms.TextBox();
-            this.textBoxDesperfectoDescripcion = new System.Windows.Forms.TextBox();
-            this.labelDesperfectoTiempo = new System.Windows.Forms.Label();
-            this.labelDesperfectoManoDeObra = new System.Windows.Forms.Label();
-            this.labelDescripcionDesperfecto = new System.Windows.Forms.Label();
-            this.labelNuevoDesperfecto = new System.Windows.Forms.Label();
-            this.tabPageRepuestos = new System.Windows.Forms.TabPage();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.buttonAgregarRepuestosDesperfecto = new System.Windows.Forms.Button();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.comboBoxRepuestosExistentes = new System.Windows.Forms.ComboBox();
-            this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.masterDataSet = new CapaPresentación.masterDataSet();
-            this.button6 = new System.Windows.Forms.Button();
-            this.labelNombreRepuestoExistente = new System.Windows.Forms.Label();
-            this.labelSeleccionarRepuestoExistente = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.dgvRepuestos = new System.Windows.Forms.DataGridView();
-            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.labelRapuestosAsignados = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBoxPrecioNuevoRepuesto = new System.Windows.Forms.TextBox();
-            this.textBoxNombreNuevoRepuesto = new System.Windows.Forms.TextBox();
-            this.labelPrecioRepuesto = new System.Windows.Forms.Label();
-            this.labelNombreRepuesto = new System.Windows.Forms.Label();
-            this.labelAgregarNuevoRepuesto = new System.Windows.Forms.Label();
-            this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.error = new System.Windows.Forms.ErrorProvider(this.components);
-            this.repuestoTableAdapter = new CapaPresentación.masterDataSetTableAdapters.RepuestoTableAdapter();
-            this.tabControlPrincipal.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Diagnose = new System.Windows.Forms.Button();
+            this.chkSelect = new System.Windows.Forms.CheckBox();
+            this.btnPresupuestar = new System.Windows.Forms.Button();
+            this.btEliminar = new System.Windows.Forms.Button();
+            this.btnBuscador = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.labelTotal = new System.Windows.Forms.Label();
+            this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabControlPrincipal = new System.Windows.Forms.TabControl();
+            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
+            this.tabPageRepuestos.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRepuestos)).BeginInit();
+            this.panel9.SuspendLayout();
+            this.tabPageDesperfectos.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDesperfectos)).BeginInit();
+            this.panel7.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDesperfectos)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.selectorTipoVehículo.SuspendLayout();
@@ -154,180 +177,765 @@ namespace CapaPresentación
             this.panel2.SuspendLayout();
             this.tabMoto.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDesperfectos)).BeginInit();
-            this.tabPage5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.tabPageDiagnóstico.SuspendLayout();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDesperfectos)).BeginInit();
-            this.panel7.SuspendLayout();
-            this.tabPageRepuestos.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
-            this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRepuestos)).BeginInit();
-            this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            this.tabControlPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControlPrincipal
+            // repuestoBindingSource
             // 
-            this.tabControlPrincipal.Controls.Add(this.tabPage1);
-            this.tabControlPrincipal.Controls.Add(this.tabPage3);
-            this.tabControlPrincipal.Controls.Add(this.tabPage4);
-            this.tabControlPrincipal.Controls.Add(this.tabPage5);
-            this.tabControlPrincipal.Controls.Add(this.tabPageDiagnóstico);
-            this.tabControlPrincipal.Controls.Add(this.tabPageRepuestos);
-            this.tabControlPrincipal.Location = new System.Drawing.Point(1, 12);
-            this.tabControlPrincipal.Name = "tabControlPrincipal";
-            this.tabControlPrincipal.SelectedIndex = 0;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(854, 547);
-            this.tabControlPrincipal.TabIndex = 0;
+            this.repuestoBindingSource.DataMember = "Repuesto";
+            this.repuestoBindingSource.DataSource = this.masterDataSet;
             // 
-            // tabPage1
+            // masterDataSet
             // 
-            this.tabPage1.Controls.Add(this.panel4);
-            this.tabPage1.Controls.Add(this.btnBuscador);
-            this.tabPage1.Controls.Add(this.txtBuscar);
-            this.tabPage1.Controls.Add(this.labelTotal);
-            this.tabPage1.Controls.Add(this.dgvDatos);
-            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(846, 514);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Listado";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click_2);
+            this.masterDataSet.DataSetName = "masterDataSet";
+            this.masterDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // panel4
+            // repuestoBindingSource1
             // 
-            this.panel4.BackColor = System.Drawing.Color.Bisque;
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.Diagnose);
-            this.panel4.Controls.Add(this.chkSelect);
-            this.panel4.Controls.Add(this.btnPresupuestar);
-            this.panel4.Controls.Add(this.btEliminar);
-            this.panel4.Location = new System.Drawing.Point(684, 89);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(166, 418);
-            this.panel4.TabIndex = 4;
+            this.repuestoBindingSource1.DataMember = "Repuesto";
+            this.repuestoBindingSource1.DataSource = this.masterDataSet;
             // 
-            // label6
+            // error
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(18, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(138, 17);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "doble click to update";
+            this.error.ContainerControl = this;
             // 
-            // Diagnose
+            // repuestoTableAdapter
             // 
-            this.Diagnose.Location = new System.Drawing.Point(21, 130);
-            this.Diagnose.Name = "Diagnose";
-            this.Diagnose.Size = new System.Drawing.Size(135, 25);
-            this.Diagnose.TabIndex = 5;
-            this.Diagnose.Text = "Dignosticar";
-            this.Diagnose.UseVisualStyleBackColor = true;
-            this.Diagnose.Click += new System.EventHandler(this.Activate_Click);
+            this.repuestoTableAdapter.ClearBeforeFill = true;
             // 
-            // chkSelect
+            // tabPageRepuestos
             // 
-            this.chkSelect.AutoSize = true;
-            this.chkSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelect.Location = new System.Drawing.Point(24, 38);
-            this.chkSelect.Name = "chkSelect";
-            this.chkSelect.Size = new System.Drawing.Size(118, 24);
-            this.chkSelect.TabIndex = 4;
-            this.chkSelect.Text = "Seleccionar";
-            this.chkSelect.UseVisualStyleBackColor = true;
-            this.chkSelect.CheckedChanged += new System.EventHandler(this.chkSelect_CheckedChanged);
+            this.tabPageRepuestos.Controls.Add(this.panel12);
+            this.tabPageRepuestos.Controls.Add(this.panel11);
+            this.tabPageRepuestos.Controls.Add(this.panel10);
+            this.tabPageRepuestos.Controls.Add(this.panel9);
+            this.tabPageRepuestos.Location = new System.Drawing.Point(4, 29);
+            this.tabPageRepuestos.Name = "tabPageRepuestos";
+            this.tabPageRepuestos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageRepuestos.Size = new System.Drawing.Size(846, 514);
+            this.tabPageRepuestos.TabIndex = 5;
+            this.tabPageRepuestos.Text = "Repuestos";
+            this.tabPageRepuestos.UseVisualStyleBackColor = true;
             // 
-            // btnPresupuestar
+            // panel12
             // 
-            this.btnPresupuestar.Location = new System.Drawing.Point(21, 99);
-            this.btnPresupuestar.Name = "btnPresupuestar";
-            this.btnPresupuestar.Size = new System.Drawing.Size(135, 25);
-            this.btnPresupuestar.TabIndex = 6;
-            this.btnPresupuestar.Text = "Presupuestar";
-            this.btnPresupuestar.UseVisualStyleBackColor = true;
-            this.btnPresupuestar.Click += new System.EventHandler(this.btnPresupuestar_Click);
+            this.panel12.Controls.Add(this.buttonRegresarMenuDesperfectos);
+            this.panel12.Controls.Add(this.buttonAgregarRepuestosDesperfecto);
+            this.panel12.Location = new System.Drawing.Point(7, 366);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(206, 139);
+            this.panel12.TabIndex = 9;
             // 
-            // btEliminar
+            // buttonRegresarMenuDesperfectos
             // 
-            this.btEliminar.Location = new System.Drawing.Point(21, 68);
-            this.btEliminar.Name = "btEliminar";
-            this.btEliminar.Size = new System.Drawing.Size(135, 25);
-            this.btEliminar.TabIndex = 7;
-            this.btEliminar.Text = "Eliminar";
-            this.btEliminar.UseVisualStyleBackColor = true;
-            this.btEliminar.Click += new System.EventHandler(this.btEliminar_Click);
+            this.buttonRegresarMenuDesperfectos.BackColor = System.Drawing.Color.OrangeRed;
+            this.buttonRegresarMenuDesperfectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRegresarMenuDesperfectos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonRegresarMenuDesperfectos.Location = new System.Drawing.Point(25, 86);
+            this.buttonRegresarMenuDesperfectos.Name = "buttonRegresarMenuDesperfectos";
+            this.buttonRegresarMenuDesperfectos.Size = new System.Drawing.Size(157, 50);
+            this.buttonRegresarMenuDesperfectos.TabIndex = 10;
+            this.buttonRegresarMenuDesperfectos.Text = "Regresar Menú Desperfectos";
+            this.buttonRegresarMenuDesperfectos.UseVisualStyleBackColor = false;
+            this.buttonRegresarMenuDesperfectos.Click += new System.EventHandler(this.buttonRegresarMenuDesperfectos_Click);
             // 
-            // btnBuscador
+            // buttonAgregarRepuestosDesperfecto
             // 
-            this.btnBuscador.Location = new System.Drawing.Point(637, 23);
-            this.btnBuscador.Name = "btnBuscador";
-            this.btnBuscador.Size = new System.Drawing.Size(170, 39);
-            this.btnBuscador.TabIndex = 3;
-            this.btnBuscador.Text = "Buscar";
-            this.btnBuscador.UseVisualStyleBackColor = true;
-            this.btnBuscador.Click += new System.EventHandler(this.btnBuscador_Click);
+            this.buttonAgregarRepuestosDesperfecto.BackColor = System.Drawing.Color.OliveDrab;
+            this.buttonAgregarRepuestosDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAgregarRepuestosDesperfecto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonAgregarRepuestosDesperfecto.Location = new System.Drawing.Point(25, 13);
+            this.buttonAgregarRepuestosDesperfecto.Name = "buttonAgregarRepuestosDesperfecto";
+            this.buttonAgregarRepuestosDesperfecto.Size = new System.Drawing.Size(157, 50);
+            this.buttonAgregarRepuestosDesperfecto.TabIndex = 9;
+            this.buttonAgregarRepuestosDesperfecto.Text = "Agregar repuestos al desperfecto";
+            this.buttonAgregarRepuestosDesperfecto.UseVisualStyleBackColor = false;
+            this.buttonAgregarRepuestosDesperfecto.Click += new System.EventHandler(this.buttonAgregarRepuestosDesperfecto_Click_1);
             // 
-            // txtBuscar
+            // panel11
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(42, 29);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(290, 28);
-            this.txtBuscar.TabIndex = 2;
+            this.panel11.Controls.Add(this.comboBoxRepuestosExistentes);
+            this.panel11.Controls.Add(this.button6);
+            this.panel11.Controls.Add(this.labelNombreRepuestoExistente);
+            this.panel11.Controls.Add(this.labelSeleccionarRepuestoExistente);
+            this.panel11.Location = new System.Drawing.Point(7, 208);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(206, 152);
+            this.panel11.TabIndex = 8;
             // 
-            // labelTotal
+            // comboBoxRepuestosExistentes
             // 
-            this.labelTotal.AutoSize = true;
-            this.labelTotal.Location = new System.Drawing.Point(1602, 938);
-            this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(51, 22);
-            this.labelTotal.TabIndex = 1;
-            this.labelTotal.Text = "Total";
+            this.comboBoxRepuestosExistentes.DataSource = this.repuestoBindingSource;
+            this.comboBoxRepuestosExistentes.DisplayMember = "Nombre";
+            this.comboBoxRepuestosExistentes.FormattingEnabled = true;
+            this.comboBoxRepuestosExistentes.Location = new System.Drawing.Point(43, 50);
+            this.comboBoxRepuestosExistentes.Name = "comboBoxRepuestosExistentes";
+            this.comboBoxRepuestosExistentes.Size = new System.Drawing.Size(145, 28);
+            this.comboBoxRepuestosExistentes.TabIndex = 8;
+            this.comboBoxRepuestosExistentes.ValueMember = "Id";
             // 
-            // dgvDatos
+            // button6
             // 
-            this.dgvDatos.AllowUserToAddRows = false;
-            this.dgvDatos.AllowUserToDeleteRows = false;
-            this.dgvDatos.AllowUserToOrderColumns = true;
-            this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvDatos.ColumnHeadersHeight = 34;
-            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Select});
-            this.dgvDatos.Location = new System.Drawing.Point(3, 89);
-            this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.RowHeadersWidth = 30;
-            this.dgvDatos.RowTemplate.Height = 23;
-            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(675, 418);
-            this.dgvDatos.TabIndex = 0;
-            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
-            this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
+            this.button6.BackColor = System.Drawing.Color.LimeGreen;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(25, 104);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(157, 45);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "Agregar existente";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // Select
+            // labelNombreRepuestoExistente
             // 
-            this.Select.FalseValue = "";
-            this.Select.HeaderText = "Select";
-            this.Select.IndeterminateValue = "";
-            this.Select.MinimumWidth = 8;
-            this.Select.Name = "Select";
-            this.Select.ReadOnly = true;
-            this.Select.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Select.TrueValue = "";
-            this.Select.Width = 150;
+            this.labelNombreRepuestoExistente.AutoSize = true;
+            this.labelNombreRepuestoExistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNombreRepuestoExistente.Location = new System.Drawing.Point(3, 51);
+            this.labelNombreRepuestoExistente.Name = "labelNombreRepuestoExistente";
+            this.labelNombreRepuestoExistente.Size = new System.Drawing.Size(45, 22);
+            this.labelNombreRepuestoExistente.TabIndex = 2;
+            this.labelNombreRepuestoExistente.Text = "Sel:";
+            // 
+            // labelSeleccionarRepuestoExistente
+            // 
+            this.labelSeleccionarRepuestoExistente.AutoSize = true;
+            this.labelSeleccionarRepuestoExistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSeleccionarRepuestoExistente.Location = new System.Drawing.Point(3, 9);
+            this.labelSeleccionarRepuestoExistente.Name = "labelSeleccionarRepuestoExistente";
+            this.labelSeleccionarRepuestoExistente.Size = new System.Drawing.Size(196, 25);
+            this.labelSeleccionarRepuestoExistente.TabIndex = 0;
+            this.labelSeleccionarRepuestoExistente.Text = "Repuesto existente";
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.dgvRepuestos);
+            this.panel10.Controls.Add(this.labelRapuestosAsignados);
+            this.panel10.Location = new System.Drawing.Point(219, 6);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(621, 502);
+            this.panel10.TabIndex = 2;
+            // 
+            // dgvRepuestos
+            // 
+            this.dgvRepuestos.AllowUserToAddRows = false;
+            this.dgvRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRepuestos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Sel});
+            this.dgvRepuestos.Location = new System.Drawing.Point(0, 51);
+            this.dgvRepuestos.Name = "dgvRepuestos";
+            this.dgvRepuestos.ReadOnly = true;
+            this.dgvRepuestos.RowHeadersWidth = 62;
+            this.dgvRepuestos.RowTemplate.Height = 28;
+            this.dgvRepuestos.Size = new System.Drawing.Size(607, 448);
+            this.dgvRepuestos.TabIndex = 2;
+            this.dgvRepuestos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRepuestos_CellContentClick);
+            // 
+            // Sel
+            // 
+            this.Sel.HeaderText = "Sel";
+            this.Sel.MinimumWidth = 8;
+            this.Sel.Name = "Sel";
+            this.Sel.ReadOnly = true;
+            this.Sel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Sel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Sel.Width = 150;
+            // 
+            // labelRapuestosAsignados
+            // 
+            this.labelRapuestosAsignados.AutoSize = true;
+            this.labelRapuestosAsignados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRapuestosAsignados.Location = new System.Drawing.Point(93, 10);
+            this.labelRapuestosAsignados.Name = "labelRapuestosAsignados";
+            this.labelRapuestosAsignados.Size = new System.Drawing.Size(219, 25);
+            this.labelRapuestosAsignados.TabIndex = 1;
+            this.labelRapuestosAsignados.Text = "Repuestos asignados";
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.button5);
+            this.panel9.Controls.Add(this.textBoxPrecioNuevoRepuesto);
+            this.panel9.Controls.Add(this.textBoxNombreNuevoRepuesto);
+            this.panel9.Controls.Add(this.labelPrecioRepuesto);
+            this.panel9.Controls.Add(this.labelNombreRepuesto);
+            this.panel9.Controls.Add(this.labelAgregarNuevoRepuesto);
+            this.panel9.Location = new System.Drawing.Point(7, 6);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(206, 196);
+            this.panel9.TabIndex = 1;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.LimeGreen;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(25, 149);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(157, 44);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Agregar nuevo";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // textBoxPrecioNuevoRepuesto
+            // 
+            this.textBoxPrecioNuevoRepuesto.Location = new System.Drawing.Point(66, 100);
+            this.textBoxPrecioNuevoRepuesto.Name = "textBoxPrecioNuevoRepuesto";
+            this.textBoxPrecioNuevoRepuesto.Size = new System.Drawing.Size(122, 26);
+            this.textBoxPrecioNuevoRepuesto.TabIndex = 6;
+            // 
+            // textBoxNombreNuevoRepuesto
+            // 
+            this.textBoxNombreNuevoRepuesto.Location = new System.Drawing.Point(80, 51);
+            this.textBoxNombreNuevoRepuesto.Name = "textBoxNombreNuevoRepuesto";
+            this.textBoxNombreNuevoRepuesto.Size = new System.Drawing.Size(108, 26);
+            this.textBoxNombreNuevoRepuesto.TabIndex = 5;
+            // 
+            // labelPrecioRepuesto
+            // 
+            this.labelPrecioRepuesto.AutoSize = true;
+            this.labelPrecioRepuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrecioRepuesto.Location = new System.Drawing.Point(3, 101);
+            this.labelPrecioRepuesto.Name = "labelPrecioRepuesto";
+            this.labelPrecioRepuesto.Size = new System.Drawing.Size(67, 22);
+            this.labelPrecioRepuesto.TabIndex = 3;
+            this.labelPrecioRepuesto.Text = "Precio";
+            // 
+            // labelNombreRepuesto
+            // 
+            this.labelNombreRepuesto.AutoSize = true;
+            this.labelNombreRepuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNombreRepuesto.Location = new System.Drawing.Point(3, 51);
+            this.labelNombreRepuesto.Name = "labelNombreRepuesto";
+            this.labelNombreRepuesto.Size = new System.Drawing.Size(79, 22);
+            this.labelNombreRepuesto.TabIndex = 2;
+            this.labelNombreRepuesto.Text = "Nombre";
+            // 
+            // labelAgregarNuevoRepuesto
+            // 
+            this.labelAgregarNuevoRepuesto.AutoSize = true;
+            this.labelAgregarNuevoRepuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAgregarNuevoRepuesto.Location = new System.Drawing.Point(20, 10);
+            this.labelAgregarNuevoRepuesto.Name = "labelAgregarNuevoRepuesto";
+            this.labelAgregarNuevoRepuesto.Size = new System.Drawing.Size(168, 25);
+            this.labelAgregarNuevoRepuesto.TabIndex = 0;
+            this.labelAgregarNuevoRepuesto.Text = "Repuesto nuevo";
+            // 
+            // tabPageDesperfectos
+            // 
+            this.tabPageDesperfectos.Controls.Add(this.panel14);
+            this.tabPageDesperfectos.Controls.Add(this.panel13);
+            this.tabPageDesperfectos.Controls.Add(this.panel8);
+            this.tabPageDesperfectos.Controls.Add(this.panel7);
+            this.tabPageDesperfectos.Location = new System.Drawing.Point(4, 29);
+            this.tabPageDesperfectos.Name = "tabPageDesperfectos";
+            this.tabPageDesperfectos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDesperfectos.Size = new System.Drawing.Size(846, 514);
+            this.tabPageDesperfectos.TabIndex = 4;
+            this.tabPageDesperfectos.Text = "Desperfectos";
+            this.tabPageDesperfectos.UseVisualStyleBackColor = true;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.buttonPresupuestar);
+            this.panel14.Location = new System.Drawing.Point(3, 361);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(253, 81);
+            this.panel14.TabIndex = 3;
+            // 
+            // buttonPresupuestar
+            // 
+            this.buttonPresupuestar.BackColor = System.Drawing.Color.LimeGreen;
+            this.buttonPresupuestar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPresupuestar.Location = new System.Drawing.Point(34, 3);
+            this.buttonPresupuestar.Name = "buttonPresupuestar";
+            this.buttonPresupuestar.Size = new System.Drawing.Size(188, 72);
+            this.buttonPresupuestar.TabIndex = 9;
+            this.buttonPresupuestar.Text = "Confirma Presupuesto";
+            this.buttonPresupuestar.UseVisualStyleBackColor = false;
+            this.buttonPresupuestar.Click += new System.EventHandler(this.buttonPresupuestar_Click);
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.labelInfoContexto);
+            this.panel13.Controls.Add(this.labelDobleClickRepuestos);
+            this.panel13.Location = new System.Drawing.Point(7, 448);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(833, 70);
+            this.panel13.TabIndex = 2;
+            // 
+            // labelInfoContexto
+            // 
+            this.labelInfoContexto.AutoSize = true;
+            this.labelInfoContexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfoContexto.Location = new System.Drawing.Point(3, 38);
+            this.labelInfoContexto.Name = "labelInfoContexto";
+            this.labelInfoContexto.Size = new System.Drawing.Size(399, 22);
+            this.labelInfoContexto.TabIndex = 4;
+            this.labelInfoContexto.Text = "(i) Indica componente con información contextual";
+            // 
+            // labelDobleClickRepuestos
+            // 
+            this.labelDobleClickRepuestos.AutoSize = true;
+            this.labelDobleClickRepuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDobleClickRepuestos.Location = new System.Drawing.Point(3, 0);
+            this.labelDobleClickRepuestos.Name = "labelDobleClickRepuestos";
+            this.labelDobleClickRepuestos.Size = new System.Drawing.Size(666, 22);
+            this.labelDobleClickRepuestos.TabIndex = 3;
+            this.labelDobleClickRepuestos.Text = "Doble Click en fila para agregar repuestos (i) después de insertar los desperfect" +
+    "os";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.dataGridViewDesperfectos);
+            this.panel8.Controls.Add(this.labelDesperfectosAsignados);
+            this.panel8.Location = new System.Drawing.Point(260, 6);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(580, 436);
+            this.panel8.TabIndex = 1;
+            // 
+            // dataGridViewDesperfectos
+            // 
+            this.dataGridViewDesperfectos.AllowUserToAddRows = false;
+            this.dataGridViewDesperfectos.AllowUserToDeleteRows = false;
+            this.dataGridViewDesperfectos.AllowUserToOrderColumns = true;
+            this.dataGridViewDesperfectos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDesperfectos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SeleccionarDesperfecto,
+            this.RE,
+            this.RF});
+            this.dataGridViewDesperfectos.Location = new System.Drawing.Point(8, 51);
+            this.dataGridViewDesperfectos.Name = "dataGridViewDesperfectos";
+            this.dataGridViewDesperfectos.RowHeadersWidth = 62;
+            this.dataGridViewDesperfectos.RowTemplate.Height = 28;
+            this.dataGridViewDesperfectos.Size = new System.Drawing.Size(569, 382);
+            this.dataGridViewDesperfectos.TabIndex = 2;
+            this.dataGridViewDesperfectos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDesperfectos_CellContentClick);
+            this.dataGridViewDesperfectos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDesperfectos_CellDoubleClick);
+            // 
+            // SeleccionarDesperfecto
+            // 
+            this.SeleccionarDesperfecto.HeaderText = "Sel";
+            this.SeleccionarDesperfecto.MinimumWidth = 8;
+            this.SeleccionarDesperfecto.Name = "SeleccionarDesperfecto";
+            this.SeleccionarDesperfecto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SeleccionarDesperfecto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SeleccionarDesperfecto.Width = 150;
+            // 
+            // RE
+            // 
+            this.RE.HeaderText = "RE (i)";
+            this.RE.MinimumWidth = 8;
+            this.RE.Name = "RE";
+            this.RE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.RE.ToolTipText = "Repuestos en Stock";
+            this.RE.Width = 150;
+            // 
+            // RF
+            // 
+            this.RF.HeaderText = "RF (i)";
+            this.RF.MinimumWidth = 8;
+            this.RF.Name = "RF";
+            this.RF.ToolTipText = "Repuestos en espera de proveedor";
+            this.RF.Width = 150;
+            // 
+            // labelDesperfectosAsignados
+            // 
+            this.labelDesperfectosAsignados.AutoSize = true;
+            this.labelDesperfectosAsignados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesperfectosAsignados.Location = new System.Drawing.Point(3, 0);
+            this.labelDesperfectosAsignados.Name = "labelDesperfectosAsignados";
+            this.labelDesperfectosAsignados.Size = new System.Drawing.Size(244, 25);
+            this.labelDesperfectosAsignados.TabIndex = 1;
+            this.labelDesperfectosAsignados.Text = "Desperfectos asignados";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.buttonCancelarDesperfecto);
+            this.panel7.Controls.Add(this.buttonAgregarDesperfecto);
+            this.panel7.Controls.Add(this.textBoxDesperfectoTiempo);
+            this.panel7.Controls.Add(this.textBoxDesperfectoManoDeObra);
+            this.panel7.Controls.Add(this.textBoxDesperfectoDescripcion);
+            this.panel7.Controls.Add(this.labelDesperfectoTiempo);
+            this.panel7.Controls.Add(this.labelDesperfectoManoDeObra);
+            this.panel7.Controls.Add(this.labelDescripcionDesperfecto);
+            this.panel7.Controls.Add(this.labelNuevoDesperfecto);
+            this.panel7.Location = new System.Drawing.Point(7, 6);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(247, 349);
+            this.panel7.TabIndex = 0;
+            // 
+            // buttonCancelarDesperfecto
+            // 
+            this.buttonCancelarDesperfecto.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.buttonCancelarDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelarDesperfecto.Location = new System.Drawing.Point(7, 309);
+            this.buttonCancelarDesperfecto.Name = "buttonCancelarDesperfecto";
+            this.buttonCancelarDesperfecto.Size = new System.Drawing.Size(128, 40);
+            this.buttonCancelarDesperfecto.TabIndex = 8;
+            this.buttonCancelarDesperfecto.Text = "Regresar Vehículos";
+            this.buttonCancelarDesperfecto.UseVisualStyleBackColor = false;
+            this.buttonCancelarDesperfecto.Click += new System.EventHandler(this.buttonCancelarDesperfecto_Click);
+            // 
+            // buttonAgregarDesperfecto
+            // 
+            this.buttonAgregarDesperfecto.BackColor = System.Drawing.Color.LimeGreen;
+            this.buttonAgregarDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAgregarDesperfecto.Location = new System.Drawing.Point(141, 309);
+            this.buttonAgregarDesperfecto.Name = "buttonAgregarDesperfecto";
+            this.buttonAgregarDesperfecto.Size = new System.Drawing.Size(102, 40);
+            this.buttonAgregarDesperfecto.TabIndex = 7;
+            this.buttonAgregarDesperfecto.Text = "Agregar";
+            this.buttonAgregarDesperfecto.UseVisualStyleBackColor = false;
+            this.buttonAgregarDesperfecto.Click += new System.EventHandler(this.buttonAgregarDesperfecto_Click);
+            // 
+            // textBoxDesperfectoTiempo
+            // 
+            this.textBoxDesperfectoTiempo.Location = new System.Drawing.Point(144, 260);
+            this.textBoxDesperfectoTiempo.Name = "textBoxDesperfectoTiempo";
+            this.textBoxDesperfectoTiempo.Size = new System.Drawing.Size(99, 26);
+            this.textBoxDesperfectoTiempo.TabIndex = 6;
+            // 
+            // textBoxDesperfectoManoDeObra
+            // 
+            this.textBoxDesperfectoManoDeObra.Location = new System.Drawing.Point(144, 216);
+            this.textBoxDesperfectoManoDeObra.Name = "textBoxDesperfectoManoDeObra";
+            this.textBoxDesperfectoManoDeObra.Size = new System.Drawing.Size(99, 26);
+            this.textBoxDesperfectoManoDeObra.TabIndex = 5;
+            // 
+            // textBoxDesperfectoDescripcion
+            // 
+            this.textBoxDesperfectoDescripcion.Location = new System.Drawing.Point(7, 109);
+            this.textBoxDesperfectoDescripcion.Multiline = true;
+            this.textBoxDesperfectoDescripcion.Name = "textBoxDesperfectoDescripcion";
+            this.textBoxDesperfectoDescripcion.Size = new System.Drawing.Size(236, 95);
+            this.textBoxDesperfectoDescripcion.TabIndex = 4;
+            // 
+            // labelDesperfectoTiempo
+            // 
+            this.labelDesperfectoTiempo.AutoSize = true;
+            this.labelDesperfectoTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesperfectoTiempo.Location = new System.Drawing.Point(3, 264);
+            this.labelDesperfectoTiempo.Name = "labelDesperfectoTiempo";
+            this.labelDesperfectoTiempo.Size = new System.Drawing.Size(76, 22);
+            this.labelDesperfectoTiempo.TabIndex = 3;
+            this.labelDesperfectoTiempo.Text = "Tiempo";
+            // 
+            // labelDesperfectoManoDeObra
+            // 
+            this.labelDesperfectoManoDeObra.AutoSize = true;
+            this.labelDesperfectoManoDeObra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesperfectoManoDeObra.Location = new System.Drawing.Point(3, 220);
+            this.labelDesperfectoManoDeObra.Name = "labelDesperfectoManoDeObra";
+            this.labelDesperfectoManoDeObra.Size = new System.Drawing.Size(132, 22);
+            this.labelDesperfectoManoDeObra.TabIndex = 2;
+            this.labelDesperfectoManoDeObra.Text = "Mano de obra";
+            // 
+            // labelDescripcionDesperfecto
+            // 
+            this.labelDescripcionDesperfecto.AutoSize = true;
+            this.labelDescripcionDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescripcionDesperfecto.Location = new System.Drawing.Point(3, 75);
+            this.labelDescripcionDesperfecto.Name = "labelDescripcionDesperfecto";
+            this.labelDescripcionDesperfecto.Size = new System.Drawing.Size(115, 22);
+            this.labelDescripcionDesperfecto.TabIndex = 1;
+            this.labelDescripcionDesperfecto.Text = "Descripción";
+            // 
+            // labelNuevoDesperfecto
+            // 
+            this.labelNuevoDesperfecto.AutoSize = true;
+            this.labelNuevoDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNuevoDesperfecto.Location = new System.Drawing.Point(25, 11);
+            this.labelNuevoDesperfecto.Name = "labelNuevoDesperfecto";
+            this.labelNuevoDesperfecto.Size = new System.Drawing.Size(193, 25);
+            this.labelNuevoDesperfecto.TabIndex = 0;
+            this.labelNuevoDesperfecto.Text = "Nuevo desperfecto";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.panel6);
+            this.tabPage5.Location = new System.Drawing.Point(4, 29);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(846, 514);
+            this.tabPage5.TabIndex = 3;
+            this.tabPage5.Text = "Presupuestación";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.TotalPresupuesto);
+            this.panel6.Controls.Add(this.label17);
+            this.panel6.Controls.Add(this.txRepuestosTotal);
+            this.panel6.Controls.Add(this.label16);
+            this.panel6.Controls.Add(this.button4);
+            this.panel6.Controls.Add(this.button3);
+            this.panel6.Controls.Add(this.txBoxEstacionamiento);
+            this.panel6.Controls.Add(this.txManoDeObra);
+            this.panel6.Controls.Add(this.txBoxDescuento);
+            this.panel6.Controls.Add(this.txBoxRecargo);
+            this.panel6.Controls.Add(this.label15);
+            this.panel6.Controls.Add(this.label14);
+            this.panel6.Controls.Add(this.label13);
+            this.panel6.Controls.Add(this.label12);
+            this.panel6.Controls.Add(this.txBoxEmail);
+            this.panel6.Controls.Add(this.txBoxApellido);
+            this.panel6.Controls.Add(this.txBoxNombre);
+            this.panel6.Controls.Add(this.label11);
+            this.panel6.Controls.Add(this.label8);
+            this.panel6.Controls.Add(this.label7);
+            this.panel6.Location = new System.Drawing.Point(7, 21);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(833, 451);
+            this.panel6.TabIndex = 0;
+            // 
+            // TotalPresupuesto
+            // 
+            this.TotalPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalPresupuesto.Location = new System.Drawing.Point(647, 346);
+            this.TotalPresupuesto.Name = "TotalPresupuesto";
+            this.TotalPresupuesto.Size = new System.Drawing.Size(168, 26);
+            this.TotalPresupuesto.TabIndex = 26;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(444, 343);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 29);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Total";
+            // 
+            // txRepuestosTotal
+            // 
+            this.txRepuestosTotal.Location = new System.Drawing.Point(647, 280);
+            this.txRepuestosTotal.Name = "txRepuestosTotal";
+            this.txRepuestosTotal.Size = new System.Drawing.Size(168, 26);
+            this.txRepuestosTotal.TabIndex = 24;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(444, 280);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(150, 29);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "$ repuestos";
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.Lime;
+            this.button4.Location = new System.Drawing.Point(0, 391);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(212, 57);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Confirma";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.DeepPink;
+            this.button3.Location = new System.Drawing.Point(657, 391);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(176, 57);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Cancelar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // txBoxEstacionamiento
+            // 
+            this.txBoxEstacionamiento.Location = new System.Drawing.Point(647, 219);
+            this.txBoxEstacionamiento.Name = "txBoxEstacionamiento";
+            this.txBoxEstacionamiento.Size = new System.Drawing.Size(168, 26);
+            this.txBoxEstacionamiento.TabIndex = 21;
+            // 
+            // txManoDeObra
+            // 
+            this.txManoDeObra.Location = new System.Drawing.Point(647, 155);
+            this.txManoDeObra.Name = "txManoDeObra";
+            this.txManoDeObra.Size = new System.Drawing.Size(168, 26);
+            this.txManoDeObra.TabIndex = 20;
+            // 
+            // txBoxDescuento
+            // 
+            this.txBoxDescuento.Location = new System.Drawing.Point(647, 84);
+            this.txBoxDescuento.Name = "txBoxDescuento";
+            this.txBoxDescuento.Size = new System.Drawing.Size(170, 26);
+            this.txBoxDescuento.TabIndex = 19;
+            // 
+            // txBoxRecargo
+            // 
+            this.txBoxRecargo.Location = new System.Drawing.Point(647, 26);
+            this.txBoxRecargo.Name = "txBoxRecargo";
+            this.txBoxRecargo.Size = new System.Drawing.Size(170, 26);
+            this.txBoxRecargo.TabIndex = 18;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(444, 219);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(246, 29);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "$ parking ($130/día)";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(444, 151);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(195, 29);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "$ mano de obra";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(444, 88);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(164, 29);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "% descuento";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(444, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(133, 29);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "% recargo";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // txBoxEmail
+            // 
+            this.txBoxEmail.Location = new System.Drawing.Point(143, 151);
+            this.txBoxEmail.Name = "txBoxEmail";
+            this.txBoxEmail.Size = new System.Drawing.Size(262, 26);
+            this.txBoxEmail.TabIndex = 13;
+            // 
+            // txBoxApellido
+            // 
+            this.txBoxApellido.Location = new System.Drawing.Point(143, 88);
+            this.txBoxApellido.Name = "txBoxApellido";
+            this.txBoxApellido.Size = new System.Drawing.Size(262, 26);
+            this.txBoxApellido.TabIndex = 12;
+            // 
+            // txBoxNombre
+            // 
+            this.txBoxNombre.Location = new System.Drawing.Point(143, 23);
+            this.txBoxNombre.Name = "txBoxNombre";
+            this.txBoxNombre.Size = new System.Drawing.Size(262, 26);
+            this.txBoxNombre.TabIndex = 11;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(16, 151);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(79, 29);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Email";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(16, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(110, 29);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Apellido";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(16, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(107, 29);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Nombre";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.panel5);
+            this.tabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(846, 514);
+            this.tabPage4.TabIndex = 2;
+            this.tabPage4.Text = "Desperfectos";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.button2);
+            this.panel5.Controls.Add(this.dgvDesperfectos);
+            this.panel5.Controls.Add(this.button1);
+            this.panel5.Location = new System.Drawing.Point(6, 49);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(837, 456);
+            this.panel5.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Lime;
+            this.button2.Location = new System.Drawing.Point(416, 386);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(212, 57);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Presupuestar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dgvDesperfectos
+            // 
+            this.dgvDesperfectos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDesperfectos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SelectDesperfecto});
+            this.dgvDesperfectos.Location = new System.Drawing.Point(3, 3);
+            this.dgvDesperfectos.Name = "dgvDesperfectos";
+            this.dgvDesperfectos.RowHeadersWidth = 62;
+            this.dgvDesperfectos.RowTemplate.Height = 28;
+            this.dgvDesperfectos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDesperfectos.Size = new System.Drawing.Size(831, 359);
+            this.dgvDesperfectos.TabIndex = 19;
+            this.dgvDesperfectos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDesperfectos_CellContentClick);
+            // 
+            // SelectDesperfecto
+            // 
+            this.SelectDesperfecto.FalseValue = "";
+            this.SelectDesperfecto.HeaderText = "Select";
+            this.SelectDesperfecto.IndeterminateValue = "";
+            this.SelectDesperfecto.MinimumWidth = 8;
+            this.SelectDesperfecto.Name = "SelectDesperfecto";
+            this.SelectDesperfecto.TrueValue = "";
+            this.SelectDesperfecto.Width = 150;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.DeepPink;
+            this.button1.Location = new System.Drawing.Point(644, 386);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(176, 57);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabPage3
             // 
@@ -619,691 +1227,159 @@ namespace CapaPresentación
             this.etiquetaIdVehiculo.TabIndex = 0;
             this.etiquetaIdVehiculo.Text = "Id Vehiculo";
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.panel5);
-            this.tabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(846, 514);
-            this.tabPage4.TabIndex = 2;
-            this.tabPage4.Text = "Desperfectos";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.button2);
-            this.panel5.Controls.Add(this.dgvDesperfectos);
-            this.panel5.Controls.Add(this.button1);
-            this.panel5.Location = new System.Drawing.Point(6, 49);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(837, 456);
-            this.panel5.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Lime;
-            this.button2.Location = new System.Drawing.Point(416, 386);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(212, 57);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Presupuestar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // dgvDesperfectos
-            // 
-            this.dgvDesperfectos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDesperfectos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SelectDesperfecto});
-            this.dgvDesperfectos.Location = new System.Drawing.Point(3, 3);
-            this.dgvDesperfectos.Name = "dgvDesperfectos";
-            this.dgvDesperfectos.RowHeadersWidth = 62;
-            this.dgvDesperfectos.RowTemplate.Height = 28;
-            this.dgvDesperfectos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDesperfectos.Size = new System.Drawing.Size(831, 359);
-            this.dgvDesperfectos.TabIndex = 19;
-            this.dgvDesperfectos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDesperfectos_CellContentClick);
-            // 
-            // SelectDesperfecto
-            // 
-            this.SelectDesperfecto.FalseValue = "";
-            this.SelectDesperfecto.HeaderText = "Select";
-            this.SelectDesperfecto.IndeterminateValue = "";
-            this.SelectDesperfecto.MinimumWidth = 8;
-            this.SelectDesperfecto.Name = "SelectDesperfecto";
-            this.SelectDesperfecto.TrueValue = "";
-            this.SelectDesperfecto.Width = 150;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DeepPink;
-            this.button1.Location = new System.Drawing.Point(644, 386);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 57);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.panel6);
-            this.tabPage5.Location = new System.Drawing.Point(4, 29);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(846, 514);
-            this.tabPage5.TabIndex = 3;
-            this.tabPage5.Text = "Presupuestación";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.TotalPresupuesto);
-            this.panel6.Controls.Add(this.label17);
-            this.panel6.Controls.Add(this.txRepuestosTotal);
-            this.panel6.Controls.Add(this.label16);
-            this.panel6.Controls.Add(this.button4);
-            this.panel6.Controls.Add(this.button3);
-            this.panel6.Controls.Add(this.txBoxEstacionamiento);
-            this.panel6.Controls.Add(this.txManoDeObra);
-            this.panel6.Controls.Add(this.txBoxDescuento);
-            this.panel6.Controls.Add(this.txBoxRecargo);
-            this.panel6.Controls.Add(this.label15);
-            this.panel6.Controls.Add(this.label14);
-            this.panel6.Controls.Add(this.label13);
-            this.panel6.Controls.Add(this.label12);
-            this.panel6.Controls.Add(this.txBoxEmail);
-            this.panel6.Controls.Add(this.txBoxApellido);
-            this.panel6.Controls.Add(this.txBoxNombre);
-            this.panel6.Controls.Add(this.label11);
-            this.panel6.Controls.Add(this.label8);
-            this.panel6.Controls.Add(this.label7);
-            this.panel6.Location = new System.Drawing.Point(7, 21);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(833, 451);
-            this.panel6.TabIndex = 0;
-            // 
-            // TotalPresupuesto
-            // 
-            this.TotalPresupuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalPresupuesto.Location = new System.Drawing.Point(647, 346);
-            this.TotalPresupuesto.Name = "TotalPresupuesto";
-            this.TotalPresupuesto.Size = new System.Drawing.Size(168, 26);
-            this.TotalPresupuesto.TabIndex = 26;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(444, 343);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(73, 29);
-            this.label17.TabIndex = 25;
-            this.label17.Text = "Total";
-            // 
-            // txRepuestosTotal
-            // 
-            this.txRepuestosTotal.Location = new System.Drawing.Point(647, 280);
-            this.txRepuestosTotal.Name = "txRepuestosTotal";
-            this.txRepuestosTotal.Size = new System.Drawing.Size(168, 26);
-            this.txRepuestosTotal.TabIndex = 24;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(444, 280);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(150, 29);
-            this.label16.TabIndex = 23;
-            this.label16.Text = "$ repuestos";
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Lime;
-            this.button4.Location = new System.Drawing.Point(0, 391);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(212, 57);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Confirma";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.DeepPink;
-            this.button3.Location = new System.Drawing.Point(657, 391);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 57);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // txBoxEstacionamiento
-            // 
-            this.txBoxEstacionamiento.Location = new System.Drawing.Point(647, 219);
-            this.txBoxEstacionamiento.Name = "txBoxEstacionamiento";
-            this.txBoxEstacionamiento.Size = new System.Drawing.Size(168, 26);
-            this.txBoxEstacionamiento.TabIndex = 21;
-            // 
-            // txManoDeObra
-            // 
-            this.txManoDeObra.Location = new System.Drawing.Point(647, 155);
-            this.txManoDeObra.Name = "txManoDeObra";
-            this.txManoDeObra.Size = new System.Drawing.Size(168, 26);
-            this.txManoDeObra.TabIndex = 20;
-            // 
-            // txBoxDescuento
-            // 
-            this.txBoxDescuento.Location = new System.Drawing.Point(647, 84);
-            this.txBoxDescuento.Name = "txBoxDescuento";
-            this.txBoxDescuento.Size = new System.Drawing.Size(170, 26);
-            this.txBoxDescuento.TabIndex = 19;
-            // 
-            // txBoxRecargo
-            // 
-            this.txBoxRecargo.Location = new System.Drawing.Point(647, 26);
-            this.txBoxRecargo.Name = "txBoxRecargo";
-            this.txBoxRecargo.Size = new System.Drawing.Size(170, 26);
-            this.txBoxRecargo.TabIndex = 18;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(444, 219);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(246, 29);
-            this.label15.TabIndex = 17;
-            this.label15.Text = "$ parking ($130/día)";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(444, 151);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(195, 29);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "$ mano de obra";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(444, 88);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(164, 29);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "% descuento";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(444, 23);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(133, 29);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "% recargo";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
-            // 
-            // txBoxEmail
-            // 
-            this.txBoxEmail.Location = new System.Drawing.Point(143, 151);
-            this.txBoxEmail.Name = "txBoxEmail";
-            this.txBoxEmail.Size = new System.Drawing.Size(262, 26);
-            this.txBoxEmail.TabIndex = 13;
-            // 
-            // txBoxApellido
-            // 
-            this.txBoxApellido.Location = new System.Drawing.Point(143, 88);
-            this.txBoxApellido.Name = "txBoxApellido";
-            this.txBoxApellido.Size = new System.Drawing.Size(262, 26);
-            this.txBoxApellido.TabIndex = 12;
-            // 
-            // txBoxNombre
-            // 
-            this.txBoxNombre.Location = new System.Drawing.Point(143, 23);
-            this.txBoxNombre.Name = "txBoxNombre";
-            this.txBoxNombre.Size = new System.Drawing.Size(262, 26);
-            this.txBoxNombre.TabIndex = 11;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(16, 151);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 29);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Email";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(16, 84);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 29);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Apellido";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(16, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 29);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Nombre";
-            // 
-            // tabPageDiagnóstico
-            // 
-            this.tabPageDiagnóstico.Controls.Add(this.panel8);
-            this.tabPageDiagnóstico.Controls.Add(this.panel7);
-            this.tabPageDiagnóstico.Location = new System.Drawing.Point(4, 29);
-            this.tabPageDiagnóstico.Name = "tabPageDiagnóstico";
-            this.tabPageDiagnóstico.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDiagnóstico.Size = new System.Drawing.Size(846, 514);
-            this.tabPageDiagnóstico.TabIndex = 4;
-            this.tabPageDiagnóstico.Text = "Diagnóstico";
-            this.tabPageDiagnóstico.UseVisualStyleBackColor = true;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.labelDobleClickRepuestos);
-            this.panel8.Controls.Add(this.dataGridViewDesperfectos);
-            this.panel8.Controls.Add(this.labelDesperfectosAsignados);
-            this.panel8.Location = new System.Drawing.Point(260, 6);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(580, 437);
-            this.panel8.TabIndex = 1;
-            // 
-            // labelDobleClickRepuestos
-            // 
-            this.labelDobleClickRepuestos.AutoSize = true;
-            this.labelDobleClickRepuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDobleClickRepuestos.Location = new System.Drawing.Point(161, 26);
-            this.labelDobleClickRepuestos.Name = "labelDobleClickRepuestos";
-            this.labelDobleClickRepuestos.Size = new System.Drawing.Size(302, 22);
-            this.labelDobleClickRepuestos.TabIndex = 3;
-            this.labelDobleClickRepuestos.Text = "Doble en fila para agregar repuestos";
-            // 
-            // dataGridViewDesperfectos
-            // 
-            this.dataGridViewDesperfectos.AllowUserToAddRows = false;
-            this.dataGridViewDesperfectos.AllowUserToDeleteRows = false;
-            this.dataGridViewDesperfectos.AllowUserToOrderColumns = true;
-            this.dataGridViewDesperfectos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDesperfectos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SeleccionarDesperfecto,
-            this.RE,
-            this.RF});
-            this.dataGridViewDesperfectos.Location = new System.Drawing.Point(8, 51);
-            this.dataGridViewDesperfectos.Name = "dataGridViewDesperfectos";
-            this.dataGridViewDesperfectos.RowHeadersWidth = 62;
-            this.dataGridViewDesperfectos.RowTemplate.Height = 28;
-            this.dataGridViewDesperfectos.Size = new System.Drawing.Size(569, 383);
-            this.dataGridViewDesperfectos.TabIndex = 2;
-            this.dataGridViewDesperfectos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDesperfectos_CellContentClick);
-            this.dataGridViewDesperfectos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDesperfectos_CellDoubleClick);
-            // 
-            // SeleccionarDesperfecto
-            // 
-            this.SeleccionarDesperfecto.HeaderText = "Sel";
-            this.SeleccionarDesperfecto.MinimumWidth = 8;
-            this.SeleccionarDesperfecto.Name = "SeleccionarDesperfecto";
-            this.SeleccionarDesperfecto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SeleccionarDesperfecto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.SeleccionarDesperfecto.Width = 150;
-            // 
-            // RE
-            // 
-            this.RE.HeaderText = "RE";
-            this.RE.MinimumWidth = 8;
-            this.RE.Name = "RE";
-            this.RE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.RE.ToolTipText = "Repuestos en Stock";
-            this.RE.Width = 150;
-            // 
-            // RF
-            // 
-            this.RF.HeaderText = "RF";
-            this.RF.MinimumWidth = 8;
-            this.RF.Name = "RF";
-            this.RF.ToolTipText = "Repuestos en espera de proveedor";
-            this.RF.Width = 150;
-            // 
-            // labelDesperfectosAsignados
-            // 
-            this.labelDesperfectosAsignados.AutoSize = true;
-            this.labelDesperfectosAsignados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDesperfectosAsignados.Location = new System.Drawing.Point(3, 0);
-            this.labelDesperfectosAsignados.Name = "labelDesperfectosAsignados";
-            this.labelDesperfectosAsignados.Size = new System.Drawing.Size(244, 25);
-            this.labelDesperfectosAsignados.TabIndex = 1;
-            this.labelDesperfectosAsignados.Text = "Desperfectos asignados";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.buttonAgregarDesperfecto);
-            this.panel7.Controls.Add(this.textBoxDesperfectoTiempo);
-            this.panel7.Controls.Add(this.textBoxDesperfectoManoDeObra);
-            this.panel7.Controls.Add(this.textBoxDesperfectoDescripcion);
-            this.panel7.Controls.Add(this.labelDesperfectoTiempo);
-            this.panel7.Controls.Add(this.labelDesperfectoManoDeObra);
-            this.panel7.Controls.Add(this.labelDescripcionDesperfecto);
-            this.panel7.Controls.Add(this.labelNuevoDesperfecto);
-            this.panel7.Location = new System.Drawing.Point(7, 6);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(247, 349);
-            this.panel7.TabIndex = 0;
-            // 
-            // buttonAgregarDesperfecto
-            // 
-            this.buttonAgregarDesperfecto.BackColor = System.Drawing.Color.LimeGreen;
-            this.buttonAgregarDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAgregarDesperfecto.Location = new System.Drawing.Point(7, 315);
-            this.buttonAgregarDesperfecto.Name = "buttonAgregarDesperfecto";
-            this.buttonAgregarDesperfecto.Size = new System.Drawing.Size(84, 31);
-            this.buttonAgregarDesperfecto.TabIndex = 7;
-            this.buttonAgregarDesperfecto.Text = "Agregar";
-            this.buttonAgregarDesperfecto.UseVisualStyleBackColor = false;
-            this.buttonAgregarDesperfecto.Click += new System.EventHandler(this.buttonAgregarDesperfecto_Click);
-            // 
-            // textBoxDesperfectoTiempo
-            // 
-            this.textBoxDesperfectoTiempo.Location = new System.Drawing.Point(144, 260);
-            this.textBoxDesperfectoTiempo.Name = "textBoxDesperfectoTiempo";
-            this.textBoxDesperfectoTiempo.Size = new System.Drawing.Size(99, 26);
-            this.textBoxDesperfectoTiempo.TabIndex = 6;
-            // 
-            // textBoxDesperfectoManoDeObra
-            // 
-            this.textBoxDesperfectoManoDeObra.Location = new System.Drawing.Point(144, 216);
-            this.textBoxDesperfectoManoDeObra.Name = "textBoxDesperfectoManoDeObra";
-            this.textBoxDesperfectoManoDeObra.Size = new System.Drawing.Size(99, 26);
-            this.textBoxDesperfectoManoDeObra.TabIndex = 5;
-            // 
-            // textBoxDesperfectoDescripcion
-            // 
-            this.textBoxDesperfectoDescripcion.Location = new System.Drawing.Point(7, 109);
-            this.textBoxDesperfectoDescripcion.Multiline = true;
-            this.textBoxDesperfectoDescripcion.Name = "textBoxDesperfectoDescripcion";
-            this.textBoxDesperfectoDescripcion.Size = new System.Drawing.Size(236, 95);
-            this.textBoxDesperfectoDescripcion.TabIndex = 4;
-            // 
-            // labelDesperfectoTiempo
-            // 
-            this.labelDesperfectoTiempo.AutoSize = true;
-            this.labelDesperfectoTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDesperfectoTiempo.Location = new System.Drawing.Point(3, 264);
-            this.labelDesperfectoTiempo.Name = "labelDesperfectoTiempo";
-            this.labelDesperfectoTiempo.Size = new System.Drawing.Size(76, 22);
-            this.labelDesperfectoTiempo.TabIndex = 3;
-            this.labelDesperfectoTiempo.Text = "Tiempo";
-            // 
-            // labelDesperfectoManoDeObra
-            // 
-            this.labelDesperfectoManoDeObra.AutoSize = true;
-            this.labelDesperfectoManoDeObra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDesperfectoManoDeObra.Location = new System.Drawing.Point(3, 220);
-            this.labelDesperfectoManoDeObra.Name = "labelDesperfectoManoDeObra";
-            this.labelDesperfectoManoDeObra.Size = new System.Drawing.Size(132, 22);
-            this.labelDesperfectoManoDeObra.TabIndex = 2;
-            this.labelDesperfectoManoDeObra.Text = "Mano de obra";
-            // 
-            // labelDescripcionDesperfecto
-            // 
-            this.labelDescripcionDesperfecto.AutoSize = true;
-            this.labelDescripcionDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDescripcionDesperfecto.Location = new System.Drawing.Point(3, 75);
-            this.labelDescripcionDesperfecto.Name = "labelDescripcionDesperfecto";
-            this.labelDescripcionDesperfecto.Size = new System.Drawing.Size(115, 22);
-            this.labelDescripcionDesperfecto.TabIndex = 1;
-            this.labelDescripcionDesperfecto.Text = "Descripción";
-            // 
-            // labelNuevoDesperfecto
-            // 
-            this.labelNuevoDesperfecto.AutoSize = true;
-            this.labelNuevoDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNuevoDesperfecto.Location = new System.Drawing.Point(25, 11);
-            this.labelNuevoDesperfecto.Name = "labelNuevoDesperfecto";
-            this.labelNuevoDesperfecto.Size = new System.Drawing.Size(193, 25);
-            this.labelNuevoDesperfecto.TabIndex = 0;
-            this.labelNuevoDesperfecto.Text = "Nuevo desperfecto";
-            // 
-            // tabPageRepuestos
-            // 
-            this.tabPageRepuestos.Controls.Add(this.panel12);
-            this.tabPageRepuestos.Controls.Add(this.panel11);
-            this.tabPageRepuestos.Controls.Add(this.panel10);
-            this.tabPageRepuestos.Controls.Add(this.panel9);
-            this.tabPageRepuestos.Location = new System.Drawing.Point(4, 29);
-            this.tabPageRepuestos.Name = "tabPageRepuestos";
-            this.tabPageRepuestos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRepuestos.Size = new System.Drawing.Size(846, 514);
-            this.tabPageRepuestos.TabIndex = 5;
-            this.tabPageRepuestos.Text = "Repuestos";
-            this.tabPageRepuestos.UseVisualStyleBackColor = true;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.buttonAgregarRepuestosDesperfecto);
-            this.panel12.Location = new System.Drawing.Point(7, 366);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(217, 139);
-            this.panel12.TabIndex = 9;
-            // 
-            // buttonAgregarRepuestosDesperfecto
-            // 
-            this.buttonAgregarRepuestosDesperfecto.BackColor = System.Drawing.Color.OliveDrab;
-            this.buttonAgregarRepuestosDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAgregarRepuestosDesperfecto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonAgregarRepuestosDesperfecto.Location = new System.Drawing.Point(29, 48);
-            this.buttonAgregarRepuestosDesperfecto.Name = "buttonAgregarRepuestosDesperfecto";
-            this.buttonAgregarRepuestosDesperfecto.Size = new System.Drawing.Size(157, 50);
-            this.buttonAgregarRepuestosDesperfecto.TabIndex = 9;
-            this.buttonAgregarRepuestosDesperfecto.Text = "Agregar repuestos al desperfecto";
-            this.buttonAgregarRepuestosDesperfecto.UseVisualStyleBackColor = false;
-            this.buttonAgregarRepuestosDesperfecto.Click += new System.EventHandler(this.buttonAgregarRepuestosDesperfecto_Click_1);
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.comboBoxRepuestosExistentes);
-            this.panel11.Controls.Add(this.button6);
-            this.panel11.Controls.Add(this.labelNombreRepuestoExistente);
-            this.panel11.Controls.Add(this.labelSeleccionarRepuestoExistente);
-            this.panel11.Location = new System.Drawing.Point(7, 208);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(217, 152);
-            this.panel11.TabIndex = 8;
-            // 
-            // comboBoxRepuestosExistentes
-            // 
-            this.comboBoxRepuestosExistentes.DataSource = this.repuestoBindingSource;
-            this.comboBoxRepuestosExistentes.DisplayMember = "Nombre";
-            this.comboBoxRepuestosExistentes.FormattingEnabled = true;
-            this.comboBoxRepuestosExistentes.Location = new System.Drawing.Point(80, 50);
-            this.comboBoxRepuestosExistentes.Name = "comboBoxRepuestosExistentes";
-            this.comboBoxRepuestosExistentes.Size = new System.Drawing.Size(126, 28);
-            this.comboBoxRepuestosExistentes.TabIndex = 8;
-            this.comboBoxRepuestosExistentes.ValueMember = "Id";
-            // 
-            // repuestoBindingSource
-            // 
-            this.repuestoBindingSource.DataMember = "Repuesto";
-            this.repuestoBindingSource.DataSource = this.masterDataSet;
-            // 
-            // masterDataSet
-            // 
-            this.masterDataSet.DataSetName = "masterDataSet";
-            this.masterDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.LimeGreen;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(15, 103);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(157, 31);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Agregar existente";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // labelNombreRepuestoExistente
-            // 
-            this.labelNombreRepuestoExistente.AutoSize = true;
-            this.labelNombreRepuestoExistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNombreRepuestoExistente.Location = new System.Drawing.Point(3, 51);
-            this.labelNombreRepuestoExistente.Name = "labelNombreRepuestoExistente";
-            this.labelNombreRepuestoExistente.Size = new System.Drawing.Size(45, 22);
-            this.labelNombreRepuestoExistente.TabIndex = 2;
-            this.labelNombreRepuestoExistente.Text = "Sel:";
-            // 
-            // labelSeleccionarRepuestoExistente
-            // 
-            this.labelSeleccionarRepuestoExistente.AutoSize = true;
-            this.labelSeleccionarRepuestoExistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSeleccionarRepuestoExistente.Location = new System.Drawing.Point(10, 12);
-            this.labelSeleccionarRepuestoExistente.Name = "labelSeleccionarRepuestoExistente";
-            this.labelSeleccionarRepuestoExistente.Size = new System.Drawing.Size(196, 25);
-            this.labelSeleccionarRepuestoExistente.TabIndex = 0;
-            this.labelSeleccionarRepuestoExistente.Text = "Repuesto existente";
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.dgvRepuestos);
-            this.panel10.Controls.Add(this.labelRapuestosAsignados);
-            this.panel10.Location = new System.Drawing.Point(230, 6);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(610, 502);
-            this.panel10.TabIndex = 2;
-            // 
-            // dgvRepuestos
-            // 
-            this.dgvRepuestos.AllowUserToAddRows = false;
-            this.dgvRepuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRepuestos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Sel});
-            this.dgvRepuestos.Location = new System.Drawing.Point(0, 51);
-            this.dgvRepuestos.Name = "dgvRepuestos";
-            this.dgvRepuestos.ReadOnly = true;
-            this.dgvRepuestos.RowHeadersWidth = 62;
-            this.dgvRepuestos.RowTemplate.Height = 28;
-            this.dgvRepuestos.Size = new System.Drawing.Size(607, 448);
-            this.dgvRepuestos.TabIndex = 2;
-            this.dgvRepuestos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRepuestos_CellContentClick);
-            // 
-            // Sel
-            // 
-            this.Sel.HeaderText = "Sel";
-            this.Sel.MinimumWidth = 8;
-            this.Sel.Name = "Sel";
-            this.Sel.ReadOnly = true;
-            this.Sel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Sel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Sel.Width = 150;
-            // 
-            // labelRapuestosAsignados
-            // 
-            this.labelRapuestosAsignados.AutoSize = true;
-            this.labelRapuestosAsignados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRapuestosAsignados.Location = new System.Drawing.Point(93, 10);
-            this.labelRapuestosAsignados.Name = "labelRapuestosAsignados";
-            this.labelRapuestosAsignados.Size = new System.Drawing.Size(219, 25);
-            this.labelRapuestosAsignados.TabIndex = 1;
-            this.labelRapuestosAsignados.Text = "Repuestos asignados";
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.button5);
-            this.panel9.Controls.Add(this.textBoxPrecioNuevoRepuesto);
-            this.panel9.Controls.Add(this.textBoxNombreNuevoRepuesto);
-            this.panel9.Controls.Add(this.labelPrecioRepuesto);
-            this.panel9.Controls.Add(this.labelNombreRepuesto);
-            this.panel9.Controls.Add(this.labelAgregarNuevoRepuesto);
-            this.panel9.Location = new System.Drawing.Point(7, 6);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(217, 196);
-            this.panel9.TabIndex = 1;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.LimeGreen;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(15, 151);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(157, 31);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Agregar nuevo";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // textBoxPrecioNuevoRepuesto
-            // 
-            this.textBoxPrecioNuevoRepuesto.Location = new System.Drawing.Point(80, 101);
-            this.textBoxPrecioNuevoRepuesto.Name = "textBoxPrecioNuevoRepuesto";
-            this.textBoxPrecioNuevoRepuesto.Size = new System.Drawing.Size(126, 26);
-            this.textBoxPrecioNuevoRepuesto.TabIndex = 6;
-            // 
-            // textBoxNombreNuevoRepuesto
-            // 
-            this.textBoxNombreNuevoRepuesto.Location = new System.Drawing.Point(80, 51);
-            this.textBoxNombreNuevoRepuesto.Name = "textBoxNombreNuevoRepuesto";
-            this.textBoxNombreNuevoRepuesto.Size = new System.Drawing.Size(126, 26);
-            this.textBoxNombreNuevoRepuesto.TabIndex = 5;
-            // 
-            // labelPrecioRepuesto
-            // 
-            this.labelPrecioRepuesto.AutoSize = true;
-            this.labelPrecioRepuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrecioRepuesto.Location = new System.Drawing.Point(3, 101);
-            this.labelPrecioRepuesto.Name = "labelPrecioRepuesto";
-            this.labelPrecioRepuesto.Size = new System.Drawing.Size(67, 22);
-            this.labelPrecioRepuesto.TabIndex = 3;
-            this.labelPrecioRepuesto.Text = "Precio";
-            // 
-            // labelNombreRepuesto
-            // 
-            this.labelNombreRepuesto.AutoSize = true;
-            this.labelNombreRepuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNombreRepuesto.Location = new System.Drawing.Point(3, 51);
-            this.labelNombreRepuesto.Name = "labelNombreRepuesto";
-            this.labelNombreRepuesto.Size = new System.Drawing.Size(79, 22);
-            this.labelNombreRepuesto.TabIndex = 2;
-            this.labelNombreRepuesto.Text = "Nombre";
-            // 
-            // labelAgregarNuevoRepuesto
-            // 
-            this.labelAgregarNuevoRepuesto.AutoSize = true;
-            this.labelAgregarNuevoRepuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAgregarNuevoRepuesto.Location = new System.Drawing.Point(38, 10);
-            this.labelAgregarNuevoRepuesto.Name = "labelAgregarNuevoRepuesto";
-            this.labelAgregarNuevoRepuesto.Size = new System.Drawing.Size(168, 25);
-            this.labelAgregarNuevoRepuesto.TabIndex = 0;
-            this.labelAgregarNuevoRepuesto.Text = "Repuesto nuevo";
-            // 
-            // repuestoBindingSource1
-            // 
-            this.repuestoBindingSource1.DataMember = "Repuesto";
-            this.repuestoBindingSource1.DataSource = this.masterDataSet;
-            // 
-            // error
-            // 
-            this.error.ContainerControl = this;
-            // 
-            // repuestoTableAdapter
-            // 
-            this.repuestoTableAdapter.ClearBeforeFill = true;
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel4);
+            this.tabPage1.Controls.Add(this.btnBuscador);
+            this.tabPage1.Controls.Add(this.txtBuscar);
+            this.tabPage1.Controls.Add(this.labelTotal);
+            this.tabPage1.Controls.Add(this.dgvDatos);
+            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(846, 514);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Listado";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click_2);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Bisque;
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.Diagnose);
+            this.panel4.Controls.Add(this.chkSelect);
+            this.panel4.Controls.Add(this.btnPresupuestar);
+            this.panel4.Controls.Add(this.btEliminar);
+            this.panel4.Location = new System.Drawing.Point(684, 89);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(166, 418);
+            this.panel4.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(18, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(138, 17);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "doble click to update";
+            // 
+            // Diagnose
+            // 
+            this.Diagnose.Location = new System.Drawing.Point(21, 130);
+            this.Diagnose.Name = "Diagnose";
+            this.Diagnose.Size = new System.Drawing.Size(135, 25);
+            this.Diagnose.TabIndex = 5;
+            this.Diagnose.Text = "Dignosticar";
+            this.Diagnose.UseVisualStyleBackColor = true;
+            this.Diagnose.Click += new System.EventHandler(this.Activate_Click);
+            // 
+            // chkSelect
+            // 
+            this.chkSelect.AutoSize = true;
+            this.chkSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSelect.Location = new System.Drawing.Point(24, 38);
+            this.chkSelect.Name = "chkSelect";
+            this.chkSelect.Size = new System.Drawing.Size(118, 24);
+            this.chkSelect.TabIndex = 4;
+            this.chkSelect.Text = "Seleccionar";
+            this.chkSelect.UseVisualStyleBackColor = true;
+            this.chkSelect.CheckedChanged += new System.EventHandler(this.chkSelect_CheckedChanged);
+            // 
+            // btnPresupuestar
+            // 
+            this.btnPresupuestar.Location = new System.Drawing.Point(21, 99);
+            this.btnPresupuestar.Name = "btnPresupuestar";
+            this.btnPresupuestar.Size = new System.Drawing.Size(135, 25);
+            this.btnPresupuestar.TabIndex = 6;
+            this.btnPresupuestar.Text = "Presupuestar";
+            this.btnPresupuestar.UseVisualStyleBackColor = true;
+            this.btnPresupuestar.Click += new System.EventHandler(this.btnPresupuestar_Click);
+            // 
+            // btEliminar
+            // 
+            this.btEliminar.Location = new System.Drawing.Point(21, 68);
+            this.btEliminar.Name = "btEliminar";
+            this.btEliminar.Size = new System.Drawing.Size(135, 25);
+            this.btEliminar.TabIndex = 7;
+            this.btEliminar.Text = "Eliminar";
+            this.btEliminar.UseVisualStyleBackColor = true;
+            this.btEliminar.Click += new System.EventHandler(this.btEliminar_Click);
+            // 
+            // btnBuscador
+            // 
+            this.btnBuscador.Location = new System.Drawing.Point(637, 23);
+            this.btnBuscador.Name = "btnBuscador";
+            this.btnBuscador.Size = new System.Drawing.Size(170, 39);
+            this.btnBuscador.TabIndex = 3;
+            this.btnBuscador.Text = "Buscar";
+            this.btnBuscador.UseVisualStyleBackColor = true;
+            this.btnBuscador.Click += new System.EventHandler(this.btnBuscador_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(42, 29);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(290, 28);
+            this.txtBuscar.TabIndex = 2;
+            // 
+            // labelTotal
+            // 
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Location = new System.Drawing.Point(1602, 938);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(51, 22);
+            this.labelTotal.TabIndex = 1;
+            this.labelTotal.Text = "Total";
+            // 
+            // dgvDatos
+            // 
+            this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToDeleteRows = false;
+            this.dgvDatos.AllowUserToOrderColumns = true;
+            this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvDatos.ColumnHeadersHeight = 34;
+            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Select});
+            this.dgvDatos.Location = new System.Drawing.Point(3, 89);
+            this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
+            this.dgvDatos.RowHeadersWidth = 30;
+            this.dgvDatos.RowTemplate.Height = 23;
+            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDatos.Size = new System.Drawing.Size(675, 418);
+            this.dgvDatos.TabIndex = 0;
+            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
+            this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
+            // 
+            // Select
+            // 
+            this.Select.FalseValue = "";
+            this.Select.HeaderText = "Select";
+            this.Select.IndeterminateValue = "";
+            this.Select.MinimumWidth = 8;
+            this.Select.Name = "Select";
+            this.Select.ReadOnly = true;
+            this.Select.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Select.TrueValue = "";
+            this.Select.Width = 150;
+            // 
+            // tabControlPrincipal
+            // 
+            this.tabControlPrincipal.Controls.Add(this.tabPage1);
+            this.tabControlPrincipal.Controls.Add(this.tabPage3);
+            this.tabControlPrincipal.Controls.Add(this.tabPage4);
+            this.tabControlPrincipal.Controls.Add(this.tabPage5);
+            this.tabControlPrincipal.Controls.Add(this.tabPageDesperfectos);
+            this.tabControlPrincipal.Controls.Add(this.tabPageRepuestos);
+            this.tabControlPrincipal.Location = new System.Drawing.Point(1, 12);
+            this.tabControlPrincipal.Name = "tabControlPrincipal";
+            this.tabControlPrincipal.SelectedIndex = 0;
+            this.tabControlPrincipal.Size = new System.Drawing.Size(854, 547);
+            this.tabControlPrincipal.TabIndex = 0;
             // 
             // Inicio
             // 
@@ -1313,12 +1389,34 @@ namespace CapaPresentación
             this.Name = "Inicio";
             this.Text = "Taller Mecánico";
             this.Load += new System.EventHandler(this.Inicio_Load);
-            this.tabControlPrincipal.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
+            this.tabPageRepuestos.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRepuestos)).EndInit();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.tabPageDesperfectos.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDesperfectos)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDesperfectos)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1329,38 +1427,17 @@ namespace CapaPresentación
             this.tabMoto.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDesperfectos)).EndInit();
-            this.tabPage5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.tabPageDiagnóstico.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDesperfectos)).EndInit();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.tabPageRepuestos.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).EndInit();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRepuestos)).EndInit();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            this.tabControlPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabControlPrincipal;
         private System.Windows.Forms.Label txtMarca;
 
         public Inicio(Label txtMarca, Label txtModelo, Label txtPatente)
@@ -1372,94 +1449,109 @@ namespace CapaPresentación
         }
 
         private System.Windows.Forms.Label txtModelo;
-        private System.Windows.Forms.TextBox textBxModelo;
-        private System.Windows.Forms.TextBox textBxMarca;
-        private System.Windows.Forms.TextBox textBxIdVehículo;
-        private System.Windows.Forms.TextBox textBxPatente;
         private System.Windows.Forms.Label txtPatente;
-        private System.Windows.Forms.Button btInsertarVehículo;
-        private System.Windows.Forms.Button btnActualizarVehículo;
-        private System.Windows.Forms.TabControl selectorTipoVehículo;
-        private System.Windows.Forms.TabPage tabAutomóvil;
-        private System.Windows.Forms.TextBox textBxIdAutomóvil;
-        private System.Windows.Forms.TextBox textPuertas;
-        private System.Windows.Forms.TextBox textBxCilindrada;
-        private System.Windows.Forms.TextBox textBxIdMoto;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.Label labelTotal;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Button btnBuscador;
-        private TabPage tabPage3;
-        private Panel panel1;
-        private Label etiquetaIdVehiculo;
-        private Label etiquetaMarca;
-        private Label etiquetaModelo;
-        private Label etiquetaPatente;
-        private TabPage tabMoto;
-        private Panel panel2;
-        private Label etiquetaIdAutomóvil;
-        private Label etiquetaPuertasAutomóvil;
-        private Label etiquetaTipo;
-        private Panel panel3;
-        private Label etiquetaIdMoto;
-        private Label etiquetaCilindrada;
-        private Button btnCancelarInserción;
         private ErrorProvider error;
-        private CheckBox chkSelect;
-        private Button btEliminar;
-        private Button btnPresupuestar;
-        private Button Diagnose;
-        private ComboBox ElComboTipoAutomovil;
+#pragma warning disable CS0108 // El miembro oculta el miembro heredado. Falta una contraseña nueva
+#pragma warning restore CS0108 // El miembro oculta el miembro heredado. Falta una contraseña nueva
+        private masterDataSet masterDataSet;
+        private BindingSource repuestoBindingSource;
+        private masterDataSetTableAdapters.RepuestoTableAdapter repuestoTableAdapter;
+        private BindingSource repuestoBindingSource1;
+        private TabControl tabControlPrincipal;
+        private TabPage tabPage1;
         private Panel panel4;
         private Label label6;
+        private Button Diagnose;
+        private CheckBox chkSelect;
+        private Button btnPresupuestar;
+        private Button btEliminar;
+        private Button btnBuscador;
+        private TextBox txtBuscar;
+        private Label labelTotal;
+        private DataGridView dgvDatos;
+        private DataGridViewCheckBoxColumn Select;
+        private TabPage tabPage3;
+        private Panel panel1;
+        private Button btnCancelarInserción;
+        private Button btnActualizarVehículo;
+        private Button btInsertarVehículo;
+        private TextBox textBxPatente;
+        private TextBox textBxModelo;
+        private TextBox textBxMarca;
+        private TextBox textBxIdVehículo;
+        private TabControl selectorTipoVehículo;
+        private TabPage tabAutomóvil;
+        private Panel panel2;
+        private ComboBox ElComboTipoAutomovil;
+        private TextBox textPuertas;
+        private TextBox textBxIdAutomóvil;
+        private Label etiquetaTipo;
+        private Label etiquetaPuertasAutomóvil;
+        private Label etiquetaIdAutomóvil;
+        private TabPage tabMoto;
+        private Panel panel3;
+        private TextBox textBxCilindrada;
+        private TextBox textBxIdMoto;
+        private Label etiquetaCilindrada;
+        private Label etiquetaIdMoto;
+        private Label etiquetaPatente;
+        private Label etiquetaModelo;
+        private Label etiquetaMarca;
+        private Label etiquetaIdVehiculo;
         private TabPage tabPage4;
         private Panel panel5;
-        private Button button1;
-        private DataGridView dgvDesperfectos;
         private Button button2;
+        private DataGridView dgvDesperfectos;
+        private DataGridViewCheckBoxColumn SelectDesperfecto;
+        private Button button1;
         private TabPage tabPage5;
         private Panel panel6;
-        private Label label11;
-        private Label label8;
-        private Label label7;
-        private TextBox txBoxEmail;
-        private TextBox txBoxApellido;
-        private TextBox txBoxNombre;
-        private Label label15;
-        private Label label14;
-        private Label label13;
-        private Label label12;
+        private TextBox TotalPresupuesto;
+        private Label label17;
+        private TextBox txRepuestosTotal;
+        private Label label16;
         private Button button4;
         private Button button3;
         private TextBox txBoxEstacionamiento;
         private TextBox txManoDeObra;
         private TextBox txBoxDescuento;
         private TextBox txBoxRecargo;
-        private TextBox TotalPresupuesto;
-        private Label label17;
-        private TextBox txRepuestosTotal;
-        private Label label16;
-#pragma warning disable CS0108 // El miembro oculta el miembro heredado. Falta una contraseña nueva
-        private DataGridViewCheckBoxColumn Select;
-#pragma warning restore CS0108 // El miembro oculta el miembro heredado. Falta una contraseña nueva
-        private DataGridViewCheckBoxColumn SelectDesperfecto;
-        private TabPage tabPageDiagnóstico;
+        private Label label15;
+        private Label label14;
+        private Label label13;
+        private Label label12;
+        private TextBox txBoxEmail;
+        private TextBox txBoxApellido;
+        private TextBox txBoxNombre;
+        private Label label11;
+        private Label label8;
+        private Label label7;
+        private TabPage tabPageDesperfectos;
         private Panel panel8;
-        private Panel panel7;
-        private Label labelNuevoDesperfecto;
-        private Label labelDesperfectosAsignados;
-        private Label labelDescripcionDesperfecto;
-        private Label labelDesperfectoManoDeObra;
-        private Label labelDesperfectoTiempo;
-        private TextBox textBoxDesperfectoDescripcion;
-        private TextBox textBoxDesperfectoManoDeObra;
-        private TextBox textBoxDesperfectoTiempo;
-        private Button buttonAgregarDesperfecto;        
+        private Label labelDobleClickRepuestos;
         private GrillaDesperfectos dataGridViewDesperfectos;
+        private Label labelDesperfectosAsignados;
+        private Panel panel7;
+        private Button buttonAgregarDesperfecto;
+        private TextBox textBoxDesperfectoTiempo;
+        private TextBox textBoxDesperfectoManoDeObra;
+        private TextBox textBoxDesperfectoDescripcion;
+        private Label labelDesperfectoTiempo;
+        private Label labelDesperfectoManoDeObra;
+        private Label labelDescripcionDesperfecto;
+        private Label labelNuevoDesperfecto;
         private TabPage tabPageRepuestos;
+        private Panel panel12;
+        private Button buttonRegresarMenuDesperfectos;
+        private Button buttonAgregarRepuestosDesperfecto;
+        private Panel panel11;
+        private ComboBox comboBoxRepuestosExistentes;
+        private Button button6;
+        private Label labelNombreRepuestoExistente;
+        private Label labelSeleccionarRepuestoExistente;
         private Panel panel10;
         private DataGridView dgvRepuestos;
+        private DataGridViewCheckBoxColumn Sel;
         private Label labelRapuestosAsignados;
         private Panel panel9;
         private Button button5;
@@ -1468,22 +1560,14 @@ namespace CapaPresentación
         private Label labelPrecioRepuesto;
         private Label labelNombreRepuesto;
         private Label labelAgregarNuevoRepuesto;
-        private Panel panel11;
-        private Button button6;
-        private Label labelNombreRepuestoExistente;
-        private Label labelSeleccionarRepuestoExistente;
-        private ComboBox comboBoxRepuestosExistentes;
-        private masterDataSet masterDataSet;
-        private BindingSource repuestoBindingSource;
-        private masterDataSetTableAdapters.RepuestoTableAdapter repuestoTableAdapter;
-        private BindingSource repuestoBindingSource1;
-        private Label labelDobleClickRepuestos;
-        private Panel panel12;
-        private Button buttonAgregarRepuestosDesperfecto;
-        private DataGridViewCheckBoxColumn Sel;
         private DataGridViewCheckBoxColumn SeleccionarDesperfecto;
         private DataGridViewTextBoxColumn RE;
         private DataGridViewTextBoxColumn RF;
+        private Panel panel13;
+        private Label labelInfoContexto;
+        private Panel panel14;
+        private Button buttonCancelarDesperfecto;
+        private Button buttonPresupuestar;
 
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
