@@ -95,8 +95,7 @@ namespace CapaPresentación
             btnActualizarVehículo.Visible = true;
             error.Clear();
             dgvDatos.Columns[0].Visible = false;
-            Diagnose.Visible = false;
-            btnPresupuestar.Visible = false;
+            Diagnose.Visible = false;            
             btEliminar.Visible = false;
             chkSelect.Checked = false;
         }
@@ -445,7 +444,7 @@ namespace CapaPresentación
                         //Se inicia el presupuesto y se incorpora el vehículo a presupuestar.
                         iniciarPresupuesto(lastSelected);
                         //Pasamos a la pestaña de selección de desperfectos. 
-                        this.tabControlPrincipal.SelectedIndex = 4;
+                        this.tabControlPrincipal.SelectedIndex = 2;
                         this.labelDesperfectosAsignados.Text = this.labelDesperfectosAsignados.Text + " Id Vehículo: " + this.presupuesto.IdVehiculo;
                     }
                     else
@@ -466,15 +465,13 @@ namespace CapaPresentación
             if (chkSelect.Checked)
             {
                 dgvDatos.Columns[0].Visible = true;
-                Diagnose.Visible = true;
-                btnPresupuestar.Visible = true;
+                Diagnose.Visible = true;                
                 btEliminar.Visible = true;
             }
             else
             {
                 dgvDatos.Columns[0].Visible = false;
-                Diagnose.Visible = false;
-                btnPresupuestar.Visible = false;
+                Diagnose.Visible = false;                
                 btEliminar.Visible = false;
             }
         }
@@ -643,40 +640,6 @@ namespace CapaPresentación
         }
 
         /// <summary>
-        /// // Momento en que se seleccionaron los desperfectos para el vehículo, y se presiona sobre el botón Presupuestar en la pestaña 3 de la aplicación
-        /// </summary>
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DialogResult Opcion;
-                string descripcion, manoDeObra, tiempo;
-                int idDesperfecto = 0;
-                //ModeloDesperfecto modeloDesperfecto;
-                Opcion = MessageBox.Show("¿Continúa con el presupuesto? => Cargue sus datos", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (Opcion == DialogResult.OK)
-                {
-                    foreach (DataGridViewRow row in dgvDesperfectos.Rows)
-                    {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                            idDesperfecto = Int32.Parse(row.Cells[1].Value.ToString());
-                            descripcion = row.Cells[2].Value.ToString();
-                            manoDeObra = row.Cells[3].Value.ToString();
-                            tiempo = row.Cells[4].Value.ToString();
-                            // Se incorporan los precios de los repuestos segun requerimientos funcionales
-                            //procesarRepuestos(idDesperfecto);
-                            //modeloDesperfecto = new ModeloDesperfecto(idDesperfecto, descripcion, manoDeObra, tiempo);
-                            //modeloDesperfecto.adicionarCostoRepuesto(LogicaDesperfecto.obtenerSubtotalRepuestos(idDesperfecto));                                         
-                            //presupuesto.addDesperfecto(modeloDesperfecto);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
-        }
-
-        /// <summary>
         /// Se confirma el procesamiento del presupuesto => último paso
         /// </summary>        
         private void button4_Click(object sender, EventArgs e)
@@ -694,16 +657,7 @@ namespace CapaPresentación
             this.tabControlPrincipal.SelectedIndex = 0;
             this.listar();
         }
-
-        private void dgvDesperfectos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvDesperfectos.Columns["SelectDesperfecto"].Index) // Press on select
-            {
-                DataGridViewCheckBoxCell chkDesperfecto = (DataGridViewCheckBoxCell)dgvDesperfectos.Rows[e.RowIndex].Cells["SelectDesperfecto"];
-                chkDesperfecto.Value = !Convert.ToBoolean(chkDesperfecto.Value);
-            }
-        }
-
+       
         /// <summary>
         /// Selección del contenido para el Datagrid de Vehículos
         /// </summary>
@@ -998,7 +952,7 @@ namespace CapaPresentación
             this.limpiarRepuestos();
             int desperfectoToAddRepuestos = Convert.ToInt32(dataGridViewDesperfectos.CurrentRow.Cells["Id"].Value);            
             presupuesto.setIdCurrentDesperfecto(desperfectoToAddRepuestos);
-            this.tabControlPrincipal.SelectedIndex = 5;  //Pasamos a la pestaña de selección de repuestos
+            this.tabControlPrincipal.SelectedIndex = 3;  //Pasamos a la pestaña de selección de repuestos
             this.labelRapuestosAsignados.Text = "Repuestos asignados Id Desperfecto: " + desperfectoToAddRepuestos;
             this.listarRepuestosDelDesperfecto();
             //Se inicia la carga de repuestos para el desperfecto seleccionado
@@ -1092,7 +1046,7 @@ namespace CapaPresentación
                 this.MessageOk("Se incorporan al desperfecto, " + repuestosExistentes.Count + " rep. existentes y " + repuestosEnEspera.Count + " en espera de entrega.");
                 // Se incorporan los repuestos para el desperfecto en contrucción
                 this.actualizarRepuestosEnDesperfecto(repuestosExistentes, repuestosEnEspera);
-                this.tabControlPrincipal.SelectedIndex = 4;
+                this.tabControlPrincipal.SelectedIndex = 2;
                 // limpiar Desperfectos???
                 this.formatoDesperfectos();
                 
@@ -1123,7 +1077,7 @@ namespace CapaPresentación
             if (Opcion == DialogResult.OK)
             {
                 //Regreso a la pestaña de selección de Vehículos. 
-                this.tabControlPrincipal.SelectedIndex = 3;
+                this.tabControlPrincipal.SelectedIndex = 4;
             }
         }
     }
