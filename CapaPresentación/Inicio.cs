@@ -933,7 +933,7 @@ namespace CapaPresentación
         /// </summary>        
         private void buttonRegresarMenuDesperfectos_Click(object sender, EventArgs e)
         {
-            this.tabControlPrincipal.SelectedIndex = 4;            
+            this.tabControlPrincipal.SelectedIndex = 2;            
             this.formatoDesperfectos();
         }
 

@@ -33,7 +33,7 @@ namespace CapaPresentación
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDataSet = new CapaPresentación.masterDataSet();
             this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -478,7 +478,7 @@ namespace CapaPresentación
             this.panel14.Controls.Add(this.buttonPresupuestar);
             this.panel14.Location = new System.Drawing.Point(3, 361);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(253, 81);
+            this.panel14.Size = new System.Drawing.Size(231, 81);
             this.panel14.TabIndex = 3;
             // 
             // buttonPresupuestar
@@ -486,9 +486,9 @@ namespace CapaPresentación
             this.buttonPresupuestar.BackColor = System.Drawing.Color.DarkGreen;
             this.buttonPresupuestar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPresupuestar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonPresupuestar.Location = new System.Drawing.Point(34, 3);
+            this.buttonPresupuestar.Location = new System.Drawing.Point(16, 3);
             this.buttonPresupuestar.Name = "buttonPresupuestar";
-            this.buttonPresupuestar.Size = new System.Drawing.Size(188, 72);
+            this.buttonPresupuestar.Size = new System.Drawing.Size(193, 72);
             this.buttonPresupuestar.TabIndex = 9;
             this.buttonPresupuestar.Text = "Confirma Presupuesto";
             this.buttonPresupuestar.UseVisualStyleBackColor = false;
@@ -540,9 +540,10 @@ namespace CapaPresentación
             // 
             this.panel8.Controls.Add(this.dataGridViewDesperfectos);
             this.panel8.Controls.Add(this.labelDesperfectosAsignados);
-            this.panel8.Location = new System.Drawing.Point(260, 6);
+            this.panel8.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel8.Location = new System.Drawing.Point(240, 6);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(580, 436);
+            this.panel8.Size = new System.Drawing.Size(600, 436);
             this.panel8.TabIndex = 1;
             // 
             // dataGridViewDesperfectos
@@ -555,11 +556,11 @@ namespace CapaPresentación
             this.SeleccionarDesperfecto,
             this.RE,
             this.RF});
-            this.dataGridViewDesperfectos.Location = new System.Drawing.Point(8, 51);
+            this.dataGridViewDesperfectos.Location = new System.Drawing.Point(3, 51);
             this.dataGridViewDesperfectos.Name = "dataGridViewDesperfectos";
             this.dataGridViewDesperfectos.RowHeadersWidth = 62;
             this.dataGridViewDesperfectos.RowTemplate.Height = 28;
-            this.dataGridViewDesperfectos.Size = new System.Drawing.Size(569, 382);
+            this.dataGridViewDesperfectos.Size = new System.Drawing.Size(594, 382);
             this.dataGridViewDesperfectos.TabIndex = 2;
             this.dataGridViewDesperfectos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDesperfectos_CellContentClick);
             this.dataGridViewDesperfectos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDesperfectos_CellDoubleClick);
@@ -611,16 +612,16 @@ namespace CapaPresentación
             this.panel7.Controls.Add(this.labelDesperfectoManoDeObra);
             this.panel7.Controls.Add(this.labelDescripcionDesperfecto);
             this.panel7.Controls.Add(this.labelNuevoDesperfecto);
-            this.panel7.Location = new System.Drawing.Point(7, 6);
+            this.panel7.Location = new System.Drawing.Point(0, 6);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(247, 349);
+            this.panel7.Size = new System.Drawing.Size(234, 349);
             this.panel7.TabIndex = 0;
             // 
             // buttonCancelarDesperfecto
             // 
             this.buttonCancelarDesperfecto.BackColor = System.Drawing.Color.LightPink;
             this.buttonCancelarDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancelarDesperfecto.Location = new System.Drawing.Point(7, 309);
+            this.buttonCancelarDesperfecto.Location = new System.Drawing.Point(0, 309);
             this.buttonCancelarDesperfecto.Name = "buttonCancelarDesperfecto";
             this.buttonCancelarDesperfecto.Size = new System.Drawing.Size(128, 40);
             this.buttonCancelarDesperfecto.TabIndex = 8;
@@ -632,7 +633,7 @@ namespace CapaPresentación
             // 
             this.buttonAgregarDesperfecto.BackColor = System.Drawing.Color.YellowGreen;
             this.buttonAgregarDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAgregarDesperfecto.Location = new System.Drawing.Point(141, 309);
+            this.buttonAgregarDesperfecto.Location = new System.Drawing.Point(128, 309);
             this.buttonAgregarDesperfecto.Name = "buttonAgregarDesperfecto";
             this.buttonAgregarDesperfecto.Size = new System.Drawing.Size(102, 40);
             this.buttonAgregarDesperfecto.TabIndex = 7;
@@ -642,14 +643,14 @@ namespace CapaPresentación
             // 
             // textBoxDesperfectoTiempo
             // 
-            this.textBoxDesperfectoTiempo.Location = new System.Drawing.Point(144, 260);
+            this.textBoxDesperfectoTiempo.Location = new System.Drawing.Point(128, 261);
             this.textBoxDesperfectoTiempo.Name = "textBoxDesperfectoTiempo";
             this.textBoxDesperfectoTiempo.Size = new System.Drawing.Size(99, 29);
             this.textBoxDesperfectoTiempo.TabIndex = 6;
             // 
             // textBoxDesperfectoManoDeObra
             // 
-            this.textBoxDesperfectoManoDeObra.Location = new System.Drawing.Point(144, 216);
+            this.textBoxDesperfectoManoDeObra.Location = new System.Drawing.Point(128, 217);
             this.textBoxDesperfectoManoDeObra.Name = "textBoxDesperfectoManoDeObra";
             this.textBoxDesperfectoManoDeObra.Size = new System.Drawing.Size(99, 29);
             this.textBoxDesperfectoManoDeObra.TabIndex = 5;
@@ -659,7 +660,7 @@ namespace CapaPresentación
             this.textBoxDesperfectoDescripcion.Location = new System.Drawing.Point(7, 109);
             this.textBoxDesperfectoDescripcion.Multiline = true;
             this.textBoxDesperfectoDescripcion.Name = "textBoxDesperfectoDescripcion";
-            this.textBoxDesperfectoDescripcion.Size = new System.Drawing.Size(236, 95);
+            this.textBoxDesperfectoDescripcion.Size = new System.Drawing.Size(220, 95);
             this.textBoxDesperfectoDescripcion.TabIndex = 4;
             // 
             // labelDesperfectoTiempo
@@ -696,7 +697,7 @@ namespace CapaPresentación
             // 
             this.labelNuevoDesperfecto.AutoSize = true;
             this.labelNuevoDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNuevoDesperfecto.Location = new System.Drawing.Point(25, 11);
+            this.labelNuevoDesperfecto.Location = new System.Drawing.Point(14, 11);
             this.labelNuevoDesperfecto.Name = "labelNuevoDesperfecto";
             this.labelNuevoDesperfecto.Size = new System.Drawing.Size(193, 25);
             this.labelNuevoDesperfecto.TabIndex = 0;
@@ -1302,33 +1303,34 @@ namespace CapaPresentación
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Bisque;
+            this.panel4.BackColor = System.Drawing.Color.Beige;
             this.panel4.Controls.Add(this.Diagnose);
             this.panel4.Controls.Add(this.chkSelect);
             this.panel4.Controls.Add(this.btEliminar);
-            this.panel4.Location = new System.Drawing.Point(488, 13);
+            this.panel4.Location = new System.Drawing.Point(461, 14);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(352, 33);
+            this.panel4.Size = new System.Drawing.Size(379, 32);
             this.panel4.TabIndex = 4;
             // 
             // Diagnose
             // 
-            this.Diagnose.Location = new System.Drawing.Point(136, 3);
+            this.Diagnose.BackColor = System.Drawing.Color.PaleGreen;
+            this.Diagnose.Location = new System.Drawing.Point(175, 3);
             this.Diagnose.Name = "Diagnose";
-            this.Diagnose.Size = new System.Drawing.Size(113, 26);
+            this.Diagnose.Size = new System.Drawing.Size(101, 26);
             this.Diagnose.TabIndex = 5;
             this.Diagnose.Text = "Dignosticar";
-            this.Diagnose.UseVisualStyleBackColor = true;
+            this.Diagnose.UseVisualStyleBackColor = false;
             this.Diagnose.Click += new System.EventHandler(this.Activate_Click);
             // 
             // chkSelect
             // 
             this.chkSelect.AutoSize = true;
-            this.chkSelect.BackColor = System.Drawing.Color.YellowGreen;
-            this.chkSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelect.Location = new System.Drawing.Point(12, 5);
+            this.chkSelect.BackColor = System.Drawing.Color.Yellow;
+            this.chkSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSelect.Location = new System.Drawing.Point(14, 2);
             this.chkSelect.Name = "chkSelect";
-            this.chkSelect.Size = new System.Drawing.Size(118, 24);
+            this.chkSelect.Size = new System.Drawing.Size(130, 26);
             this.chkSelect.TabIndex = 4;
             this.chkSelect.Text = "Seleccionar";
             this.chkSelect.UseVisualStyleBackColor = false;
@@ -1336,12 +1338,13 @@ namespace CapaPresentación
             // 
             // btEliminar
             // 
-            this.btEliminar.Location = new System.Drawing.Point(255, 4);
+            this.btEliminar.BackColor = System.Drawing.Color.PaleGreen;
+            this.btEliminar.Location = new System.Drawing.Point(282, 4);
             this.btEliminar.Name = "btEliminar";
             this.btEliminar.Size = new System.Drawing.Size(94, 25);
             this.btEliminar.TabIndex = 7;
             this.btEliminar.Text = "Eliminar";
-            this.btEliminar.UseVisualStyleBackColor = true;
+            this.btEliminar.UseVisualStyleBackColor = false;
             this.btEliminar.Click += new System.EventHandler(this.btEliminar_Click);
             // 
             // btnBuscador
@@ -1349,7 +1352,7 @@ namespace CapaPresentación
             this.btnBuscador.BackColor = System.Drawing.Color.YellowGreen;
             this.btnBuscador.Location = new System.Drawing.Point(312, 13);
             this.btnBuscador.Name = "btnBuscador";
-            this.btnBuscador.Size = new System.Drawing.Size(170, 33);
+            this.btnBuscador.Size = new System.Drawing.Size(143, 33);
             this.btnBuscador.TabIndex = 3;
             this.btnBuscador.Text = "Buscar";
             this.btnBuscador.UseVisualStyleBackColor = false;
@@ -1357,9 +1360,9 @@ namespace CapaPresentación
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(16, 14);
+            this.txtBuscar.Location = new System.Drawing.Point(7, 14);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(290, 28);
+            this.txtBuscar.Size = new System.Drawing.Size(299, 28);
             this.txtBuscar.TabIndex = 2;
             // 
             // labelTotal
@@ -1380,21 +1383,21 @@ namespace CapaPresentación
             this.dgvDatos.ColumnHeadersHeight = 34;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.OldLace;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDatos.Location = new System.Drawing.Point(70, 65);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.OldLace;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDatos.Location = new System.Drawing.Point(70, 49);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersWidth = 30;
             this.dgvDatos.RowTemplate.Height = 23;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(709, 422);
+            this.dgvDatos.Size = new System.Drawing.Size(709, 438);
             this.dgvDatos.TabIndex = 0;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
