@@ -37,7 +37,7 @@ namespace CapaLogica
         /// <summary>
         /// Tratamiento lógico para la inserción de desperfectos, a partir de un modelo de presupuesto que se construye durante el flujo de ejecución
         /// </summary>        
-        public ModeloDesperfecto Insertar(ModeloPresupuesto presupuesto, string descripcion, double manoDeObra, int tiempo)
+        public ModeloDesperfecto Insertar(ModeloPresupuesto presupuesto, string descripcion, decimal manoDeObra, int tiempo)
         {
             modeloDesperfecto = new ModeloDesperfecto(presupuesto.Id, descripcion, manoDeObra, tiempo);
             PersistenciaDesperfecto datos = new PersistenciaDesperfecto();            

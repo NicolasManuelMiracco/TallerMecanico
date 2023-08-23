@@ -8,10 +8,10 @@ namespace CapaModelo
     public class ModeloDesperfecto
     {
         public int Id { get; set; }
-        public double costoRepuestosDesperfecto { get; set; }
+        public decimal CostoRepuestosDesperfecto { get; set; }
         public int IdPresupuesto { get; set; }
         public string Descripcion { get; set; }
-        public Double ManoDeObra { get; set; }
+        public decimal ManoDeObra { get; set; }
         public int Tiempo { get; set; }       
         public Boolean Cerrado { get; set; }
         public List<ModeloRepuesto> repuestos;
@@ -19,10 +19,10 @@ namespace CapaModelo
         public int CantidadRepuestosExistentes { get; set; }
         public int CantidadRepuestosFaltantes { get; set; }
 
-        private void init(String descripcion, Double manoDeObra, int tiempo)
+        private void init(String descripcion, decimal manoDeObra, int tiempo)
         {
             IdPresupuesto = -1; //Flag: sin persistencia
-            costoRepuestosDesperfecto = 0;
+            CostoRepuestosDesperfecto = 0;
             Descripcion = descripcion;
             ManoDeObra = manoDeObra;
             Tiempo = tiempo;
@@ -34,12 +34,22 @@ namespace CapaModelo
             CantidadRepuestosFaltantes = 0;
         }
 
+        public void calcularCostoRepuestosDesperfecto()
+        {
+            Decimal costoParcial = 0;
+            foreach (ModeloRepuesto repuesto in repuestos)
+            {
+                costoParcial += repuesto.Precio;
+            }
+            CostoRepuestosDesperfecto = costoParcial;
+        }
+
         public List<ModeloRepuesto> getRepuestos() { return repuestos; }
 
         /// <summary>
         /// El idDepserfecto se agrega después de su persistencia en BD, a partir del autonumérico
         /// </summary>               
-        public ModeloDesperfecto(int idPresupuesto, String descripcion, Double manoDeObra, int tiempo)
+        public ModeloDesperfecto(int idPresupuesto, String descripcion, decimal manoDeObra, int tiempo)
         {
             init(descripcion, manoDeObra, tiempo);
             IdPresupuesto = idPresupuesto;            
@@ -48,7 +58,7 @@ namespace CapaModelo
         /// <summary>
         /// Constructor sin idDesperfecto ni idPresupuesto, dado que aún no se confirmó persistencia
         /// </summary>
-        public ModeloDesperfecto(String descripcion, Double manoDeObra, int tiempo)
+        public ModeloDesperfecto(String descripcion, decimal manoDeObra, int tiempo)
         {
             init(descripcion, manoDeObra, tiempo);
         }
@@ -61,7 +71,6 @@ namespace CapaModelo
             }
             return false;
         }
-
         public void agregarRepuesto(ModeloRepuesto nuevoRepuesto)
         {
             repuestos.Add(nuevoRepuesto);
@@ -96,7 +105,6 @@ namespace CapaModelo
         /// </summary> 
         public DataTable ListarRepuestos()
         {
-            //System.Diagnostics.Debug.WriteLine("Cantidad de rep. Desperfecto: " + this.Id + " = " + this.Repuestos.Count);
             return CreateDataTable(this.getRepuestos());            
         }
 
@@ -105,7 +113,6 @@ namespace CapaModelo
         /// </summary>
         public void filtrarRepuestos(List<int> repuestosExistentes, List<int> repuestosEnEspera)
         {
-            System.Diagnostics.Debug.WriteLine("Tamaño antes " + repuestos.Count);
             foreach (ModeloRepuesto repuesto in repuestos)
             {
                 if (!repuestosExistentes.Contains(repuesto.Id) && !repuestosEnEspera.Contains(repuesto.Id))
@@ -113,8 +120,7 @@ namespace CapaModelo
                     repuestos.Remove(repuesto);
                     CantidadRepuestos--;
                 }
-            }
-            System.Diagnostics.Debug.WriteLine("Tamaño despues " + repuestos.Count);
+            }            
         }
     }
 }

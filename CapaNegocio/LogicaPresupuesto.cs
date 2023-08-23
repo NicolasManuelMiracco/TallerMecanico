@@ -17,6 +17,14 @@ namespace CapaLogica
             return datos.Insertar(nuevoPresupuesto);
         }
 
-        
+        public static string InsertarPresupuesto(ModeloPresupuesto nuevoPresupuesto)
+        {
+            PersistenciaPresupuesto datos = new PersistenciaPresupuesto();
+            return datos.Insertar(nuevoPresupuesto);
+        }
+
+
+
+
     }
 }

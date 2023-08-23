@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 using CapaLogica;
 using CapaModelo;
@@ -31,7 +29,7 @@ namespace CapaPresentación
         {
             InitializeComponent();
             logicaDesperfecto = new LogicaDesperfecto();
-            // Se asocia el Observer DataGridView con la lógica del desperfecto
+            /// Se asocia el Observer DataGridView con la lógica del desperfecto
             this.dataGridViewDesperfectos.setSubjec(logicaDesperfecto);
         }
 
@@ -71,7 +69,6 @@ namespace CapaPresentación
             try
             {
                 dgvDatos.DataSource = LogicaVehiculo.Buscar(txtBuscar.Text);
-                //dgvDatos = parseGridTipoVehiculo(dgvDatos);
                 this.formato();
                 labelTotal.Text = Convert.ToString(dgvDatos.Rows.Count);
             }
@@ -244,11 +241,11 @@ namespace CapaPresentación
         {
             if (tipoAutomovil == string.Empty)
             {
-                selectorTipoVehículo.SelectedIndex = 1; // Hace mantenimiento
+                selectorTipoVehículo.SelectedIndex = 1; /// Hace mantenimiento
             }
             else
             {
-                selectorTipoVehículo.SelectedIndex = 0; // Hace mantenimiento
+                selectorTipoVehículo.SelectedIndex = 0; /// Hace mantenimiento
             }
         }
 
@@ -292,14 +289,14 @@ namespace CapaPresentación
                     if (Convert.ToBoolean(row.Cells[0].Value))
                     {
                         vehiculosSeleccionados++; // Se registra la cantidad de seleccionados para UI usuario cuando es 0
-                        // Aquí siempre tenemos un valor en columna 4 (Moto) OR exclusivo en columna 6 (Automovil)
+                        /// Aquí siempre tenemos un valor en columna 4 (Moto) OR exclusivo en columna 6 (Automovil)
                         if (!String.IsNullOrEmpty(row.Cells[4].Value.ToString())) // Es una Moto
                         {
                             codigoMoto = Int32.Parse(row.Cells[4].Value.ToString());
                             Opcion = MessageBox.Show("¿Eliminar la moto: " + codigoMoto + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                         }
-                        else // Es un Automóvil
+                        else /// Es un Automóvil
                         {
                             codigoAutomovil = Int32.Parse(row.Cells[6].Value.ToString());
                             Opcion = MessageBox.Show("¿Eliminar el automóvil: " + codigoAutomovil + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -329,7 +326,6 @@ namespace CapaPresentación
 
         private void Inicio_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'masterDataSet.Repuesto' Puede moverla o quitarla según sea necesario.
             this.repuestoTableAdapter.Fill(this.masterDataSet.Repuesto);
             this.listar();
         }
@@ -441,9 +437,9 @@ namespace CapaPresentación
                     Opcion = MessageBox.Show("¿Presupuestar el Id vehículo: " + lastSelected + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel);
                     if (Opcion == DialogResult.OK)
                     {
-                        //Se inicia el presupuesto y se incorpora el vehículo a presupuestar.
+                        ///Se inicia el presupuesto y se incorpora el vehículo a presupuestar.
                         iniciarPresupuesto(lastSelected);
-                        //Pasamos a la pestaña de selección de desperfectos. 
+                        ///Pasamos a la pestaña de selección de desperfectos. 
                         this.tabControlPrincipal.SelectedIndex = 2;
                         this.labelDesperfectosAsignados.Text = this.labelDesperfectosAsignados.Text + " Id Vehículo: " + this.presupuesto.IdVehiculo;
                     }
@@ -500,8 +496,7 @@ namespace CapaPresentación
             for (int i = 0; i < dgv.Rows.Count; i++)
             {
                 if (dgv.Rows[i].Cells[0].Selected) { indicesSeleccionados.Add(i); }
-            }
-            //System.Diagnostics.Debug.WriteLine("Salida: " + indicesSeleccionados.Count);
+            }            
             return indicesSeleccionados;
         }
 
@@ -530,122 +525,7 @@ namespace CapaPresentación
         private void seteosDefaultPresupuesto()
         {
 
-        }
-
-        private void actualizarCamposCalculadosPresupuesto()
-        {
-
-        }
-
-        private string tratamientoDatosPresupuesto()
-        {
-            if (txBoxEmail.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del cliente");
-                error.SetError(txBoxEmail, "Ingrese el Email");
-                return "FAIL";
-            }
-            else presupuesto.Email = txBoxEmail.Text;
-
-            if (txBoxApellido.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del cliente");
-                error.SetError(txBoxApellido, "Ingrese el Apellido");
-                return "FAIL";
-            }
-            else presupuesto.Apellido = txBoxApellido.Text;
-
-            if (txBoxNombre.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del cliente");
-                error.SetError(txBoxNombre, "Ingrese el Nombre");
-                return "FAIL";
-            }
-            else presupuesto.Nombre = txBoxNombre.Text;
-
-            if (txBoxDescuento.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del Presupuesto");
-                error.SetError(txBoxDescuento, "Ingrese un Descuento");
-                return "FAIL";
-            }
-            if (txBoxRecargo.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del Presupuesto");
-                error.SetError(txBoxRecargo, "Ingrese un Recargo");
-                return "FAIL";
-            }
-            if (txBoxEstacionamiento.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del Presupuesto");
-                error.SetError(txBoxEstacionamiento, "Ingrese un Estacionamiento");
-                return "FAIL";
-            }
-            if (txBoxRecargo.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del cliente");
-                error.SetError(txBoxRecargo, "Ingrese un recargo para el Presupuesto");
-                return "FAIL";
-            }
-            return "OK";
-        }
-
-        /// <summary>
-        /// Se cierra la transacción presupuesto, esa es la lógica que se desarrolló para un concepto que se construye durante el ciclo de corrida de la aplicación.
-        /// </summary>        
-        private string finalizarPresupuesto()
-        {
-            string respuesta = "";
-            /// Se persiste el presupuesto
-            //respuesta = LogicaPresupuesto.Insertar(presupuesto);
-            actualizarCamposCalculadosPresupuesto();
-            return respuesta;
-        }
-
-        private string cargaDelCliente()
-        {
-            seteosDefaultPresupuesto();
-            string respuesta = tratamientoDatosPresupuesto();
-            if (respuesta == "OK")
-            {
-                try
-                {
-                    respuesta = finalizarPresupuesto();
-                    if (respuesta == "OK")
-                    {
-                        this.MessageOk("Se insertó correctamente el presupuesto");
-                        this.limpiar();
-                        this.listar();
-                    }
-                    else { this.MessageError(respuesta); }
-                }
-                catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
-                finally { }
-            }
-            else { this.MessageError("Verificar los datos del cliente, recargos y descuentos"); }
-            return respuesta;
-        }
-
-        /// <summary>
-        /// Se cargan los datos precalculados o por default. El usuario podrá modificarlos de manera parcial.
-        /// Aquí se podría definir perfilería para la administración de permisos de edición (ejemplo incrementar estacionamiento o mano de obra).
-        /// </summary>
-        private void preSeteoParametriaPresupuesto()
-        {
-            txBoxEmail.Text = this.presupuesto.Email.ToString();
-            txBoxDescuento.Text = this.presupuesto.Descuento.ToString(); ;
-            txBoxRecargo.Text = this.presupuesto.Recargo.ToString(); ;
-            //txBoxEstacionamiento.Text = this.presupuesto.Estacionamiento.ToString(); 
-            txBoxRecargo.Text = this.presupuesto.Recargo.ToString();
-        }
-
-        /// <summary>
-        /// Se confirma el procesamiento del presupuesto => último paso
-        /// </summary>        
-        private void button4_Click(object sender, EventArgs e)
-        {
-            cargaDelCliente();
-        }
+        }        
 
         private void label12_Click(object sender, EventArgs e)
         {
@@ -692,9 +572,9 @@ namespace CapaPresentación
                     Opcion = MessageBox.Show("¿Presupuestar el Id vehículo: " + lastSelected + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel);
                     if (Opcion == DialogResult.OK)
                     {
-                        //Se inicia el presupuesto y se incorpora el vehículo a presupuestar.
+                        ///Se inicia el presupuesto y se incorpora el vehículo a presupuestar.
                         iniciarPresupuesto(lastSelected);
-                        //Pasamos a la pestaña de selección de desperfectos. 
+                        ///Pasamos a la pestaña de selección de desperfectos. 
                         this.tabControlPrincipal.SelectedIndex = 2;
                     }
                     else
@@ -736,7 +616,7 @@ namespace CapaPresentación
         private ModeloDesperfecto insertarDesperfecto()
         {
             // Se agrega el desperfecto que está siendo configurado, al presupuesto que está siendo creado y se retorna para ser agregado como nuevo desperfecto del presupuesto
-            return logicaDesperfecto.Insertar(presupuesto, textBoxDesperfectoDescripcion.Text, Convert.ToDouble(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
+            return logicaDesperfecto.Insertar(presupuesto, textBoxDesperfectoDescripcion.Text, Convert.ToDecimal(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
         }
 
         /// <summary>
@@ -769,7 +649,7 @@ namespace CapaPresentación
                 dataGridViewDesperfectos.DataSource = logicaDesperfecto.Listar(presupuesto.Id);
                 this.formatoDesperfectos();
                 labelTotal.Text = Convert.ToString(dataGridViewDesperfectos.Rows.Count);
-                //this.limpiar();
+                ///this.limpiar();
             }
             catch (Exception ex)
             {
@@ -798,9 +678,6 @@ namespace CapaPresentación
         {
             try
             {
-                //dataGridViewDesperfectos.DataSource = logicaDesperfecto.Listar(presupuesto.Id);
-                
-                //this.dataGridViewDesperfectos.Rows.Add("Sel", "RE", "RF", "Id", "Descripcion", "ManoDeObra", "Tiempo");
                 this.dataGridViewDesperfectos.Rows.Insert(0, false, "", "", nuevoModeloDesperfecto.Id.ToString(), nuevoModeloDesperfecto.Descripcion.ToString(), nuevoModeloDesperfecto.ManoDeObra.ToString(), nuevoModeloDesperfecto.Tiempo.ToString());
             }
             catch (Exception ex)
@@ -908,7 +785,7 @@ namespace CapaPresentación
 
         private ModeloRepuesto insertarRepuestoExistente()
         {
-            // Se obtiene el Id del repuesto existente seleccionado
+            /// Se obtiene el Id del repuesto existente seleccionado
             return (ModeloRepuesto) LogicaRepuesto.agregarRepuestoExistenteAlDesperfectoActual(presupuesto, Convert.ToInt32(comboBoxRepuestosExistentes.SelectedValue.ToString()));            
         }
 
@@ -955,8 +832,8 @@ namespace CapaPresentación
             this.tabControlPrincipal.SelectedIndex = 3;  //Pasamos a la pestaña de selección de repuestos
             this.labelRapuestosAsignados.Text = "Repuestos asignados Id Desperfecto: " + desperfectoToAddRepuestos;
             this.listarRepuestosDelDesperfecto();
-            //Se inicia la carga de repuestos para el desperfecto seleccionado
-            //cargarRepuestos(desperfectoToAddRepuestos);
+            ///Se inicia la carga de repuestos para el desperfecto seleccionado
+            ///cargarRepuestos(desperfectoToAddRepuestos);
 
         }
 
@@ -978,7 +855,7 @@ namespace CapaPresentación
         }
         private ModeloRepuesto insertarRepuestoNuevo()
         {
-            // Se obtiene el Id del repuesto existente seleccionado
+            /// Se obtiene el Id del repuesto existente seleccionado
             return (ModeloRepuesto)LogicaRepuesto.agregarRepuestoNuevoAlDesperfectoActual(presupuesto, Convert.ToString(textBoxNombreNuevoRepuesto.Text), Convert.ToDecimal(textBoxPrecioNuevoRepuesto.Text));
         }
 
@@ -988,10 +865,9 @@ namespace CapaPresentación
             {
                 try
                 {
-                    //System.Diagnostics.Debug.WriteLine("Pasa el tratamiento de repuesto");
+                    /// System.Diagnostics.Debug.WriteLine("Pasa el tratamiento de repuesto");
                     if (insertarRepuestoNuevo() != null)
                     {
-                        //this.MessageOk("Se agregó correctamente el repuesto existente");
                         this.listarRepuestosDelDesperfecto();
                         this.limpiarRepuestoNuevo();
                     }
@@ -1044,10 +920,10 @@ namespace CapaPresentación
             else
             {
                 this.MessageOk("Se incorporan al desperfecto, " + repuestosExistentes.Count + " rep. existentes y " + repuestosEnEspera.Count + " en espera de entrega.");
-                // Se incorporan los repuestos para el desperfecto en contrucción
+                /// Se incorporan los repuestos para el desperfecto en contrucción
                 this.actualizarRepuestosEnDesperfecto(repuestosExistentes, repuestosEnEspera);
                 this.tabControlPrincipal.SelectedIndex = 2;
-                // limpiar Desperfectos???
+                /// limpiar Desperfectos???
                 this.formatoDesperfectos();
                 
             }
@@ -1066,19 +942,194 @@ namespace CapaPresentación
             DialogResult Opcion = MessageBox.Show("¿Abandonar la carga de Desperfectos?", "Tratamiento de Desperfectos", MessageBoxButtons.OKCancel);
             if (Opcion == DialogResult.OK)
             {
-                //Regreso a la pestaña de selección de Vehículos. 
+                ///Regreso a la pestaña de selección de Vehículos. 
                 this.tabControlPrincipal.SelectedIndex = 0;
             }            
         }
 
+        private string tratamientoDatosPresupuesto()
+        {
+            if (txBoxEmail.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del cliente");
+                error.SetError(txBoxEmail, "Ingrese el Email");
+                return "FAIL";
+            }
+            else presupuesto.Email = txBoxEmail.Text;
+
+            if (txBoxApellido.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del cliente");
+                error.SetError(txBoxApellido, "Ingrese el Apellido");
+                return "FAIL";
+            }
+            else presupuesto.Apellido = txBoxApellido.Text;
+
+            if (txBoxNombre.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del cliente");
+                error.SetError(txBoxNombre, "Ingrese el Nombre");
+                return "FAIL";
+            }
+            else presupuesto.Nombre = txBoxNombre.Text;
+
+            if (txBoxDescuento.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Presupuesto");
+                error.SetError(txBoxDescuento, "Ingrese un Descuento");
+                return "FAIL";
+            }
+            if (txBoxRecargo.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Presupuesto");
+                error.SetError(txBoxRecargo, "Ingrese un Recargo");
+                return "FAIL";
+            }
+            if (txBoxEstacionamiento.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del Presupuesto");
+                error.SetError(txBoxEstacionamiento, "Ingrese un Estacionamiento");
+                return "FAIL";
+            }
+            if (txRepuestosTotal.Text == string.Empty)
+            {
+                this.MessageError("Falta ingresar datos del presupuesto");
+                error.SetError(txRepuestosTotal, "Ingrese el costo total de repuestos para el Presupuesto");
+                return "FAIL";
+            }
+            if (txManoDeObra.Text == string.Empty)
+            {
+                this.MessageError("Falta completar el Presupuesto");
+                error.SetError(txManoDeObra, "Ingrese mano de obra para el Presupuesto");
+                return "FAIL";
+            }
+            if (textBoxSubTotal.Text == string.Empty)
+            {
+                this.MessageError("Falta completar el Presupuesto");
+                error.SetError(textBoxSubTotal, "Ingrese subTotal para el Presupuesto");
+                return "FAIL";
+            }
+            if (TotalPresupuesto.Text == string.Empty)
+            {
+                this.MessageError("Falta completar el Presupuesto");
+                error.SetError(TotalPresupuesto, "Ingrese Total para el Presupuesto");
+                return "FAIL";
+            }
+            return "OK";
+        }
+
+        /// <summary>
+        /// Se cierra la transacción presupuesto, esa es la lógica que se desarrolló para un concepto que se construye durante el ciclo de corrida de la aplicación.
+        /// </summary>        
+        private string finalizarPresupuesto()
+        {
+            string respuesta = "";
+            /// Se persiste el presupuesto
+            //respuesta = LogicaPresupuesto.Insertar(presupuesto);
+            
+            return respuesta;
+        }
+
+        private string cargaDelCliente()
+        {
+            string respuesta = tratamientoDatosPresupuesto();
+            if (respuesta == "OK")
+            {
+                try
+                {
+                    respuesta = finalizarPresupuesto();
+                    if (respuesta == "OK")
+                    {
+                        this.MessageOk("Se insertó correctamente el presupuesto");
+                        this.limpiar();
+                        this.listar();
+                    }
+                    else { this.MessageError(respuesta); }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
+                finally { }
+            }
+            else { this.MessageError("Verificar los datos del cliente, recargos y descuentos"); }
+            return respuesta;
+        }
+
+        /// <summary>
+        /// Se cargan los datos precalculados o por default. El usuario podrá modificarlos de manera parcial.
+        /// Aquí se podría definir perfilería para la administración de permisos de edición (ejemplo incrementar estacionamiento o mano de obra).
+        /// </summary>
+        private void preSeteoParametriaPresupuesto()
+        {
+            txBoxEmail.Text = this.presupuesto.Email.ToString();
+            txBoxDescuento.Text = this.presupuesto.Descuento.ToString(); ;
+            txBoxRecargo.Text = this.presupuesto.Recargo.ToString(); ;
+            txBoxEstacionamiento.Text = this.presupuesto.CostoEstacionamiento.ToString(); 
+            txBoxDescuento.Text = this.presupuesto.Descuento.ToString();
+        }
+
+        private void actualizarTextBoxesPresupuesto()
+        {
+            txBoxRecargo.Text = presupuesto.Recargo.ToString();
+            txBoxEstacionamiento.Text = presupuesto.CostoEstacionamiento.ToString();
+            txRepuestosTotal.Text = presupuesto.CostoTotal.ToString();
+            txManoDeObra.Text = presupuesto.ManoDeObra.ToString();
+            textBoxSubTotal.Text = presupuesto.TotalConRecargosDescuentos.ToString();
+            TotalPresupuesto.Text = presupuesto.TotalConGanancia.ToString();
+        }
+
+        /// <summary>
+        /// Se confirma el procesamiento del presupuesto => último paso
+        /// </summary>        
+        private void button4_Click(object sender, EventArgs e)
+        {
+            seteosDefaultPresupuesto();
+            actualizarTextBoxesPresupuesto();
+            cargaDelCliente();
+        }
+
+        private void setearParametriaPresupuestoFinal(List<int> idDesperfectosAPresupuestar) {
+            //System.Diagnostics.Debug.WriteLine(idDesperfectosAPresupuestar.Count + " vs " + presupuesto.Desperfectos.Count);
+            presupuesto.cerrarPresupuesto();
+        }
+
         private void buttonPresupuestar_Click(object sender, EventArgs e)
         {
-            DialogResult Opcion = MessageBox.Show("¿Confirma el Presupuesto?", "Tratamiento de Desperfectos", MessageBoxButtons.OKCancel);
-            if (Opcion == DialogResult.OK)
+            try
             {
-                //Regreso a la pestaña de selección de Vehículos. 
-                this.tabControlPrincipal.SelectedIndex = 4;
+                int cantidadDesperfectos = 0;
+                List<int> idDesperfectosAPresupuestar = new List<int>();
+                foreach (DataGridViewRow row in dataGridViewDesperfectos.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[0].Value))
+                    {
+                        idDesperfectosAPresupuestar.Add(Int32.Parse(row.Cells[3].Value.ToString()));
+                        cantidadDesperfectos++;
+                    }
+                }
+                DialogResult Opcion;
+                if (cantidadDesperfectos > 0)
+                {
+                    Opcion = MessageBox.Show("¿Confirma el presupuesto para: " + cantidadDesperfectos + " desperfectos ?", "Control de Vehiculos", MessageBoxButtons.OKCancel);
+                    if (Opcion == DialogResult.OK)
+                    {
+                        /// Dirección a la pestaña de presupuestación
+                        this.tabControlPrincipal.SelectedIndex = 4;
+                        /// Seteo de parametría por default.
+                        this.preSeteoParametriaPresupuesto();
+                        /// Se setea el modelo con los desperfectos seleccionados.
+                        this.presupuesto.DesperfectosAPresupuestar = idDesperfectosAPresupuestar;
+                        this.setearParametriaPresupuestoFinal(idDesperfectosAPresupuestar);                                            
+                    }
+                    else
+                    {
+                        //this.listar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccionar al menos 1 (UN) desperfecto.", "Control de Vehiculos", MessageBoxButtons.OK);
+                }
             }
-        }
+            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
+        }        
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace CapaModelo
 {
-
     /// <summary>
     /// Tipo enumerado público segun requerimiento
     /// </summary>
