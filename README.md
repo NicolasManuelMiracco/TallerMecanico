@@ -2,11 +2,6 @@
 Challenge .NET 
 Autor: Nicolás Manuel Miracco
 
-Aclaración: 
--Versión preliminar a un 80%, resta entrega final que será pusheada a la misma rama master.
--Me extendí en la entrega, pero dejar un producto en buen estado. 
--El tiempo extra que tuve para la construcción no fue lo que esperaba, dado que la jornada laboral quita tiempo, aún así se logró una entrega coherente.
-
 El presente es un proyecto Challenge que responde a la creación de un modelo de Taller Mecánico.
 Para el desarrollo se utilizó: 
 
@@ -36,12 +31,14 @@ Base de datos: Stored procedures (SP)
 
 Diseño e implementación (a extender): 
 - Aplicación patrón strategy para la asignación dinámica de turnos.
+- Aplicación del patrón observer para la actualización automática de UI cuando se actualiza el modelo.
+  -  Al momento de agregar repuestos a un desperfecto, que será incorporado al presupuesto; se actualizan automáticamente los textBox indicando la cantidad de repuestos existentes, y la cantidad de repuestos faltantes.
+  -  Visualmente también se modifica el color. 
 - Organización en namespaces.
 - Diseño en 4 capas interoperativas.
 - Manejo de excepciones (resta extender).
 - Comentarios en código.
-- Tratamiento de UI y control de errores (resta completar).
-- 
+- Tratamiento de UI y control de errores.- 
 
 Pendientes: 
 - Prueba final generación de presupuesto: evidenciación y testing.
