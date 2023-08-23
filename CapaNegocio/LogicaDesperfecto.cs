@@ -55,12 +55,15 @@ namespace CapaLogica
         /// En LogicaRepuesto se agregan los repuestos para el desperfecto activo.
         /// Cualquier error en la inserción, desencadena un error general.
         /// </summary>
-        public string agregarRepuestos(ModeloPresupuesto modeloPresupuesto, List<int> repuestosExistentes, List<int> repuestosEnEspera)
+        public string actualizarRepuestos(ModeloPresupuesto modeloPresupuesto, List<int> repuestosExistentes, List<int> repuestosEnEspera)
         {
             string respuesta = "OK";
-            PersistenciaDesperfectoRepuesto datos = new PersistenciaDesperfectoRepuesto();            
-                        
-            int idDesperfectoActivo = ((ModeloDesperfecto) modeloPresupuesto.CurrentDesperfecto).Id;
+
+            PersistenciaDesperfectoRepuesto datos = new PersistenciaDesperfectoRepuesto();
+            modeloDesperfecto = ((ModeloDesperfecto)modeloPresupuesto.getDesperfectoActual());
+
+            int idDesperfectoActivo = modeloDesperfecto.Id;
+            System.Diagnostics.Debug.WriteLine("Desperfecto Activo: " + idDesperfectoActivo + " ListaExistentes: " + repuestosExistentes.Count + " ListaEnEspera: " + repuestosEnEspera.Count);
             foreach (int repuestoExistente in repuestosExistentes)
             {
                 respuesta = datos.Insertar(repuestoExistente, idDesperfectoActivo);
@@ -74,6 +77,8 @@ namespace CapaLogica
             /// Update de repuestos para ser mostrado como faltante / existente
             modeloDesperfecto.CantidadRepuestosExistentes = repuestosExistentes.Count;
             modeloDesperfecto.CantidadRepuestosFaltantes = repuestosEnEspera.Count;
+            /// Se descartan los repuestos no seleccionados a partir de los Existentes y en Espera
+            modeloDesperfecto.filtrarRepuestos(repuestosExistentes, repuestosEnEspera); 
 
             this.NotificarObservers();
             return respuesta;

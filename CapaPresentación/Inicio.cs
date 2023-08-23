@@ -926,7 +926,7 @@ namespace CapaPresentación
         {
             try
             {
-                dgvRepuestos.DataSource = presupuesto.CurrentDesperfecto.ListarRepuestos();                
+                dgvRepuestos.DataSource = ((ModeloDesperfecto)presupuesto.getDesperfectoActual()).ListarRepuestos();      // no son todos, solo los del desperfecto           
                 this.formatoRepuestos();
                 labelTotal.Text = Convert.ToString(dgvRepuestos.Rows.Count);                
             }
@@ -954,8 +954,6 @@ namespace CapaPresentación
                     ModeloRepuesto nuevoRepuestoExistente = insertarRepuestoExistente();
                     if (nuevoRepuestoExistente != null)
                     {
-                        //Se elimina el ítem seleccionado para que no sea incorporado mas de una vez por Desperfecto
-                        //comboBoxRepuestosExistentes.Items.Remove(comboBoxRepuestosExistentes.SelectedItem);                        
                         this.listarRepuestosDelDesperfecto();                        
                     }
                     else { this.MessageError("El repuesto existe o es erróneo"); }
@@ -971,11 +969,13 @@ namespace CapaPresentación
         /// </summary>
         private void limpiarRepuestos()
         {
-            dgvRepuestos.DataSource = null;            
+            
+            this.dgvRepuestos.DataSource = null;
+            this.dgvRepuestos.Rows.Clear();
         }
 
         /// <summary>
-        /// Incorporación de repuestos a un desperfecto
+        /// Incorporación de repuestos a un desperfecto por medio de Doble Clic
         /// </summary>        
         private void dataGridViewDesperfectos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -983,7 +983,8 @@ namespace CapaPresentación
             int desperfectoToAddRepuestos = Convert.ToInt32(dataGridViewDesperfectos.CurrentRow.Cells["Id"].Value);            
             presupuesto.setIdCurrentDesperfecto(desperfectoToAddRepuestos);
             this.tabControlPrincipal.SelectedIndex = 5;  //Pasamos a la pestaña de selección de repuestos
-            this.labelRapuestosAsignados.Text = "Desperfectos asignados Id Desperfecto: " + desperfectoToAddRepuestos;
+            this.labelRapuestosAsignados.Text = "Repuestos asignados Id Desperfecto: " + desperfectoToAddRepuestos;
+            this.listarRepuestosDelDesperfecto();
             //Se inicia la carga de repuestos para el desperfecto seleccionado
             //cargarRepuestos(desperfectoToAddRepuestos);
 
@@ -1037,11 +1038,12 @@ namespace CapaPresentación
         /// </summary>        
         private void actualizarRepuestosEnDesperfecto(List<int> repuestosExistentes, List<int> repuestosEnEspera)
         {
-            logicaDesperfecto.agregarRepuestos(presupuesto, repuestosExistentes, repuestosEnEspera); 
+            logicaDesperfecto.actualizarRepuestos(presupuesto, repuestosExistentes, repuestosEnEspera); 
         }
 
         /// <summary>
-        /// Tratamiento de los repuestos para el desperfecto en curso. Se retornan los seleccionados, se incorporan al desperfecto y se persisten los inexistentes (marca EnEspera).
+        /// Tratamiento de los repuestos para el desperfecto en curso: Se eliminan del modelo los NO seleccinados.
+        /// Se retornan los seleccionados, se incorporan al desperfecto y se persisten los inexistentes (marca EnEspera).
         /// </summary>
         private void buttonAgregarRepuestosDesperfecto_Click_1(object sender, EventArgs e)
         {

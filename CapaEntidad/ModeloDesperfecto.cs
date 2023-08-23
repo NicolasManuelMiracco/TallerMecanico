@@ -1,49 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Reflection;
 
 namespace CapaModelo
 {
     public class ModeloDesperfecto
     {
-        public double costoRepuestosDesperfecto { get; set; }
         public int Id { get; set; }
+        public double costoRepuestosDesperfecto { get; set; }
         public int IdPresupuesto { get; set; }
         public string Descripcion { get; set; }
         public Double ManoDeObra { get; set; }
         public int Tiempo { get; set; }       
         public Boolean Cerrado { get; set; }
-        public List<ModeloRepuesto> Repuestos { get; set; }
+        public List<ModeloRepuesto> repuestos;
         public int CantidadRepuestos { get; set; }
         public int CantidadRepuestosExistentes { get; set; }
         public int CantidadRepuestosFaltantes { get; set; }
 
-        /// <summary>
-        /// RESTA AGREGAR Id
-        /// </summary>               
-        public ModeloDesperfecto(int idPresupuesto, String descripcion, Double manoDeObra, int tiempo)
+        private void init(String descripcion, Double manoDeObra, int tiempo)
         {
-            IdPresupuesto = idPresupuesto;
+            IdPresupuesto = -1; //Flag: sin persistencia
+            costoRepuestosDesperfecto = 0;
             Descripcion = descripcion;
             ManoDeObra = manoDeObra;
             Tiempo = tiempo;
             // Indica que el desperfecto está siendo tratado
-            Cerrado = false;
-            costoRepuestosDesperfecto = 0;
+            Cerrado = false;            
+            repuestos = new List<ModeloRepuesto>();
             CantidadRepuestos = 0;
             CantidadRepuestosExistentes = 0;
             CantidadRepuestosFaltantes = 0;
-            Repuestos = new List<ModeloRepuesto>();
         }
-               
-        public Boolean contains(ModeloRepuesto modeloRepuesto)
+
+        public List<ModeloRepuesto> getRepuestos() { return repuestos; }
+
+        /// <summary>
+        /// El idDepserfecto se agrega después de su persistencia en BD, a partir del autonumérico
+        /// </summary>               
+        public ModeloDesperfecto(int idPresupuesto, String descripcion, Double manoDeObra, int tiempo)
         {
-            foreach (ModeloRepuesto repuesto in Repuestos)
-            {
-                if (repuesto.Equals(modeloRepuesto)) return true;
-            }
-            return false;
+            init(descripcion, manoDeObra, tiempo);
+            IdPresupuesto = idPresupuesto;            
         }
 
         /// <summary>
@@ -51,64 +50,72 @@ namespace CapaModelo
         /// </summary>
         public ModeloDesperfecto(String descripcion, Double manoDeObra, int tiempo)
         {
-            Descripcion = descripcion;
-            ManoDeObra = manoDeObra;
-            Tiempo = tiempo;
-            // Indica que el desperfecto está siendo tratado
-            Cerrado = false;
-            costoRepuestosDesperfecto = 0;
-            Repuestos = new List<ModeloRepuesto>();
+            init(descripcion, manoDeObra, tiempo);
+        }
+
+        public Boolean contains(ModeloRepuesto modeloRepuesto)
+        {
+            foreach (ModeloRepuesto repuesto in repuestos)
+            {
+                if (repuesto.Equals(modeloRepuesto)) return true;
+            }
+            return false;
         }
 
         public void agregarRepuesto(ModeloRepuesto nuevoRepuesto)
         {
-            Repuestos.Add(nuevoRepuesto);
+            repuestos.Add(nuevoRepuesto);
             CantidadRepuestos++;
+            System.Diagnostics.Debug.WriteLine("Cantidad de rep. Desperfecto: " + nuevoRepuesto.Id);
         }
 
         /// <summary>
         /// Se cierra el desperfecto, es decir se le asignaron los repuestos.
         /// </summary>
-        public void cerrarDesperfecto()
+        public void cerrarDesperfecto() {   Cerrado = true; }
+
+        public DataTable CreateDataTable<ModeloRepuesto>(IEnumerable<ModeloRepuesto> data)
         {
-            Cerrado = true;
-        }
-
-        /// <summary>
-        /// Usando Reflection: creación del DataTable para repuestos a partir de la lista de repuestos existentes en el modelo Desperfecto
-        /// </summary>        
-        private DataTable CreateDataTable<T>(IEnumerable<T> list)
-        {
-            Type type = typeof(T);
-            var properties = type.GetProperties();
-
-            DataTable dataTable = new DataTable();
-            dataTable.TableName = typeof(T).FullName;
-            foreach (PropertyInfo info in properties)
+            PropertyDescriptorCollection properties =
+                TypeDescriptor.GetProperties(typeof(ModeloRepuesto));
+            DataTable table = new DataTable();
+            foreach (PropertyDescriptor prop in properties)
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            foreach (ModeloRepuesto item in data)
             {
-                dataTable.Columns.Add(new DataColumn(info.Name, Nullable.GetUnderlyingType(info.PropertyType) ?? info.PropertyType));
+                DataRow row = table.NewRow();
+                foreach (PropertyDescriptor prop in properties)
+                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                table.Rows.Add(row);
             }
-
-            foreach (T entity in list)
-            {
-                object[] values = new object[properties.Length];
-                for (int i = 0; i < properties.Length; i++)
-                {
-                    values[i] = properties[i].GetValue(entity);
-                }
-
-                dataTable.Rows.Add(values);
-            }
-            return dataTable;
+            return table;
         }
 
         /// <summary>
         /// Retorna un DataTable con el listado de repuestos asignados al desperfecto en curso para el Presupuesto que se construye dinámicamente
         /// </summary> 
         public DataTable ListarRepuestos()
-        {            
-            return CreateDataTable(Repuestos);            
+        {
+            //System.Diagnostics.Debug.WriteLine("Cantidad de rep. Desperfecto: " + this.Id + " = " + this.Repuestos.Count);
+            return CreateDataTable(this.getRepuestos());            
         }
 
+        /// <summary>
+        /// Se eliminan los repuestos que no fueron seleccionados al momento de cerrar el desperfecto.
+        /// </summary>
+        public void filtrarRepuestos(List<int> repuestosExistentes, List<int> repuestosEnEspera)
+        {
+            System.Diagnostics.Debug.WriteLine("Tamaño antes " + repuestos.Count);
+            foreach (ModeloRepuesto repuesto in repuestos)
+            {
+                if (!repuestosExistentes.Contains(repuesto.Id) && !repuestosEnEspera.Contains(repuesto.Id))
+                {
+                    repuestos.Remove(repuesto);
+                    CantidadRepuestos--;
+                }
+            }
+            System.Diagnostics.Debug.WriteLine("Tamaño despues " + repuestos.Count);
+        }
     }
 }
+ 

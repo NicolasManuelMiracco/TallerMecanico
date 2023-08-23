@@ -5,17 +5,14 @@ using System;
 namespace CapaLogica
 {
     public class LogicaRepuesto
-    {
-        
-        
-        
+    {        
         public static ModeloRepuesto agregarRepuestoExistenteAlDesperfectoActual(ModeloPresupuesto presupuesto, int idRepuestoExistente)
         {
             ModeloRepuesto modeloRepuesto = null;
             PersistenciaRepuesto datos = new PersistenciaRepuesto();
                        
             // Se obtiene el desperfecto que se esta configurando del presupuesto en curso
-            ModeloDesperfecto desperfectoEnConstruccion = presupuesto.CurrentDesperfecto;
+            ModeloDesperfecto desperfectoEnConstruccion = presupuesto.getDesperfectoActual();
 
             // Se obtiene una instancia del Modelo Repuesto existente en BD desde el Id de repuesto
             modeloRepuesto = (ModeloRepuesto) datos.buscarRepuesto(idRepuestoExistente);
@@ -39,7 +36,7 @@ namespace CapaLogica
             PersistenciaRepuesto datos = new PersistenciaRepuesto();
 
             // Se obtiene el desperfecto que se esta configurando del presupuesto en curso
-            ModeloDesperfecto desperfectoEnConstruccion = presupuesto.CurrentDesperfecto;
+            ModeloDesperfecto desperfectoEnConstruccion = presupuesto.getDesperfectoActual();
 
             int ultimoIdRepuesto = (int) datos.Insertar(nombre, precio);            
             

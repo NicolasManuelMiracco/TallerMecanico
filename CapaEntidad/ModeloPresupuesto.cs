@@ -20,9 +20,8 @@ namespace CapaModelo
         public Double CostoEstacionamiento { get; set; }
         public List<ModeloDesperfecto> Desperfectos { get; set; }
         public int TiempoTotal { get; set; }
-        public double CostoTotal { get; set; }
-        public ModeloDesperfecto CurrentDesperfecto { get; set; }
-        
+        public double CostoTotal { get; set; }        
+        public int IdCurrentDesperfecto { get; set; }        
 
         public ModeloPresupuesto(int idVehiculo)
         {
@@ -49,12 +48,23 @@ namespace CapaModelo
             CostoTotal = 0;
             Total = 0;
             Desperfectos = new List<ModeloDesperfecto>();
-            CurrentDesperfecto = null;
+            //CurrentDesperfecto = null;
+        }
+
+        public ModeloDesperfecto getDesperfectoActual()
+        {
+            ModeloDesperfecto desperfectoActual = null;
+            foreach (ModeloDesperfecto desperfecto in Desperfectos)
+            {
+                if (desperfecto.Id == IdCurrentDesperfecto)
+                    desperfectoActual = desperfecto;                
+            }
+            return desperfectoActual;
         }
 
         public void setIdCurrentDesperfecto(int idDesperfecto)
         {
-            ((ModeloDesperfecto)CurrentDesperfecto).Id = idDesperfecto; // Se completa el seteo para el desperfecto en construcción
+            IdCurrentDesperfecto = idDesperfecto; // Se completa el seteo para el desperfecto en construcción
         }
 
         /// <summary>
@@ -63,7 +73,7 @@ namespace CapaModelo
         public void addDesperfecto(ModeloDesperfecto modeloDesperfecto)
         {
             this.Desperfectos.Add(modeloDesperfecto);
-            CurrentDesperfecto = modeloDesperfecto;
+            //CurrentDesperfecto = modeloDesperfecto;
             // Se incorpora al presupuesto el costo total de los repuestos
             CostoTotal += modeloDesperfecto.costoRepuestosDesperfecto;
             // Se acumula el tiempo total para cada desperfecto tratado
