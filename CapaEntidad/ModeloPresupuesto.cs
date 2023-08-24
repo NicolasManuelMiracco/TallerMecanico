@@ -72,7 +72,6 @@ namespace CapaModelo
             }
         }
 
-
         /// <summary>
         /// Recorrido de todos los repuestos para todos los desperfectos, para obtener el costo de todos los repuestos del presupuesto
         /// </summary>        

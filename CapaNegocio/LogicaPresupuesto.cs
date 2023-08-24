@@ -16,12 +16,12 @@ namespace CapaLogica
         {
             PersistenciaPresupuesto datos = new PersistenciaPresupuesto();
             return datos.Insertar(nuevoPresupuesto);
-        }
+        }        
 
-        public static string InsertarPresupuesto(ModeloPresupuesto nuevoPresupuesto)
+        public static string actualizarPresupuesto(ModeloPresupuesto nuevoPresupuesto)
         {
             PersistenciaPresupuesto datos = new PersistenciaPresupuesto();
-            return datos.Insertar(nuevoPresupuesto);
+            return datos.Actualizar(nuevoPresupuesto);
         }
 
         public static DataTable Listar()

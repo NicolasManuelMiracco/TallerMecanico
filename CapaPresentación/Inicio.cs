@@ -923,8 +923,8 @@ namespace CapaPresentación
         private string finalizarPresupuesto()
         {
             string respuesta = "";
-            /// Se persiste el presupuesto
-            respuesta = LogicaPresupuesto.InsertarPresupuesto(presupuesto);            
+            /// Se actualiza el último presupuesto con la información restante 
+            respuesta = LogicaPresupuesto.actualizarPresupuesto(presupuesto);            
             return respuesta;
         }
 
@@ -1116,6 +1116,24 @@ namespace CapaPresentación
                 //formatoServicioSumatoriaTotalPresupuestos();
                 dgvOutputServicios.DataSource = LogicaServicios.SumatoriaMontoTotal(comboBoxServicioTipo.Text);
             }            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult Opcion = MessageBox.Show("¿Proceder con Carga Masiva en Repuestos?", "Tratamiento Carga Masiva Repuestos", MessageBoxButtons.OKCancel);
+            if (Opcion == DialogResult.OK)
+            {
+                dgvOutputServicios.DataSource = LogicaServicios.MassiveCharge();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult Opcion = MessageBox.Show("ATENCIÓN: Se eliminará la BD y se efectuará carga Total. ¿Continuar?", "Tratamiento Carga Masiva Total", MessageBoxButtons.OKCancel);
+            if (Opcion == DialogResult.OK)
+            {
+                dgvOutputServicios.DataSource = LogicaServicios.CargaAll();
+            }
         }
     }
 }

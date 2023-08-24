@@ -59,7 +59,7 @@ namespace CapaPersistencia
         public string Insertar(ModeloPresupuesto modeloPresupuesto)
         {
             string respuesta = "";            
-            DataTable tabla = new DataTable();
+            //DataTable tabla = new DataTable();
             SqlConnection conexion = new SqlConnection();
             try
             {
@@ -73,8 +73,41 @@ namespace CapaPersistencia
                 comando.Parameters.Add("@IdVehiculo", SqlDbType.Int).Value = modeloPresupuesto.IdVehiculo;
                 comando.Parameters.Add("@Identity", SqlDbType.Int).Direction = ParameterDirection.Output;                
                 conexion.Open();
-                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert Presupuesto ERROR";modeloPresupuesto.Id = Convert.ToInt32(comando.Parameters["@Identity"].Value); /* Se asigna al modelo el Id autonumérico retornado por el stored procedure */
-                System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);    
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert Presupuesto ERROR";
+                modeloPresupuesto.Id = Convert.ToInt32(comando.Parameters["@Identity"].Value); /* Se asigna al modelo el Id autonumérico retornado por el stored procedure */                
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open) conexion.Close();
+            }
+            return respuesta;
+        }
+
+        /// <summary>
+        /// Se actualiza el presupuesto en la BD con los datos del cliente y el monto Total
+        /// </summary>        
+        public string Actualizar(ModeloPresupuesto modeloPresupuesto)
+        {
+            string respuesta = "";
+            //DataTable tabla = new DataTable();
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                SqlCommand comando = new SqlCommand("actualizarPresupuesto", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@Id", SqlDbType.Int).Value = modeloPresupuesto.Id;
+                comando.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = modeloPresupuesto.Nombre;
+                comando.Parameters.Add("@Apellido", SqlDbType.VarChar).Value = modeloPresupuesto.Apellido;
+                comando.Parameters.Add("@Email", SqlDbType.VarChar).Value = modeloPresupuesto.Email;
+                comando.Parameters.Add("@Total", SqlDbType.Decimal).Value = modeloPresupuesto.TotalAlConsumidor;
+                conexion.Open();
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Update Presupuesto ERROR";                 
             }
             catch (Exception ex)
             {

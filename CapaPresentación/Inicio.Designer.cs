@@ -33,7 +33,7 @@ namespace CapaPresentación
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDataSet = new CapaPresentación.masterDataSet();
             this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -161,13 +161,14 @@ namespace CapaPresentación
             this.dataGridViewPresupuestos = new System.Windows.Forms.DataGridView();
             this.tabServicios = new System.Windows.Forms.TabPage();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.comboBoxServicioTipo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.textBoxServiciosMasivos = new System.Windows.Forms.TextBox();
             this.textBoxServiciosBasicos = new System.Windows.Forms.TextBox();
             this.labelServicioModelo = new System.Windows.Forms.Label();
             this.labelServicioMarca = new System.Windows.Forms.Label();
             this.textBoxServicioModelo = new System.Windows.Forms.TextBox();
             this.textBoxServicioMarca = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonSumatoriaTotalPresupuestos = new System.Windows.Forms.Button();
             this.buttonPromedioTotalPresupuestos = new System.Windows.Forms.Button();
@@ -175,8 +176,6 @@ namespace CapaPresentación
             this.panel18 = new System.Windows.Forms.Panel();
             this.labelOutputServicios = new System.Windows.Forms.Label();
             this.dgvOutputServicios = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxServicioTipo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
@@ -1418,14 +1417,14 @@ namespace CapaPresentación
             this.dgvDatos.ColumnHeadersHeight = 34;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.OldLace;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.OldLace;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDatos.Location = new System.Drawing.Point(70, 49);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
@@ -1571,7 +1570,6 @@ namespace CapaPresentación
             this.panel19.Controls.Add(this.labelServicioMarca);
             this.panel19.Controls.Add(this.textBoxServicioModelo);
             this.panel19.Controls.Add(this.textBoxServicioMarca);
-            this.panel19.Controls.Add(this.button2);
             this.panel19.Controls.Add(this.button1);
             this.panel19.Controls.Add(this.buttonSumatoriaTotalPresupuestos);
             this.panel19.Controls.Add(this.buttonPromedioTotalPresupuestos);
@@ -1581,6 +1579,28 @@ namespace CapaPresentación
             this.panel19.Size = new System.Drawing.Size(522, 500);
             this.panel19.TabIndex = 1;
             // 
+            // comboBoxServicioTipo
+            // 
+            this.comboBoxServicioTipo.FormattingEnabled = true;
+            this.comboBoxServicioTipo.Items.AddRange(new object[] {
+            "Automovil",
+            "Moto"});
+            this.comboBoxServicioTipo.Location = new System.Drawing.Point(393, 122);
+            this.comboBoxServicioTipo.Name = "comboBoxServicioTipo";
+            this.comboBoxServicioTipo.Size = new System.Drawing.Size(121, 30);
+            this.comboBoxServicioTipo.TabIndex = 12;
+            this.comboBoxServicioTipo.Text = "Moto";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(296, 122);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 25);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Tipo";
+            // 
             // textBoxServiciosMasivos
             // 
             this.textBoxServiciosMasivos.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1589,9 +1609,7 @@ namespace CapaPresentación
             this.textBoxServiciosMasivos.Name = "textBoxServiciosMasivos";
             this.textBoxServiciosMasivos.Size = new System.Drawing.Size(513, 101);
             this.textBoxServiciosMasivos.TabIndex = 10;
-            this.textBoxServiciosMasivos.Text = "ATENCIÓN: \r\nAmbos servicios modifican la estructura de la BD. \r\nCarga Masiva se u" +
-    "tiliza para: eliminar, setear autonuméricos y cargar en cascada (según RI) regis" +
-    "tros en todas las tablas.";
+            this.textBoxServiciosMasivos.Text = "ATENCIÓN: \r\nLa carga masiva altera el contenido de la tabla Repuesto. ";
             // 
             // textBoxServiciosBasicos
             // 
@@ -1641,17 +1659,6 @@ namespace CapaPresentación
             this.textBoxServicioMarca.Size = new System.Drawing.Size(123, 29);
             this.textBoxServicioMarca.TabIndex = 5;
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.WindowText;
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(336, 348);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 42);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Carga Masiva DB!";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.WindowFrame;
@@ -1662,6 +1669,7 @@ namespace CapaPresentación
             this.button1.TabIndex = 3;
             this.button1.Text = "Carga Masiva Repuestos";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonSumatoriaTotalPresupuestos
             // 
@@ -1727,28 +1735,6 @@ namespace CapaPresentación
             this.dgvOutputServicios.RowTemplate.Height = 28;
             this.dgvOutputServicios.Size = new System.Drawing.Size(309, 449);
             this.dgvOutputServicios.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(296, 122);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 38);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Tipo";
-            // 
-            // comboBoxServicioTipo
-            // 
-            this.comboBoxServicioTipo.FormattingEnabled = true;
-            this.comboBoxServicioTipo.Items.AddRange(new object[] {
-            "Automovil",
-            "Moto"});
-            this.comboBoxServicioTipo.Location = new System.Drawing.Point(393, 122);
-            this.comboBoxServicioTipo.Name = "comboBoxServicioTipo";
-            this.comboBoxServicioTipo.Size = new System.Drawing.Size(121, 30);
-            this.comboBoxServicioTipo.TabIndex = 12;
-            this.comboBoxServicioTipo.Text = "Moto";
             // 
             // Inicio
             // 
@@ -1962,7 +1948,6 @@ namespace CapaPresentación
         private Button buttonListarPresupuestos;
         private DateTimePicker Reloj;
         private Panel panel19;
-        private Button button2;
         private Button button1;
         private Button buttonSumatoriaTotalPresupuestos;
         private Button buttonPromedioTotalPresupuestos;

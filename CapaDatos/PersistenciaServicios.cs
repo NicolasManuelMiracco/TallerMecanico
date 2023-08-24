@@ -51,13 +51,45 @@ namespace CapaPersistencia
         public DataTable MassiveCharge()
         {
             DataTable tabla = new DataTable();
-            return tabla;
+            SqlDataReader resultado;            
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                SqlCommand comando = new SqlCommand("MassiveCharge", conexion);
+                comando.CommandType = CommandType.StoredProcedure;                
+                conexion.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { if (conexion.State == ConnectionState.Open) conexion.Close(); }
         }
 
         public DataTable CargaAll()
         {
             DataTable tabla = new DataTable();
-            return tabla;
+            SqlDataReader resultado;
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                SqlCommand comando = new SqlCommand("cargaAll", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                conexion.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { if (conexion.State == ConnectionState.Open) conexion.Close(); }
         }
 
 
