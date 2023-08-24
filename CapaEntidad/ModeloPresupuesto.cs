@@ -56,6 +56,44 @@ namespace CapaModelo
             Desperfectos = new List<ModeloDesperfecto>();            
         }
 
+        /// <summary>
+        /// Se actualiza el desperfecto en construcción con el nuevo costo
+        /// </summary>        
+        public void actualizarDesperfectoActual(ModeloDesperfecto desperfectoActualizado) 
+        {
+            foreach (ModeloDesperfecto desperfecto in Desperfectos)
+            {
+                if (desperfecto.Id == desperfectoActualizado.Id)
+                {
+                    desperfecto.CostoRepuestosDesperfecto = desperfectoActualizado.CostoRepuestosDesperfecto;
+                    // OK System.Diagnostics.Debug.WriteLine("COSTO desperfecto: " + desperfecto.CostoRepuestosDesperfecto);
+                }
+                    
+            }
+        }
+
+
+        /// <summary>
+        /// Recorrido de todos los repuestos para todos los desperfectos, para obtener el costo de todos los repuestos del presupuesto
+        /// </summary>        
+        public decimal getCostoTotalRepuestos()
+        {
+            decimal totalRepuestos = 0;
+            foreach (ModeloDesperfecto desperfecto in Desperfectos)
+            {
+                List<ModeloRepuesto> repuestos = desperfecto.getRepuestos();
+                foreach (ModeloRepuesto repuesto in repuestos)
+                {
+                    totalRepuestos += repuesto.Precio;
+                }
+            }
+            return totalRepuestos;
+        }
+            
+        /// <summary>
+        /// Se obtiene el desperfecto en construcción para ser consumido desde el exterior
+        /// </summary>     
+
         public ModeloDesperfecto getDesperfectoActual()
         {
             ModeloDesperfecto desperfectoActual = null;
@@ -81,17 +119,18 @@ namespace CapaModelo
             ///CurrentDesperfecto = modeloDesperfecto;
             /// Se incorpora al presupuesto el costo total de los repuestos
             CostoRepuestos += modeloDesperfecto.CostoRepuestosDesperfecto;
+            //System.Diagnostics.Debug.WriteLine("El costo del desperfecto es: " + CostoRepuestos);
             /// Se acumula el tiempo total para cada desperfecto tratado
             TiempoTotal += modeloDesperfecto.Tiempo;
-            CostoEstacionamiento = TiempoTotal * CostoEstacionamiento; /// Calculo el precio de estacionamiento según la cantidad de días
             /// Se acumula el costo total de mano de obra para cada desperfecto tratado
             ManoDeObra += modeloDesperfecto.ManoDeObra;
         }
         public void cerrarPresupuesto() { 
-            Completa = true;            
+            Completa = true;
             /// Costo base de reparación
+            CostoEstacionamiento = TiempoTotal * CostoEstacionamiento; /// Calculo el precio de estacionamiento según la cantidad de días
             TotalReparacion = CostoRepuestos + ManoDeObra + CostoEstacionamiento;
-            TotalConRecargosDescuentos = TotalReparacion + TotalReparacion * Recargo - TotalReparacion * Descuento;
+            TotalConRecargosDescuentos = TotalReparacion + (TotalReparacion * Recargo) - (TotalReparacion * Descuento);
             TotalAlConsumidor = TotalConRecargosDescuentos + TotalConRecargosDescuentos * gananciaTaller;
 
         }     

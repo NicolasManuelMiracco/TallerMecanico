@@ -13,8 +13,8 @@ namespace CapaModelo
         public string Descripcion { get; set; }
         public decimal ManoDeObra { get; set; }
         public int Tiempo { get; set; }       
-        public Boolean Cerrado { get; set; }
-        public List<ModeloRepuesto> repuestos;
+        public bool Cerrado { get; set; }
+        public List<ModeloRepuesto> Repuestos;
         public int CantidadRepuestos { get; set; }
         public int CantidadRepuestosExistentes { get; set; }
         public int CantidadRepuestosFaltantes { get; set; }
@@ -28,7 +28,7 @@ namespace CapaModelo
             Tiempo = tiempo;
             // Indica que el desperfecto está siendo tratado
             Cerrado = false;            
-            repuestos = new List<ModeloRepuesto>();
+            Repuestos = new List<ModeloRepuesto>();
             CantidadRepuestos = 0;
             CantidadRepuestosExistentes = 0;
             CantidadRepuestosFaltantes = 0;
@@ -37,14 +37,14 @@ namespace CapaModelo
         public void calcularCostoRepuestosDesperfecto()
         {
             Decimal costoParcial = 0;
-            foreach (ModeloRepuesto repuesto in repuestos)
+            foreach (ModeloRepuesto repuesto in Repuestos)
             {
                 costoParcial += repuesto.Precio;
             }
             CostoRepuestosDesperfecto = costoParcial;
         }
 
-        public List<ModeloRepuesto> getRepuestos() { return repuestos; }
+        public List<ModeloRepuesto> getRepuestos() { return Repuestos; }
 
         /// <summary>
         /// El idDepserfecto se agrega después de su persistencia en BD, a partir del autonumérico
@@ -55,27 +55,23 @@ namespace CapaModelo
             IdPresupuesto = idPresupuesto;            
         }
 
-        /// <summary>
-        /// Constructor sin idDesperfecto ni idPresupuesto, dado que aún no se confirmó persistencia
-        /// </summary>
-        public ModeloDesperfecto(String descripcion, decimal manoDeObra, int tiempo)
+        public bool contains(ModeloRepuesto modeloRepuesto)
         {
-            init(descripcion, manoDeObra, tiempo);
-        }
-
-        public Boolean contains(ModeloRepuesto modeloRepuesto)
-        {
-            foreach (ModeloRepuesto repuesto in repuestos)
+            foreach (ModeloRepuesto repuesto in Repuestos)
             {
-                if (repuesto.Equals(modeloRepuesto)) return true;
+                if (repuesto.Id == modeloRepuesto.Id) return true;
             }
             return false;
         }
         public void agregarRepuesto(ModeloRepuesto nuevoRepuesto)
         {
-            repuestos.Add(nuevoRepuesto);
+            // OK System.Diagnostics.Debug.WriteLine("INTENTA agregar: " + nuevoRepuesto.Id);
+            Repuestos.Add(nuevoRepuesto);
+            // OKSystem.Diagnostics.Debug.WriteLine("TAMAÑP lista es: " + Repuestos.Count);
             CantidadRepuestos++;
-            System.Diagnostics.Debug.WriteLine("Cantidad de rep. Desperfecto: " + nuevoRepuesto.Id);
+            CostoRepuestosDesperfecto = CostoRepuestosDesperfecto + nuevoRepuesto.Precio;
+            // OK System.Diagnostics.Debug.WriteLine("Se agrega costo: " + CostoRepuestosDesperfecto);
+            ///System.Diagnostics.Debug.WriteLine("Cantidad de rep. Desperfecto: " + nuevoRepuesto.Id);
         }
 
         /// <summary>
@@ -113,11 +109,12 @@ namespace CapaModelo
         /// </summary>
         public void filtrarRepuestos(List<int> repuestosExistentes, List<int> repuestosEnEspera)
         {
-            foreach (ModeloRepuesto repuesto in repuestos)
+            foreach (ModeloRepuesto repuesto in Repuestos)
             {
                 if (!repuestosExistentes.Contains(repuesto.Id) && !repuestosEnEspera.Contains(repuesto.Id))
                 {
-                    repuestos.Remove(repuesto);
+                    System.Diagnostics.Debug.WriteLine("Se elimina repuesto: " + repuesto.Id);
+                    Repuestos.Remove(repuesto);
                     CantidadRepuestos--;
                 }
             }            

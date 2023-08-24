@@ -7,7 +7,7 @@ namespace CapaModelo
         public int Id { get; set; }
         public string Nombre { get; set; }
         public decimal Precio { get; set; }
-        public Boolean EnEspera { get; set; }
+        public bool EnEspera { get; set; }
 
         /// <summary>
         /// El constructor de repuestos, permite parametrizar si el mismo está a la espera de confirmación. 
@@ -21,7 +21,7 @@ namespace CapaModelo
             EnEspera = enEspera;
         }
 
-        public Boolean Equals(ModeloRepuesto otroModeloRepuesto)
+        public bool Equals(ModeloRepuesto otroModeloRepuesto)
         {
             return Id == otroModeloRepuesto.Id;
         }
