@@ -142,15 +142,15 @@ namespace CapaPresentación
             this.etiquetaMarca = new System.Windows.Forms.Label();
             this.etiquetaIdVehiculo = new System.Windows.Forms.Label();
             this.tabVehiculos = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.Diagnose = new System.Windows.Forms.Button();
-            this.chkSelect = new System.Windows.Forms.CheckBox();
+            this.panel20 = new System.Windows.Forms.Panel();
             this.btEliminar = new System.Windows.Forms.Button();
-            this.btnBuscador = new System.Windows.Forms.Button();
+            this.Diagnose = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.chkSelect = new System.Windows.Forms.CheckBox();
+            this.btnBuscador = new System.Windows.Forms.Button();
             this.labelTotal = new System.Windows.Forms.Label();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CHK = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
             this.tabPresupuestos = new System.Windows.Forms.TabPage();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -174,6 +174,8 @@ namespace CapaPresentación
             this.panel18 = new System.Windows.Forms.Panel();
             this.labelOutputServicios = new System.Windows.Forms.Label();
             this.dgvOutputServicios = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
@@ -203,7 +205,7 @@ namespace CapaPresentación
             this.tabMoto.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabVehiculos.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.tabControlPrincipal.SuspendLayout();
             this.tabPresupuestos.SuspendLayout();
@@ -213,6 +215,7 @@ namespace CapaPresentación
             this.panel19.SuspendLayout();
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutputServicios)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // repuestoBindingSource
@@ -1319,8 +1322,7 @@ namespace CapaPresentación
             // 
             this.tabVehiculos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabVehiculos.BackgroundImage")));
             this.tabVehiculos.Controls.Add(this.panel4);
-            this.tabVehiculos.Controls.Add(this.btnBuscador);
-            this.tabVehiculos.Controls.Add(this.txtBuscar);
+            this.tabVehiculos.Controls.Add(this.panel20);
             this.tabVehiculos.Controls.Add(this.labelTotal);
             this.tabVehiculos.Controls.Add(this.dgvDatos);
             this.tabVehiculos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1333,69 +1335,74 @@ namespace CapaPresentación
             this.tabVehiculos.UseVisualStyleBackColor = true;
             this.tabVehiculos.Click += new System.EventHandler(this.tabPage1_Click_2);
             // 
-            // panel4
+            // panel20
             // 
-            this.panel4.BackColor = System.Drawing.Color.Beige;
-            this.panel4.Controls.Add(this.Diagnose);
-            this.panel4.Controls.Add(this.chkSelect);
-            this.panel4.Controls.Add(this.btEliminar);
-            this.panel4.Location = new System.Drawing.Point(461, 14);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(379, 32);
-            this.panel4.TabIndex = 4;
-            // 
-            // Diagnose
-            // 
-            this.Diagnose.BackColor = System.Drawing.Color.PaleGreen;
-            this.Diagnose.Location = new System.Drawing.Point(175, 3);
-            this.Diagnose.Name = "Diagnose";
-            this.Diagnose.Size = new System.Drawing.Size(101, 26);
-            this.Diagnose.TabIndex = 5;
-            this.Diagnose.Text = "Dignosticar";
-            this.Diagnose.UseVisualStyleBackColor = false;
-            this.Diagnose.Click += new System.EventHandler(this.Activate_Click);
-            // 
-            // chkSelect
-            // 
-            this.chkSelect.AutoSize = true;
-            this.chkSelect.BackColor = System.Drawing.Color.Yellow;
-            this.chkSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelect.Location = new System.Drawing.Point(14, 2);
-            this.chkSelect.Name = "chkSelect";
-            this.chkSelect.Size = new System.Drawing.Size(130, 26);
-            this.chkSelect.TabIndex = 4;
-            this.chkSelect.Text = "Seleccionar";
-            this.chkSelect.UseVisualStyleBackColor = false;
-            this.chkSelect.CheckedChanged += new System.EventHandler(this.chkSelect_CheckedChanged);
+            this.panel20.Controls.Add(this.btEliminar);
+            this.panel20.Controls.Add(this.Diagnose);
+            this.panel20.Controls.Add(this.txtBuscar);
+            this.panel20.Controls.Add(this.chkSelect);
+            this.panel20.Controls.Add(this.btnBuscador);
+            this.panel20.Location = new System.Drawing.Point(3, 6);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(844, 37);
+            this.panel20.TabIndex = 5;
             // 
             // btEliminar
             // 
             this.btEliminar.BackColor = System.Drawing.Color.PaleGreen;
-            this.btEliminar.Location = new System.Drawing.Point(282, 4);
+            this.btEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEliminar.Location = new System.Drawing.Point(724, 3);
             this.btEliminar.Name = "btEliminar";
-            this.btEliminar.Size = new System.Drawing.Size(94, 25);
+            this.btEliminar.Size = new System.Drawing.Size(117, 31);
             this.btEliminar.TabIndex = 7;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = false;
             this.btEliminar.Click += new System.EventHandler(this.btEliminar_Click);
             // 
+            // Diagnose
+            // 
+            this.Diagnose.BackColor = System.Drawing.Color.PaleGreen;
+            this.Diagnose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Diagnose.Location = new System.Drawing.Point(617, 3);
+            this.Diagnose.Name = "Diagnose";
+            this.Diagnose.Size = new System.Drawing.Size(101, 31);
+            this.Diagnose.TabIndex = 5;
+            this.Diagnose.Text = "Dignosticar";
+            this.Diagnose.UseVisualStyleBackColor = false;
+            this.Diagnose.Click += new System.EventHandler(this.Activate_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(3, 5);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(299, 32);
+            this.txtBuscar.TabIndex = 2;
+            // 
+            // chkSelect
+            // 
+            this.chkSelect.AutoSize = true;
+            this.chkSelect.BackColor = System.Drawing.Color.Yellow;
+            this.chkSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSelect.Location = new System.Drawing.Point(422, 5);
+            this.chkSelect.Name = "chkSelect";
+            this.chkSelect.Size = new System.Drawing.Size(129, 36);
+            this.chkSelect.TabIndex = 4;
+            this.chkSelect.Text = "Operar";
+            this.chkSelect.UseVisualStyleBackColor = false;
+            this.chkSelect.CheckedChanged += new System.EventHandler(this.chkSelect_CheckedChanged);
+            // 
             // btnBuscador
             // 
             this.btnBuscador.BackColor = System.Drawing.Color.YellowGreen;
-            this.btnBuscador.Location = new System.Drawing.Point(312, 13);
+            this.btnBuscador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscador.Location = new System.Drawing.Point(308, 1);
             this.btnBuscador.Name = "btnBuscador";
-            this.btnBuscador.Size = new System.Drawing.Size(143, 33);
+            this.btnBuscador.Size = new System.Drawing.Size(108, 33);
             this.btnBuscador.TabIndex = 3;
             this.btnBuscador.Text = "Buscar";
             this.btnBuscador.UseVisualStyleBackColor = false;
             this.btnBuscador.Click += new System.EventHandler(this.btnBuscador_Click);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(7, 14);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(299, 28);
-            this.txtBuscar.TabIndex = 2;
             // 
             // labelTotal
             // 
@@ -1412,9 +1419,9 @@ namespace CapaPresentación
             this.dgvDatos.AllowUserToDeleteRows = false;
             this.dgvDatos.AllowUserToOrderColumns = true;
             this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvDatos.ColumnHeadersHeight = 34;
+            this.dgvDatos.ColumnHeadersHeight = 35;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Select});
+            this.CHK});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.OldLace;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1423,28 +1430,28 @@ namespace CapaPresentación
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvDatos.Location = new System.Drawing.Point(70, 49);
+            this.dgvDatos.Location = new System.Drawing.Point(53, 49);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersWidth = 30;
             this.dgvDatos.RowTemplate.Height = 23;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(709, 438);
+            this.dgvDatos.Size = new System.Drawing.Size(743, 422);
             this.dgvDatos.TabIndex = 0;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
             // 
-            // Select
+            // CHK
             // 
-            this.Select.FalseValue = "";
-            this.Select.HeaderText = "Select";
-            this.Select.IndeterminateValue = "";
-            this.Select.MinimumWidth = 8;
-            this.Select.Name = "Select";
-            this.Select.ReadOnly = true;
-            this.Select.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Select.TrueValue = "";
-            this.Select.Width = 150;
+            this.CHK.FalseValue = "";
+            this.CHK.HeaderText = "CHK";
+            this.CHK.IndeterminateValue = "";
+            this.CHK.MinimumWidth = 10;
+            this.CHK.Name = "CHK";
+            this.CHK.ReadOnly = true;
+            this.CHK.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CHK.TrueValue = "";
+            this.CHK.Width = 150;
             // 
             // tabControlPrincipal
             // 
@@ -1716,6 +1723,26 @@ namespace CapaPresentación
             this.dgvOutputServicios.TabIndex = 0;
             this.dgvOutputServicios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOutputServicios_CellContentClick);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.textBox3);
+            this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel4.Location = new System.Drawing.Point(0, 472);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(850, 45);
+            this.panel4.TabIndex = 6;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(0, 5);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(850, 40);
+            this.textBox3.TabIndex = 0;
+            this.textBox3.Text = "Operar: permite diagnosticar o eliminar vehículos.\r\nDoble clic sobre fila para ac" +
+    "tualizar vehículo.";
+            // 
             // Inicio
             // 
             this.ClientSize = new System.Drawing.Size(858, 557);
@@ -1768,8 +1795,8 @@ namespace CapaPresentación
             this.panel3.PerformLayout();
             this.tabVehiculos.ResumeLayout(false);
             this.tabVehiculos.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.tabControlPrincipal.ResumeLayout(false);
             this.tabPresupuestos.ResumeLayout(false);
@@ -1782,6 +1809,8 @@ namespace CapaPresentación
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutputServicios)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1794,7 +1823,7 @@ namespace CapaPresentación
             this.txtMarca = txtMarca;
             this.txtModelo = txtModelo;
             this.txtPatente = txtPatente;
-            this.Select = new DataGridViewCheckBoxColumn();
+            this.CHK = new DataGridViewCheckBoxColumn();
         }
 
         private System.Windows.Forms.Label txtModelo;
@@ -1808,7 +1837,6 @@ namespace CapaPresentación
         private BindingSource repuestoBindingSource1;
         private TabControl tabControlPrincipal;
         private TabPage tabVehiculos;
-        private Panel panel4;
         private Button Diagnose;
         private CheckBox chkSelect;
         private Button btEliminar;
@@ -1816,7 +1844,6 @@ namespace CapaPresentación
         private TextBox txtBuscar;
         private Label labelTotal;
         private DataGridView dgvDatos;
-        private new DataGridViewCheckBoxColumn Select;
         private TabPage tabABM;
         private Panel panel1;
         private Button btnCancelarInserción;
@@ -1941,6 +1968,10 @@ namespace CapaPresentación
         private TextBox textBoxServiciosBasicos;
         private ComboBox comboBoxServicioTipo;
         private Label label2;
+        private Panel panel20;
+        private DataGridViewCheckBoxColumn CHK;
+        private Panel panel4;
+        private TextBox textBox3;
 
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }

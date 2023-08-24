@@ -55,14 +55,14 @@ namespace CapaPresentación
         private void formato()
         {
             dgvDatos.Columns[0].Visible = false;
-            dgvDatos.Columns[0].Width = 30;
+            dgvDatos.Columns[0].Width = 40;
             dgvDatos.Columns[1].Width = 80;
             dgvDatos.Columns[2].Width = 80;
             dgvDatos.Columns[3].Width = 80;
             dgvDatos.Columns[4].Width = 55;
             dgvDatos.Columns[5].Width = 75;
-            dgvDatos.Columns[6].Width = 60;
-            dgvDatos.Columns[7].Width = 60;
+            dgvDatos.Columns[6].Width = 55;
+            dgvDatos.Columns[7].Width = 55;
             dgvDatos.Columns[8].Width = 90;
             dgvDatos.Columns[9].Width = 75;
         }
