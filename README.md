@@ -27,7 +27,10 @@ Base de datos: Stored procedures (SP)
 - Inserción: se crea un SP por cada tabla.
 - Carga: se crean un SP que llama a su correspondiente SP de inserción, para efectuar carga masiva.
 - Carga Masiva: dbo.cargaAll que elimina las tablas en orden, setea los autonuméricos y llama a los SP de carga.
-- Agregar restantes...
+- Se generan los stored procedures para cumplir con los servicios:
+    -  Repuesto más utilizado por Marca/Modelo en las reparaciones realizadas: se implementa por medio de tablas auxiliares y un cursor (ver comentarios en implementación).
+    -  Promedio del Monto Total de Presupuestos por Marca/Modelo: se efectua un ensamble y un agrupamiento, como en el caso anterior, pero sin la necesidad de aplicar cursor.
+    -  Sumatoria del Monto Total de Presupuestos para Autos y para Motos.
 
 Diseño e implementación (a extender): 
 - Aplicación patrón strategy para la asignación dinámica de turnos.
@@ -36,15 +39,19 @@ Diseño e implementación (a extender):
   -  Visualmente también se modifica el color. 
 - Organización en namespaces.
 - Diseño en 4 capas interoperativas.
-- Manejo de excepciones (resta extender).
+- Manejo de excepciones
 - Comentarios en código.
-- Tratamiento de UI y control de errores.- 
-
-Pendientes: 
-- Prueba final generación de presupuesto: evidenciación y testing.
-- Incorporación de store procedures a la app (está creado y testeado todo el modelo de datos).
+- Tratamiento de UI y control de errores.
 
 Enlace a documentación que se mantendrá en actualización hasta la entrega final: 
 - https://drive.google.com/drive/folders/1DyXBphfs0FpLa678VIKQWvpebyLFZ_LB?usp=sharing
+
+La documentación en drive incluye: 
+- BD: Store procedures utilizados en los servicios, en las cargas y como apoyo auxiliar.
+- BD: backup de toda la BD, listo para un local restore.
+
+Aclaración: el desarrollo es robusto, cumple con todos los requerimientos funcionales, orientado a objetos y aplica patrones básicos. 
+Se hace hincapié en una arquitectura multicapa. 
+Por cuestiones de tiempo, requiere mas testing unitario/integral. 
   
 
