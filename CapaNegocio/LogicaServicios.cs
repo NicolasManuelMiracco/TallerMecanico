@@ -1,0 +1,43 @@
+﻿using CapaPersistencia;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CapaLogica
+{
+    public class LogicaServicios
+    {
+        public static DataTable SumatoriaMontoTotal(String tipoVehiculo)
+        {
+            PersistenciaServicios datos = new PersistenciaServicios();
+            return datos.SumatoriaMontoTotal(tipoVehiculo);
+        }
+
+        public static DataTable RepuestoMasUtilizado()
+        {
+            PersistenciaServicios datos = new PersistenciaServicios();
+            return datos.RepuestoMasUtilizado();
+        }
+
+        public static DataTable PromedioMontoTotal()
+        {
+            PersistenciaServicios datos = new PersistenciaServicios();
+            return datos.PromedioMontoTotal();
+        }
+
+        public static DataTable MassiveCharge()
+        {
+            PersistenciaServicios datos = new PersistenciaServicios();
+            return datos.MassiveCharge();
+        }
+
+        public static DataTable CargaAll()
+        {
+            PersistenciaServicios datos = new PersistenciaServicios();
+            return datos.CargaAll();
+        }
+    }
+}

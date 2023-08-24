@@ -33,7 +33,7 @@ namespace CapaPresentación
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDataSet = new CapaPresentación.masterDataSet();
             this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -160,6 +160,23 @@ namespace CapaPresentación
             this.buttonListarPresupuestos = new System.Windows.Forms.Button();
             this.dataGridViewPresupuestos = new System.Windows.Forms.DataGridView();
             this.tabServicios = new System.Windows.Forms.TabPage();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.textBoxServiciosMasivos = new System.Windows.Forms.TextBox();
+            this.textBoxServiciosBasicos = new System.Windows.Forms.TextBox();
+            this.labelServicioModelo = new System.Windows.Forms.Label();
+            this.labelServicioMarca = new System.Windows.Forms.Label();
+            this.textBoxServicioModelo = new System.Windows.Forms.TextBox();
+            this.textBoxServicioMarca = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSumatoriaTotalPresupuestos = new System.Windows.Forms.Button();
+            this.buttonPromedioTotalPresupuestos = new System.Windows.Forms.Button();
+            this.buttonRepuestoMasUsado = new System.Windows.Forms.Button();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.labelOutputServicios = new System.Windows.Forms.Label();
+            this.dgvOutputServicios = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxServicioTipo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
@@ -195,6 +212,10 @@ namespace CapaPresentación
             this.tabPresupuestos.SuspendLayout();
             this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPresupuestos)).BeginInit();
+            this.tabServicios.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOutputServicios)).BeginInit();
             this.SuspendLayout();
             // 
             // repuestoBindingSource
@@ -1397,14 +1418,14 @@ namespace CapaPresentación
             this.dgvDatos.ColumnHeadersHeight = 34;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.OldLace;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.OldLace;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDatos.Location = new System.Drawing.Point(70, 49);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
@@ -1529,6 +1550,8 @@ namespace CapaPresentación
             // 
             // tabServicios
             // 
+            this.tabServicios.Controls.Add(this.panel19);
+            this.tabServicios.Controls.Add(this.panel18);
             this.tabServicios.Location = new System.Drawing.Point(4, 34);
             this.tabServicios.Name = "tabServicios";
             this.tabServicios.Padding = new System.Windows.Forms.Padding(3);
@@ -1536,6 +1559,196 @@ namespace CapaPresentación
             this.tabServicios.TabIndex = 7;
             this.tabServicios.Text = "Servicios";
             this.tabServicios.UseVisualStyleBackColor = true;
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel19.Controls.Add(this.comboBoxServicioTipo);
+            this.panel19.Controls.Add(this.label2);
+            this.panel19.Controls.Add(this.textBoxServiciosMasivos);
+            this.panel19.Controls.Add(this.textBoxServiciosBasicos);
+            this.panel19.Controls.Add(this.labelServicioModelo);
+            this.panel19.Controls.Add(this.labelServicioMarca);
+            this.panel19.Controls.Add(this.textBoxServicioModelo);
+            this.panel19.Controls.Add(this.textBoxServicioMarca);
+            this.panel19.Controls.Add(this.button2);
+            this.panel19.Controls.Add(this.button1);
+            this.panel19.Controls.Add(this.buttonSumatoriaTotalPresupuestos);
+            this.panel19.Controls.Add(this.buttonPromedioTotalPresupuestos);
+            this.panel19.Controls.Add(this.buttonRepuestoMasUsado);
+            this.panel19.Location = new System.Drawing.Point(7, 6);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(522, 500);
+            this.panel19.TabIndex = 1;
+            // 
+            // textBoxServiciosMasivos
+            // 
+            this.textBoxServiciosMasivos.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxServiciosMasivos.Location = new System.Drawing.Point(3, 396);
+            this.textBoxServiciosMasivos.Multiline = true;
+            this.textBoxServiciosMasivos.Name = "textBoxServiciosMasivos";
+            this.textBoxServiciosMasivos.Size = new System.Drawing.Size(513, 101);
+            this.textBoxServiciosMasivos.TabIndex = 10;
+            this.textBoxServiciosMasivos.Text = "ATENCIÓN: \r\nAmbos servicios modifican la estructura de la BD. \r\nCarga Masiva se u" +
+    "tiliza para: eliminar, setear autonuméricos y cargar en cascada (según RI) regis" +
+    "tros en todas las tablas.";
+            // 
+            // textBoxServiciosBasicos
+            // 
+            this.textBoxServiciosBasicos.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxServiciosBasicos.Location = new System.Drawing.Point(3, 163);
+            this.textBoxServiciosBasicos.Multiline = true;
+            this.textBoxServiciosBasicos.Name = "textBoxServiciosBasicos";
+            this.textBoxServiciosBasicos.Size = new System.Drawing.Size(513, 179);
+            this.textBoxServiciosBasicos.TabIndex = 9;
+            this.textBoxServiciosBasicos.Text = resources.GetString("textBoxServiciosBasicos.Text");
+            // 
+            // labelServicioModelo
+            // 
+            this.labelServicioModelo.AutoSize = true;
+            this.labelServicioModelo.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelServicioModelo.Location = new System.Drawing.Point(286, 61);
+            this.labelServicioModelo.Name = "labelServicioModelo";
+            this.labelServicioModelo.Size = new System.Drawing.Size(101, 25);
+            this.labelServicioModelo.TabIndex = 8;
+            this.labelServicioModelo.Text = "Modelo? ";
+            // 
+            // labelServicioMarca
+            // 
+            this.labelServicioMarca.AutoSize = true;
+            this.labelServicioMarca.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelServicioMarca.Location = new System.Drawing.Point(286, 10);
+            this.labelServicioMarca.Name = "labelServicioMarca";
+            this.labelServicioMarca.Size = new System.Drawing.Size(83, 25);
+            this.labelServicioMarca.TabIndex = 7;
+            this.labelServicioMarca.Text = "Marca?";
+            // 
+            // textBoxServicioModelo
+            // 
+            this.textBoxServicioModelo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxServicioModelo.ForeColor = System.Drawing.Color.LimeGreen;
+            this.textBoxServicioModelo.Location = new System.Drawing.Point(393, 61);
+            this.textBoxServicioModelo.Name = "textBoxServicioModelo";
+            this.textBoxServicioModelo.Size = new System.Drawing.Size(123, 29);
+            this.textBoxServicioModelo.TabIndex = 6;
+            // 
+            // textBoxServicioMarca
+            // 
+            this.textBoxServicioMarca.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxServicioMarca.ForeColor = System.Drawing.Color.LimeGreen;
+            this.textBoxServicioMarca.Location = new System.Drawing.Point(393, 10);
+            this.textBoxServicioMarca.Name = "textBoxServicioMarca";
+            this.textBoxServicioMarca.Size = new System.Drawing.Size(123, 29);
+            this.textBoxServicioMarca.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.WindowText;
+            this.button2.ForeColor = System.Drawing.Color.Red;
+            this.button2.Location = new System.Drawing.Point(336, 348);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(180, 42);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Carga Masiva DB!";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.button1.ForeColor = System.Drawing.Color.GreenYellow;
+            this.button1.Location = new System.Drawing.Point(3, 348);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(243, 42);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Carga Masiva Repuestos";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // buttonSumatoriaTotalPresupuestos
+            // 
+            this.buttonSumatoriaTotalPresupuestos.BackColor = System.Drawing.Color.Snow;
+            this.buttonSumatoriaTotalPresupuestos.Location = new System.Drawing.Point(3, 115);
+            this.buttonSumatoriaTotalPresupuestos.Name = "buttonSumatoriaTotalPresupuestos";
+            this.buttonSumatoriaTotalPresupuestos.Size = new System.Drawing.Size(287, 42);
+            this.buttonSumatoriaTotalPresupuestos.TabIndex = 2;
+            this.buttonSumatoriaTotalPresupuestos.Text = "Sumatoria total presupuestos";
+            this.buttonSumatoriaTotalPresupuestos.UseVisualStyleBackColor = false;
+            this.buttonSumatoriaTotalPresupuestos.Click += new System.EventHandler(this.buttonSumatoriaTotalPresupuestos_Click);
+            // 
+            // buttonPromedioTotalPresupuestos
+            // 
+            this.buttonPromedioTotalPresupuestos.BackColor = System.Drawing.Color.Snow;
+            this.buttonPromedioTotalPresupuestos.Location = new System.Drawing.Point(3, 58);
+            this.buttonPromedioTotalPresupuestos.Name = "buttonPromedioTotalPresupuestos";
+            this.buttonPromedioTotalPresupuestos.Size = new System.Drawing.Size(279, 42);
+            this.buttonPromedioTotalPresupuestos.TabIndex = 1;
+            this.buttonPromedioTotalPresupuestos.Text = "Promedio total presupuestos";
+            this.buttonPromedioTotalPresupuestos.UseVisualStyleBackColor = false;
+            // 
+            // buttonRepuestoMasUsado
+            // 
+            this.buttonRepuestoMasUsado.BackColor = System.Drawing.Color.Snow;
+            this.buttonRepuestoMasUsado.Location = new System.Drawing.Point(3, 3);
+            this.buttonRepuestoMasUsado.Name = "buttonRepuestoMasUsado";
+            this.buttonRepuestoMasUsado.Size = new System.Drawing.Size(208, 42);
+            this.buttonRepuestoMasUsado.TabIndex = 0;
+            this.buttonRepuestoMasUsado.Text = "Repuesto mas usado";
+            this.buttonRepuestoMasUsado.UseVisualStyleBackColor = false;
+            this.buttonRepuestoMasUsado.Click += new System.EventHandler(this.buttonRepuestoMasUsado_Click);
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.labelOutputServicios);
+            this.panel18.Controls.Add(this.dgvOutputServicios);
+            this.panel18.Location = new System.Drawing.Point(535, 6);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(314, 503);
+            this.panel18.TabIndex = 0;
+            // 
+            // labelOutputServicios
+            // 
+            this.labelOutputServicios.AutoSize = true;
+            this.labelOutputServicios.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOutputServicios.Location = new System.Drawing.Point(111, 13);
+            this.labelOutputServicios.Name = "labelOutputServicios";
+            this.labelOutputServicios.Size = new System.Drawing.Size(98, 26);
+            this.labelOutputServicios.TabIndex = 9;
+            this.labelOutputServicios.Text = "Output";
+            // 
+            // dgvOutputServicios
+            // 
+            this.dgvOutputServicios.AllowUserToAddRows = false;
+            this.dgvOutputServicios.AllowUserToDeleteRows = false;
+            this.dgvOutputServicios.AllowUserToOrderColumns = true;
+            this.dgvOutputServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOutputServicios.Location = new System.Drawing.Point(3, 51);
+            this.dgvOutputServicios.Name = "dgvOutputServicios";
+            this.dgvOutputServicios.ReadOnly = true;
+            this.dgvOutputServicios.RowHeadersWidth = 62;
+            this.dgvOutputServicios.RowTemplate.Height = 28;
+            this.dgvOutputServicios.Size = new System.Drawing.Size(309, 449);
+            this.dgvOutputServicios.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(296, 122);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 38);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Tipo";
+            // 
+            // comboBoxServicioTipo
+            // 
+            this.comboBoxServicioTipo.FormattingEnabled = true;
+            this.comboBoxServicioTipo.Items.AddRange(new object[] {
+            "Automovil",
+            "Moto"});
+            this.comboBoxServicioTipo.Location = new System.Drawing.Point(393, 122);
+            this.comboBoxServicioTipo.Name = "comboBoxServicioTipo";
+            this.comboBoxServicioTipo.Size = new System.Drawing.Size(121, 30);
+            this.comboBoxServicioTipo.TabIndex = 12;
+            this.comboBoxServicioTipo.Text = "Moto";
             // 
             // Inicio
             // 
@@ -1597,6 +1810,12 @@ namespace CapaPresentación
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPresupuestos)).EndInit();
+            this.tabServicios.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOutputServicios)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1742,6 +1961,23 @@ namespace CapaPresentación
         private Button buttonABM;
         private Button buttonListarPresupuestos;
         private DateTimePicker Reloj;
+        private Panel panel19;
+        private Button button2;
+        private Button button1;
+        private Button buttonSumatoriaTotalPresupuestos;
+        private Button buttonPromedioTotalPresupuestos;
+        private Button buttonRepuestoMasUsado;
+        private Panel panel18;
+        private Label labelServicioModelo;
+        private Label labelServicioMarca;
+        private TextBox textBoxServicioModelo;
+        private TextBox textBoxServicioMarca;
+        private Label labelOutputServicios;
+        private DataGridView dgvOutputServicios;
+        private TextBox textBoxServiciosMasivos;
+        private TextBox textBoxServiciosBasicos;
+        private ComboBox comboBoxServicioTipo;
+        private Label label2;
 
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }

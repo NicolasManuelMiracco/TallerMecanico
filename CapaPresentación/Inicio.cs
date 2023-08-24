@@ -1075,5 +1075,47 @@ namespace CapaPresentación
             this.Reloj.Value = fecha;
             this.Reloj.Update();
         }
+
+        private void buttonRepuestoMasUsado_Click(object sender, EventArgs e)
+        {
+            if (textBoxServicioMarca.Text == string.Empty)
+            {
+                this.MessageError("Falta completar el Presupuesto");
+                error.SetError(textBoxServicioMarca, "Ingrese Total para el Presupuesto");                
+            }
+            else
+            {
+                if (textBoxServicioModelo.Text == string.Empty)
+                {
+                    this.MessageError("Falta completar el Presupuesto");
+                    error.SetError(textBoxServicioModelo, "Ingrese el Tiempo para el Presupuesto");
+                }
+                else
+                {
+
+                }
+            }            
+        }
+
+        private void formatoServicioSumatoriaTotalPresupuestos()
+        {
+            dgvOutputServicios.Columns[0].Visible = true;
+            dgvOutputServicios.Columns[0].Width = 45;
+                  
+        }
+
+        private void buttonSumatoriaTotalPresupuestos_Click(object sender, EventArgs e)
+        {
+            if (comboBoxServicioTipo.Text == string.Empty)
+            {
+                this.MessageError("Faltan datos para llamar al Servicio");
+                error.SetError(comboBoxServicioTipo, "Ingrese el tipo de Vehículo");
+            }
+            else
+            {
+                //formatoServicioSumatoriaTotalPresupuestos();
+                dgvOutputServicios.DataSource = LogicaServicios.SumatoriaMontoTotal(comboBoxServicioTipo.Text);
+            }            
+        }
     }
 }

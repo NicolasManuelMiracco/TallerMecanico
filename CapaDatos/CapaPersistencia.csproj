@@ -48,6 +48,7 @@
     <Compile Include="PersistenciaMoto.cs" />
     <Compile Include="PersistenciaPresupuesto.cs" />
     <Compile Include="PersistenciaRepuesto.cs" />
+    <Compile Include="PersistenciaServicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PersistenciaVehiculo.cs" />
   </ItemGroup>
