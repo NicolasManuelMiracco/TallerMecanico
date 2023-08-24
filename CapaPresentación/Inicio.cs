@@ -1078,29 +1078,22 @@ namespace CapaPresentación
 
         private void buttonRepuestoMasUsado_Click(object sender, EventArgs e)
         {
-            if (textBoxServicioMarca.Text == string.Empty)
+            if (textBoxServicioMarcaModelo.Text == string.Empty)
             {
                 this.MessageError("Falta completar el Presupuesto");
-                error.SetError(textBoxServicioMarca, "Ingrese Total para el Presupuesto");                
+                error.SetError(textBoxServicioMarcaModelo, "Ingrese Marca/Modelo para el servicio");                
             }
             else
             {
-                if (textBoxServicioModelo.Text == string.Empty)
-                {
-                    this.MessageError("Falta completar el Presupuesto");
-                    error.SetError(textBoxServicioModelo, "Ingrese el Tiempo para el Presupuesto");
-                }
-                else
-                {
-
-                }
+                this.formatoServicios();
+                dgvOutputServicios.DataSource = LogicaServicios.RepuestoMasUtilizado(textBoxServicioMarcaModelo.Text);
             }            
         }
 
-        private void formatoServicioSumatoriaTotalPresupuestos()
+        private void formatoServicios()
         {
-            dgvOutputServicios.Columns[0].Visible = true;
-            dgvOutputServicios.Columns[0].Width = 45;
+            //dgvOutputServicios.Columns[0].Visible = true;
+            //dgvOutputServicios.Columns[0].Width = 45;
                   
         }
 
@@ -1113,7 +1106,7 @@ namespace CapaPresentación
             }
             else
             {
-                //formatoServicioSumatoriaTotalPresupuestos();
+                this.formatoServicios();
                 dgvOutputServicios.DataSource = LogicaServicios.SumatoriaMontoTotal(comboBoxServicioTipo.Text);
             }            
         }
@@ -1134,6 +1127,25 @@ namespace CapaPresentación
             {
                 dgvOutputServicios.DataSource = LogicaServicios.CargaAll();
             }
+        }
+
+        private void buttonPromedioTotalPresupuestos_Click(object sender, EventArgs e)
+        {
+            if (textBoxServicioMarcaModelo.Text == string.Empty)
+            {
+                this.MessageError("Falta completar formulario, campo Marca/Modelo");
+                error.SetError(textBoxServicioMarcaModelo, "Ingrese Marca/Modelo para el servicio");
+            }
+            else
+            {
+                this.formatoServicios();
+                dgvOutputServicios.DataSource = LogicaServicios.PromedioMontoTotal(textBoxServicioMarcaModelo.Text);
+            }
+        }
+
+        private void dgvOutputServicios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

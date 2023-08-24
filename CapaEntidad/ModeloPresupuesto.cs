@@ -65,8 +65,7 @@ namespace CapaModelo
             {
                 if (desperfecto.Id == desperfectoActualizado.Id)
                 {
-                    desperfecto.CostoRepuestosDesperfecto = desperfectoActualizado.CostoRepuestosDesperfecto;
-                    // OK System.Diagnostics.Debug.WriteLine("COSTO desperfecto: " + desperfecto.CostoRepuestosDesperfecto);
+                    desperfecto.CostoRepuestosDesperfecto = desperfectoActualizado.CostoRepuestosDesperfecto;                    
                 }
                     
             }
@@ -131,7 +130,6 @@ namespace CapaModelo
             TotalReparacion = CostoRepuestos + ManoDeObra + CostoEstacionamiento;
             TotalConRecargosDescuentos = TotalReparacion + (TotalReparacion * Recargo) - (TotalReparacion * Descuento);
             TotalAlConsumidor = TotalConRecargosDescuentos + TotalConRecargosDescuentos * gananciaTaller;
-
         }     
     }
 }

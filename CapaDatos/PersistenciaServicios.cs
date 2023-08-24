@@ -36,16 +36,50 @@ namespace CapaPersistencia
             finally { if (conexion.State == ConnectionState.Open) conexion.Close(); }
         }
 
-        public DataTable RepuestoMasUtilizado()
+        public DataTable RepuestoMasUtilizado(String marcaModelo)
         {
+            SqlDataReader resultado;
             DataTable tabla = new DataTable();
-            return tabla;
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                SqlCommand comando = new SqlCommand("repuestoMasUtilizado", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@MarcaModelo", SqlDbType.VarChar).Value = marcaModelo;
+                conexion.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { if (conexion.State == ConnectionState.Open) conexion.Close(); }
         }
 
-        public DataTable PromedioMontoTotal()
+        public DataTable PromedioMontoTotal(String marcaModelo)
         {
+            SqlDataReader resultado;
             DataTable tabla = new DataTable();
-            return tabla;
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                SqlCommand comando = new SqlCommand("promedioMontoTotal", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@MarcaModelo", SqlDbType.VarChar).Value = marcaModelo;                
+                conexion.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { if (conexion.State == ConnectionState.Open) conexion.Close(); }
         }
 
         public DataTable MassiveCharge()

@@ -33,7 +33,7 @@ namespace CapaPresentación
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDataSet = new CapaPresentación.masterDataSet();
             this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -166,9 +166,7 @@ namespace CapaPresentación
             this.textBoxServiciosMasivos = new System.Windows.Forms.TextBox();
             this.textBoxServiciosBasicos = new System.Windows.Forms.TextBox();
             this.labelServicioModelo = new System.Windows.Forms.Label();
-            this.labelServicioMarca = new System.Windows.Forms.Label();
-            this.textBoxServicioModelo = new System.Windows.Forms.TextBox();
-            this.textBoxServicioMarca = new System.Windows.Forms.TextBox();
+            this.textBoxServicioMarcaModelo = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonSumatoriaTotalPresupuestos = new System.Windows.Forms.Button();
             this.buttonPromedioTotalPresupuestos = new System.Windows.Forms.Button();
@@ -1417,14 +1415,14 @@ namespace CapaPresentación
             this.dgvDatos.ColumnHeadersHeight = 34;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.OldLace;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.OldLace;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDatos.Location = new System.Drawing.Point(70, 49);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
@@ -1567,9 +1565,7 @@ namespace CapaPresentación
             this.panel19.Controls.Add(this.textBoxServiciosMasivos);
             this.panel19.Controls.Add(this.textBoxServiciosBasicos);
             this.panel19.Controls.Add(this.labelServicioModelo);
-            this.panel19.Controls.Add(this.labelServicioMarca);
-            this.panel19.Controls.Add(this.textBoxServicioModelo);
-            this.panel19.Controls.Add(this.textBoxServicioMarca);
+            this.panel19.Controls.Add(this.textBoxServicioMarcaModelo);
             this.panel19.Controls.Add(this.button1);
             this.panel19.Controls.Add(this.buttonSumatoriaTotalPresupuestos);
             this.panel19.Controls.Add(this.buttonPromedioTotalPresupuestos);
@@ -1624,40 +1620,21 @@ namespace CapaPresentación
             // labelServicioModelo
             // 
             this.labelServicioModelo.AutoSize = true;
-            this.labelServicioModelo.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelServicioModelo.Location = new System.Drawing.Point(286, 61);
+            this.labelServicioModelo.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelServicioModelo.Location = new System.Drawing.Point(328, 9);
             this.labelServicioModelo.Name = "labelServicioModelo";
-            this.labelServicioModelo.Size = new System.Drawing.Size(101, 25);
+            this.labelServicioModelo.Size = new System.Drawing.Size(177, 26);
             this.labelServicioModelo.TabIndex = 8;
-            this.labelServicioModelo.Text = "Modelo? ";
+            this.labelServicioModelo.Text = "Marca/Modelo?";
             // 
-            // labelServicioMarca
+            // textBoxServicioMarcaModelo
             // 
-            this.labelServicioMarca.AutoSize = true;
-            this.labelServicioMarca.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelServicioMarca.Location = new System.Drawing.Point(286, 10);
-            this.labelServicioMarca.Name = "labelServicioMarca";
-            this.labelServicioMarca.Size = new System.Drawing.Size(83, 25);
-            this.labelServicioMarca.TabIndex = 7;
-            this.labelServicioMarca.Text = "Marca?";
-            // 
-            // textBoxServicioModelo
-            // 
-            this.textBoxServicioModelo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxServicioModelo.ForeColor = System.Drawing.Color.LimeGreen;
-            this.textBoxServicioModelo.Location = new System.Drawing.Point(393, 61);
-            this.textBoxServicioModelo.Name = "textBoxServicioModelo";
-            this.textBoxServicioModelo.Size = new System.Drawing.Size(123, 29);
-            this.textBoxServicioModelo.TabIndex = 6;
-            // 
-            // textBoxServicioMarca
-            // 
-            this.textBoxServicioMarca.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxServicioMarca.ForeColor = System.Drawing.Color.LimeGreen;
-            this.textBoxServicioMarca.Location = new System.Drawing.Point(393, 10);
-            this.textBoxServicioMarca.Name = "textBoxServicioMarca";
-            this.textBoxServicioMarca.Size = new System.Drawing.Size(123, 29);
-            this.textBoxServicioMarca.TabIndex = 5;
+            this.textBoxServicioMarcaModelo.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxServicioMarcaModelo.ForeColor = System.Drawing.Color.LimeGreen;
+            this.textBoxServicioMarcaModelo.Location = new System.Drawing.Point(319, 51);
+            this.textBoxServicioMarcaModelo.Name = "textBoxServicioMarcaModelo";
+            this.textBoxServicioMarcaModelo.Size = new System.Drawing.Size(186, 32);
+            this.textBoxServicioMarcaModelo.TabIndex = 6;
             // 
             // button1
             // 
@@ -1691,6 +1668,7 @@ namespace CapaPresentación
             this.buttonPromedioTotalPresupuestos.TabIndex = 1;
             this.buttonPromedioTotalPresupuestos.Text = "Promedio total presupuestos";
             this.buttonPromedioTotalPresupuestos.UseVisualStyleBackColor = false;
+            this.buttonPromedioTotalPresupuestos.Click += new System.EventHandler(this.buttonPromedioTotalPresupuestos_Click);
             // 
             // buttonRepuestoMasUsado
             // 
@@ -1727,14 +1705,16 @@ namespace CapaPresentación
             this.dgvOutputServicios.AllowUserToAddRows = false;
             this.dgvOutputServicios.AllowUserToDeleteRows = false;
             this.dgvOutputServicios.AllowUserToOrderColumns = true;
+            this.dgvOutputServicios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOutputServicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOutputServicios.Location = new System.Drawing.Point(3, 51);
             this.dgvOutputServicios.Name = "dgvOutputServicios";
             this.dgvOutputServicios.ReadOnly = true;
-            this.dgvOutputServicios.RowHeadersWidth = 62;
+            this.dgvOutputServicios.RowHeadersWidth = 50;
             this.dgvOutputServicios.RowTemplate.Height = 28;
             this.dgvOutputServicios.Size = new System.Drawing.Size(309, 449);
             this.dgvOutputServicios.TabIndex = 0;
+            this.dgvOutputServicios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOutputServicios_CellContentClick);
             // 
             // Inicio
             // 
@@ -1954,9 +1934,7 @@ namespace CapaPresentación
         private Button buttonRepuestoMasUsado;
         private Panel panel18;
         private Label labelServicioModelo;
-        private Label labelServicioMarca;
-        private TextBox textBoxServicioModelo;
-        private TextBox textBoxServicioMarca;
+        private TextBox textBoxServicioMarcaModelo;
         private Label labelOutputServicios;
         private DataGridView dgvOutputServicios;
         private TextBox textBoxServiciosMasivos;

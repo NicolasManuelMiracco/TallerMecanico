@@ -58,8 +58,7 @@ namespace CapaPersistencia
         /// </summary>        
         public string Insertar(ModeloPresupuesto modeloPresupuesto)
         {
-            string respuesta = "";            
-            //DataTable tabla = new DataTable();
+            string respuesta = "";          
             SqlConnection conexion = new SqlConnection();
             try
             {
@@ -94,7 +93,6 @@ namespace CapaPersistencia
         public string Actualizar(ModeloPresupuesto modeloPresupuesto)
         {
             string respuesta = "";
-            //DataTable tabla = new DataTable();
             SqlConnection conexion = new SqlConnection();
             try
             {

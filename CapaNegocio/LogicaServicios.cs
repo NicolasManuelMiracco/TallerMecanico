@@ -16,16 +16,16 @@ namespace CapaLogica
             return datos.SumatoriaMontoTotal(tipoVehiculo);
         }
 
-        public static DataTable RepuestoMasUtilizado()
+        public static DataTable RepuestoMasUtilizado(String marcaModelo)
         {
             PersistenciaServicios datos = new PersistenciaServicios();
-            return datos.RepuestoMasUtilizado();
+            return datos.RepuestoMasUtilizado(marcaModelo);
         }
 
-        public static DataTable PromedioMontoTotal()
+        public static DataTable PromedioMontoTotal(String marcaModelo)
         {
             PersistenciaServicios datos = new PersistenciaServicios();
-            return datos.PromedioMontoTotal();
+            return datos.PromedioMontoTotal(marcaModelo);
         }
 
         public static DataTable MassiveCharge()

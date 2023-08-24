@@ -65,13 +65,9 @@ namespace CapaModelo
         }
         public void agregarRepuesto(ModeloRepuesto nuevoRepuesto)
         {
-            // OK System.Diagnostics.Debug.WriteLine("INTENTA agregar: " + nuevoRepuesto.Id);
             Repuestos.Add(nuevoRepuesto);
-            // OKSystem.Diagnostics.Debug.WriteLine("TAMAÑP lista es: " + Repuestos.Count);
             CantidadRepuestos++;
-            CostoRepuestosDesperfecto = CostoRepuestosDesperfecto + nuevoRepuesto.Precio;
-            // OK System.Diagnostics.Debug.WriteLine("Se agrega costo: " + CostoRepuestosDesperfecto);
-            ///System.Diagnostics.Debug.WriteLine("Cantidad de rep. Desperfecto: " + nuevoRepuesto.Id);
+            CostoRepuestosDesperfecto = CostoRepuestosDesperfecto + nuevoRepuesto.Precio;            
         }
 
         /// <summary>
