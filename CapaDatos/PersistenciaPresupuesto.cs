@@ -5,7 +5,32 @@ using System.Data.SqlClient;
 
 namespace CapaPersistencia
 {
-    public class PersistenciaPresupuesto { 
+    public class PersistenciaPresupuesto {
+        public DataTable Listar()
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                SqlCommand comando = new SqlCommand("listarPresupuestos", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                conexion.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open) conexion.Close();
+            }
+        }
+
         public int ultimoPresupuesto()
         {
             SqlConnection conexion = new SqlConnection();

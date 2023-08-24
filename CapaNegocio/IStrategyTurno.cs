@@ -7,7 +7,6 @@ namespace CapaLogica
     /// </summary>
     public interface IStrategyTurno
     {
-        DateTime Next(); 
-        
+        DateTime Next();         
     }
 }

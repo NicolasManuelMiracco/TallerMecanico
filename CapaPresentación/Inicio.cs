@@ -20,6 +20,7 @@ namespace CapaPresentación
         /// </summary>
         ModeloPresupuesto presupuesto;
         LogicaDesperfecto logicaDesperfecto;
+        IStrategyTurno estrategiaTurno;
 
         /// <summary>
         /// // Form según aspect ratio 16:9, de 1361 x 765 pixels, sin maximización ni resize.
@@ -30,6 +31,9 @@ namespace CapaPresentación
             logicaDesperfecto = new LogicaDesperfecto();
             /// Se asocia el Observer DataGridView con la lógica del desperfecto
             this.dataGridViewDesperfectos.setSubjec(logicaDesperfecto);
+            /// Se define estrategia de asignacion de turno con un margen aleatorio de 3. 
+            /// Aplicación del patrón strategy que permite modificar la forma en que se asignan los turnos -> binding dinámico en ejecúción
+            estrategiaTurno = new RandomTurno(3);
         }
 
         private void listar()
@@ -981,6 +985,9 @@ namespace CapaPresentación
             seteosDefaultPresupuesto();
             actualizarTextBoxesPresupuesto();
             cargaDelCliente();
+            /// Se muestra el listado de total de presupuestos
+            this.tabControlPrincipal.SelectedIndex = 5;
+            listarPresupuestos();
         }
 
         private void buttonPresupuestar_Click(object sender, EventArgs e)
@@ -1011,11 +1018,7 @@ namespace CapaPresentación
                         this.presupuesto.DesperfectosAPresupuestar = idDesperfectosAPresupuestar;                    
                         /// Se calculan los totales del modelo Presupuesto
                         this.presupuesto.cerrarPresupuesto();
-                    }
-                    else
-                    {
-                        //this.listar();
-                    }
+                    }                    
                 }
                 else
                 {
@@ -1023,6 +1026,54 @@ namespace CapaPresentación
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
-        }        
+        }
+
+        private void listarPresupuestos()
+        {
+            try
+            {
+                dataGridViewPresupuestos.DataSource = LogicaPresupuesto.Listar();                
+                this.formatoPresupuestos();
+                labelTotal.Text = Convert.ToString(dataGridViewPresupuestos.Rows.Count);
+                //this.limpiarPresupuestos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void formatoPresupuestos()
+        {
+            dataGridViewPresupuestos.Columns[0].Visible = true;
+            dataGridViewPresupuestos.Columns[0].Width = 45;
+            dataGridViewPresupuestos.Columns[1].Width = 177;
+            dataGridViewPresupuestos.Columns[2].Width = 177;
+            dataGridViewPresupuestos.Columns[3].Width = 177;
+            dataGridViewPresupuestos.Columns[4].Width = 100;
+            dataGridViewPresupuestos.Columns[5].Width = 75;                    
+        }
+
+        private void buttonListarPresupuestos_Click(object sender, EventArgs e)
+        {
+            listarPresupuestos();
+        }
+
+        private void buttonABM_Click(object sender, EventArgs e)
+        {
+            ///Redirección al ABM
+            this.tabControlPrincipal.SelectedIndex = 1;
+        }
+
+        /// <summary>
+        ///  Aplicación patron strategy, para la selección del turno
+        /// </summary>       
+
+        private void dataGridViewPresupuestos_DoubleClick(object sender, EventArgs e)
+        {
+            DateTime fecha = estrategiaTurno.Next();
+            this.Reloj.Value = fecha;
+            this.Reloj.Update();
+        }
     }
 }

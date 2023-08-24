@@ -1,5 +1,6 @@
 ﻿using CapaModelo;
 using CapaPersistencia;
+using System.Data;
 
 namespace CapaLogica
 {
@@ -23,8 +24,10 @@ namespace CapaLogica
             return datos.Insertar(nuevoPresupuesto);
         }
 
-
-
-
+        public static DataTable Listar()
+        {
+            PersistenciaPresupuesto datos = new PersistenciaPresupuesto();
+            return datos.Listar();
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace CapaPresentación
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDataSet = new CapaPresentación.masterDataSet();
             this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -113,7 +113,7 @@ namespace CapaPresentación
             this.labelManoDeObra = new System.Windows.Forms.Label();
             this.labelDescuento = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.tabMantenimiento = new System.Windows.Forms.TabPage();
+            this.tabABM = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelarInserción = new System.Windows.Forms.Button();
             this.btnActualizarVehículo = new System.Windows.Forms.Button();
@@ -152,6 +152,14 @@ namespace CapaPresentación
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
+            this.tabPresupuestos = new System.Windows.Forms.TabPage();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.Reloj = new System.Windows.Forms.DateTimePicker();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.buttonABM = new System.Windows.Forms.Button();
+            this.buttonListarPresupuestos = new System.Windows.Forms.Button();
+            this.dataGridViewPresupuestos = new System.Windows.Forms.DataGridView();
+            this.tabServicios = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
@@ -173,7 +181,7 @@ namespace CapaPresentación
             this.panel6.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.tabMantenimiento.SuspendLayout();
+            this.tabABM.SuspendLayout();
             this.panel1.SuspendLayout();
             this.selectorTipoVehículo.SuspendLayout();
             this.tabAutomóvil.SuspendLayout();
@@ -184,6 +192,9 @@ namespace CapaPresentación
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.tabControlPrincipal.SuspendLayout();
+            this.tabPresupuestos.SuspendLayout();
+            this.panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPresupuestos)).BeginInit();
             this.SuspendLayout();
             // 
             // repuestoBindingSource
@@ -219,7 +230,7 @@ namespace CapaPresentación
             this.tabPageRepuestos.Location = new System.Drawing.Point(4, 34);
             this.tabPageRepuestos.Name = "tabPageRepuestos";
             this.tabPageRepuestos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRepuestos.Size = new System.Drawing.Size(847, 509);
+            this.tabPageRepuestos.Size = new System.Drawing.Size(850, 517);
             this.tabPageRepuestos.TabIndex = 5;
             this.tabPageRepuestos.Text = "Repuestos";
             this.tabPageRepuestos.UseVisualStyleBackColor = true;
@@ -468,7 +479,7 @@ namespace CapaPresentación
             this.tabPageDesperfectos.Location = new System.Drawing.Point(4, 34);
             this.tabPageDesperfectos.Name = "tabPageDesperfectos";
             this.tabPageDesperfectos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDesperfectos.Size = new System.Drawing.Size(847, 509);
+            this.tabPageDesperfectos.Size = new System.Drawing.Size(850, 517);
             this.tabPageDesperfectos.TabIndex = 4;
             this.tabPageDesperfectos.Text = "Desperfectos";
             this.tabPageDesperfectos.UseVisualStyleBackColor = true;
@@ -708,7 +719,7 @@ namespace CapaPresentación
             this.tabPresupuestacion.Controls.Add(this.panel6);
             this.tabPresupuestacion.Location = new System.Drawing.Point(4, 34);
             this.tabPresupuestacion.Name = "tabPresupuestacion";
-            this.tabPresupuestacion.Size = new System.Drawing.Size(847, 509);
+            this.tabPresupuestacion.Size = new System.Drawing.Size(850, 517);
             this.tabPresupuestacion.TabIndex = 3;
             this.tabPresupuestacion.Text = "Presupuestación";
             this.tabPresupuestacion.UseVisualStyleBackColor = true;
@@ -735,7 +746,7 @@ namespace CapaPresentación
             this.panel6.Controls.Add(this.label12);
             this.panel6.Location = new System.Drawing.Point(3, 21);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(837, 490);
+            this.panel6.Size = new System.Drawing.Size(844, 490);
             this.panel6.TabIndex = 0;
             // 
             // panel16
@@ -897,7 +908,7 @@ namespace CapaPresentación
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(212, 57);
             this.button4.TabIndex = 22;
-            this.button4.Text = "Confirma";
+            this.button4.Text = "Emitir";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -983,18 +994,18 @@ namespace CapaPresentación
             this.label12.Text = "Recargo (%)";
             this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
-            // tabMantenimiento
+            // tabABM
             // 
-            this.tabMantenimiento.Controls.Add(this.panel1);
-            this.tabMantenimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabMantenimiento.Location = new System.Drawing.Point(4, 34);
-            this.tabMantenimiento.Name = "tabMantenimiento";
-            this.tabMantenimiento.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMantenimiento.Size = new System.Drawing.Size(847, 509);
-            this.tabMantenimiento.TabIndex = 1;
-            this.tabMantenimiento.Text = "Mantenimiento";
-            this.tabMantenimiento.UseVisualStyleBackColor = true;
-            this.tabMantenimiento.Click += new System.EventHandler(this.tabPage3_Click);
+            this.tabABM.Controls.Add(this.panel1);
+            this.tabABM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabABM.Location = new System.Drawing.Point(4, 34);
+            this.tabABM.Name = "tabABM";
+            this.tabABM.Padding = new System.Windows.Forms.Padding(3);
+            this.tabABM.Size = new System.Drawing.Size(850, 517);
+            this.tabABM.TabIndex = 1;
+            this.tabABM.Text = "ABM";
+            this.tabABM.UseVisualStyleBackColor = true;
+            this.tabABM.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // panel1
             // 
@@ -1019,6 +1030,7 @@ namespace CapaPresentación
             // 
             // btnCancelarInserción
             // 
+            this.btnCancelarInserción.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btnCancelarInserción.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarInserción.ForeColor = System.Drawing.Color.DeepPink;
             this.btnCancelarInserción.Location = new System.Drawing.Point(578, 409);
@@ -1026,11 +1038,12 @@ namespace CapaPresentación
             this.btnCancelarInserción.Size = new System.Drawing.Size(176, 57);
             this.btnCancelarInserción.TabIndex = 16;
             this.btnCancelarInserción.Text = "Cancelar";
-            this.btnCancelarInserción.UseVisualStyleBackColor = true;
+            this.btnCancelarInserción.UseVisualStyleBackColor = false;
             this.btnCancelarInserción.Click += new System.EventHandler(this.btnCancelarInserción_Click);
             // 
             // btnActualizarVehículo
             // 
+            this.btnActualizarVehículo.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btnActualizarVehículo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizarVehículo.ForeColor = System.Drawing.Color.Lime;
             this.btnActualizarVehículo.Location = new System.Drawing.Point(317, 409);
@@ -1038,11 +1051,12 @@ namespace CapaPresentación
             this.btnActualizarVehículo.Size = new System.Drawing.Size(176, 57);
             this.btnActualizarVehículo.TabIndex = 15;
             this.btnActualizarVehículo.Text = "Actualizar";
-            this.btnActualizarVehículo.UseVisualStyleBackColor = true;
+            this.btnActualizarVehículo.UseVisualStyleBackColor = false;
             this.btnActualizarVehículo.Click += new System.EventHandler(this.btnActualizarVehículo_Click);
             // 
             // btInsertarVehículo
             // 
+            this.btInsertarVehículo.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btInsertarVehículo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btInsertarVehículo.ForeColor = System.Drawing.Color.Lime;
             this.btInsertarVehículo.Location = new System.Drawing.Point(80, 409);
@@ -1050,7 +1064,7 @@ namespace CapaPresentación
             this.btInsertarVehículo.Size = new System.Drawing.Size(146, 57);
             this.btInsertarVehículo.TabIndex = 14;
             this.btInsertarVehículo.Text = "Ingresar";
-            this.btInsertarVehículo.UseVisualStyleBackColor = true;
+            this.btInsertarVehículo.UseVisualStyleBackColor = false;
             this.btInsertarVehículo.Click += new System.EventHandler(this.btInsertarVehículo_Click_1);
             // 
             // textBxPatente
@@ -1295,7 +1309,7 @@ namespace CapaPresentación
             this.tabVehiculos.Location = new System.Drawing.Point(4, 34);
             this.tabVehiculos.Name = "tabVehiculos";
             this.tabVehiculos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVehiculos.Size = new System.Drawing.Size(847, 509);
+            this.tabVehiculos.Size = new System.Drawing.Size(850, 517);
             this.tabVehiculos.TabIndex = 0;
             this.tabVehiculos.Text = "Vehículos";
             this.tabVehiculos.UseVisualStyleBackColor = true;
@@ -1383,14 +1397,14 @@ namespace CapaPresentación
             this.dgvDatos.ColumnHeadersHeight = 34;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Select});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.OldLace;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.OldLace;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDatos.Location = new System.Drawing.Point(70, 49);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
@@ -1419,20 +1433,113 @@ namespace CapaPresentación
             this.tabControlPrincipal.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
             this.tabControlPrincipal.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControlPrincipal.Controls.Add(this.tabVehiculos);
-            this.tabControlPrincipal.Controls.Add(this.tabMantenimiento);
+            this.tabControlPrincipal.Controls.Add(this.tabABM);
             this.tabControlPrincipal.Controls.Add(this.tabPageDesperfectos);
             this.tabControlPrincipal.Controls.Add(this.tabPageRepuestos);
             this.tabControlPrincipal.Controls.Add(this.tabPresupuestacion);
-            this.tabControlPrincipal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControlPrincipal.Location = new System.Drawing.Point(1, 12);
+            this.tabControlPrincipal.Controls.Add(this.tabPresupuestos);
+            this.tabControlPrincipal.Controls.Add(this.tabServicios);
+            this.tabControlPrincipal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControlPrincipal.Location = new System.Drawing.Point(1, 2);
             this.tabControlPrincipal.Name = "tabControlPrincipal";
             this.tabControlPrincipal.SelectedIndex = 0;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(855, 547);
+            this.tabControlPrincipal.Size = new System.Drawing.Size(858, 555);
             this.tabControlPrincipal.TabIndex = 0;
+            // 
+            // tabPresupuestos
+            // 
+            this.tabPresupuestos.Controls.Add(this.panel17);
+            this.tabPresupuestos.Location = new System.Drawing.Point(4, 34);
+            this.tabPresupuestos.Name = "tabPresupuestos";
+            this.tabPresupuestos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPresupuestos.Size = new System.Drawing.Size(850, 517);
+            this.tabPresupuestos.TabIndex = 6;
+            this.tabPresupuestos.Text = "Presupuestos";
+            this.tabPresupuestos.UseVisualStyleBackColor = true;
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.Reloj);
+            this.panel17.Controls.Add(this.textBox2);
+            this.panel17.Controls.Add(this.buttonABM);
+            this.panel17.Controls.Add(this.buttonListarPresupuestos);
+            this.panel17.Controls.Add(this.dataGridViewPresupuestos);
+            this.panel17.Location = new System.Drawing.Point(3, 6);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(844, 498);
+            this.panel17.TabIndex = 0;
+            // 
+            // Reloj
+            // 
+            this.Reloj.Location = new System.Drawing.Point(474, 451);
+            this.Reloj.Name = "Reloj";
+            this.Reloj.Size = new System.Drawing.Size(186, 29);
+            this.Reloj.TabIndex = 26;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(666, 433);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(172, 62);
+            this.textBox2.TabIndex = 25;
+            this.textBox2.Text = "(i) Doble clic en el presupuesto para turnos";
+            // 
+            // buttonABM
+            // 
+            this.buttonABM.BackColor = System.Drawing.Color.BurlyWood;
+            this.buttonABM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonABM.ForeColor = System.Drawing.Color.Green;
+            this.buttonABM.Location = new System.Drawing.Point(268, 438);
+            this.buttonABM.Name = "buttonABM";
+            this.buttonABM.Size = new System.Drawing.Size(200, 55);
+            this.buttonABM.TabIndex = 24;
+            this.buttonABM.Text = "ABM Vehículos";
+            this.buttonABM.UseVisualStyleBackColor = false;
+            this.buttonABM.Click += new System.EventHandler(this.buttonABM_Click);
+            // 
+            // buttonListarPresupuestos
+            // 
+            this.buttonListarPresupuestos.BackColor = System.Drawing.Color.Linen;
+            this.buttonListarPresupuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonListarPresupuestos.ForeColor = System.Drawing.Color.Green;
+            this.buttonListarPresupuestos.Location = new System.Drawing.Point(4, 438);
+            this.buttonListarPresupuestos.Name = "buttonListarPresupuestos";
+            this.buttonListarPresupuestos.Size = new System.Drawing.Size(258, 55);
+            this.buttonListarPresupuestos.TabIndex = 23;
+            this.buttonListarPresupuestos.Text = "Listar Presupuestos";
+            this.buttonListarPresupuestos.UseVisualStyleBackColor = false;
+            this.buttonListarPresupuestos.Click += new System.EventHandler(this.buttonListarPresupuestos_Click);
+            // 
+            // dataGridViewPresupuestos
+            // 
+            this.dataGridViewPresupuestos.AllowUserToAddRows = false;
+            this.dataGridViewPresupuestos.AllowUserToDeleteRows = false;
+            this.dataGridViewPresupuestos.AllowUserToOrderColumns = true;
+            this.dataGridViewPresupuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPresupuestos.Location = new System.Drawing.Point(4, 3);
+            this.dataGridViewPresupuestos.Name = "dataGridViewPresupuestos";
+            this.dataGridViewPresupuestos.ReadOnly = true;
+            this.dataGridViewPresupuestos.RowHeadersWidth = 62;
+            this.dataGridViewPresupuestos.RowTemplate.Height = 28;
+            this.dataGridViewPresupuestos.Size = new System.Drawing.Size(834, 427);
+            this.dataGridViewPresupuestos.TabIndex = 0;
+            this.dataGridViewPresupuestos.DoubleClick += new System.EventHandler(this.dataGridViewPresupuestos_DoubleClick);
+            // 
+            // tabServicios
+            // 
+            this.tabServicios.Location = new System.Drawing.Point(4, 34);
+            this.tabServicios.Name = "tabServicios";
+            this.tabServicios.Padding = new System.Windows.Forms.Padding(3);
+            this.tabServicios.Size = new System.Drawing.Size(850, 517);
+            this.tabServicios.TabIndex = 7;
+            this.tabServicios.Text = "Servicios";
+            this.tabServicios.UseVisualStyleBackColor = true;
             // 
             // Inicio
             // 
-            this.ClientSize = new System.Drawing.Size(857, 558);
+            this.ClientSize = new System.Drawing.Size(858, 557);
             this.Controls.Add(this.tabControlPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Inicio";
@@ -1470,7 +1577,7 @@ namespace CapaPresentación
             this.panel16.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.tabMantenimiento.ResumeLayout(false);
+            this.tabABM.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.selectorTipoVehículo.ResumeLayout(false);
@@ -1486,6 +1593,10 @@ namespace CapaPresentación
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.tabControlPrincipal.ResumeLayout(false);
+            this.tabPresupuestos.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPresupuestos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1521,7 +1632,7 @@ namespace CapaPresentación
         private Label labelTotal;
         private DataGridView dgvDatos;
         private new DataGridViewCheckBoxColumn Select;
-        private TabPage tabMantenimiento;
+        private TabPage tabABM;
         private Panel panel1;
         private Button btnCancelarInserción;
         private Button btnActualizarVehículo;
@@ -1623,6 +1734,14 @@ namespace CapaPresentación
         private Panel panel5;
         private Panel panel16;
         private Label labelDesperfecto;
+        private TabPage tabPresupuestos;
+        private TabPage tabServicios;
+        private Panel panel17;
+        private DataGridView dataGridViewPresupuestos;
+        private TextBox textBox2;
+        private Button buttonABM;
+        private Button buttonListarPresupuestos;
+        private DateTimePicker Reloj;
 
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
