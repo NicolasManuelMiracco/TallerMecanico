@@ -556,7 +556,7 @@ namespace CapaPresentación
         {
             if (e.ColumnIndex == dgvDatos.Columns["CHK"].Index) // Press on select
             {
-                DataGridViewCheckBoxCell chkVehiculo = (DataGridViewCheckBoxCell)dgvDatos.Rows[e.RowIndex].Cells["Select"];
+                DataGridViewCheckBoxCell chkVehiculo = (DataGridViewCheckBoxCell)dgvDatos.Rows[e.RowIndex].Cells["CHK"];
                 chkVehiculo.Value = !Convert.ToBoolean(chkVehiculo.Value);
             }
         }
