@@ -1748,7 +1748,10 @@ namespace CapaPresentación
             // 
             this.ClientSize = new System.Drawing.Size(858, 557);
             this.Controls.Add(this.tabControlPrincipal);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Inicio";
             this.Text = "Taller Mecánico";
             this.Load += new System.EventHandler(this.Inicio_Load);
