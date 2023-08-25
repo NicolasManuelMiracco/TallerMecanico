@@ -65,7 +65,7 @@ namespace CapaLogica
             modeloDesperfecto = ((ModeloDesperfecto)modeloPresupuesto.getDesperfectoActual());
 
             int idDesperfectoActivo = modeloDesperfecto.Id;
-            System.Diagnostics.Debug.WriteLine("Desperfecto Activo: " + idDesperfectoActivo + " ListaExistentes: " + repuestosExistentes.Count + " ListaEnEspera: " + repuestosEnEspera.Count);
+            //System.Diagnostics.Debug.WriteLine("Desperfecto Activo: " + idDesperfectoActivo + " ListaExistentes: " + repuestosExistentes.Count + " ListaEnEspera: " + repuestosEnEspera.Count);
             foreach (int repuestoExistente in repuestosExistentes)
             {
                 respuesta = datos.Insertar(repuestoExistente, idDesperfectoActivo);

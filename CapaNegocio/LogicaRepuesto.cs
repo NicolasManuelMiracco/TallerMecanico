@@ -37,6 +37,7 @@ namespace CapaLogica
 
             // Se obtiene el desperfecto que se esta configurando del presupuesto en curso
             ModeloDesperfecto desperfectoEnConstruccion = presupuesto.getDesperfectoActual();
+            /// Agrego el nuevo repuesto y retorno el Id para su referencia en el modelo
             int ultimoIdRepuesto = (int) datos.Insertar(nombre, precio);            
             
             // Se crea una instancia del nuevo Modelo Repuesto. El true indica que aún está a la espera de confirmación, dado que el presupuesto está en curso.

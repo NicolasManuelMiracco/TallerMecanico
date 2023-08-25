@@ -539,11 +539,12 @@ namespace CapaPresentación
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.label1.Location = new System.Drawing.Point(249, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(506, 22);
+            this.label1.Size = new System.Drawing.Size(611, 25);
             this.label1.TabIndex = 5;
             this.label1.Text = "2°: doble clic en cada desperfecto para seleccionar repuestos.";
             // 
@@ -560,11 +561,12 @@ namespace CapaPresentación
             // labelSeleccionDesperfectos
             // 
             this.labelSeleccionDesperfectos.AutoSize = true;
-            this.labelSeleccionDesperfectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSeleccionDesperfectos.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.labelSeleccionDesperfectos.BackColor = System.Drawing.Color.Transparent;
+            this.labelSeleccionDesperfectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSeleccionDesperfectos.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.labelSeleccionDesperfectos.Location = new System.Drawing.Point(0, 0);
             this.labelSeleccionDesperfectos.Name = "labelSeleccionDesperfectos";
-            this.labelSeleccionDesperfectos.Size = new System.Drawing.Size(240, 22);
+            this.labelSeleccionDesperfectos.Size = new System.Drawing.Size(290, 25);
             this.labelSeleccionDesperfectos.TabIndex = 3;
             this.labelSeleccionDesperfectos.Text = "1°: agregar los desperfectos.";
             // 
@@ -626,12 +628,12 @@ namespace CapaPresentación
             // labelDesperfectosAsignados
             // 
             this.labelDesperfectosAsignados.AutoSize = true;
-            this.labelDesperfectosAsignados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDesperfectosAsignados.Location = new System.Drawing.Point(3, 0);
+            this.labelDesperfectosAsignados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesperfectosAsignados.Location = new System.Drawing.Point(7, 9);
             this.labelDesperfectosAsignados.Name = "labelDesperfectosAsignados";
-            this.labelDesperfectosAsignados.Size = new System.Drawing.Size(244, 25);
+            this.labelDesperfectosAsignados.Size = new System.Drawing.Size(295, 26);
             this.labelDesperfectosAsignados.TabIndex = 1;
-            this.labelDesperfectosAsignados.Text = "Desperfectos asignados";
+            this.labelDesperfectosAsignados.Text = "2) Desperfectos asignados";
             // 
             // panel7
             // 
@@ -698,42 +700,42 @@ namespace CapaPresentación
             // labelDesperfectoTiempo
             // 
             this.labelDesperfectoTiempo.AutoSize = true;
-            this.labelDesperfectoTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesperfectoTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDesperfectoTiempo.Location = new System.Drawing.Point(3, 264);
             this.labelDesperfectoTiempo.Name = "labelDesperfectoTiempo";
-            this.labelDesperfectoTiempo.Size = new System.Drawing.Size(76, 22);
+            this.labelDesperfectoTiempo.Size = new System.Drawing.Size(126, 38);
             this.labelDesperfectoTiempo.TabIndex = 3;
             this.labelDesperfectoTiempo.Text = "Tiempo";
             // 
             // labelDesperfectoManoDeObra
             // 
             this.labelDesperfectoManoDeObra.AutoSize = true;
-            this.labelDesperfectoManoDeObra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDesperfectoManoDeObra.Location = new System.Drawing.Point(3, 220);
+            this.labelDesperfectoManoDeObra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesperfectoManoDeObra.Location = new System.Drawing.Point(6, 220);
             this.labelDesperfectoManoDeObra.Name = "labelDesperfectoManoDeObra";
-            this.labelDesperfectoManoDeObra.Size = new System.Drawing.Size(132, 22);
+            this.labelDesperfectoManoDeObra.Size = new System.Drawing.Size(145, 25);
             this.labelDesperfectoManoDeObra.TabIndex = 2;
             this.labelDesperfectoManoDeObra.Text = "Mano de obra";
             // 
             // labelDescripcionDesperfecto
             // 
             this.labelDescripcionDesperfecto.AutoSize = true;
-            this.labelDescripcionDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDescripcionDesperfecto.Location = new System.Drawing.Point(3, 75);
+            this.labelDescripcionDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescripcionDesperfecto.Location = new System.Drawing.Point(7, 81);
             this.labelDescripcionDesperfecto.Name = "labelDescripcionDesperfecto";
-            this.labelDescripcionDesperfecto.Size = new System.Drawing.Size(115, 22);
+            this.labelDescripcionDesperfecto.Size = new System.Drawing.Size(125, 25);
             this.labelDescripcionDesperfecto.TabIndex = 1;
             this.labelDescripcionDesperfecto.Text = "Descripción";
             // 
             // labelNuevoDesperfecto
             // 
             this.labelNuevoDesperfecto.AutoSize = true;
-            this.labelNuevoDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNuevoDesperfecto.Location = new System.Drawing.Point(14, 11);
+            this.labelNuevoDesperfecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNuevoDesperfecto.Location = new System.Drawing.Point(2, 9);
             this.labelNuevoDesperfecto.Name = "labelNuevoDesperfecto";
-            this.labelNuevoDesperfecto.Size = new System.Drawing.Size(193, 25);
+            this.labelNuevoDesperfecto.Size = new System.Drawing.Size(239, 26);
             this.labelNuevoDesperfecto.TabIndex = 0;
-            this.labelNuevoDesperfecto.Text = "Nuevo desperfecto";
+            this.labelNuevoDesperfecto.Text = "1) Nuevo desperfecto";
             // 
             // tabPresupuestacion
             // 
@@ -1746,6 +1748,9 @@ namespace CapaPresentación
             // 
             // Inicio
             // 
+            this.AccessibleDescription = "Aplicación que modela un sistema de presupuestos para reparaciones de un taller m" +
+    "ecánico.";
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(858, 557);
             this.Controls.Add(this.tabControlPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

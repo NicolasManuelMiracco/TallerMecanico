@@ -110,6 +110,9 @@ namespace CapaModelo
                 if (!repuestosExistentes.Contains(repuesto.Id) && !repuestosEnEspera.Contains(repuesto.Id))
                 {
                     System.Diagnostics.Debug.WriteLine("Se elimina repuesto: " + repuesto.Id);
+                    
+                    /// Se eliminan los repuestos que no fueron seleccionados de la lista, ni como existente ni como nuevo.
+                    /// Esto es necesario porque al agregar repuestos se incorporan siempre al desperfecto activo.
                     Repuestos.Remove(repuesto);
                     CantidadRepuestos--;
                 }
