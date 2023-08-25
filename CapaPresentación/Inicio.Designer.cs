@@ -142,6 +142,8 @@ namespace CapaPresentación
             this.etiquetaMarca = new System.Windows.Forms.Label();
             this.etiquetaIdVehiculo = new System.Windows.Forms.Label();
             this.tabVehiculos = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel20 = new System.Windows.Forms.Panel();
             this.btEliminar = new System.Windows.Forms.Button();
             this.Diagnose = new System.Windows.Forms.Button();
@@ -174,8 +176,6 @@ namespace CapaPresentación
             this.panel18 = new System.Windows.Forms.Panel();
             this.labelOutputServicios = new System.Windows.Forms.Label();
             this.dgvOutputServicios = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
@@ -205,6 +205,7 @@ namespace CapaPresentación
             this.tabMoto.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabVehiculos.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.tabControlPrincipal.SuspendLayout();
@@ -215,7 +216,6 @@ namespace CapaPresentación
             this.panel19.SuspendLayout();
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutputServicios)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // repuestoBindingSource
@@ -1229,7 +1229,7 @@ namespace CapaPresentación
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Beige;
+            this.panel3.BackColor = System.Drawing.Color.LightGreen;
             this.panel3.Controls.Add(this.textBxCilindrada);
             this.panel3.Controls.Add(this.textBxIdMoto);
             this.panel3.Controls.Add(this.etiquetaCilindrada);
@@ -1335,6 +1335,27 @@ namespace CapaPresentación
             this.tabVehiculos.UseVisualStyleBackColor = true;
             this.tabVehiculos.Click += new System.EventHandler(this.tabPage1_Click_2);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.textBox3);
+            this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel4.Location = new System.Drawing.Point(0, 462);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(850, 55);
+            this.panel4.TabIndex = 6;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(0, 3);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(850, 56);
+            this.textBox3.TabIndex = 0;
+            this.textBox3.Text = "Operar: permite eliminar o diagnosticar Vehículos. \r\n- Al diagnosticar, se inicia" +
+    " un nuevo Presupuesto con Desperfectos y Repuestos.\r\nDoble clic sobre fila para " +
+    "actualizar vehículo.\r\n";
+            // 
             // panel20
             // 
             this.panel20.Controls.Add(this.btEliminar);
@@ -1436,7 +1457,7 @@ namespace CapaPresentación
             this.dgvDatos.RowHeadersWidth = 30;
             this.dgvDatos.RowTemplate.Height = 23;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(743, 422);
+            this.dgvDatos.Size = new System.Drawing.Size(743, 407);
             this.dgvDatos.TabIndex = 0;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
@@ -1723,26 +1744,6 @@ namespace CapaPresentación
             this.dgvOutputServicios.TabIndex = 0;
             this.dgvOutputServicios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOutputServicios_CellContentClick);
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.textBox3);
-            this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(0, 472);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(850, 45);
-            this.panel4.TabIndex = 6;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(0, 5);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(850, 40);
-            this.textBox3.TabIndex = 0;
-            this.textBox3.Text = "Operar: permite diagnosticar o eliminar vehículos.\r\nDoble clic sobre fila para ac" +
-    "tualizar vehículo.";
-            // 
             // Inicio
             // 
             this.ClientSize = new System.Drawing.Size(858, 557);
@@ -1795,6 +1796,8 @@ namespace CapaPresentación
             this.panel3.PerformLayout();
             this.tabVehiculos.ResumeLayout(false);
             this.tabVehiculos.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel20.ResumeLayout(false);
             this.panel20.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
@@ -1809,8 +1812,6 @@ namespace CapaPresentación
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutputServicios)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }

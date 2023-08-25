@@ -194,7 +194,9 @@ namespace CapaPresentación
             }
             return "OK";
         }
-
+        /// <summary>
+        /// Comienza la inserción de un nuevo Automóvil o Moto. Esto desencadena la inserción en cascada del Vehículo.
+        /// </summary>        
         private void btInsertarVehículo_Click_1(object sender, EventArgs e)
         {
             string respuesta = "";

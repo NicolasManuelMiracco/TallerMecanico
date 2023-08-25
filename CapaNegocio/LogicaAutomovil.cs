@@ -12,7 +12,7 @@ namespace CapaLogica
         {
             PersistenciaAutomovil datos = new PersistenciaAutomovil();
             ModeloAutomovil obj = new ModeloAutomovil(id, marca, modelo, patente, tipo, cantidadPuertas, idVehiculo);
-            return datos.Actualizar(obj);
+            return datos.Insertar(obj);
         }
 
         public static string Actualizar(int id, string marca, string modelo, string patente, string tipo, int cantidadPuertas, int idVehiculo)

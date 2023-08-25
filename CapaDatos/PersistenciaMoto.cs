@@ -16,16 +16,13 @@ namespace CapaPersistencia
             {
                 conexion = Conexion.crearInstancia().crearConexion();
                 SqlCommand comando = new SqlCommand("insertarMoto", conexion);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@Id", SqlDbType.Int).Value = obj.IdMoto;
-                comando.Parameters.Add("@Cilindrada", SqlDbType.VarChar).Value = obj.Cilindrada;
-                comando.Parameters.Add("@IdVehiculo", SqlDbType.Int).Value = obj.IdVehiculo;
+                comando.CommandType = CommandType.StoredProcedure;                
+                comando.Parameters.Add("@Cilindrada", SqlDbType.VarChar).Value = obj.Cilindrada;                
                 comando.Parameters.Add("@Marca", SqlDbType.VarChar).Value = obj.Marca;
                 comando.Parameters.Add("@Modelo", SqlDbType.VarChar).Value = obj.Modelo;
                 comando.Parameters.Add("@Patente", SqlDbType.VarChar).Value = obj.Patente;
                 conexion.Open();
-                respuesta = comando.ExecuteNonQuery() >= 1 ? "OK" : "Insert Moto ERROR";
-                System.Diagnostics.Debug.WriteLine("Salida: " + respuesta);
+                respuesta = comando.ExecuteNonQuery() >= 1 ? "OK" : "Insert Moto ERROR";                
             }
             catch (Exception ex)
             {

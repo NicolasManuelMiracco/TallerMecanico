@@ -16,11 +16,9 @@ namespace CapaPersistencia
             {
                 conexion = Conexion.crearInstancia().crearConexion();
                 SqlCommand comando = new SqlCommand("insertarAutomovil", conexion);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@Id", SqlDbType.Int).Value = obj.IdAutomovil;
+                comando.CommandType = CommandType.StoredProcedure;                
                 comando.Parameters.Add("@Tipo", SqlDbType.VarChar).Value = obj.Tipo;
-                comando.Parameters.Add("@CantidadPuertas", SqlDbType.Int).Value = obj.CantidadPuertas;
-                comando.Parameters.Add("@IdVehiculo", SqlDbType.Int).Value = obj.IdVehiculo;                
+                comando.Parameters.Add("@CantidadPuertas", SqlDbType.Int).Value = obj.CantidadPuertas;                            
                 comando.Parameters.Add("@Marca", SqlDbType.VarChar).Value = obj.Marca;
                 comando.Parameters.Add("@Modelo", SqlDbType.VarChar).Value = obj.Modelo;
                 comando.Parameters.Add("@Patente", SqlDbType.VarChar).Value = obj.Patente;
