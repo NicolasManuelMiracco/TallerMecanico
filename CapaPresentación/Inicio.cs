@@ -19,8 +19,9 @@ namespace CapaPresentación
         /// Referencia dinámica al presupuesto que se construye desde UI. Al cerrar la transacción se persiste.
         /// </summary>
         ModeloPresupuesto presupuesto;
+        ModeloTallerMecanico taller;
         LogicaDesperfecto logicaDesperfecto;
-        IStrategyTurno estrategiaTurno;
+        StrategyTurno estrategiaTurnoRandom, estrategiaTurnoPrimerDisponible, estrategiaTurnoActual;
 
         /// <summary>
         /// // Form según aspect ratio 16:9, de 1361 x 765 pixels, sin maximización ni resize.
@@ -28,12 +29,15 @@ namespace CapaPresentación
         public Inicio()
         {
             InitializeComponent();
+            taller = new ModeloTallerMecanico();
             logicaDesperfecto = new LogicaDesperfecto();
             /// Se asocia el Observer DataGridView con la lógica del desperfecto
             this.dataGridViewDesperfectos.setSubjec(logicaDesperfecto);
             /// Se define estrategia de asignacion de turno con un margen aleatorio de 3. 
             /// Aplicación del patrón strategy que permite modificar la forma en que se asignan los turnos -> binding dinámico en ejecúción
-            estrategiaTurno = new RandomTurno(3);
+            estrategiaTurnoRandom = new RandomTurno(6);
+            estrategiaTurnoPrimerDisponible = new PrimerDisponibleTurno();
+            estrategiaTurnoActual = estrategiaTurnoRandom;
         }
 
         private void listar()
@@ -767,23 +771,39 @@ namespace CapaPresentación
             this.dgvRepuestos.Rows.Clear();
         }
 
-        /// <summary>
-        /// Incorporación de repuestos a un desperfecto por medio de Doble Clic
-        /// </summary>        
-        private void dataGridViewDesperfectos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void cargaRepuestosParaElDesperfecto()
         {
             this.limpiarRepuestos();
             /// Obtengo el Id del desperfecto destinatario de repuestos
-            int desperfectoToAddRepuestos = Convert.ToInt32(dataGridViewDesperfectos.CurrentRow.Cells["Id"].Value);            
+            int desperfectoToAddRepuestos = Convert.ToInt32(dataGridViewDesperfectos.CurrentRow.Cells["Id"].Value);
             /// Se setea el idDesperfecto activo para agregarle repuestos
             presupuesto.setIdCurrentDesperfecto(desperfectoToAddRepuestos);
-            
+
             this.tabControlPrincipal.SelectedIndex = 3;  //Pasamos a la pestaña de selección de repuestos
             this.labelRapuestosAsignados.Text = "Asignación de repuestos, Id desperfecto: " + desperfectoToAddRepuestos;
             this.listarRepuestosDelDesperfecto();
-            ///Se inicia la carga de repuestos para el desperfecto seleccionado
-            ///cargarRepuestos(desperfectoToAddRepuestos);
+        }
 
+        /// <summary>
+        /// Incorporación de repuestos a un desperfecto por medio de Doble Clic
+        /// También se deshabilita la carga de Desperfectos
+        /// </summary>        
+        private void dataGridViewDesperfectos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /// Verifico si aún no se deshabilitó la carga de Desperfectos
+            if (buttonAgregarDesperfecto.Enabled)
+            {
+                DialogResult Opcion = MessageBox.Show("¿Finalizar carga de desperfectos, para comenzar con la carga de repuestos?", "Tratamiento Carga Repuestos", MessageBoxButtons.OKCancel);
+                if (Opcion == DialogResult.OK)
+                {
+                    buttonAgregarDesperfecto.Enabled = false;
+                    this.cargaRepuestosParaElDesperfecto();
+                }
+            }
+            else
+            {
+                this.cargaRepuestosParaElDesperfecto();
+            }
         }
 
         private string tratamientoRepuestoNuevo()
@@ -1126,7 +1146,17 @@ namespace CapaPresentación
 
         private void dataGridViewPresupuestos_DoubleClick(object sender, EventArgs e)
         {
-            DateTime fecha = estrategiaTurno.Next();
+            if (comboBoxEstrategiaTurno.Text.Equals("Aleatoria con Rango"))
+            {
+                estrategiaTurnoActual = this.estrategiaTurnoRandom;
+            }
+            else
+            {
+                estrategiaTurnoActual = this.estrategiaTurnoPrimerDisponible;
+            }
+
+            DateTime fecha = estrategiaTurnoActual.Next();
+            this.taller.setUltimoTurno(fecha);
             this.Reloj.Value = fecha;
             this.Reloj.Update();
         }

@@ -49,10 +49,11 @@
     <Compile Include="LogicaPresupuesto.cs" />
     <Compile Include="LogicaRepuesto.cs" />
     <Compile Include="LogicaServicios.cs" />
+    <Compile Include="PrimerDisponibleTurno.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LogicaVehiculo.cs" />
     <Compile Include="LogicaTallerMecanico.cs" />
-    <Compile Include="IStrategyTurno.cs" />
+    <Compile Include="StrategyTurno.cs" />
     <Compile Include="RandomTurno.cs" />
   </ItemGroup>
   <ItemGroup>

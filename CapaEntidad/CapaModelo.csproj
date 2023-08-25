@@ -46,9 +46,11 @@
     <Compile Include="ModeloDesperfectoRepuesto.cs" />
     <Compile Include="ModeloMoto.cs" />
     <Compile Include="ModeloPresupuesto.cs" />
+    <Compile Include="ModeloTurno.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ModeloRepuesto.cs" />
     <Compile Include="ModeloVehiculo.cs" />
+    <Compile Include="ModeloTallerMecanico.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
