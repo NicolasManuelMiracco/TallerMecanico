@@ -29,5 +29,14 @@ namespace CapaLogica
             PersistenciaPresupuesto datos = new PersistenciaPresupuesto();
             return datos.Listar();
         }
+        /// <summary>
+        /// Eliminación de presupuestos iniciados pero que han sido abortados. 
+        /// Se identifican por tener: Nombre y Apellido null, Email por default y Total = 0.
+        /// </summary>
+        public static string eliminarPresupuestosIncompletos()
+        {
+            PersistenciaPresupuesto datos = new PersistenciaPresupuesto();
+            return datos.eliminarPresupuestosIncompletos();
+        }
     }
 }

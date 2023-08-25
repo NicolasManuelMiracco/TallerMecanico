@@ -118,5 +118,29 @@ namespace CapaPersistencia
             }
             return respuesta;
         }
+
+        public string eliminarPresupuestosIncompletos()
+        {
+            string respuesta = "";
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                SqlCommand comando = new SqlCommand("eliminarPresupuestosIncompletos", conexion);
+                comando.CommandType = CommandType.StoredProcedure;                
+                conexion.Open();
+                respuesta = comando.ExecuteNonQuery() >= 1 ? "OK" : "No se detectan presupuestos incompletos";
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open) conexion.Close();
+            }
+            return respuesta;
+        }
     }
 }

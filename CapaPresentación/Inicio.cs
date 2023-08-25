@@ -1086,6 +1086,7 @@ namespace CapaPresentación
         {
             try
             {
+                LogicaPresupuesto.eliminarPresupuestosIncompletos();
                 dataGridViewPresupuestos.DataSource = LogicaPresupuesto.Listar();                
                 this.formatoPresupuestos();
                 labelTotal.Text = Convert.ToString(dataGridViewPresupuestos.Rows.Count);
