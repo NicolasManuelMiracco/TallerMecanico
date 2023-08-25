@@ -11,5 +11,12 @@ namespace CapaLogica
             ModeloMoto obj = new ModeloMoto(id, marca, modelo, patente, idVehiculo, cilindrada);
             return datos.Insertar(obj);
         }
+
+        public static string Actualizar(int id, string marca, string modelo, string patente, int idVehiculo, string cilindrada)
+        {
+            PersistenciaMoto datos = new PersistenciaMoto();
+            ModeloMoto obj = new ModeloMoto(id, marca, modelo, patente, idVehiculo, cilindrada);
+            return datos.Actualizar(obj);
+        }
     }
 }

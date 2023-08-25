@@ -240,18 +240,24 @@ namespace CapaPresentación
             }
         }
 
+        /// <summary>
+        /// //Activo Tab selector tipo Vehículo
+        /// </summary>
         private void activarTabTipoVehiculo(string tipoAutomovil)
         {
             if (tipoAutomovil == string.Empty)
             {
-                selectorTipoVehículo.SelectedIndex = 1; /// Hace mantenimiento
+                selectorTipoVehículo.SelectedIndex = 1; /// Activo Tab Moto
             }
             else
             {
-                selectorTipoVehículo.SelectedIndex = 0; /// Hace mantenimiento
+                selectorTipoVehículo.SelectedIndex = 0; /// Activo Tab Vehículo
             }
         }
 
+        /// <summary>
+        /// Tratamiento Actualización de Vehículo con doble clic
+        /// </summary>
         private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -259,7 +265,16 @@ namespace CapaPresentación
                 this.limpiar();
                 btnActualizarVehículo.Visible = true;
                 btInsertarVehículo.Visible = false;
+                /// Activo según columna IdAuto del DataGridView
                 activarTabTipoVehiculo(Convert.ToString(dgvDatos.CurrentRow.Cells["IdAuto"].Value));
+
+                /// Se deshabilitan PK/FK que no pueden actualizarse
+                textBxIdMoto.Enabled = false;
+                textBxIdAutomóvil.Enabled = false;
+                textBxIdVehículo.Enabled = false;
+
+                /// Se lee información que será actualizada
+                textBxIdVehículo.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["IdVehiculo"].Value);
                 textBxIdMoto.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["IdMoto"].Value);
                 textBxIdAutomóvil.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["IdAuto"].Value);
                 textBxMarca.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Marca"].Value);
@@ -268,7 +283,7 @@ namespace CapaPresentación
                 selectorTipoVehículo.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Tipo"].Value);
                 textPuertas.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Puertas"].Value);
                 textBxCilindrada.Text = Convert.ToString(dgvDatos.CurrentRow.Cells["Cilindrada"].Value);
-                tabControlPrincipal.SelectedIndex = 1; // Hace mantenimiento
+                tabControlPrincipal.SelectedIndex = 1; // Redirección a pestaña ABM
             }
             catch (Exception)
             {
@@ -363,6 +378,9 @@ namespace CapaPresentación
         {
             try
             {
+                //System.Diagnostics.Debug.WriteLine("SELECTED TAB Automovil??" + (selectorTipoVehículo.SelectedTab == tabAutomóvil));
+
+
                 string respuesta = "";
                 if (textBxIdVehículo.Text == string.Empty)
                 {
@@ -388,28 +406,56 @@ namespace CapaPresentación
                     error.SetError(txtPatente, "Ingrese Patente del Vehiculo");
                     return;
                 }
+                if (selectorTipoVehículo.SelectedTab == tabAutomóvil && (textBxIdAutomóvil.Text == string.Empty || textPuertas.Text == string.Empty || ElComboTipoAutomovil.Text == string.Empty))
+                {
+                    this.MessageError("Falta ingresar datos del Automóvil");
+                    error.SetError(textPuertas, "Ingrese Cantidad Puertas/Tipo Automóvil");
+                    return;
+                }
+                else
+                {
+                    if (selectorTipoVehículo.SelectedTab == tabMoto && (textBxIdMoto.Text == string.Empty || textBxCilindrada.Text == string.Empty))
+                    {
+                        this.MessageError("Falta ingresar datos de la moto");
+                        error.SetError(textBxCilindrada, "Ingrese Cilindrada de la Moto");
+                        return;
+                     }
+                }
 
-                respuesta = LogicaVehiculo.Actualizar(Convert.ToInt32(textBxIdVehículo.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text);
+                if (selectorTipoVehículo.SelectedTab == tabAutomóvil)
+                {
+                    respuesta = LogicaAutomovil.Actualizar(Convert.ToInt32(textBxIdAutomóvil.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, ElComboTipoAutomovil.Text, Convert.ToInt32(textPuertas.Text), Convert.ToInt32(textBxIdVehículo.Text));
+                }
+                else
+                {
+                    respuesta = LogicaMoto.Actualizar(Convert.ToInt32(textBxIdMoto.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, Convert.ToInt32(textBxIdVehículo.Text), textBxCilindrada.Text);
+                }
+
                 if (respuesta.Equals("OK"))
                 {
-                    this.MessageOk("Se actualizó correctamente el Vehiculo");
-                    this.limpiar();
-                    this.listar();
+                    respuesta = LogicaVehiculo.Actualizar(Convert.ToInt32(textBxIdVehículo.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text);
+                }
+
+                if (respuesta.Equals("OK"))
+                {
+                    if (selectorTipoVehículo.SelectedTab == tabAutomóvil)
+                    {
+                        this.MessageOk("Se actualizó correctamente el Automóvil");
+                    }
+                    else
+                    {
+                        this.MessageOk("Se actualizó correctamente la Moto");
+                    }
+                    //this.limpiar();
+                    //this.listar();
                 }
                 else
                 {
                     this.MessageError(respuesta);
-
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
-            finally
-            {
-
-            }
+            catch (Exception ex)    {   MessageBox.Show(ex.Message + ex.StackTrace);    }
+            finally {}
         }
 
         private void Activate_Click(object sender, EventArgs e)
@@ -508,7 +554,7 @@ namespace CapaPresentación
         /// </summary>
         private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvDatos.Columns["Select"].Index) // Press on select
+            if (e.ColumnIndex == dgvDatos.Columns["CHK"].Index) // Press on select
             {
                 DataGridViewCheckBoxCell chkVehiculo = (DataGridViewCheckBoxCell)dgvDatos.Rows[e.RowIndex].Cells["Select"];
                 chkVehiculo.Value = !Convert.ToBoolean(chkVehiculo.Value);

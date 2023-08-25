@@ -38,5 +38,34 @@ namespace CapaPersistencia
             }
             return respuesta;
         }
+
+        public string Actualizar(ModeloAutomovil obj)
+        {
+            string respuesta = "";
+            DataTable tabla = new DataTable();
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                SqlCommand comando = new SqlCommand("actualizarAutomovil", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@Id", SqlDbType.Int).Value = obj.IdAutomovil;
+                comando.Parameters.Add("@Tipo", SqlDbType.VarChar).Value = obj.Tipo;
+                comando.Parameters.Add("@CantidadPuertas", SqlDbType.VarChar).Value = obj.CantidadPuertas;
+                conexion.Open();
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Update Automóvil ERROR";
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open) conexion.Close();
+            }
+            return respuesta;
+        }
+
     }
 }

@@ -38,5 +38,34 @@ namespace CapaPersistencia
             }
             return respuesta;
         }
+
+        public string Actualizar(ModeloMoto obj)
+        {
+            string respuesta = "";
+            DataTable tabla = new DataTable();
+            SqlConnection conexion = new SqlConnection();
+            try
+            {
+                conexion = Conexion.crearInstancia().crearConexion();
+                SqlCommand comando = new SqlCommand("actualizarMoto", conexion);
+                comando.CommandType = CommandType.StoredProcedure;
+                System.Diagnostics.Debug.WriteLine("Id " + obj.Id);
+                System.Diagnostics.Debug.WriteLine("Cilindrada " + obj.Cilindrada);
+                comando.Parameters.Add("@Id", SqlDbType.Int).Value = obj.IdMoto;
+                comando.Parameters.Add("@Cilindrada", SqlDbType.VarChar).Value = obj.Cilindrada;                
+                conexion.Open();
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Update Moto ERROR";
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open) conexion.Close();
+            }
+            return respuesta;
+        }
     }
 }
