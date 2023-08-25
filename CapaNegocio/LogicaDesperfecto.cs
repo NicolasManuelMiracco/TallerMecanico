@@ -9,7 +9,9 @@ namespace CapaLogica
 {
     public class LogicaDesperfecto : ISubject
     {
-        // Listado de observers
+        /// <summary>
+        /// Listado de observers
+        /// </summary>        
         IList suscriptores;
         ModeloDesperfecto modeloDesperfecto;
 
@@ -41,9 +43,9 @@ namespace CapaLogica
         {
             modeloDesperfecto = new ModeloDesperfecto(presupuesto.Id, descripcion, manoDeObra, tiempo);
             PersistenciaDesperfecto datos = new PersistenciaDesperfecto();            
-            // Se incorpora el nuevo desperfecto al modelo presupuesto, para continuar componiendo la instancia presupuesto
+            /// Se incorpora el nuevo desperfecto al modelo presupuesto, para continuar componiendo la instancia presupuesto
             presupuesto.addDesperfecto(modeloDesperfecto);
-            // Se persiste el desperfecto en BD
+            /// Se persiste el desperfecto en BD
             string respuesta = datos.Insertar(modeloDesperfecto);
             if (respuesta.Equals("OK"))
             {
@@ -64,8 +66,7 @@ namespace CapaLogica
             PersistenciaDesperfectoRepuesto datos = new PersistenciaDesperfectoRepuesto();
             modeloDesperfecto = ((ModeloDesperfecto)modeloPresupuesto.getDesperfectoActual());
 
-            int idDesperfectoActivo = modeloDesperfecto.Id;
-            //System.Diagnostics.Debug.WriteLine("Desperfecto Activo: " + idDesperfectoActivo + " ListaExistentes: " + repuestosExistentes.Count + " ListaEnEspera: " + repuestosEnEspera.Count);
+            int idDesperfectoActivo = modeloDesperfecto.Id;            
             foreach (int repuestoExistente in repuestosExistentes)
             {
                 respuesta = datos.Insertar(repuestoExistente, idDesperfectoActivo);
@@ -104,9 +105,9 @@ namespace CapaLogica
             IObserver observer;
             foreach (Object o in suscriptores)
             {
-                // Se invoca al update de cada Observer, pasándo el estado que interesa observar                
+                ///Se invoca al update de cada Observer, pasándo el estado que interesa observar                
                 observer = (IObserver)o;
-                observer.update(modeloDesperfecto); // Aquí se pasa el estado modificado
+                observer.update(modeloDesperfecto); /// Aquí se pasa el estado modificado
             }
         }
     }

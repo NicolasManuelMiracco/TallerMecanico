@@ -27,7 +27,7 @@ namespace CapaPersistencia
                 conexion.Open();
                 respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "Insert Desperfecto ERROR";
                 if (respuesta == "OK") return Convert.ToInt32(comando.Parameters["@IdRepuesto"].Value);
-                else return -1; // Indica error en la salida
+                else return -1; ///Indica error en la salida
             }
             catch (Exception ex)
             {

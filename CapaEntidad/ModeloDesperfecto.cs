@@ -21,12 +21,12 @@ namespace CapaModelo
 
         private void init(String descripcion, decimal manoDeObra, int tiempo)
         {
-            IdPresupuesto = -1; //Flag: sin persistencia
+            IdPresupuesto = -1; ///Flag: sin persistencia
             CostoRepuestosDesperfecto = 0;
             Descripcion = descripcion;
             ManoDeObra = manoDeObra;
             Tiempo = tiempo;
-            // Indica que el desperfecto está siendo tratado
+            /// Indica que el desperfecto está siendo tratado
             Cerrado = false;            
             Repuestos = new List<ModeloRepuesto>();
             CantidadRepuestos = 0;

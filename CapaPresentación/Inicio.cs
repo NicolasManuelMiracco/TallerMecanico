@@ -44,8 +44,7 @@ namespace CapaPresentación
         {
             try
             {
-                dgvDatos.DataSource = LogicaVehiculo.Listar();
-                //dgvDatos = parseGridTipoVehiculo(dgvDatos);
+                dgvDatos.DataSource = LogicaVehiculo.Listar();                
                 this.formato();
                 labelTotal.Text = Convert.ToString(dgvDatos.Rows.Count);
                 this.limpiar();
@@ -592,7 +591,7 @@ namespace CapaPresentación
 
         private ModeloDesperfecto insertarDesperfecto()
         {
-            // Se agrega el desperfecto que está siendo configurado, al presupuesto que está siendo creado y se retorna para ser agregado como nuevo desperfecto del presupuesto
+            /// Se agrega el desperfecto que está siendo configurado, al presupuesto que está siendo creado y se retorna para ser agregado como nuevo desperfecto del presupuesto
             return logicaDesperfecto.Insertar(presupuesto, textBoxDesperfectoDescripcion.Text, Convert.ToDecimal(textBoxDesperfectoManoDeObra.Text), Convert.ToInt32(textBoxDesperfectoTiempo.Text));
         }
 
@@ -1203,16 +1202,7 @@ namespace CapaPresentación
             {
                 dgvOutputServicios.DataSource = LogicaServicios.MassiveCharge();
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            DialogResult Opcion = MessageBox.Show("ATENCIÓN: Se eliminará la BD y se efectuará carga Total. ¿Continuar?", "Tratamiento Carga Masiva Total", MessageBoxButtons.OKCancel);
-            if (Opcion == DialogResult.OK)
-            {
-                dgvOutputServicios.DataSource = LogicaServicios.CargaAll();
-            }
-        }
+        }       
 
         private void buttonPromedioTotalPresupuestos_Click(object sender, EventArgs e)
         {

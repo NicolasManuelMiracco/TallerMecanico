@@ -129,7 +129,6 @@ namespace CapaModelo
             Completa = true;
             /// Costo base de reparación
             CostoEstacionamiento = TiempoTotal * CostoEstacionamiento; /// Calculo el precio de estacionamiento según la cantidad de días
-            // FAIL System.Diagnostics.Debug.WriteLine("Costo Repuestos: " + CostoRepuestos);
             TotalReparacion = this.getCostoTotalRepuestos() + ManoDeObra + CostoEstacionamiento;
             TotalConRecargosDescuentos = TotalReparacion + (TotalReparacion * Recargo) - (TotalReparacion * Descuento);
             TotalAlConsumidor = TotalConRecargosDescuentos + TotalConRecargosDescuentos * gananciaTaller;

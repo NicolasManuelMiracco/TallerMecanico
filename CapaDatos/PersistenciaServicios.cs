@@ -21,9 +21,7 @@ namespace CapaPersistencia
                 conexion = Conexion.crearInstancia().crearConexion();
                 SqlCommand comando = new SqlCommand("sumatoriaMontoTotal", conexion);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Add("@TipoVehiculo", SqlDbType.VarChar).Value = tipoVehiculo;
-                //comando.Parameters.Add("@Nombre", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
-                //comando.Parameters.Add("@Precio", SqlDbType.Decimal).Direction = ParameterDirection.Output;
+                comando.Parameters.Add("@TipoVehiculo", SqlDbType.VarChar).Value = tipoVehiculo;                
                 conexion.Open();
                 resultado = comando.ExecuteReader();
                 tabla.Load(resultado);
