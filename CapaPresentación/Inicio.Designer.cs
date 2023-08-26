@@ -113,7 +113,7 @@ namespace CapaPresentación
             this.labelManoDeObra = new System.Windows.Forms.Label();
             this.labelDescuento = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.tabABM = new System.Windows.Forms.TabPage();
+            this.tabIngreso = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelarInserción = new System.Windows.Forms.Button();
             this.btnActualizarVehículo = new System.Windows.Forms.Button();
@@ -205,7 +205,7 @@ namespace CapaPresentación
             this.panel6.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.tabABM.SuspendLayout();
+            this.tabIngreso.SuspendLayout();
             this.panel1.SuspendLayout();
             this.selectorTipoVehículo.SuspendLayout();
             this.tabAutomóvil.SuspendLayout();
@@ -259,9 +259,10 @@ namespace CapaPresentación
             this.tabPageRepuestos.Location = new System.Drawing.Point(4, 34);
             this.tabPageRepuestos.Name = "tabPageRepuestos";
             this.tabPageRepuestos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRepuestos.Size = new System.Drawing.Size(850, 517);
+            this.tabPageRepuestos.Size = new System.Drawing.Size(1279, 795);
             this.tabPageRepuestos.TabIndex = 5;
             this.tabPageRepuestos.Text = "Repuestos";
+            this.tabPageRepuestos.ToolTipText = "Incorporación de repuestos (se accede directamente desde tab Desperfectos).";
             this.tabPageRepuestos.UseVisualStyleBackColor = true;
             // 
             // panel15
@@ -508,9 +509,10 @@ namespace CapaPresentación
             this.tabPageDesperfectos.Location = new System.Drawing.Point(4, 34);
             this.tabPageDesperfectos.Name = "tabPageDesperfectos";
             this.tabPageDesperfectos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDesperfectos.Size = new System.Drawing.Size(850, 517);
+            this.tabPageDesperfectos.Size = new System.Drawing.Size(1279, 795);
             this.tabPageDesperfectos.TabIndex = 4;
             this.tabPageDesperfectos.Text = "Desperfectos";
+            this.tabPageDesperfectos.ToolTipText = "Generación de Desperfectos, y posterior selección de repuestos.";
             this.tabPageDesperfectos.UseVisualStyleBackColor = true;
             // 
             // panel14
@@ -750,9 +752,10 @@ namespace CapaPresentación
             this.tabPresupuestacion.Controls.Add(this.panel6);
             this.tabPresupuestacion.Location = new System.Drawing.Point(4, 34);
             this.tabPresupuestacion.Name = "tabPresupuestacion";
-            this.tabPresupuestacion.Size = new System.Drawing.Size(850, 517);
+            this.tabPresupuestacion.Size = new System.Drawing.Size(1279, 795);
             this.tabPresupuestacion.TabIndex = 3;
             this.tabPresupuestacion.Text = "Presupuestación";
+            this.tabPresupuestacion.ToolTipText = "Completar el presupuesto y mostrar detalles.";
             this.tabPresupuestacion.UseVisualStyleBackColor = true;
             // 
             // panel6
@@ -1025,18 +1028,19 @@ namespace CapaPresentación
             this.label12.Text = "Recargo (%)";
             this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
-            // tabABM
+            // tabIngreso
             // 
-            this.tabABM.Controls.Add(this.panel1);
-            this.tabABM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabABM.Location = new System.Drawing.Point(4, 34);
-            this.tabABM.Name = "tabABM";
-            this.tabABM.Padding = new System.Windows.Forms.Padding(3);
-            this.tabABM.Size = new System.Drawing.Size(850, 517);
-            this.tabABM.TabIndex = 1;
-            this.tabABM.Text = "ABM";
-            this.tabABM.UseVisualStyleBackColor = true;
-            this.tabABM.Click += new System.EventHandler(this.tabPage3_Click);
+            this.tabIngreso.Controls.Add(this.panel1);
+            this.tabIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabIngreso.Location = new System.Drawing.Point(4, 34);
+            this.tabIngreso.Name = "tabIngreso";
+            this.tabIngreso.Padding = new System.Windows.Forms.Padding(3);
+            this.tabIngreso.Size = new System.Drawing.Size(1279, 795);
+            this.tabIngreso.TabIndex = 1;
+            this.tabIngreso.Text = "Ingreso";
+            this.tabIngreso.ToolTipText = "Acceso a la inserción de un Automóvil / Auto.";
+            this.tabIngreso.UseVisualStyleBackColor = true;
+            this.tabIngreso.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // panel1
             // 
@@ -1083,6 +1087,7 @@ namespace CapaPresentación
             this.btnActualizarVehículo.TabIndex = 15;
             this.btnActualizarVehículo.Text = "Actualizar";
             this.btnActualizarVehículo.UseVisualStyleBackColor = false;
+            this.btnActualizarVehículo.Visible = false;
             this.btnActualizarVehículo.Click += new System.EventHandler(this.btnActualizarVehículo_Click);
             // 
             // btInsertarVehículo
@@ -1125,6 +1130,7 @@ namespace CapaPresentación
             this.textBxIdVehículo.Name = "textBxIdVehículo";
             this.textBxIdVehículo.Size = new System.Drawing.Size(168, 28);
             this.textBxIdVehículo.TabIndex = 10;
+            this.textBxIdVehículo.Visible = false;
             // 
             // selectorTipoVehículo
             // 
@@ -1195,6 +1201,7 @@ namespace CapaPresentación
             this.textBxIdAutomóvil.Name = "textBxIdAutomóvil";
             this.textBxIdAutomóvil.Size = new System.Drawing.Size(176, 35);
             this.textBxIdAutomóvil.TabIndex = 14;
+            this.textBxIdAutomóvil.Visible = false;
             // 
             // etiquetaTipo
             // 
@@ -1225,6 +1232,7 @@ namespace CapaPresentación
             this.etiquetaIdAutomóvil.Size = new System.Drawing.Size(183, 32);
             this.etiquetaIdAutomóvil.TabIndex = 5;
             this.etiquetaIdAutomóvil.Text = "Id Automóvil";
+            this.etiquetaIdAutomóvil.Visible = false;
             // 
             // tabMoto
             // 
@@ -1264,6 +1272,7 @@ namespace CapaPresentación
             this.textBxIdMoto.Name = "textBxIdMoto";
             this.textBxIdMoto.Size = new System.Drawing.Size(214, 35);
             this.textBxIdMoto.TabIndex = 8;
+            this.textBxIdMoto.Visible = false;
             // 
             // etiquetaCilindrada
             // 
@@ -1284,6 +1293,7 @@ namespace CapaPresentación
             this.etiquetaIdMoto.Size = new System.Drawing.Size(115, 32);
             this.etiquetaIdMoto.TabIndex = 6;
             this.etiquetaIdMoto.Text = "Id Moto";
+            this.etiquetaIdMoto.Visible = false;
             // 
             // etiquetaPatente
             // 
@@ -1327,6 +1337,7 @@ namespace CapaPresentación
             this.etiquetaIdVehiculo.Size = new System.Drawing.Size(143, 29);
             this.etiquetaIdVehiculo.TabIndex = 0;
             this.etiquetaIdVehiculo.Text = "Id Vehiculo";
+            this.etiquetaIdVehiculo.Visible = false;
             // 
             // tabVehiculos
             // 
@@ -1341,9 +1352,10 @@ namespace CapaPresentación
             this.tabVehiculos.Location = new System.Drawing.Point(4, 34);
             this.tabVehiculos.Name = "tabVehiculos";
             this.tabVehiculos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVehiculos.Size = new System.Drawing.Size(850, 517);
+            this.tabVehiculos.Size = new System.Drawing.Size(1279, 795);
             this.tabVehiculos.TabIndex = 0;
             this.tabVehiculos.Text = "Vehículos";
+            this.tabVehiculos.ToolTipText = "Vehículos: Listar, eliminar, presupuestar y actualizar mediante doble clic";
             this.tabVehiculos.UseVisualStyleBackColor = true;
             this.tabVehiculos.Click += new System.EventHandler(this.tabPage1_Click_2);
             // 
@@ -1515,17 +1527,19 @@ namespace CapaPresentación
             this.tabControlPrincipal.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
             this.tabControlPrincipal.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControlPrincipal.Controls.Add(this.tabVehiculos);
-            this.tabControlPrincipal.Controls.Add(this.tabABM);
+            this.tabControlPrincipal.Controls.Add(this.tabIngreso);
             this.tabControlPrincipal.Controls.Add(this.tabPageDesperfectos);
             this.tabControlPrincipal.Controls.Add(this.tabPageRepuestos);
             this.tabControlPrincipal.Controls.Add(this.tabPresupuestacion);
             this.tabControlPrincipal.Controls.Add(this.tabPresupuestos);
             this.tabControlPrincipal.Controls.Add(this.tabServicios);
+            this.tabControlPrincipal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabControlPrincipal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControlPrincipal.Location = new System.Drawing.Point(1, 2);
             this.tabControlPrincipal.Name = "tabControlPrincipal";
             this.tabControlPrincipal.SelectedIndex = 0;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(858, 555);
+            this.tabControlPrincipal.ShowToolTips = true;
+            this.tabControlPrincipal.Size = new System.Drawing.Size(1287, 833);
             this.tabControlPrincipal.TabIndex = 0;
             // 
             // tabPresupuestos
@@ -1534,9 +1548,10 @@ namespace CapaPresentación
             this.tabPresupuestos.Location = new System.Drawing.Point(4, 34);
             this.tabPresupuestos.Name = "tabPresupuestos";
             this.tabPresupuestos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPresupuestos.Size = new System.Drawing.Size(850, 517);
+            this.tabPresupuestos.Size = new System.Drawing.Size(1279, 795);
             this.tabPresupuestos.TabIndex = 6;
             this.tabPresupuestos.Text = "Presupuestos";
+            this.tabPresupuestos.ToolTipText = "Listado de presupuestos y asignación de turnos.";
             this.tabPresupuestos.UseVisualStyleBackColor = true;
             // 
             // panel17
@@ -1676,9 +1691,10 @@ namespace CapaPresentación
             this.tabServicios.Location = new System.Drawing.Point(4, 34);
             this.tabServicios.Name = "tabServicios";
             this.tabServicios.Padding = new System.Windows.Forms.Padding(3);
-            this.tabServicios.Size = new System.Drawing.Size(850, 517);
+            this.tabServicios.Size = new System.Drawing.Size(1279, 795);
             this.tabServicios.TabIndex = 7;
             this.tabServicios.Text = "Servicios";
+            this.tabServicios.ToolTipText = "Ejecución de servicios específicos.";
             this.tabServicios.UseVisualStyleBackColor = true;
             // 
             // panel19
@@ -1886,7 +1902,7 @@ namespace CapaPresentación
             this.panel16.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.tabABM.ResumeLayout(false);
+            this.tabIngreso.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.selectorTipoVehículo.ResumeLayout(false);
@@ -1947,7 +1963,7 @@ namespace CapaPresentación
         private TextBox txtBuscar;
         private Label labelTotal;
         private DataGridView dgvDatos;
-        private TabPage tabABM;
+        private TabPage tabIngreso;
         private Panel panel1;
         private Button btnCancelarInserción;
         private Button btnActualizarVehículo;

@@ -272,7 +272,7 @@ namespace CapaPresentación
             textBxCilindrada.Clear();
             textPuertas.Clear();
             btInsertarVehículo.Visible = true;
-            btnActualizarVehículo.Visible = true;
+            ///btnActualizarVehículo.Visible = true;
             error.Clear();
             dgvDatos.Columns[0].Visible = false;
             Diagnose.Visible = false;
@@ -1153,7 +1153,13 @@ namespace CapaPresentación
                 /// Activo según columna IdAuto del DataGridView
                 activarTabTipoVehiculo(Convert.ToString(dgvDatos.CurrentRow.Cells["IdAuto"].Value));
 
-                /// Se deshabilitan PK/FK que no pueden actualizarse
+                /// Se muestra el contenido pero se deshabilita edición de PK/FK que no pueden actualizarse
+                etiquetaIdVehiculo.Visible = true;
+                etiquetaIdAutomóvil.Visible = true;
+                etiquetaIdMoto.Visible = true;
+                textBxIdMoto.Visible = true;
+                textBxIdAutomóvil.Visible = true;
+                textBxIdVehículo.Visible = true;
                 textBxIdMoto.Enabled = false;
                 textBxIdAutomóvil.Enabled = false;
                 textBxIdVehículo.Enabled = false;
@@ -1201,12 +1207,19 @@ namespace CapaPresentación
         {
             if (tipoAutomovil == string.Empty)
             {
+                selectorTipoVehículo.TabPages[0].Visible = false; /// Deshabilito acceso al Automóvil
+                selectorTipoVehículo.TabPages[1].Visible = true; /// Habilito acceso al Automóvil
+                selectorTipoVehículo.TabPages[1].Enabled = true;
                 selectorTipoVehículo.SelectedIndex = 1; /// Activo Tab Moto
+                            
             }
             else
             {
+                selectorTipoVehículo.TabPages[1].Visible = false; /// Deshabilito acceso a la Moto
+                selectorTipoVehículo.TabPages[0].Visible = true; /// Habilito acceso al Automóvil
+                selectorTipoVehículo.TabPages[0].Enabled = true;
                 selectorTipoVehículo.SelectedIndex = 0; /// Activo Tab Vehículo
-            }
+            }            
         }
 
         private void tabPage1_Click_2(object sender, EventArgs e) { }
@@ -1295,6 +1308,6 @@ namespace CapaPresentación
                 //this.listar();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
-        }
+        }        
     }
 }
