@@ -14,7 +14,9 @@ namespace CapaLogica
             ModeloAutomovil obj = new ModeloAutomovil(id, marca, modelo, patente, tipo, cantidadPuertas, idVehiculo);
             return datos.Insertar(obj);
         }
-
+        /// <summary>
+        ///  Gestión lógica para la actualización de Automóvil
+        /// </summary>        
         public static string Actualizar(int id, string marca, string modelo, string patente, string tipo, int cantidadPuertas, int idVehiculo)
         {
             PersistenciaAutomovil datos = new PersistenciaAutomovil();

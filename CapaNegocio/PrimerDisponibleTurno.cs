@@ -1,5 +1,4 @@
-﻿using CapaModelo;
-using System;
+﻿using System;
 
 namespace CapaLogica
 {
@@ -12,10 +11,5 @@ namespace CapaLogica
         {
             return actual.AddDays(1);
         }
-
-        //public PrimerDisponibleTurno(DateTime lastTurno) : base(lastTurno)
-        //{
-            
-        //}
     }
 }

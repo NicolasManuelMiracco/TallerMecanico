@@ -6,6 +6,7 @@ namespace CapaLogica
 {
     public class LogicaRepuesto
     {        
+        
         public static ModeloRepuesto agregarRepuestoExistenteAlDesperfectoActual(ModeloPresupuesto presupuesto, int idRepuestoExistente)
         {
             ModeloRepuesto modeloRepuesto = null;

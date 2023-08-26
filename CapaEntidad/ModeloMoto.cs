@@ -9,8 +9,7 @@
         /// <summary>
         /// Constructor parametrizado, quien llama al padre manteniendo coherencia en su instanciación
         /// </summary>        
-        public ModeloMoto(int id, string marca, string modelo, string patente, int idVehiculo, string cilindrada)
-            : base(idVehiculo, marca, modelo, patente)
+        public ModeloMoto(int id, string marca, string modelo, string patente, int idVehiculo, string cilindrada) : base(idVehiculo, marca, modelo, patente)
         {
             this.IdVehiculo = idVehiculo;
             this.Cilindrada = cilindrada;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CapaModelo
 {
@@ -43,12 +42,7 @@ namespace CapaModelo
             Nombre = nombre;
             TotalAlConsumidor = TotalAlConsumidor;
             init(idVehiculo);
-        }
-
-        public void agregarPresupuesto(int id, String nombre, String apellido, String email, decimal totalAlConsumidor, int idVehiculo)
-        {
-
-        }
+        }        
 
         /// <summary>
         /// Se genera el modelo sin el Id, que será ingresado después de la persistencia del nuevo Presupuesto, dado que se genera de forma autonumérica

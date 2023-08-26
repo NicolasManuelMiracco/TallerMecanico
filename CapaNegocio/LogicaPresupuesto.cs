@@ -4,6 +4,7 @@ using System.Data;
 
 namespace CapaLogica
 {
+    
     public class LogicaPresupuesto
     {
         public static int ultimoPresupuesto()

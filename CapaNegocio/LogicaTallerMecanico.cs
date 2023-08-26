@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using CapaModelo;
-using CapaPersistencia;
 
 namespace CapaLogica
 {
@@ -25,9 +23,5 @@ namespace CapaLogica
             
             taller.agregarPresupuesto(turno, new ModeloPresupuesto(Convert.ToInt32(id), nombre, apellido, email, Convert.ToDecimal(total), Convert.ToInt32(idVehiculo)));
         }
-
-
-
-
     }
 }

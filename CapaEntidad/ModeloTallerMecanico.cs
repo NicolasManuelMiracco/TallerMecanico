@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaModelo
 {
@@ -32,11 +29,6 @@ namespace CapaModelo
         {
             presupuestos.Add(nuevoPresupuesto);
             UltimoTurno = turno; 
-        }
-
-        public void agregarTurno(String idPresupuesto)
-        {
-
         }
     }
 }

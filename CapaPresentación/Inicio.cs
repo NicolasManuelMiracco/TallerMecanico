@@ -37,8 +37,7 @@ namespace CapaPresentación
             /// Se asocia el Observer DataGridView con la lógica del desperfecto
             this.dataGridViewDesperfectos.setSubjec(logicaDesperfecto);
             /// Se define estrategia de asignacion de turno con un margen aleatorio de 3. 
-            /// Aplicación del patrón strategy que permite modificar la forma en que se asignan los turnos -> binding dinámico en ejecúción
-            
+            /// Aplicación del patrón strategy que permite modificar la forma en que se asignan los turnos -> binding dinámico en ejecúción            
         }
 
         #endregion
@@ -59,67 +58,64 @@ namespace CapaPresentación
 
         #region Validación formularios de datos
 
-        private string tratamientoRepuestoExistente()
+        public string tratamientoComboBox(ComboBox comboBox, string mensajeError, string setError)
         {
-            if (comboBoxRepuestosExistentes.Text == string.Empty)
+            if (comboBox.Text == string.Empty)
             {
-                this.MessageError("Falta ingresar datos del Repuesto");
-                error.SetError(comboBoxRepuestosExistentes, "Ingrese un repuesto existente válido");
+                this.MessageError(mensajeError);
+                error.SetError(comboBox, setError);
                 return "FAIL";
             }
             return "OK";
+        }
+
+        public string tratamientoTextBox(TextBox textBox, string mensajeError, string setError)
+        {
+            if (textBox.Text == string.Empty)
+            {
+                this.MessageError(mensajeError);
+                error.SetError(textBox, setError);
+                return "FAIL";
+            }
+            return "OK";
+        }
+
+
+        private string tratamientoRepuestoExistente()   
+        {  
+            return this.tratamientoComboBox(comboBoxRepuestosExistentes, "Falta ingresar datos del Repuesto", "Ingrese un repuesto existente válido");            
         }
 
         private string tratamientoDatosDesperfecto()
         {
-            if (textBoxDesperfectoDescripcion.Text == string.Empty)
+            string respuesta = this.tratamientoTextBox(textBoxDesperfectoDescripcion, "Falta ingresar datos del Desperfecto", "Ingrese la descripción del desperfecto");
+            if (respuesta.Equals("OK"))
             {
-                this.MessageError("Falta ingresar datos del Desperfecto");
-                error.SetError(textBoxDesperfectoDescripcion, "Ingrese la descripción del desperfecto");
-                return "FAIL";
+                respuesta = this.tratamientoTextBox(textBoxDesperfectoManoDeObra, "Falta ingresar datos del Desperfecto", "Ingrese el costo de mano de obra del desperfecto");
             }
-            if (textBoxDesperfectoManoDeObra.Text == string.Empty)
+            if (respuesta.Equals("OK"))
             {
-                this.MessageError("Falta ingresar datos del Desperfecto");
-                error.SetError(textBoxDesperfectoManoDeObra, "Ingrese el costo de mano de obra del desperfecto");
-                return "FAIL";
+                respuesta = this.tratamientoTextBox(textBoxDesperfectoTiempo, "Falta ingresar datos del Desperfecto", "Ingrese el tiempo en días para el desperfecto");
             }
-            if (textBoxDesperfectoTiempo.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del Desperfecto");
-                error.SetError(textBoxDesperfectoTiempo, "Ingrese el tiempo en días para el desperfecto");
-                return "FAIL";
-            }
-            return "OK";
+            return respuesta;
         }
 
         private string tratamientoDatosVehiculo()
         {
-            if (textBxIdVehículo.Text == string.Empty)
+            string respuesta = this.tratamientoTextBox(textBxIdVehículo, "Falta ingresar datos del registro", "Ingrese el Id del Vehiculo");
+            if (respuesta.Equals("OK"))
             {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxIdVehículo, "Ingrese el Id del Vehiculo");
-                return "FAIL";
+                respuesta = this.tratamientoTextBox(textBxMarca, "Falta ingresar datos del registro", "Ingrese Marca del Vehiculo");
             }
-            if (textBxMarca.Text == string.Empty)
+            if (respuesta.Equals("OK"))
             {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxMarca, "Ingrese Marca del Vehiculo");
-                return "FAIL";
+                respuesta = this.tratamientoTextBox(textBxModelo, "Falta ingresar datos del registro", "Ingrese Modelo del Vehiculo");
             }
-            if (textBxModelo.Text == string.Empty)
+            if (respuesta.Equals("OK"))
             {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxModelo, "Ingrese Modelo del Vehiculo");
-                return "FAIL";
+                respuesta = this.tratamientoTextBox(textBxPatente, "Falta ingresar datos del registro", "Ingrese Patente del Vehiculo");
             }
-            if (textBxPatente.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxPatente, "Ingrese Patente del Vehiculo");
-                return "FAIL";
-            }
-            return "OK";
+            return respuesta;
         }
 
         private string tratamientoDatosAutomovil()
@@ -802,6 +798,23 @@ namespace CapaPresentación
             finally { }
         }
 
+        private void buttonAsignarTurnos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                /// Obtengo la estrategia de asignación activa
+                StrategyTurno estrategiaTurnoActiva = LogicaTallerMecanico.getEstrategiaTurno(this.comboBoxEstrategiaTurno);
+                DateTime siguienteTurno = estrategiaTurnoActiva.Next(DateTime.Today);
+                foreach (DataGridViewRow row in dataGridViewPresupuestos.Rows)
+                {
+                    LogicaTallerMecanico.agregarPresupuesto(siguienteTurno, this.taller, row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString());
+                    siguienteTurno = estrategiaTurnoActiva.Next(siguienteTurno);
+                    row.Cells[0].Value = siguienteTurno.ToString("dd-MM-yyyy");
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
+        }
+
         #endregion
 
         #region Conexión Capa Lógica
@@ -1253,61 +1266,6 @@ namespace CapaPresentación
 
         #endregion
 
-        private void buttonAsignarTurnos_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //DialogResult Opcion;
-                //string respuesta = "";
-                //int codigoMoto = 0, codigoAutomovil = 0, vehiculosSeleccionados = 0, vehiculosEliminados = 0, vehiculosAbortados = 0;
-                /// Obtengo la estrategia de asignación activa
-                StrategyTurno estrategiaTurnoActiva = LogicaTallerMecanico.getEstrategiaTurno(this.comboBoxEstrategiaTurno);
-                DateTime siguienteTurno = estrategiaTurnoActiva.Next(DateTime.Today);
-                foreach (DataGridViewRow row in dataGridViewPresupuestos.Rows)
-                {
-                    LogicaTallerMecanico.agregarPresupuesto(siguienteTurno, this.taller, row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString());
-                    siguienteTurno = estrategiaTurnoActiva.Next(siguienteTurno);
-                    //LogicaTallerMecanico.getEstrategiaTurno(this.comboBoxEstrategiaTurno).Next();
-                    //LogicaTallerMecanico.asignarTurno(row.Cells[0].Value, row.Cells[1].Value);
-                    //row.Cells[0].Value = LogicaTallerMecanico.getEstrategiaTurno(this.comboBoxEstrategiaTurno).Next().ToString(); 
-                    row.Cells[0].Value = siguienteTurno.ToString("dd-MM-yyyy");
-                }
-                //    if (Convert.ToBoolean(row.Cells[0].Value))
-                //    {
-                //        vehiculosSeleccionados++; /// Se registra la cantidad de seleccionados para UI usuario cuando es 0
-                //                                  /// Aquí siempre tenemos un valor en columna 4 (Moto) OR exclusivo en columna 6 (Automovil)
-                //        if (!String.IsNullOrEmpty(row.Cells[4].Value.ToString())) // Es una Moto
-                //        {
-                //            codigoMoto = Int32.Parse(row.Cells[4].Value.ToString());
-                //            Opcion = MessageBox.Show("¿Eliminar la moto: " + codigoMoto + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                //        }
-                //        else /// Es un Automóvil
-                //        {
-                //            codigoAutomovil = Int32.Parse(row.Cells[6].Value.ToString());
-                //            Opcion = MessageBox.Show("¿Eliminar el automóvil: " + codigoAutomovil + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                //        }
-
-                //        respuesta = Opcion == DialogResult.OK ? LogicaVehiculo.Eliminar(codigoMoto, codigoAutomovil) : "ABORTED";
-                //        if (respuesta.Equals("OK"))
-                //        {
-                //            vehiculosEliminados++;
-                //        }
-                //        else if (respuesta.Equals("ABORTED"))
-                //        {
-                //            vehiculosAbortados++;
-                //        }
-                //        else
-                //        {
-                //            this.MessageError("Error BD: " + respuesta);
-                //        }
-                //    }
-                //}
-                //if (vehiculosSeleccionados == 0) this.MessageError("Ingresar al menos un Vehículo");
-                //else this.MessageError("Vehículos eliminados: " + vehiculosEliminados + " y abortados: " + vehiculosAbortados);
-                //this.listar();
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
-        }        
+           
     }
 }
