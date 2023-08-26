@@ -17,9 +17,9 @@ Base de datos: Estructura
 - Se define eliminación y actualización en cascada desde las tablas hijas hacia las padres.
   - Por ejemplo, al eliminar un Automóvil, se elimina en cascada: Automóvil -> Vehículo -> Presupuesto -> Desperfecto -> 
     DesperfectoRepuesto.
-  - Esto es así porque se considera al desperfecto específico de un presupuesto, al presupuesto relacionado aa un vehículo.
+  - Esto es así porque se considera al desperfecto específico para un presupuesto, quien a la vez se relaciona con un vehículo.
 - Se definen restricciones de integridad para:
-  - El Tipo de Automóvil: congruencia con el tipo enumerado solicitado.
+  - El Tipo de Automóvil: congruencia con el tipo enumerado solicitado (compacto, sedan, monovolumen, utilitario y lujo).
   - Valores monetarios, temporales o que representan cantidades: deben ser >= 0.
 
 Base de datos: Stored procedures (SP)
@@ -31,27 +31,63 @@ Base de datos: Stored procedures (SP)
     -  Repuesto más utilizado por Marca/Modelo en las reparaciones realizadas: se implementa por medio de tablas auxiliares y un cursor (ver comentarios en implementación).
     -  Promedio del Monto Total de Presupuestos por Marca/Modelo: se efectua un ensamble y un agrupamiento, como en el caso anterior, pero sin la necesidad de aplicar cursor.
     -  Sumatoria del Monto Total de Presupuestos para Autos y para Motos.
+- Se introducen también stored procedures como servicios a consumirse desde la capa Persistencia para insertar, eliminar, actualizar, buscar y listar; en cada tabla o entidad de la base de datos.
 
 Diseño e implementación (a extender): 
-- Aplicación patrón strategy para la asignación dinámica de turnos.
-- Aplicación del patrón observer para la actualización automática de UI cuando se actualiza el modelo.
-  -  Al momento de agregar repuestos a un desperfecto, que será incorporado al presupuesto; se actualizan automáticamente los textBox indicando la cantidad de repuestos existentes, y la cantidad de repuestos faltantes.
-  -  Visualmente también se modifica el color. 
+
+- Patrones de diseño:
+    - Patrón Strategy:
+      Utilizado para la asignación dinámica de turnos. Se incorpora al desarrollo la posibilidad de listar los presupuestos generados hasta el momento, para luego asignar automáticamente turnos.
+      La asignación de la estrategia puede cambiar en ejecución, y a nivel desarrollo se puede extender, heredando de la clase abstracta StrategyTurno.
+      Para la implementación actual se heredan dos estrategias:
+        -  RandomTurno: a partir del último turno otorgado por el Taller mecánico, y de una semilla que define el rango aleatorio o amplitud, se designa un turno.
+        -  PrimerDisponibleTurno: asigna el primer día disponible, a partir del último turno otorgado por el taller. 
+    -  Patrón observer:
+       Se utiliza para la actualización automática de UI cuando se actualiza el modelo, específicamente al momento de cargar repuestos para un desperfecto, en la construcción de un presupuesto.
+       De esta forma un DataGridView que almacena los desperfectos con sus repuestos, para un determinado presupuesto; es incorporado como Observador de los Desperfectos (e implementa el método Update).
+       Este binding entre estado y vista, se realiza en la clase Lógica Desperfecto. El Desperfecto será un elemento Observable, y deberá registrar y notificar a sus oyentes u observadores.
+       Adicionalmente, al momento de agregar repuestos a un desperfecto, que será incorporado al presupuesto; se actualizan automáticamente los textBox indicando la cantidad de repuestos existentes, y la cantidad de repuestos faltantes.
+       Visualmente también se modifica el color, para la fila correspondiente al desperfecto que actualizó sus repuestos. 
+       
+-  Funcionalidad adicional:
+    -  Asignación de turnos.
+    -  Selección de repuestos existentes:
+         Se consideran en stock los cargados masivamente por el stored procedure massiveCharge.
+         Los repuestos que se agregan, son incluidos como faltantes.
+    - ABM: actualización, eliminación, inserción de vehículos.
+    - Edición de repuestos para un desperfecto:
+      -  1°: se cargan todos los desperfectos.
+      -  2°: al comenzar con la carga de repuestos (doble clic en el desperfecto) se deshabilita la generación de desperfectos, para comenzar a cargar repuestos.
+
 - Organización en namespaces.
-- Diseño en 4 capas interoperativas.
+- Organización de código para la capa de Presentación en las regiones:
+  -  Init:
+  -  Gestión de errores.
+  -  Tratamiento de los TextBoxes: para validar su contenido.
+  -  Gestión de botones.
+  -  Conexión Capa Lógica: aquí se accede a la capa lógica, quién luego accede a la capa de Persistencia.
+  -  Tratamiento sobre DataGridViews: formato de grillas, carga, verificaciones, etc.
+  -  Gestión dobre Tabs: se controla el flujo de navegación.
+  -  Etiquetas, Panel, Combobox.
+
+- Diseño en 4 capas interoperativas:
+  -  Capa Modelo
+  -  Capa Persistencia: acceso a la capa Modelo.
+  -  Capa Lógica: acceso a capa Modelo y Persistencia.
+  -  Capa Presentación: interacción y visualización, accede al modelo como a la capa lógica.  
+
 - Manejo de excepciones
+ 
 - Comentarios en código.
-- Tratamiento de UI y control de errores.
 
-Enlace a documentación que se mantendrá en actualización hasta la entrega final: 
-- https://drive.google.com/drive/folders/1DyXBphfs0FpLa678VIKQWvpebyLFZ_LB?usp=sharing
+-  Enlace a documentación que se mantendrá en actualización hasta la entrega final:
 
-La documentación en drive incluye: 
-- BD: Store procedures utilizados en los servicios, en las cargas y como apoyo auxiliar.
-- BD: backup de toda la BD, listo para un local restore.
+  -  https://drive.google.com/drive/folders/1DyXBphfs0FpLa678VIKQWvpebyLFZ_LB?usp=sharing
 
-Aclaración: el desarrollo es robusto, cumple con todos los requerimientos funcionales, orientado a objetos y aplica patrones básicos. 
-Se hace hincapié en una arquitectura multicapa. 
-Por cuestiones de tiempo, requiere mas testing unitario/integral. 
-  
+  -  La documentación en drive incluye: 
+    - BD: Store procedures utilizados en los servicios, en las cargas y como apoyo auxiliar.
+    - BD: backup de toda la BD, listo para un local restore.
+    - BD: script total de toda la BD.
+    - General: capturas.
+    - Flujo: se incorpora diagrama con la representación del flujo principal entre capas.
 
