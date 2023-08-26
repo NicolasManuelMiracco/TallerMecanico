@@ -917,7 +917,7 @@ namespace CapaPresentación
         {
             dgvDatos.Columns[0].Visible = false;
             dgvDatos.Columns[0].Width = 40;
-            dgvDatos.Columns[1].Width = 80;
+            dgvDatos.Columns[1].Width = 85;
             dgvDatos.Columns[2].Width = 80;
             dgvDatos.Columns[3].Width = 80;
             dgvDatos.Columns[4].Width = 55;
@@ -925,7 +925,7 @@ namespace CapaPresentación
             dgvDatos.Columns[6].Width = 55;
             dgvDatos.Columns[7].Width = 55;
             dgvDatos.Columns[8].Width = 90;
-            dgvDatos.Columns[9].Width = 75;
+            dgvDatos.Columns[9].Width = 72;
         }
 
         private void buscar()
@@ -1000,12 +1000,13 @@ namespace CapaPresentación
         private void formatoPresupuestos()
         {
             dataGridViewPresupuestos.Columns[0].Visible = true;
-            dataGridViewPresupuestos.Columns[0].Width = 45;
-            dataGridViewPresupuestos.Columns[1].Width = 177;
-            dataGridViewPresupuestos.Columns[2].Width = 177;
-            dataGridViewPresupuestos.Columns[3].Width = 177;
-            dataGridViewPresupuestos.Columns[4].Width = 100;
-            dataGridViewPresupuestos.Columns[5].Width = 75;
+            dataGridViewPresupuestos.Columns[0].Width = 125;
+            dataGridViewPresupuestos.Columns[1].Width = 40;
+            dataGridViewPresupuestos.Columns[2].Width = 110;
+            dataGridViewPresupuestos.Columns[3].Width = 110;
+            dataGridViewPresupuestos.Columns[4].Width = 200;
+            dataGridViewPresupuestos.Columns[5].Width = 100;
+            dataGridViewPresupuestos.Columns[6].Width = 85;
         }
 
         /// <summary>
@@ -1256,7 +1257,7 @@ namespace CapaPresentación
                     //LogicaTallerMecanico.getEstrategiaTurno(this.comboBoxEstrategiaTurno).Next();
                     //LogicaTallerMecanico.asignarTurno(row.Cells[0].Value, row.Cells[1].Value);
                     //row.Cells[0].Value = LogicaTallerMecanico.getEstrategiaTurno(this.comboBoxEstrategiaTurno).Next().ToString(); 
-                    row.Cells[0].Value = siguienteTurno.ToString();
+                    row.Cells[0].Value = siguienteTurno.ToString("dd-MM-yyyy");
                 }
                 //    if (Convert.ToBoolean(row.Cells[0].Value))
                 //    {

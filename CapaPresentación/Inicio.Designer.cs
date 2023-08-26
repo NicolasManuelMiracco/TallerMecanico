@@ -33,7 +33,7 @@ namespace CapaPresentación
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDataSet = new CapaPresentación.masterDataSet();
             this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -142,6 +142,9 @@ namespace CapaPresentación
             this.etiquetaMarca = new System.Windows.Forms.Label();
             this.etiquetaIdVehiculo = new System.Windows.Forms.Label();
             this.tabVehiculos = new System.Windows.Forms.TabPage();
+            this.panelRight = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.panel22 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel20 = new System.Windows.Forms.Panel();
@@ -156,6 +159,7 @@ namespace CapaPresentación
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
             this.tabPresupuestos = new System.Windows.Forms.TabPage();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.labelFechaActual = new System.Windows.Forms.Label();
             this.buttonAsignarTurnos = new System.Windows.Forms.Button();
             this.labelEstrategiaTurno = new System.Windows.Forms.Label();
             this.comboBoxEstrategiaTurno = new System.Windows.Forms.ComboBox();
@@ -1326,7 +1330,9 @@ namespace CapaPresentación
             // 
             // tabVehiculos
             // 
-            this.tabVehiculos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabVehiculos.BackgroundImage")));
+            this.tabVehiculos.Controls.Add(this.panelRight);
+            this.tabVehiculos.Controls.Add(this.panelLeft);
+            this.tabVehiculos.Controls.Add(this.panel22);
             this.tabVehiculos.Controls.Add(this.panel4);
             this.tabVehiculos.Controls.Add(this.panel20);
             this.tabVehiculos.Controls.Add(this.labelTotal);
@@ -1340,6 +1346,30 @@ namespace CapaPresentación
             this.tabVehiculos.Text = "Vehículos";
             this.tabVehiculos.UseVisualStyleBackColor = true;
             this.tabVehiculos.Click += new System.EventHandler(this.tabPage1_Click_2);
+            // 
+            // panelRight
+            // 
+            this.panelRight.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelRight.BackgroundImage")));
+            this.panelRight.Location = new System.Drawing.Point(774, 49);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(83, 407);
+            this.panelRight.TabIndex = 10;
+            // 
+            // panelLeft
+            // 
+            this.panelLeft.BackColor = System.Drawing.Color.Transparent;
+            this.panelLeft.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelLeft.BackgroundImage")));
+            this.panelLeft.Location = new System.Drawing.Point(-4, 49);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(83, 407);
+            this.panelLeft.TabIndex = 9;
+            // 
+            // panel22
+            // 
+            this.panel22.Location = new System.Drawing.Point(774, 52);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(80, 404);
+            this.panel22.TabIndex = 8;
             // 
             // panel4
             // 
@@ -1449,21 +1479,21 @@ namespace CapaPresentación
             this.dgvDatos.ColumnHeadersHeight = 35;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CHK});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.OldLace;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDatos.Location = new System.Drawing.Point(53, 49);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.OldLace;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDatos.Location = new System.Drawing.Point(75, 49);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersWidth = 30;
             this.dgvDatos.RowTemplate.Height = 23;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(743, 407);
+            this.dgvDatos.Size = new System.Drawing.Size(697, 407);
             this.dgvDatos.TabIndex = 0;
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
@@ -1511,6 +1541,7 @@ namespace CapaPresentación
             // 
             // panel17
             // 
+            this.panel17.Controls.Add(this.labelFechaActual);
             this.panel17.Controls.Add(this.buttonAsignarTurnos);
             this.panel17.Controls.Add(this.labelEstrategiaTurno);
             this.panel17.Controls.Add(this.comboBoxEstrategiaTurno);
@@ -1524,14 +1555,24 @@ namespace CapaPresentación
             this.panel17.Size = new System.Drawing.Size(844, 515);
             this.panel17.TabIndex = 0;
             // 
+            // labelFechaActual
+            // 
+            this.labelFechaActual.AutoSize = true;
+            this.labelFechaActual.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFechaActual.Location = new System.Drawing.Point(245, 409);
+            this.labelFechaActual.Name = "labelFechaActual";
+            this.labelFechaActual.Size = new System.Drawing.Size(152, 25);
+            this.labelFechaActual.TabIndex = 30;
+            this.labelFechaActual.Text = "Fecha actual";
+            // 
             // buttonAsignarTurnos
             // 
             this.buttonAsignarTurnos.BackColor = System.Drawing.Color.CornflowerBlue;
             this.buttonAsignarTurnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAsignarTurnos.ForeColor = System.Drawing.Color.White;
-            this.buttonAsignarTurnos.Location = new System.Drawing.Point(207, 422);
+            this.buttonAsignarTurnos.Location = new System.Drawing.Point(204, 461);
             this.buttonAsignarTurnos.Name = "buttonAsignarTurnos";
-            this.buttonAsignarTurnos.Size = new System.Drawing.Size(140, 68);
+            this.buttonAsignarTurnos.Size = new System.Drawing.Size(140, 54);
             this.buttonAsignarTurnos.TabIndex = 29;
             this.buttonAsignarTurnos.Text = "Asignar turnos";
             this.buttonAsignarTurnos.UseVisualStyleBackColor = false;
@@ -1540,6 +1581,8 @@ namespace CapaPresentación
             // labelEstrategiaTurno
             // 
             this.labelEstrategiaTurno.AutoSize = true;
+            this.labelEstrategiaTurno.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelEstrategiaTurno.ForeColor = System.Drawing.Color.White;
             this.labelEstrategiaTurno.Location = new System.Drawing.Point(353, 447);
             this.labelEstrategiaTurno.Name = "labelEstrategiaTurno";
             this.labelEstrategiaTurno.Size = new System.Drawing.Size(183, 22);
@@ -1560,9 +1603,9 @@ namespace CapaPresentación
             // 
             // Reloj
             // 
-            this.Reloj.Location = new System.Drawing.Point(353, 407);
+            this.Reloj.Location = new System.Drawing.Point(446, 407);
             this.Reloj.Name = "Reloj";
-            this.Reloj.Size = new System.Drawing.Size(485, 29);
+            this.Reloj.Size = new System.Drawing.Size(392, 29);
             this.Reloj.TabIndex = 26;
             // 
             // textBox2
@@ -1620,7 +1663,7 @@ namespace CapaPresentación
             // 
             // Turno
             // 
-            this.Turno.HeaderText = "Turno";
+            this.Turno.HeaderText = "Fecha Turno";
             this.Turno.MinimumWidth = 8;
             this.Turno.Name = "Turno";
             this.Turno.ReadOnly = true;
@@ -2034,8 +2077,12 @@ namespace CapaPresentación
         private TextBox textBox3;
         private ComboBox comboBoxEstrategiaTurno;
         private Label labelEstrategiaTurno;
-        private DataGridViewTextBoxColumn Turno;
         private Button buttonAsignarTurnos;
+        private Label labelFechaActual;
+        private DataGridViewTextBoxColumn Turno;
+        private Panel panel22;
+        private Panel panelRight;
+        private Panel panelLeft;
 
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }
