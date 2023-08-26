@@ -1631,7 +1631,7 @@ namespace CapaPresentación
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(485, 22);
             this.textBox2.TabIndex = 25;
-            this.textBox2.Text = "(i) Doble clic en el presupuesto para turnos";
+            this.textBox2.Text = "(i) Doble clic en el presupuesto para modificar turno";
             // 
             // buttonABM
             // 

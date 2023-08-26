@@ -181,8 +181,7 @@ namespace CapaPresentación
             textBxPatente.Clear();
             textBxCilindrada.Clear();
             textPuertas.Clear();
-            btInsertarVehículo.Visible = true;
-            ///btnActualizarVehículo.Visible = true;
+            btInsertarVehículo.Visible = true;            
             error.Clear();
             dgvDatos.Columns[0].Visible = false;
             Diagnose.Visible = false;
@@ -288,12 +287,10 @@ namespace CapaPresentación
         {
             if (textBoxServicioMarcaModelo.Text == string.Empty)
             {
-                this.MessageError("Falta completar formulario, campo Marca/Modelo");
-                error.SetError(textBoxServicioMarcaModelo, "Ingrese Marca/Modelo para el servicio");
+                this.setErrorFormularioTextBox(textBoxServicioMarcaModelo, "Falta completar formulario, campo Marca/Modelo", "Ingrese Marca/Modelo para el servicio");                
             }
             else
             {
-                this.formatoServicios();
                 dgvOutputServicios.DataSource = LogicaServicios.PromedioMontoTotal(textBoxServicioMarcaModelo.Text);
             }
         }
@@ -302,12 +299,10 @@ namespace CapaPresentación
         {
             if (comboBoxServicioTipo.Text == string.Empty)
             {
-                this.MessageError("Faltan datos para llamar al Servicio");
-                error.SetError(comboBoxServicioTipo, "Ingrese el tipo de Vehículo");
+                this.setErrorFormularioComboBox(comboBoxServicioTipo, "Faltan datos para llamar al Servicio", "Ingrese el tipo de Vehículo");                
             }
             else
             {
-                this.formatoServicios();
                 dgvOutputServicios.DataSource = LogicaServicios.SumatoriaMontoTotal(comboBoxServicioTipo.Text);
             }
         }
@@ -316,12 +311,10 @@ namespace CapaPresentación
         {
             if (textBoxServicioMarcaModelo.Text == string.Empty)
             {
-                this.MessageError("Falta seleccionar Marca/Modelo");
-                error.SetError(textBoxServicioMarcaModelo, "Ingrese Marca/Modelo");
+                this.setErrorFormularioTextBox(textBoxServicioMarcaModelo, "Falta seleccionar Marca/Modelo", "Ingrese Marca/Modelo");                
             }
             else
             {
-                this.formatoServicios();
                 dgvOutputServicios.DataSource = LogicaServicios.RepuestoMasUtilizado(textBoxServicioMarcaModelo.Text);
             }
         }
@@ -632,81 +625,56 @@ namespace CapaPresentación
         {
             try
             {
-                //System.Diagnostics.Debug.WriteLine("SELECTED TAB Automovil??" + (selectorTipoVehículo.SelectedTab == tabAutomóvil));
-
-
-                string respuesta = "";
-                if (textBxIdVehículo.Text == string.Empty)
+                string respuesta;
+                if (this.tratamientoTextBox(textBxIdVehículo, "Falta ingresar datos del registro", "Ingrese el Id del Vehiculo") &&
+                    this.tratamientoTextBox(textBxMarca, "Falta ingresar datos del registro", "Ingrese Marca del Vehiculo") &&
+                    this.tratamientoTextBox(textBxModelo, "Falta ingresar datos del registro", "Ingrese Modelo del Vehiculo") &&
+                    this.tratamientoTextBox(textBxPatente, "Falta ingresar datos del registro", "Ingrese Patente del Vehiculo"))
                 {
-                    this.MessageError("Falta ingresar datos del registro");
-                    error.SetError(textBxIdVehículo, "Ingrese el Id del Vehiculo");
-                    return;
-                }
-                if (textBxMarca.Text == string.Empty)
-                {
-                    this.MessageError("Falta ingresar datos del registro");
-                    error.SetError(txtMarca, "Ingrese Marca del Vehiculo");
-                    return;
-                }
-                if (textBxModelo.Text == string.Empty)
-                {
-                    this.MessageError("Falta ingresar datos del registro");
-                    error.SetError(TxtModelo, "Ingrese Modelo del Vehiculo");
-                    return;
-                }
-                if (textBxPatente.Text == string.Empty)
-                {
-                    this.MessageError("Falta ingresar datos del registro");
-                    error.SetError(txtPatente, "Ingrese Patente del Vehiculo");
-                    return;
-                }
-                if (selectorTipoVehículo.SelectedTab == tabAutomóvil && (textBxIdAutomóvil.Text == string.Empty || textPuertas.Text == string.Empty || ElComboTipoAutomovil.Text == string.Empty))
-                {
-                    this.MessageError("Falta ingresar datos del Automóvil");
-                    error.SetError(textPuertas, "Ingrese Cantidad Puertas/Tipo Automóvil");
-                    return;
-                }
-                else
-                {
-                    if (selectorTipoVehículo.SelectedTab == tabMoto && (textBxIdMoto.Text == string.Empty || textBxCilindrada.Text == string.Empty))
+                    if (selectorTipoVehículo.SelectedTab == tabAutomóvil && (textBxIdAutomóvil.Text == string.Empty || textPuertas.Text == string.Empty || ElComboTipoAutomovil.Text == string.Empty))
                     {
-                        this.MessageError("Falta ingresar datos de la moto");
-                        error.SetError(textBxCilindrada, "Ingrese Cilindrada de la Moto");
+                        this.MessageError("Falta ingresar datos del Automóvil");
+                        error.SetError(textPuertas, "Ingrese Cantidad Puertas/Tipo Automóvil");
                         return;
-                    }
-                }
-
-                if (selectorTipoVehículo.SelectedTab == tabAutomóvil)
-                {
-                    respuesta = LogicaAutomovil.Actualizar(Convert.ToInt32(textBxIdAutomóvil.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, ElComboTipoAutomovil.Text, Convert.ToInt32(textPuertas.Text), Convert.ToInt32(textBxIdVehículo.Text));
-                }
-                else
-                {
-                    respuesta = LogicaMoto.Actualizar(Convert.ToInt32(textBxIdMoto.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, Convert.ToInt32(textBxIdVehículo.Text), textBxCilindrada.Text);
-                }
-
-                if (respuesta.Equals("OK"))
-                {
-                    respuesta = LogicaVehiculo.Actualizar(Convert.ToInt32(textBxIdVehículo.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text);
-                }
-
-                if (respuesta.Equals("OK"))
-                {
-                    if (selectorTipoVehículo.SelectedTab == tabAutomóvil)
-                    {
-                        this.MessageOk("Se actualizó correctamente el Automóvil");
                     }
                     else
                     {
-                        this.MessageOk("Se actualizó correctamente la Moto");
+                        if (selectorTipoVehículo.SelectedTab == tabMoto && (textBxIdMoto.Text == string.Empty || textBxCilindrada.Text == string.Empty))
+                        {
+                            this.MessageError("Falta ingresar datos de la moto");
+                            error.SetError(textBxCilindrada, "Ingrese Cilindrada de la Moto");
+                            return;
+                        }
                     }
-                    //this.limpiar();
-                    //this.listar();
-                }
-                else
-                {
-                    this.MessageError(respuesta);
-                }
+
+                    if (selectorTipoVehículo.SelectedTab == tabAutomóvil)
+                    {
+                        respuesta = LogicaAutomovil.Actualizar(Convert.ToInt32(textBxIdAutomóvil.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, ElComboTipoAutomovil.Text, Convert.ToInt32(textPuertas.Text), Convert.ToInt32(textBxIdVehículo.Text));
+                    }
+                    else
+                    {
+                        respuesta = LogicaMoto.Actualizar(Convert.ToInt32(textBxIdMoto.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, Convert.ToInt32(textBxIdVehículo.Text), textBxCilindrada.Text);
+                    }
+                    if (respuesta.Equals("OK"))
+                    {
+                        respuesta = LogicaVehiculo.Actualizar(Convert.ToInt32(textBxIdVehículo.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text);
+                    }
+                    if (respuesta.Equals("OK"))
+                    {
+                        if (selectorTipoVehículo.SelectedTab == tabAutomóvil)
+                        {
+                            this.MessageOk("Se actualizó correctamente el Automóvil");
+                        }
+                        else
+                        {
+                            this.MessageOk("Se actualizó correctamente la Moto");
+                        }
+                    }
+                    else
+                    {
+                        this.MessageError(respuesta);
+                    }
+                }                
             }
             catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
             finally { }
@@ -840,19 +808,38 @@ namespace CapaPresentación
             }
         }
 
+
+        /// <summary>
+        /// Se le da formato al DataGridView
+        /// </summary>
+        private void setDataGridWidths(int[] sizes, DataGridView dgv, bool visible)
+        {
+            int index = 0;
+            dgv.Columns[0].Visible = visible;
+            foreach (int size in sizes)
+            {
+                dgv.Columns[index++].Width = size;
+            }
+        }
+
         private void formato()
         {
-            dgvDatos.Columns[0].Visible = false;
-            dgvDatos.Columns[0].Width = 40;
-            dgvDatos.Columns[1].Width = 85;
-            dgvDatos.Columns[2].Width = 80;
-            dgvDatos.Columns[3].Width = 80;
-            dgvDatos.Columns[4].Width = 55;
-            dgvDatos.Columns[5].Width = 75;
-            dgvDatos.Columns[6].Width = 55;
-            dgvDatos.Columns[7].Width = 55;
-            dgvDatos.Columns[8].Width = 90;
-            dgvDatos.Columns[9].Width = 72;
+            setDataGridWidths(new int[] { 40, 85, 80, 80, 55, 75, 55, 55, 90, 72 }, dgvDatos, false);
+        }
+
+        private void formatoRepuestos()
+        {
+            setDataGridWidths(new int[] { 60, 30, 80, 60, 60 }, dgvRepuestos, true);            
+        }
+
+        private void formatoPresupuestos()
+        {
+            setDataGridWidths(new int[] { 125, 40, 110, 110, 200, 100, 85 }, dataGridViewPresupuestos, true);
+        }
+
+        private void formatoDesperfectos()
+        {
+            setDataGridWidths(new int[] { 25, 40, 40, 30, 250, 75, 50 }, dataGridViewDesperfectos, true);
         }
 
         private void buscar()
@@ -884,20 +871,7 @@ namespace CapaPresentación
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
-        }
-
-        /// <summary>
-        /// Se da formato al DataGridView dgvRepuestos
-        /// </summary>
-        private void formatoRepuestos()
-        {
-            dgvRepuestos.Columns[0].Visible = true;
-            dgvRepuestos.Columns[0].Width = 60;
-            dgvRepuestos.Columns[1].Width = 30;
-            dgvRepuestos.Columns[2].Width = 80;
-            dgvRepuestos.Columns[3].Width = 60;
-            dgvRepuestos.Columns[4].Width = 60;
-        }
+        }        
 
         private void listarPresupuestos()
         {
@@ -906,8 +880,7 @@ namespace CapaPresentación
                 LogicaPresupuesto.eliminarPresupuestosIncompletos();
                 dataGridViewPresupuestos.DataSource = LogicaPresupuesto.Listar();
                 this.formatoPresupuestos();
-                labelTotal.Text = Convert.ToString(dataGridViewPresupuestos.Rows.Count);
-                //this.limpiarPresupuestos();
+                labelTotal.Text = Convert.ToString(dataGridViewPresupuestos.Rows.Count);                
             }
             catch (Exception ex)
             {
@@ -924,36 +897,21 @@ namespace CapaPresentación
             this.dgvRepuestos.Rows.Clear();
         }
 
-        private void formatoPresupuestos()
-        {
-            dataGridViewPresupuestos.Columns[0].Visible = true;
-            dataGridViewPresupuestos.Columns[0].Width = 125;
-            dataGridViewPresupuestos.Columns[1].Width = 40;
-            dataGridViewPresupuestos.Columns[2].Width = 110;
-            dataGridViewPresupuestos.Columns[3].Width = 110;
-            dataGridViewPresupuestos.Columns[4].Width = 200;
-            dataGridViewPresupuestos.Columns[5].Width = 100;
-            dataGridViewPresupuestos.Columns[6].Width = 85;
-        }
-
         /// <summary>
         ///  Aplicación patron strategy, para la selección del turno
         /// </summary>       
 
         private void dataGridViewPresupuestos_DoubleClick(object sender, EventArgs e)
         {
-            //StrategyTurno estrategiaTurno = LogicaTallerMecanico.getEstrategiaTurno(this.taller, this.comboBoxEstrategiaTurno);
-            //DateTime fecha = estrategiaTurno.Next();
-            //this.taller.setUltimoTurno(fecha);
-            //this.Reloj.Value = fecha;
-            //this.Reloj.Update();
-        }
-
-        private void formatoServicios()
-        {
-            //dgvOutputServicios.Columns[0].Visible = true;
-            //dgvOutputServicios.Columns[0].Width = 45;
-
+            String fechaActual = Convert.ToString(dataGridViewPresupuestos.CurrentRow.Cells["Turno"].Value);
+            DateTime actual = DateTime.ParseExact(fechaActual, "dd-MM-yyyy", null);
+            DateTime nuevoTurno = (LogicaTallerMecanico.getEstrategiaTurno(this.comboBoxEstrategiaTurno)).Next(actual);
+            dataGridViewPresupuestos.CurrentRow.Cells["Turno"].Value = nuevoTurno.ToString("dd-MM-yyyy");
+            dataGridViewPresupuestos.Update();
+            dataGridViewPresupuestos.Refresh();
+            this.taller.setUltimoTurno(nuevoTurno);
+            this.Reloj.Value = nuevoTurno;
+            this.Reloj.Update();
         }
 
         private void dgvOutputServicios_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1022,22 +980,7 @@ namespace CapaPresentación
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
-        }
-
-        /// <summary>
-        /// Se le da formato al listado de Desperfectos, que componen el diagnóstico del Presupuesto
-        /// </summary>
-        private void formatoDesperfectos()
-        {
-            dataGridViewDesperfectos.Columns[0].Visible = true;
-            dataGridViewDesperfectos.Columns[0].Width = 25;
-            dataGridViewDesperfectos.Columns[1].Width = 40;
-            dataGridViewDesperfectos.Columns[2].Width = 40;
-            dataGridViewDesperfectos.Columns[3].Width = 30;
-            dataGridViewDesperfectos.Columns[4].Width = 250;
-            dataGridViewDesperfectos.Columns[5].Width = 75;
-            dataGridViewDesperfectos.Columns[6].Width = 50;
-        }
+        }        
 
         private void chkSelect_CheckedChanged(object sender, EventArgs e)
         {
