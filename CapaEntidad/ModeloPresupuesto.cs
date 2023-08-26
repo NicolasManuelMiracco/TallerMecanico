@@ -25,10 +25,29 @@ namespace CapaModelo
         public decimal gananciaTaller { get; set; }
         public decimal TotalConRecargosDescuentos { get; set; }
         public decimal TotalAlConsumidor { get; set; }
+        public DateTime Turno { get; set; }
 
         public ModeloPresupuesto(int idVehiculo)
         {
+            Email = "@gmail.com";
+            Apellido = "";
+            Nombre = "";
+            TotalAlConsumidor = 0;
             init(idVehiculo);
+        }
+        
+        public ModeloPresupuesto(int id, String nombre, String apellido, String email, decimal totalAlConsumidor, int idVehiculo)
+        {
+            Email = email;
+            Apellido = apellido;
+            Nombre = nombre;
+            TotalAlConsumidor = TotalAlConsumidor;
+            init(idVehiculo);
+        }
+
+        public void agregarPresupuesto(int id, String nombre, String apellido, String email, decimal totalAlConsumidor, int idVehiculo)
+        {
+
         }
 
         /// <summary>
@@ -36,9 +55,6 @@ namespace CapaModelo
         /// </summary> 
         private void init(int idVehiculo)
         {
-            Email = "@gmail.com";
-            Apellido = "";
-            Nombre = "";
             Completa = false;
             Id = -1; // Este flag indica que el presupuesto aún no esta en BD, es coherente con Completa en false
             IdVehiculo = idVehiculo;
@@ -52,8 +68,8 @@ namespace CapaModelo
             TotalReparacion = 0;
             TotalReparacion = 0;
             TotalConRecargosDescuentos = 0;
-            TotalAlConsumidor = 0;
-            Desperfectos = new List<ModeloDesperfecto>();            
+            Desperfectos = new List<ModeloDesperfecto>();
+            Turno = DateTime.Today; /// Por default se asigna el día actual como turno programado
         }
 
         /// <summary>

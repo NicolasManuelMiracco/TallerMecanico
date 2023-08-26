@@ -12,9 +12,16 @@ namespace CapaLogica
         public RandomTurno(int demora) {
             range = demora;
             gen = new Random();            
-        }        
-        public override DateTime Next() { 
-            return turno.AddDays(gen.Next(range)).AddHours(gen.Next(0, 24)).AddMinutes(gen.Next(0, 60)).AddSeconds(gen.Next(0, 60)); 
+        }
+
+        //public RandomTurno(int demora, DateTime lastTurno) : base(lastTurno)
+        //{
+        //    range = demora;
+        //    gen = new Random();
+        //}
+
+        public override DateTime Next(DateTime actual) { 
+            return actual.AddDays(gen.Next(range)).AddHours(gen.Next(0, 24)).AddMinutes(gen.Next(0, 60)).AddSeconds(gen.Next(0, 60)); 
         }
     }    
 }

@@ -8,8 +8,13 @@ namespace CapaModelo
 {
     public class ModeloTallerMecanico
     {
-        List<ModeloPresupuesto> presupuestos;
-        List<ModeloTurno> turnos;
+        List<ModeloPresupuesto> presupuestos { get; set; }
+
+        public DateTime getLastTurno() 
+        {
+            return UltimoTurno;
+        }
+
         DateTime UltimoTurno { get; set; }
 
         public void setUltimoTurno(DateTime ultimoTurno)
@@ -20,8 +25,18 @@ namespace CapaModelo
         public ModeloTallerMecanico()
         {
             presupuestos = new List<ModeloPresupuesto>();
-            turnos = new List<ModeloTurno>();
             UltimoTurno = DateTime.Today;
+        }
+
+        public void agregarPresupuesto(DateTime turno, ModeloPresupuesto nuevoPresupuesto)
+        {
+            presupuestos.Add(nuevoPresupuesto);
+            UltimoTurno = turno; 
+        }
+
+        public void agregarTurno(String idPresupuesto)
+        {
+
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using CapaModelo;
 using CapaPersistencia;
 
@@ -6,34 +8,26 @@ namespace CapaLogica
 {
     public class LogicaTallerMecanico
     {
-        private List<ModeloVehiculo> vehiculos;
-        private List<ModeloDesperfecto> desperfectos;
-
-        public LogicaTallerMecanico()
+        public static StrategyTurno getEstrategiaTurno(ComboBox comboBoxEstrategiaTurno)
         {
-            vehiculos = new List<ModeloVehiculo>();
-            desperfectos = new List<ModeloDesperfecto>();
+            if (comboBoxEstrategiaTurno.Text.Equals("Aleatoria con Rango"))
+            {
+                return new RandomTurno(6);
+            }
+            else
+            {
+                return new PrimerDisponibleTurno();
+            }
         }
 
-        public void ingresarAutomovil(ModeloAutomovil nuevoAutomovil)
+        public static void agregarPresupuesto(DateTime turno, ModeloTallerMecanico taller, String id, String nombre, String apellido, String email, String total, String idVehiculo)
         {
-            vehiculos.Add(nuevoAutomovil);
-            new PersistenciaAutomovil().Insertar(nuevoAutomovil);            
+            
+            taller.agregarPresupuesto(turno, new ModeloPresupuesto(Convert.ToInt32(id), nombre, apellido, email, Convert.ToDecimal(total), Convert.ToInt32(idVehiculo)));
         }
 
-        public void ingresarMoto(ModeloMoto nuevaMoto)
-        {
-            vehiculos.Add(nuevaMoto);
-            new PersistenciaMoto().Insertar(nuevaMoto);            
-        }
 
-        /// <summary>
-        /// Lógica principal para la generación del presupuesto
-        /// </summary>
-        public void emitirPresupuesto(ModeloVehiculo nuevoVehiculo, List<ModeloDesperfecto> desperfectos)
-        {
-            vehiculos.Add(nuevoVehiculo);
-            this.desperfectos = desperfectos;
-        }
+
+
     }
 }

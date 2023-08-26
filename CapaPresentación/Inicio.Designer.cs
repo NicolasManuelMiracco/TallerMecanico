@@ -33,7 +33,7 @@ namespace CapaPresentación
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.repuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.masterDataSet = new CapaPresentación.masterDataSet();
             this.repuestoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -156,12 +156,15 @@ namespace CapaPresentación
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
             this.tabPresupuestos = new System.Windows.Forms.TabPage();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.buttonAsignarTurnos = new System.Windows.Forms.Button();
+            this.labelEstrategiaTurno = new System.Windows.Forms.Label();
             this.comboBoxEstrategiaTurno = new System.Windows.Forms.ComboBox();
             this.Reloj = new System.Windows.Forms.DateTimePicker();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.buttonABM = new System.Windows.Forms.Button();
             this.buttonListarPresupuestos = new System.Windows.Forms.Button();
             this.dataGridViewPresupuestos = new System.Windows.Forms.DataGridView();
+            this.Turno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabServicios = new System.Windows.Forms.TabPage();
             this.panel19 = new System.Windows.Forms.Panel();
             this.comboBoxServicioTipo = new System.Windows.Forms.ComboBox();
@@ -177,7 +180,6 @@ namespace CapaPresentación
             this.panel18 = new System.Windows.Forms.Panel();
             this.labelOutputServicios = new System.Windows.Forms.Label();
             this.dgvOutputServicios = new System.Windows.Forms.DataGridView();
-            this.labelEstrategiaTurno = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repuestoBindingSource1)).BeginInit();
@@ -1447,14 +1449,14 @@ namespace CapaPresentación
             this.dgvDatos.ColumnHeadersHeight = 35;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CHK});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.OldLace;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.OldLace;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDatos.Location = new System.Drawing.Point(53, 49);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
@@ -1509,6 +1511,7 @@ namespace CapaPresentación
             // 
             // panel17
             // 
+            this.panel17.Controls.Add(this.buttonAsignarTurnos);
             this.panel17.Controls.Add(this.labelEstrategiaTurno);
             this.panel17.Controls.Add(this.comboBoxEstrategiaTurno);
             this.panel17.Controls.Add(this.Reloj);
@@ -1518,8 +1521,30 @@ namespace CapaPresentación
             this.panel17.Controls.Add(this.dataGridViewPresupuestos);
             this.panel17.Location = new System.Drawing.Point(3, 6);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(844, 511);
+            this.panel17.Size = new System.Drawing.Size(844, 515);
             this.panel17.TabIndex = 0;
+            // 
+            // buttonAsignarTurnos
+            // 
+            this.buttonAsignarTurnos.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.buttonAsignarTurnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAsignarTurnos.ForeColor = System.Drawing.Color.White;
+            this.buttonAsignarTurnos.Location = new System.Drawing.Point(207, 422);
+            this.buttonAsignarTurnos.Name = "buttonAsignarTurnos";
+            this.buttonAsignarTurnos.Size = new System.Drawing.Size(140, 68);
+            this.buttonAsignarTurnos.TabIndex = 29;
+            this.buttonAsignarTurnos.Text = "Asignar turnos";
+            this.buttonAsignarTurnos.UseVisualStyleBackColor = false;
+            this.buttonAsignarTurnos.Click += new System.EventHandler(this.buttonAsignarTurnos_Click);
+            // 
+            // labelEstrategiaTurno
+            // 
+            this.labelEstrategiaTurno.AutoSize = true;
+            this.labelEstrategiaTurno.Location = new System.Drawing.Point(353, 447);
+            this.labelEstrategiaTurno.Name = "labelEstrategiaTurno";
+            this.labelEstrategiaTurno.Size = new System.Drawing.Size(183, 22);
+            this.labelEstrategiaTurno.TabIndex = 28;
+            this.labelEstrategiaTurno.Text = "Estrategia de turno";
             // 
             // comboBoxEstrategiaTurno
             // 
@@ -1553,11 +1578,11 @@ namespace CapaPresentación
             // buttonABM
             // 
             this.buttonABM.BackColor = System.Drawing.Color.BurlyWood;
-            this.buttonABM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonABM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonABM.ForeColor = System.Drawing.Color.Green;
-            this.buttonABM.Location = new System.Drawing.Point(195, 407);
+            this.buttonABM.Location = new System.Drawing.Point(0, 461);
             this.buttonABM.Name = "buttonABM";
-            this.buttonABM.Size = new System.Drawing.Size(152, 95);
+            this.buttonABM.Size = new System.Drawing.Size(198, 58);
             this.buttonABM.TabIndex = 24;
             this.buttonABM.Text = "ABM Vehículos";
             this.buttonABM.UseVisualStyleBackColor = false;
@@ -1566,11 +1591,11 @@ namespace CapaPresentación
             // buttonListarPresupuestos
             // 
             this.buttonListarPresupuestos.BackColor = System.Drawing.Color.Linen;
-            this.buttonListarPresupuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonListarPresupuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonListarPresupuestos.ForeColor = System.Drawing.Color.Green;
-            this.buttonListarPresupuestos.Location = new System.Drawing.Point(0, 407);
+            this.buttonListarPresupuestos.Location = new System.Drawing.Point(1, 404);
             this.buttonListarPresupuestos.Name = "buttonListarPresupuestos";
-            this.buttonListarPresupuestos.Size = new System.Drawing.Size(185, 95);
+            this.buttonListarPresupuestos.Size = new System.Drawing.Size(197, 51);
             this.buttonListarPresupuestos.TabIndex = 23;
             this.buttonListarPresupuestos.Text = "Listar Presupuestos";
             this.buttonListarPresupuestos.UseVisualStyleBackColor = false;
@@ -1582,6 +1607,8 @@ namespace CapaPresentación
             this.dataGridViewPresupuestos.AllowUserToDeleteRows = false;
             this.dataGridViewPresupuestos.AllowUserToOrderColumns = true;
             this.dataGridViewPresupuestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPresupuestos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Turno});
             this.dataGridViewPresupuestos.Location = new System.Drawing.Point(4, 3);
             this.dataGridViewPresupuestos.Name = "dataGridViewPresupuestos";
             this.dataGridViewPresupuestos.ReadOnly = true;
@@ -1590,6 +1617,14 @@ namespace CapaPresentación
             this.dataGridViewPresupuestos.Size = new System.Drawing.Size(834, 389);
             this.dataGridViewPresupuestos.TabIndex = 0;
             this.dataGridViewPresupuestos.DoubleClick += new System.EventHandler(this.dataGridViewPresupuestos_DoubleClick);
+            // 
+            // Turno
+            // 
+            this.Turno.HeaderText = "Turno";
+            this.Turno.MinimumWidth = 8;
+            this.Turno.Name = "Turno";
+            this.Turno.ReadOnly = true;
+            this.Turno.Width = 150;
             // 
             // tabServicios
             // 
@@ -1761,15 +1796,6 @@ namespace CapaPresentación
             this.dgvOutputServicios.Size = new System.Drawing.Size(309, 449);
             this.dgvOutputServicios.TabIndex = 0;
             this.dgvOutputServicios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOutputServicios_CellContentClick);
-            // 
-            // labelEstrategiaTurno
-            // 
-            this.labelEstrategiaTurno.AutoSize = true;
-            this.labelEstrategiaTurno.Location = new System.Drawing.Point(353, 447);
-            this.labelEstrategiaTurno.Name = "labelEstrategiaTurno";
-            this.labelEstrategiaTurno.Size = new System.Drawing.Size(183, 22);
-            this.labelEstrategiaTurno.TabIndex = 28;
-            this.labelEstrategiaTurno.Text = "Estrategia de turno";
             // 
             // Inicio
             // 
@@ -2008,6 +2034,8 @@ namespace CapaPresentación
         private TextBox textBox3;
         private ComboBox comboBoxEstrategiaTurno;
         private Label labelEstrategiaTurno;
+        private DataGridViewTextBoxColumn Turno;
+        private Button buttonAsignarTurnos;
 
         public Label TxtModelo { get => txtModelo; set => txtModelo = value; }
     }

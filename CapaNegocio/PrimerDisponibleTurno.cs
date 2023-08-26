@@ -8,9 +8,14 @@ namespace CapaLogica
     /// </summary>
     public class PrimerDisponibleTurno : StrategyTurno
     {
-        public override DateTime Next()
+        public override DateTime Next(DateTime actual)
         {
-            return turno.AddDays(1);
+            return actual.AddDays(1);
         }
+
+        //public PrimerDisponibleTurno(DateTime lastTurno) : base(lastTurno)
+        //{
+            
+        //}
     }
 }

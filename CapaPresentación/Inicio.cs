@@ -23,7 +23,7 @@ namespace CapaPresentación
         ModeloPresupuesto presupuesto;
         ModeloTallerMecanico taller;
         LogicaDesperfecto logicaDesperfecto;
-        StrategyTurno estrategiaTurnoRandom, estrategiaTurnoPrimerDisponible, estrategiaTurnoActual;
+        LogicaTallerMecanico logicaTallerMecanico;
 
         /// <summary>
         /// // Form según aspect ratio 16:9, de 1361 x 765 pixels, sin maximización ni resize.
@@ -32,14 +32,13 @@ namespace CapaPresentación
         {
             InitializeComponent();
             taller = new ModeloTallerMecanico();
+            logicaTallerMecanico = new LogicaTallerMecanico();
             logicaDesperfecto = new LogicaDesperfecto();
             /// Se asocia el Observer DataGridView con la lógica del desperfecto
             this.dataGridViewDesperfectos.setSubjec(logicaDesperfecto);
             /// Se define estrategia de asignacion de turno con un margen aleatorio de 3. 
             /// Aplicación del patrón strategy que permite modificar la forma en que se asignan los turnos -> binding dinámico en ejecúción
-            estrategiaTurnoRandom = new RandomTurno(6);
-            estrategiaTurnoPrimerDisponible = new PrimerDisponibleTurno();
-            estrategiaTurnoActual = estrategiaTurnoRandom;
+            
         }
 
         #endregion
@@ -481,7 +480,6 @@ namespace CapaPresentación
         /// </summary>        
         private void button4_Click(object sender, EventArgs e)
         {
-            seteosDefaultPresupuesto();
             actualizarTextBoxesPresupuesto();
             cargaDelCliente();
             /// Se muestra el listado de total de presupuestos
@@ -896,14 +894,6 @@ namespace CapaPresentación
             }
         }
 
-        /// <summary>
-        /// Se cargan los Text Box con valores por default del presupuesto
-        /// </summary>
-        private void seteosDefaultPresupuesto()
-        {
-
-        }
-
         #endregion
 
         #region Tratamiento sobre DataGridViews
@@ -1024,19 +1014,11 @@ namespace CapaPresentación
 
         private void dataGridViewPresupuestos_DoubleClick(object sender, EventArgs e)
         {
-            if (comboBoxEstrategiaTurno.Text.Equals("Aleatoria con Rango"))
-            {
-                estrategiaTurnoActual = this.estrategiaTurnoRandom;
-            }
-            else
-            {
-                estrategiaTurnoActual = this.estrategiaTurnoPrimerDisponible;
-            }
-
-            DateTime fecha = estrategiaTurnoActual.Next();
-            this.taller.setUltimoTurno(fecha);
-            this.Reloj.Value = fecha;
-            this.Reloj.Update();
+            //StrategyTurno estrategiaTurno = LogicaTallerMecanico.getEstrategiaTurno(this.taller, this.comboBoxEstrategiaTurno);
+            //DateTime fecha = estrategiaTurno.Next();
+            //this.taller.setUltimoTurno(fecha);
+            //this.Reloj.Value = fecha;
+            //this.Reloj.Update();
         }
 
         private void formatoServicios()
@@ -1256,5 +1238,62 @@ namespace CapaPresentación
         }
 
         #endregion
+
+        private void buttonAsignarTurnos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //DialogResult Opcion;
+                //string respuesta = "";
+                //int codigoMoto = 0, codigoAutomovil = 0, vehiculosSeleccionados = 0, vehiculosEliminados = 0, vehiculosAbortados = 0;
+                /// Obtengo la estrategia de asignación activa
+                StrategyTurno estrategiaTurnoActiva = LogicaTallerMecanico.getEstrategiaTurno(this.comboBoxEstrategiaTurno);
+                DateTime siguienteTurno = estrategiaTurnoActiva.Next(DateTime.Today);
+                foreach (DataGridViewRow row in dataGridViewPresupuestos.Rows)
+                {
+                    LogicaTallerMecanico.agregarPresupuesto(siguienteTurno, this.taller, row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString());
+                    siguienteTurno = estrategiaTurnoActiva.Next(siguienteTurno);
+                    //LogicaTallerMecanico.getEstrategiaTurno(this.comboBoxEstrategiaTurno).Next();
+                    //LogicaTallerMecanico.asignarTurno(row.Cells[0].Value, row.Cells[1].Value);
+                    //row.Cells[0].Value = LogicaTallerMecanico.getEstrategiaTurno(this.comboBoxEstrategiaTurno).Next().ToString(); 
+                    row.Cells[0].Value = siguienteTurno.ToString();
+                }
+                //    if (Convert.ToBoolean(row.Cells[0].Value))
+                //    {
+                //        vehiculosSeleccionados++; /// Se registra la cantidad de seleccionados para UI usuario cuando es 0
+                //                                  /// Aquí siempre tenemos un valor en columna 4 (Moto) OR exclusivo en columna 6 (Automovil)
+                //        if (!String.IsNullOrEmpty(row.Cells[4].Value.ToString())) // Es una Moto
+                //        {
+                //            codigoMoto = Int32.Parse(row.Cells[4].Value.ToString());
+                //            Opcion = MessageBox.Show("¿Eliminar la moto: " + codigoMoto + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                //        }
+                //        else /// Es un Automóvil
+                //        {
+                //            codigoAutomovil = Int32.Parse(row.Cells[6].Value.ToString());
+                //            Opcion = MessageBox.Show("¿Eliminar el automóvil: " + codigoAutomovil + "?", "Control de Vehiculos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                //        }
+
+                //        respuesta = Opcion == DialogResult.OK ? LogicaVehiculo.Eliminar(codigoMoto, codigoAutomovil) : "ABORTED";
+                //        if (respuesta.Equals("OK"))
+                //        {
+                //            vehiculosEliminados++;
+                //        }
+                //        else if (respuesta.Equals("ABORTED"))
+                //        {
+                //            vehiculosAbortados++;
+                //        }
+                //        else
+                //        {
+                //            this.MessageError("Error BD: " + respuesta);
+                //        }
+                //    }
+                //}
+                //if (vehiculosSeleccionados == 0) this.MessageError("Ingresar al menos un Vehículo");
+                //else this.MessageError("Vehículos eliminados: " + vehiculosEliminados + " y abortados: " + vehiculosAbortados);
+                //this.listar();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message + ex.StackTrace); }
+        }
     }
 }
