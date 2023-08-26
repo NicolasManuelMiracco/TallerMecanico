@@ -58,113 +58,79 @@ namespace CapaPresentación
 
         #region Validación formularios de datos
 
-        public string tratamientoComboBox(ComboBox comboBox, string mensajeError, string setError)
+        private void setErrorFormularioComboBox(ComboBox comboBox, string mensajeError, string setError)
+        {
+            this.MessageError(mensajeError);
+            error.SetError(comboBox, setError);
+        }
+
+        private void setErrorFormularioTextBox(TextBox textBox, string mensajeError, string setError)
+        {
+            this.MessageError(mensajeError);
+            error.SetError(textBox, setError);
+        }
+
+        public bool tratamientoComboBox(ComboBox comboBox, string mensajeError, string setError)
         {
             if (comboBox.Text == string.Empty)
             {
-                this.MessageError(mensajeError);
-                error.SetError(comboBox, setError);
-                return "FAIL";
+                this.setErrorFormularioComboBox(comboBox, mensajeError, setError);
+                return false;
             }
-            return "OK";
+            return true;
         }
 
-        public string tratamientoTextBox(TextBox textBox, string mensajeError, string setError)
+        public bool tratamientoTextBox(TextBox textBox, string mensajeError, string setError)
         {
             if (textBox.Text == string.Empty)
             {
-                this.MessageError(mensajeError);
-                error.SetError(textBox, setError);
-                return "FAIL";
+                this.setErrorFormularioTextBox(textBox, mensajeError, setError);                
+                return false;
             }
-            return "OK";
+            return true;
         }
 
-
-        private string tratamientoRepuestoExistente()   
+        private bool tratamientoRepuestoExistente()   
         {  
             return this.tratamientoComboBox(comboBoxRepuestosExistentes, "Falta ingresar datos del Repuesto", "Ingrese un repuesto existente válido");            
         }
 
-        private string tratamientoDatosDesperfecto()
+        private bool tratamientoDatosDesperfecto()
         {
-            string respuesta = this.tratamientoTextBox(textBoxDesperfectoDescripcion, "Falta ingresar datos del Desperfecto", "Ingrese la descripción del desperfecto");
-            if (respuesta.Equals("OK"))
-            {
-                respuesta = this.tratamientoTextBox(textBoxDesperfectoManoDeObra, "Falta ingresar datos del Desperfecto", "Ingrese el costo de mano de obra del desperfecto");
-            }
-            if (respuesta.Equals("OK"))
-            {
-                respuesta = this.tratamientoTextBox(textBoxDesperfectoTiempo, "Falta ingresar datos del Desperfecto", "Ingrese el tiempo en días para el desperfecto");
-            }
-            return respuesta;
+            return this.tratamientoTextBox(textBoxDesperfectoDescripcion, "Falta ingresar datos del Desperfecto", "Ingrese la descripción del desperfecto") &&
+            this.tratamientoTextBox(textBoxDesperfectoManoDeObra, "Falta ingresar datos del Desperfecto", "Ingrese el costo de mano de obra del desperfecto") &&
+            this.tratamientoTextBox(textBoxDesperfectoTiempo, "Falta ingresar datos del Desperfecto", "Ingrese el tiempo en días para el desperfecto");
         }
 
-        private string tratamientoDatosVehiculo()
+        private bool tratamientoDatosVehiculo()
         {
-            string respuesta = this.tratamientoTextBox(textBxIdVehículo, "Falta ingresar datos del registro", "Ingrese el Id del Vehiculo");
-            if (respuesta.Equals("OK"))
-            {
-                respuesta = this.tratamientoTextBox(textBxMarca, "Falta ingresar datos del registro", "Ingrese Marca del Vehiculo");
-            }
-            if (respuesta.Equals("OK"))
-            {
-                respuesta = this.tratamientoTextBox(textBxModelo, "Falta ingresar datos del registro", "Ingrese Modelo del Vehiculo");
-            }
-            if (respuesta.Equals("OK"))
-            {
-                respuesta = this.tratamientoTextBox(textBxPatente, "Falta ingresar datos del registro", "Ingrese Patente del Vehiculo");
-            }
-            return respuesta;
+            return this.tratamientoTextBox(textBxIdVehículo, "Falta ingresar datos del registro", "Ingrese el Id del Vehiculo") &&
+            this.tratamientoTextBox(textBxMarca, "Falta ingresar datos del registro", "Ingrese Marca del Vehiculo") &&
+            this.tratamientoTextBox(textBxModelo, "Falta ingresar datos del registro", "Ingrese Modelo del Vehiculo") &&
+            this.tratamientoTextBox(textBxPatente, "Falta ingresar datos del registro", "Ingrese Patente del Vehiculo");
         }
 
-        private string tratamientoDatosAutomovil()
+        private bool tratamientoDatosAutomovil()
         {
-            if (textBxIdAutomóvil.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxIdAutomóvil, "Ingrese el Id del Automóvil");
-                return "FAIL";
-            }
-            if (textPuertas.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textPuertas, "Ingrese el número de puertas del Automóvil");
-                return "FAIL";
-            }
-            if (ElComboTipoAutomovil.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(ElComboTipoAutomovil, "Ingrese el tipo de Vehículo");
-                return "FAIL";
-            }
-            return "OK";
+            return this.tratamientoTextBox(textBxIdAutomóvil, "Falta ingresar datos del registro", "Ingrese el Id del Automóvil") &&
+            this.tratamientoTextBox(textPuertas, "Falta ingresar datos del registro", "Ingrese el número de puertas del Automóvil") &&
+            this.tratamientoComboBox(ElComboTipoAutomovil, "Falta ingresar datos del registro", "Ingrese el tipo de Vehículo");
         }
 
-        private string tratamientoRepuestoNuevo()
+        private bool tratamientoRepuestoNuevo()
         {
-            if (textBoxNombreNuevoRepuesto.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del Repuesto");
-                error.SetError(textBoxNombreNuevoRepuesto, "Ingrese un nombre de Repuesto");
-                return "FAIL";
-            }
-            if (textBoxPrecioNuevoRepuesto.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del Repuesto");
-                error.SetError(textBoxPrecioNuevoRepuesto, "Ingrese un precio para el Repuesto");
-                return "FAIL";
-            }
-            return "OK";
+            return this.tratamientoTextBox(textBoxNombreNuevoRepuesto, "Falta ingresar datos del Repuesto", "Ingrese un nombre de Repuesto") &&
+            this.tratamientoTextBox(textBoxPrecioNuevoRepuesto, "Falta ingresar datos del Repuesto", "Ingrese un precio para el Repuesto");
         }
 
-        private string tratamientoDatosPresupuesto()
+        private bool tratamientoDatosPresupuesto()
         {
+            bool respuesta = true;
             if (txBoxEmail.Text == string.Empty)
             {
                 this.MessageError("Falta ingresar datos del cliente");
                 error.SetError(txBoxEmail, "Ingrese el Email");
-                return "FAIL";
+                respuesta = false;
             }
             else presupuesto.Email = txBoxEmail.Text;
 
@@ -172,7 +138,7 @@ namespace CapaPresentación
             {
                 this.MessageError("Falta ingresar datos del cliente");
                 error.SetError(txBoxApellido, "Ingrese el Apellido");
-                return "FAIL";
+                respuesta = respuesta && true;
             }
             else presupuesto.Apellido = txBoxApellido.Text;
 
@@ -180,76 +146,24 @@ namespace CapaPresentación
             {
                 this.MessageError("Falta ingresar datos del cliente");
                 error.SetError(txBoxNombre, "Ingrese el Nombre");
-                return "FAIL";
+                respuesta = respuesta && true;
             }
             else presupuesto.Nombre = txBoxNombre.Text;
 
-            if (txBoxDescuento.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del Presupuesto");
-                error.SetError(txBoxDescuento, "Ingrese un Descuento");
-                return "FAIL";
-            }
-            if (txBoxRecargo.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del Presupuesto");
-                error.SetError(txBoxRecargo, "Ingrese un Recargo");
-                return "FAIL";
-            }
-            if (txBoxEstacionamiento.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del Presupuesto");
-                error.SetError(txBoxEstacionamiento, "Ingrese un Estacionamiento");
-                return "FAIL";
-            }
-            if (txRepuestosTotal.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del presupuesto");
-                error.SetError(txRepuestosTotal, "Ingrese el costo total de repuestos para el Presupuesto");
-                return "FAIL";
-            }
-            if (txManoDeObra.Text == string.Empty)
-            {
-                this.MessageError("Falta completar el Presupuesto");
-                error.SetError(txManoDeObra, "Ingrese mano de obra para el Presupuesto");
-                return "FAIL";
-            }
-            if (textBoxSubTotal.Text == string.Empty)
-            {
-                this.MessageError("Falta completar el Presupuesto");
-                error.SetError(textBoxSubTotal, "Ingrese subTotal para el Presupuesto");
-                return "FAIL";
-            }
-            if (TotalPresupuestoConsumidor.Text == string.Empty)
-            {
-                this.MessageError("Falta completar el Presupuesto");
-                error.SetError(TotalPresupuestoConsumidor, "Ingrese Total para el Presupuesto");
-                return "FAIL";
-            }
-            if (textBoxTiempoTotal.Text == string.Empty)
-            {
-                this.MessageError("Falta completar el Presupuesto");
-                error.SetError(textBoxTiempoTotal, "Ingrese el Tiempo para el Presupuesto");
-                return "FAIL";
-            }
-            return "OK";
+            return respuesta && this.tratamientoTextBox(txBoxDescuento, "Falta ingresar datos del Presupuesto", "Ingrese un Descuento") &&
+            this.tratamientoTextBox(txBoxRecargo, "Falta ingresar datos del Presupuesto", "Ingrese un Recargo") &&
+            this.tratamientoTextBox(txBoxEstacionamiento, "Falta ingresar datos del Presupuesto", "Ingrese un Estacionamiento") &&
+            this.tratamientoTextBox(txRepuestosTotal, "Falta ingresar datos del presupuesto", "Ingrese el costo total de repuestos para el Presupuesto") &&
+            this.tratamientoTextBox(txManoDeObra, "Falta completar el Presupuesto", "Ingrese mano de obra para el Presupuesto") &&
+            this.tratamientoTextBox(textBoxSubTotal, "Falta completar el Presupuesto", "Ingrese subTotal para el Presupuesto") &&
+            this.tratamientoTextBox(TotalPresupuestoConsumidor, "Falta completar el Presupuesto", "Ingrese Total para el Presupuesto") &&
+            this.tratamientoTextBox(textBoxTiempoTotal, "Falta completar el Presupuesto", "Ingrese el Tiempo para el Presupuesto");            
         }
 
-        private string tratamientoDatosMoto()
+        private bool tratamientoDatosMoto()
         {
-            if (textBxIdMoto.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxIdMoto, "Ingrese el Id de la Moto");
-                return "FAIL";
-            }
-            if (textBxCilindrada.Text == string.Empty)
-            {
-                this.MessageError("Falta ingresar datos del registro");
-                error.SetError(textBxCilindrada, "Ingrese la cilindrada de la Moto");
-                return "FAIL";
-            }
-            return "OK";
+            return this.tratamientoTextBox(textBxIdMoto, "Falta ingresar datos del registro", "Ingrese el Id de la Moto") &&
+            this.tratamientoTextBox(textBxCilindrada, "Falta ingresar datos del registro", "Ingrese la cilindrada de la Moto");
         }
 
         #endregion
@@ -535,7 +449,7 @@ namespace CapaPresentación
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (tratamientoRepuestoNuevo() == "OK")
+            if (tratamientoRepuestoNuevo())
             {
                 try
                 {
@@ -557,7 +471,7 @@ namespace CapaPresentación
         /// </summary>
         private void button6_Click(object sender, EventArgs e)
         {
-            if (tratamientoRepuestoExistente() == "OK")
+            if (tratamientoRepuestoExistente())
             {
                 try
                 {
@@ -577,7 +491,7 @@ namespace CapaPresentación
 
         private void buttonAgregarDesperfecto_Click(object sender, EventArgs e)
         {
-            if (tratamientoDatosDesperfecto() == "OK")
+            if (tratamientoDatosDesperfecto())
             {
                 try
                 {
@@ -615,7 +529,7 @@ namespace CapaPresentación
             string respuesta = "";
             if (selectorTipoVehículo.SelectedTab == tabAutomóvil)
             {
-                if (tratamientoDatosVehiculo() == "OK" && tratamientoDatosAutomovil() == "OK")
+                if (tratamientoDatosVehiculo() && tratamientoDatosAutomovil())
                 {
                     try
                     {
@@ -635,7 +549,7 @@ namespace CapaPresentación
             }
             else
             {
-                if (tratamientoDatosVehiculo() == "OK" && tratamientoDatosMoto() == "OK")
+                if (tratamientoDatosVehiculo() && tratamientoDatosMoto())
                 {
                     try
                     {
@@ -874,8 +788,8 @@ namespace CapaPresentación
 
         private string cargaDelCliente()
         {
-            string respuesta = tratamientoDatosPresupuesto();
-            if (respuesta == "OK")
+            string respuesta = "FAIL";
+            if (tratamientoDatosPresupuesto())
             {
                 try
                 {
@@ -1265,7 +1179,6 @@ namespace CapaPresentación
         }
 
         #endregion
-
            
     }
 }
