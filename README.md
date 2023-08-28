@@ -36,18 +36,23 @@ Base de datos: Stored procedures (SP)
 Diseño e implementación (a extender): 
 
 - Patrones de diseño:
+  
     - Patrón Strategy:
       Utilizado para la asignación dinámica de turnos. Se incorpora al desarrollo la posibilidad de listar los presupuestos generados hasta el momento, para luego asignar automáticamente turnos.
       La asignación de la estrategia puede cambiar en ejecución, y a nivel desarrollo se puede extender, heredando de la clase abstracta StrategyTurno.
       Para la implementación actual se heredan dos estrategias:
         -  RandomTurno: a partir del último turno otorgado por el Taller mecánico, y de una semilla que define el rango aleatorio o amplitud, se designa un turno.
-        -  PrimerDisponibleTurno: asigna el primer día disponible, a partir del último turno otorgado por el taller. 
+        -  PrimerDisponibleTurno: asigna el primer día disponible, a partir del último turno otorgado por el taller.
+  
     -  Patrón observer:
        Se utiliza para la actualización automática de UI cuando se actualiza el modelo, específicamente al momento de cargar repuestos para un desperfecto, en la construcción de un presupuesto.
        De esta forma un DataGridView que almacena los desperfectos con sus repuestos, para un determinado presupuesto; es incorporado como Observador de los Desperfectos (e implementa el método Update).
        Este binding entre estado y vista, se realiza en la clase Lógica Desperfecto. El Desperfecto será un elemento Observable, y deberá registrar y notificar a sus oyentes u observadores.
        Adicionalmente, al momento de agregar repuestos a un desperfecto, que será incorporado al presupuesto; se actualizan automáticamente los textBox indicando la cantidad de repuestos existentes, y la cantidad de repuestos faltantes.
-       Visualmente también se modifica el color, para la fila correspondiente al desperfecto que actualizó sus repuestos. 
+       Visualmente también se modifica el color, para la fila correspondiente al desperfecto que actualizó sus repuestos.
+       
+    -  Patrón MVC:
+       Se aplica modelo de arquitectura en 4 capas (Presentación, Lógica, Persistencia y Modelo) que incorpora las características del patrón: Model View Controller.       
        
 -  Funcionalidad adicional:
     -  Asignación de turnos.
@@ -89,5 +94,5 @@ Diseño e implementación (a extender):
     - BD: backup de toda la BD, listo para un local restore.
     - BD: script total de toda la BD.
     - General: capturas.
-    - Flujo: se incorpora diagrama con la representación del flujo principal entre capas.
+    - Arquitectura 4 capas: se incorpora diagrama con la representación del flujo principal entre capas.
 
