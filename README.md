@@ -1,4 +1,4 @@
-# TallerMecanico
+# Taller Mecánico
 Challenge .NET 
 Autor: Nicolás Manuel Miracco
 
