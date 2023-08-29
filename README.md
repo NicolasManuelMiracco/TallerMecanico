@@ -89,10 +89,11 @@ Diseño e implementación (a extender):
 
   -  https://drive.google.com/drive/folders/1DyXBphfs0FpLa678VIKQWvpebyLFZ_LB?usp=sharing
 
-  -  La documentación en drive incluye: 
-    - BD: Store procedures utilizados en los servicios, en las cargas y como apoyo auxiliar.
-    - BD: backup de toda la BD, listo para un local restore.
-    - BD: script total de toda la BD.
-    - General: capturas.
-    - Arquitectura 4 capas: se incorpora diagrama con la representación del flujo principal entre capas.
+      La documentación en drive incluye:
+
+      -  BD: Store procedures utilizados en los servicios, en las cargas y como apoyo auxiliar.
+      -  BD: Backup de toda la BD, listo para un local restore.
+      -  BD: Script total de toda la BD.
+      -  General: capturas.
+      -  Arquitectura 4 capas: se incorpora diagrama con la representación del flujo principal entre capas.
 
