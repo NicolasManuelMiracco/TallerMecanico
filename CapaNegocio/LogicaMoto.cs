@@ -8,10 +8,10 @@ namespace CapaLogica
         /// <summary>
         ///  Gestión lógica para la inserción de Moto
         /// </summary>     
-        public static string Insertar(int id, string marca, string modelo, string patente, int idVehiculo, string cilindrada)
+        public static string Insertar(string marca, string modelo, string patente, string cilindrada)
         {
             PersistenciaMoto datos = new PersistenciaMoto();
-            ModeloMoto obj = new ModeloMoto(id, marca, modelo, patente, idVehiculo, cilindrada);
+            ModeloMoto obj = new ModeloMoto(marca, modelo, patente,cilindrada);
             return datos.Insertar(obj);
         }
         /// <summary>

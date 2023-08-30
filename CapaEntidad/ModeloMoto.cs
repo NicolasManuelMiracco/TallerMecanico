@@ -15,5 +15,10 @@
             this.Cilindrada = cilindrada;
             this.IdMoto = id;
         }
+
+        public ModeloMoto(string marca, string modelo, string patente, string cilindrada) : base(marca, modelo, patente)
+        {
+            this.Cilindrada = cilindrada;            
+        }
     }
 }

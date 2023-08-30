@@ -25,6 +25,12 @@
             this.CantidadPuertas = cantidadPuertas;
             this.IdVehiculo = idVehiculo;
             this.IdAutomovil = id;
-        }        
+        }
+
+        public ModeloAutomovil(string marca, string modelo, string patente, string tipo, int cantidadPuertas) : base(marca, modelo, patente)
+        {
+            this.Tipo = tipo;
+            this.CantidadPuertas = cantidadPuertas;            
+        }
     }
 }

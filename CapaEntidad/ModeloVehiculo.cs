@@ -14,5 +14,12 @@
             this.Modelo = modelo;
             this.Patente = patente;
         }
+
+        public ModeloVehiculo(string marca, string modelo, string patente)
+        {            
+            this.Marca = marca;
+            this.Modelo = modelo;
+            this.Patente = patente;
+        }
     }
 }

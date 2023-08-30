@@ -73,7 +73,9 @@ namespace CapaModelo
         /// <summary>
         /// Se cierra el desperfecto, es decir se le asignaron los repuestos.
         /// </summary>
-        public void cerrarDesperfecto() {   Cerrado = true; }
+        public void cerrarDesperfecto() {   
+            Cerrado = true; 
+        }
 
         public DataTable CreateDataTable<ModeloRepuesto>(IEnumerable<ModeloRepuesto> data)
         {

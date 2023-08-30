@@ -35,6 +35,13 @@ namespace CapaPresentación
             subject.RegistrarObserver(this);
         }
 
+        public void deleteSubject(ISubject obj)
+        {
+            this.subject = null;
+            subject.EliminarObserver(this);
+
+        }
+
         private int obtenerFilaGrillaDesperfectos(int desperfectoNuevo)
         {
             int indice = -1;

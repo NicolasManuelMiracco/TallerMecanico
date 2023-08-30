@@ -35,9 +35,7 @@ namespace CapaPresentación
             logicaTallerMecanico = new LogicaTallerMecanico();
             logicaDesperfecto = new LogicaDesperfecto();
             /// Se asocia el Observer DataGridView con la lógica del desperfecto
-            this.dataGridViewDesperfectos.setSubjec(logicaDesperfecto);
-            /// Se define estrategia de asignacion de turno con un margen aleatorio de 3. 
-            /// Aplicación del patrón strategy que permite modificar la forma en que se asignan los turnos -> binding dinámico en ejecúción            
+            this.dataGridViewDesperfectos.setSubjec(logicaDesperfecto);                     
         }
 
         #endregion
@@ -104,16 +102,16 @@ namespace CapaPresentación
 
         private bool tratamientoDatosVehiculo()
         {
-            return this.tratamientoTextBox(textBxIdVehículo, "Falta ingresar datos del registro", "Ingrese el Id del Vehiculo") &&
-            this.tratamientoTextBox(textBxMarca, "Falta ingresar datos del registro", "Ingrese Marca del Vehiculo") &&
+            ///return this.tratamientoTextBox(textBxIdVehículo, "Falta ingresar datos del registro", "Ingrese el Id del Vehiculo") &&
+            return this.tratamientoTextBox(textBxMarca, "Falta ingresar datos del registro", "Ingrese Marca del Vehiculo") &&
             this.tratamientoTextBox(textBxModelo, "Falta ingresar datos del registro", "Ingrese Modelo del Vehiculo") &&
             this.tratamientoTextBox(textBxPatente, "Falta ingresar datos del registro", "Ingrese Patente del Vehiculo");
         }
 
         private bool tratamientoDatosAutomovil()
         {
-            return this.tratamientoTextBox(textBxIdAutomóvil, "Falta ingresar datos del registro", "Ingrese el Id del Automóvil") &&
-            this.tratamientoTextBox(textPuertas, "Falta ingresar datos del registro", "Ingrese el número de puertas del Automóvil") &&
+            ///return this.tratamientoTextBox(textBxIdAutomóvil, "Falta ingresar datos del registro", "Ingrese el Id del Automóvil") &&
+            return this.tratamientoTextBox(textPuertas, "Falta ingresar datos del registro", "Ingrese el número de puertas del Automóvil") &&
             this.tratamientoComboBox(ElComboTipoAutomovil, "Falta ingresar datos del registro", "Ingrese el tipo de Vehículo");
         }
 
@@ -162,8 +160,8 @@ namespace CapaPresentación
 
         private bool tratamientoDatosMoto()
         {
-            return this.tratamientoTextBox(textBxIdMoto, "Falta ingresar datos del registro", "Ingrese el Id de la Moto") &&
-            this.tratamientoTextBox(textBxCilindrada, "Falta ingresar datos del registro", "Ingrese la cilindrada de la Moto");
+            ///return this.tratamientoTextBox(textBxIdMoto, "Falta ingresar datos del registro", "Ingrese el Id de la Moto") &&
+            return this.tratamientoTextBox(textBxCilindrada, "Falta ingresar datos del registro", "Ingrese la cilindrada de la Moto");
         }
 
         #endregion
@@ -259,7 +257,7 @@ namespace CapaPresentación
                         iniciarPresupuesto(lastSelected);
                         ///Pasamos a la pestaña de selección de desperfectos. 
                         this.tabControlPrincipal.SelectedIndex = 2;
-                        this.labelDesperfectosAsignados.Text = this.labelDesperfectosAsignados.Text + " Id Vehículo: " + this.presupuesto.IdVehiculo;
+                        this.labelDesperfectosAsignados.Text = this.labelDesperfectosAsignados.Text + " Id Vehículo: " + this.presupuesto.IdVehiculo;                                               
                     }
                     else
                     {
@@ -356,8 +354,9 @@ namespace CapaPresentación
                         this.preSeteoParametriaPresupuesto();
                         /// Se setea el modelo con los desperfectos seleccionados.
                         this.presupuesto.DesperfectosAPresupuestar = idDesperfectosAPresupuestar;
-                        /// Se calculan los totales del modelo Presupuesto
-                        this.presupuesto.cerrarPresupuesto();
+                        /// Se cierra el presupuesto (internamente se calculan los totales del modelo Presupuesto)
+                        //LogicaPresupuesto.finalizarPresupuesto(this.presupuesto, logicaDesperfecto);
+                        ///logicaDesperfecto.eliminarDesperfectos();
                     }
                 }
                 else
@@ -730,16 +729,16 @@ namespace CapaPresentación
         private string insertarAutomovil()
         {
             string respuesta = "";
-            respuesta = LogicaAutomovil.Insertar(Convert.ToInt32(textBxIdAutomóvil.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text,
-                ElComboTipoAutomovil.Text, Convert.ToInt32(textPuertas.Text), Convert.ToInt32(textBxIdVehículo.Text));
+            ///respuesta = LogicaAutomovil.Insertar(Convert.ToInt32(textBxIdAutomóvil.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, ElComboTipoAutomovil.Text, Convert.ToInt32(textPuertas.Text), Convert.ToInt32(textBxIdVehículo.Text));
+            respuesta = LogicaAutomovil.Insertar(textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, ElComboTipoAutomovil.Text, Convert.ToInt32(textPuertas.Text));
             return respuesta;
         }
 
         private string insertarMoto()
         {
             string respuesta = "";
-            respuesta = LogicaMoto.Insertar(Convert.ToInt32(textBxIdMoto.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text,
-                Convert.ToInt32(textBxIdVehículo.Text), textBxCilindrada.Text);
+            //respuesta = LogicaMoto.Insertar(Convert.ToInt32(textBxIdMoto.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, Convert.ToInt32(textBxIdVehículo.Text), textBxCilindrada.Text);
+            respuesta = LogicaMoto.Insertar(textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, textBxCilindrada.Text);
             return respuesta;
         }
 
@@ -792,7 +791,7 @@ namespace CapaPresentación
         #endregion
 
         #region Tratamiento sobre DataGridViews
-
+             
         private void listar()
         {
             try

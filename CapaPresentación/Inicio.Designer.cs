@@ -259,7 +259,7 @@ namespace CapaPresentación
             this.tabPageRepuestos.Location = new System.Drawing.Point(4, 34);
             this.tabPageRepuestos.Name = "tabPageRepuestos";
             this.tabPageRepuestos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRepuestos.Size = new System.Drawing.Size(1279, 795);
+            this.tabPageRepuestos.Size = new System.Drawing.Size(847, 520);
             this.tabPageRepuestos.TabIndex = 5;
             this.tabPageRepuestos.Text = "Repuestos";
             this.tabPageRepuestos.ToolTipText = "Incorporación de repuestos (se accede directamente desde tab Desperfectos).";
@@ -509,7 +509,7 @@ namespace CapaPresentación
             this.tabPageDesperfectos.Location = new System.Drawing.Point(4, 34);
             this.tabPageDesperfectos.Name = "tabPageDesperfectos";
             this.tabPageDesperfectos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDesperfectos.Size = new System.Drawing.Size(1279, 795);
+            this.tabPageDesperfectos.Size = new System.Drawing.Size(847, 520);
             this.tabPageDesperfectos.TabIndex = 4;
             this.tabPageDesperfectos.Text = "Desperfectos";
             this.tabPageDesperfectos.ToolTipText = "Generación de Desperfectos, y posterior selección de repuestos.";
@@ -1539,7 +1539,7 @@ namespace CapaPresentación
             this.tabControlPrincipal.Name = "tabControlPrincipal";
             this.tabControlPrincipal.SelectedIndex = 0;
             this.tabControlPrincipal.ShowToolTips = true;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(1287, 833);
+            this.tabControlPrincipal.Size = new System.Drawing.Size(855, 558);
             this.tabControlPrincipal.TabIndex = 0;
             // 
             // tabPresupuestos
@@ -1548,7 +1548,7 @@ namespace CapaPresentación
             this.tabPresupuestos.Location = new System.Drawing.Point(4, 34);
             this.tabPresupuestos.Name = "tabPresupuestos";
             this.tabPresupuestos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPresupuestos.Size = new System.Drawing.Size(1279, 795);
+            this.tabPresupuestos.Size = new System.Drawing.Size(847, 520);
             this.tabPresupuestos.TabIndex = 6;
             this.tabPresupuestos.Text = "Presupuestos";
             this.tabPresupuestos.ToolTipText = "Listado de presupuestos y asignación de turnos.";
