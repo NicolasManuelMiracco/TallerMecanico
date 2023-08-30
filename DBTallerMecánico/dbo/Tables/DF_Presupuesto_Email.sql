@@ -1,0 +1,1 @@
+﻿ALTER TABLE [dbo].[Presupuesto] ADD  CONSTRAINT [DF_Presupuesto_Email]  DEFAULT (N'user@domain.com') FOR [Email]

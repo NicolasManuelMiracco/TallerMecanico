@@ -1,0 +1,1 @@
+﻿ALTER TABLE [dbo].[Desperfecto] ADD  CONSTRAINT [DF_Desperfecto_ManoDeObra]  DEFAULT ((0)) FOR [ManoDeObra]

@@ -1,0 +1,1 @@
+﻿ALTER TABLE [dbo].[Automovil] ADD  CONSTRAINT [DF_Automovil_Tipo]  DEFAULT ('sedan') FOR [Tipo]

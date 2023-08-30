@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [DESKTOP-47LNLEV\nmiracco]
+    FROM WINDOWS;
+

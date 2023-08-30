@@ -1,0 +1,1 @@
+﻿ALTER TABLE [dbo].[Repuesto] ADD  CONSTRAINT [DF_Repuesto_Precio]  DEFAULT ((0)) FOR [Precio]

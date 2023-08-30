@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DBTallerMecánico</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{f38a87de-0a42-4f3c-933a-2719f5a11b98}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>DBTallerMecánico</RootNamespace>
+    <AssemblyName>DBTallerMecánico</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Security\" />
+    <Folder Include="Server Objects\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\sa.sql" />
+    <Build Include="Security\DESKTOP-47LNLEV_nmiracco.sql" />
+    <Build Include="Security\NT SERVICE_SQLWriter.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="Security\MS_SQLEnableSystemAssemblyLoadingKey.sql" />
+    <Build Include="Server Objects\AlwaysOn_health.sql" />
+    <Build Include="dbo\Tables\FK_Automovil_Vehiculo.sql" />
+    <Build Include="dbo\Tables\FK_Desperfecto_Presupuesto.sql" />
+    <Build Include="dbo\Tables\FK_DesperfectoRepuesto_Desperfecto.sql" />
+    <Build Include="dbo\Tables\FK_DesperfectoRepuesto_Repuesto.sql" />
+    <Build Include="dbo\Tables\FK_Moto_Vehiculo.sql" />
+    <Build Include="dbo\Tables\FK_Presupuesto_Vehiculo.sql" />
+    <Build Include="dbo\Tables\DF_Automovil_Tipo.sql" />
+    <Build Include="dbo\Tables\DF_Automovil_CantidadPuertas.sql" />
+    <Build Include="dbo\Tables\DF_Desperfecto_ManoDeObra.sql" />
+    <Build Include="dbo\Tables\DF_Presupuesto_Email.sql" />
+    <Build Include="dbo\Tables\DF_Presupuesto_Total.sql" />
+    <Build Include="dbo\Tables\DF_Repuesto_Precio.sql" />
+    <Build Include="dbo\Tables\CK_Automovil_CantidadPuertas.sql" />
+    <Build Include="dbo\Tables\CK_Automovil_Tipo.sql" />
+    <Build Include="dbo\Tables\CK_Desperfecto_ManoDeObra.sql" />
+    <Build Include="dbo\Tables\CK_Desperfecto_Tiempo.sql" />
+    <Build Include="dbo\Tables\CK_Presupuesto_Total.sql" />
+    <Build Include="dbo\Tables\CK_Repuesto_Precio.sql" />
+    <Build Include="Security\__MS_PolicyEventProcessingLogin__.sql" />
+    <Build Include="Security\__MS_AgentSigningCertificate__.sql" />
+    <Build Include="dbo\Stored Procedures\actualizarAutomovil.sql" />
+    <Build Include="dbo\Stored Procedures\actualizarMoto.sql" />
+    <Build Include="dbo\Stored Procedures\actualizarPresupuesto.sql" />
+    <Build Include="dbo\Stored Procedures\actualizarVehiculo.sql" />
+    <Build Include="dbo\Stored Procedures\buscarRepuesto.sql" />
+    <Build Include="dbo\Stored Procedures\buscarVehiculos.sql" />
+    <Build Include="dbo\Stored Procedures\cargaAll.sql" />
+    <Build Include="dbo\Stored Procedures\cargaAutomoviles.sql" />
+    <Build Include="dbo\Stored Procedures\cargaDesperfectos.sql" />
+    <Build Include="dbo\Stored Procedures\cargaDesperfectosRepuestos.sql" />
+    <Build Include="dbo\Stored Procedures\cargaMotos.sql" />
+    <Build Include="dbo\Stored Procedures\cargaPresupuestos.sql" />
+    <Build Include="dbo\Stored Procedures\eliminarPresupuestosIncompletos.sql" />
+    <Build Include="dbo\Stored Procedures\eliminarVehiculo.sql" />
+    <Build Include="dbo\Stored Procedures\insertarAutomovil.sql" />
+    <Build Include="dbo\Stored Procedures\insertarDesperfecto.sql" />
+    <Build Include="dbo\Stored Procedures\insertarDesperfectoRepuesto.sql" />
+    <Build Include="dbo\Stored Procedures\insertarMoto.sql" />
+    <Build Include="dbo\Stored Procedures\insertarPresupuesto.sql" />
+    <Build Include="dbo\Stored Procedures\insertarRepuesto.sql" />
+    <Build Include="dbo\Stored Procedures\insertarVehiculo.sql" />
+    <Build Include="dbo\Stored Procedures\listarDesperfectos.sql" />
+    <Build Include="dbo\Stored Procedures\listarPresupuestos.sql" />
+    <Build Include="dbo\Stored Procedures\listarVehiculos.sql" />
+    <Build Include="dbo\Stored Procedures\MassiveCharge.sql" />
+    <Build Include="dbo\Stored Procedures\promedioMontoTotal.sql" />
+    <Build Include="dbo\Stored Procedures\repuestoMasUtilizado.sql" />
+    <Build Include="dbo\Stored Procedures\subtotalDesperfecto.sql" />
+    <Build Include="dbo\Stored Procedures\sumatoriaMontoTotal.sql" />
+    <Build Include="dbo\Tables\Automovil.sql" />
+    <Build Include="dbo\Tables\Desperfecto.sql" />
+    <Build Include="dbo\Tables\DesperfectoRepuesto.sql" />
+    <Build Include="dbo\Tables\Moto.sql" />
+    <Build Include="dbo\Tables\Presupuesto.sql" />
+    <Build Include="dbo\Tables\Repuesto.sql" />
+    <Build Include="dbo\Tables\Vehiculo.sql" />
+    <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
+  </ItemGroup>
+</Project>

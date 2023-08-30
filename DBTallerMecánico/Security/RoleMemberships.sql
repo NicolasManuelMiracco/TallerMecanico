@@ -1,0 +1,6 @@
+﻿ALTER SERVER ROLE [sysadmin] ADD MEMBER [DESKTOP-47LNLEV\nmiracco];
+
+
+GO
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [NT SERVICE\SQLWriter];
+

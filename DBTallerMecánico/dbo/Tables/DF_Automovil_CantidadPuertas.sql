@@ -1,0 +1,1 @@
+﻿ALTER TABLE [dbo].[Automovil] ADD  CONSTRAINT [DF_Automovil_CantidadPuertas]  DEFAULT ((4)) FOR [CantidadPuertas]

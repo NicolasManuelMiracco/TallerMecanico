@@ -1,0 +1,1 @@
+﻿ALTER TABLE [dbo].[Presupuesto] ADD  CONSTRAINT [DF_Presupuesto_Total]  DEFAULT ((0)) FOR [Total]

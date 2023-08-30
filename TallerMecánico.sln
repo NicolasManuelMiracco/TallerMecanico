@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaPersistencia", "CapaDat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaModelo", "CapaEntidad\CapaModelo.csproj", "{F8DF9590-31AF-49B8-A66A-EBD308101190}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DBTallerMecánico", "DBTallerMecánico\DBTallerMecánico.sqlproj", "{F38A87DE-0A42-4F3C-933A-2719F5A11B98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{F8DF9590-31AF-49B8-A66A-EBD308101190}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8DF9590-31AF-49B8-A66A-EBD308101190}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8DF9590-31AF-49B8-A66A-EBD308101190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F38A87DE-0A42-4F3C-933A-2719F5A11B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F38A87DE-0A42-4F3C-933A-2719F5A11B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F38A87DE-0A42-4F3C-933A-2719F5A11B98}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F38A87DE-0A42-4F3C-933A-2719F5A11B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F38A87DE-0A42-4F3C-933A-2719F5A11B98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F38A87DE-0A42-4F3C-933A-2719F5A11B98}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
