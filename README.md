@@ -96,3 +96,4 @@ Diseño e implementación:
       -  BD: Script total de toda la BD.
       -  General: capturas.
       -  Arquitectura 4 capas: se incorpora diagrama con la representación del flujo principal entre capas.
+      -  Instalador: setup.exe
