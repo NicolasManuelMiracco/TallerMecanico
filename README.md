@@ -37,6 +37,8 @@ Base de datos: Stored procedures (SP)
 
 Diseño e implementación (a extender): 
 
+- BD: se incorpora proyecto DBTallerMecánico con tablas, stored procedures, etc.
+
 - Patrones de diseño:  
     - Patrón Strategy:
       Utilizado para la asignación dinámica de turnos. Se incorpora al desarrollo la posibilidad de listar los presupuestos generados hasta el momento, para luego   asignar automáticamente turnos.
