@@ -62,33 +62,22 @@ namespace CapaPresentación
         }
 
         void IObserver.update(object obj)
-        {
-                   
-            //tabla.Load(resultado);
-            //dataGridViewDesperfectos.DataSource = logicaDesperfecto.Listar(presupuesto.Id);
-            //this.DataSource = (ModeloDesperfecto)o;
-            ModeloDesperfecto modeloDesperfecto = (CapaModelo.ModeloDesperfecto)(obj);
-            //this.DataSource = new DataTable().Load(modeloDesperfecto.Repuestos);
-            //this.DataSource = modeloDesperfecto.Repuestos;
-
-            int filaGrillaDesperfectos = obtenerFilaGrillaDesperfectos(modeloDesperfecto.Id);
-            if (filaGrillaDesperfectos != -1) // La grilla se actualizó con el nuevo desperfecto
+        {                   
+            if (obj != null)
             {
-                //System.Diagnostics.Debug.WriteLine("Id : " + modeloDesperfecto.Id);
-                //System.Diagnostics.Debug.WriteLine("Fila : " + filaGrillaDesperfectos);
-                this.Rows[filaGrillaDesperfectos].Cells[1].ReadOnly = false;
-                this.Rows[filaGrillaDesperfectos].Cells[1].Value = modeloDesperfecto.CantidadRepuestosExistentes;
-                this.Rows[filaGrillaDesperfectos].Cells[2].ReadOnly = false;
-                this.Rows[filaGrillaDesperfectos].Cells[2].Value = modeloDesperfecto.CantidadRepuestosFaltantes;
-                /// Se definen Colores por defecto Verde y Rojo para repuestos en Stock y Faltantes respectivamente
-                this.Rows[filaGrillaDesperfectos].DefaultCellStyle.BackColor = Color.Yellow;                
-            }
-
-
-
-
-            // Cambiar el color, incoporporar el tipo de repuesto y poder actualizar el desperfecto
-
+                ModeloDesperfecto modeloDesperfecto = (CapaModelo.ModeloDesperfecto)(obj);
+                
+                int filaGrillaDesperfectos = obtenerFilaGrillaDesperfectos(modeloDesperfecto.Id);
+                if (filaGrillaDesperfectos != -1) // La grilla se actualizó con el nuevo desperfecto
+                {                   
+                    this.Rows[filaGrillaDesperfectos].Cells[1].ReadOnly = false;
+                    this.Rows[filaGrillaDesperfectos].Cells[1].Value = modeloDesperfecto.CantidadRepuestosExistentes;
+                    this.Rows[filaGrillaDesperfectos].Cells[2].ReadOnly = false;
+                    this.Rows[filaGrillaDesperfectos].Cells[2].Value = modeloDesperfecto.CantidadRepuestosFaltantes;
+                    /// Se definen Colores por defecto Verde y Rojo para repuestos en Stock y Faltantes respectivamente
+                    this.Rows[filaGrillaDesperfectos].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+            }           
         }
     }
 }

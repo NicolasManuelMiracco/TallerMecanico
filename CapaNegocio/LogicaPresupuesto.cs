@@ -39,5 +39,10 @@ namespace CapaLogica
             PersistenciaPresupuesto datos = new PersistenciaPresupuesto();
             return datos.eliminarPresupuestosIncompletos();
         }
+
+        public static void cerrarPresupuesto(ModeloPresupuesto presupuesto)
+        {
+            presupuesto.cerrarPresupuesto();            
+        }
     }
 }

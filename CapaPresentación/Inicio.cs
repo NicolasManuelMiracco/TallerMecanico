@@ -102,7 +102,6 @@ namespace CapaPresentación
 
         private bool tratamientoDatosVehiculo()
         {
-            ///return this.tratamientoTextBox(textBxIdVehículo, "Falta ingresar datos del registro", "Ingrese el Id del Vehiculo") &&
             return this.tratamientoTextBox(textBxMarca, "Falta ingresar datos del registro", "Ingrese Marca del Vehiculo") &&
             this.tratamientoTextBox(textBxModelo, "Falta ingresar datos del registro", "Ingrese Modelo del Vehiculo") &&
             this.tratamientoTextBox(textBxPatente, "Falta ingresar datos del registro", "Ingrese Patente del Vehiculo");
@@ -110,7 +109,6 @@ namespace CapaPresentación
 
         private bool tratamientoDatosAutomovil()
         {
-            ///return this.tratamientoTextBox(textBxIdAutomóvil, "Falta ingresar datos del registro", "Ingrese el Id del Automóvil") &&
             return this.tratamientoTextBox(textPuertas, "Falta ingresar datos del registro", "Ingrese el número de puertas del Automóvil") &&
             this.tratamientoComboBox(ElComboTipoAutomovil, "Falta ingresar datos del registro", "Ingrese el tipo de Vehículo");
         }
@@ -160,7 +158,6 @@ namespace CapaPresentación
 
         private bool tratamientoDatosMoto()
         {
-            ///return this.tratamientoTextBox(textBxIdMoto, "Falta ingresar datos del registro", "Ingrese el Id de la Moto") &&
             return this.tratamientoTextBox(textBxCilindrada, "Falta ingresar datos del registro", "Ingrese la cilindrada de la Moto");
         }
 
@@ -194,6 +191,23 @@ namespace CapaPresentación
         {
             textBoxNombreNuevoRepuesto.Clear();
             textBoxPrecioNuevoRepuesto.Clear();
+        }
+
+        /// <summary>
+        /// Se limpia información del último cliente cargado
+        /// </summary>
+        private void limpiarCliente()
+        {
+            txBoxApellido.Clear();
+            txBoxNombre.Clear();
+            txBoxEmail.Text = "@gmail.com";
+            txBoxRecargo.Clear();
+            txBoxEstacionamiento.Clear();
+            txRepuestosTotal.Clear();
+            txManoDeObra.Clear();
+            textBoxSubTotal.Clear();
+            TotalPresupuestoConsumidor.Clear();
+            textBoxTiempoTotal.Clear();
         }
 
         /// <summary>
@@ -355,8 +369,7 @@ namespace CapaPresentación
                         /// Se setea el modelo con los desperfectos seleccionados.
                         this.presupuesto.DesperfectosAPresupuestar = idDesperfectosAPresupuestar;
                         /// Se cierra el presupuesto (internamente se calculan los totales del modelo Presupuesto)
-                        //LogicaPresupuesto.finalizarPresupuesto(this.presupuesto, logicaDesperfecto);
-                        ///logicaDesperfecto.eliminarDesperfectos();
+                        LogicaPresupuesto.cerrarPresupuesto(this.presupuesto);                        
                     }
                 }
                 else
@@ -387,6 +400,9 @@ namespace CapaPresentación
             /// Se muestra el listado de total de presupuestos
             this.tabControlPrincipal.SelectedIndex = 5;
             listarPresupuestos();
+            LogicaTallerMecanico.liberarPresupuesto(logicaDesperfecto, this.presupuesto);
+            this.limpiarDesperfectos();
+            this.limpiarCliente();
         }
 
         /// <summary>
@@ -736,8 +752,7 @@ namespace CapaPresentación
 
         private string insertarMoto()
         {
-            string respuesta = "";
-            //respuesta = LogicaMoto.Insertar(Convert.ToInt32(textBxIdMoto.Text), textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, Convert.ToInt32(textBxIdVehículo.Text), textBxCilindrada.Text);
+            string respuesta = "";            
             respuesta = LogicaMoto.Insertar(textBxMarca.Text, textBxModelo.Text, textBxPatente.Text, textBxCilindrada.Text);
             return respuesta;
         }
@@ -885,6 +900,16 @@ namespace CapaPresentación
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        /// <summary>
+        /// Se limpia el listado de Desperfectos
+        /// </summary>
+        private void limpiarDesperfectos()
+        {
+            this.dataGridViewDesperfectos.DataSource = null;
+            this.dataGridViewDesperfectos.Rows.Clear();            
+            buttonAgregarDesperfecto.Enabled = true;
         }
 
         /// <summary>
@@ -1049,7 +1074,6 @@ namespace CapaPresentación
             {
                 MessageBox.Show("Debe seleccionar desde la celda Id");
             }
-
         }
 
         #endregion
@@ -1090,7 +1114,6 @@ namespace CapaPresentación
                 selectorTipoVehículo.SelectedIndex = 0; /// Activo Tab Vehículo
             }            
         }
-
         private void tabPage1_Click_2(object sender, EventArgs e) { }
 
         private void tabPage3_Click(object sender, EventArgs e) { }

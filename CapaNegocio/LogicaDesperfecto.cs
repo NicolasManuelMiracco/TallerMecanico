@@ -27,6 +27,13 @@ namespace CapaLogica
             return datos.Listar(idPresupuesto);
         }
 
+        public void liberarDesperfectosActivos(ModeloPresupuesto modeloPresupuesto)
+        {
+            this.modeloDesperfecto = null;
+            this.NotificarObservers();
+
+        }
+
         /// <summary>
         /// Definición lógica para recuperar el costo de repuestos por desperfecto
         /// </summary>        

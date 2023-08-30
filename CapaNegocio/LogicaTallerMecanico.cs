@@ -23,5 +23,10 @@ namespace CapaLogica
             
             taller.agregarPresupuesto(turno, new ModeloPresupuesto(Convert.ToInt32(id), nombre, apellido, email, Convert.ToDecimal(total), Convert.ToInt32(idVehiculo)));
         }
+
+        public static void liberarPresupuesto(LogicaDesperfecto logicaDesperfecto, ModeloPresupuesto modeloPresupuesto)
+        {
+            logicaDesperfecto.liberarDesperfectosActivos(modeloPresupuesto);
+        }
     }
 }

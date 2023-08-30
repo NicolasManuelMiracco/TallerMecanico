@@ -77,8 +77,7 @@ namespace CapaModelo
                 {
                     /// Se reemplaza el costo de repuestos del desperfecto activo, por el valor acumulado actualizado.
                     desperfecto.CostoRepuestosDesperfecto = desperfectoActualizado.CostoRepuestosDesperfecto;                    
-                }
-                    
+                }                    
             }
         }
 
@@ -140,14 +139,17 @@ namespace CapaModelo
             CostoEstacionamiento = TiempoTotal * CostoEstacionamiento; /// Calculo el precio de estacionamiento según la cantidad de días
             TotalReparacion = this.getCostoTotalRepuestos() + ManoDeObra + CostoEstacionamiento;
             TotalConRecargosDescuentos = TotalReparacion + (TotalReparacion * Recargo) - (TotalReparacion * Descuento);
-            TotalAlConsumidor = TotalConRecargosDescuentos + TotalConRecargosDescuentos * gananciaTaller;
+            TotalAlConsumidor = TotalConRecargosDescuentos + TotalConRecargosDescuentos * gananciaTaller;                           
+        }
 
+        public void eliminarDesperfectos()
+        {
             /// Se eliminan los desperfectos asociados al presupuesto.
-            //foreach (ModeloDesperfecto desperfecto in Desperfectos) 
-            //{
-            //    desperfecto.cerrarDesperfecto();
-            //    Desperfectos.Remove(desperfecto);
-            //}                      
-        }     
+            foreach (ModeloDesperfecto desperfecto in Desperfectos) 
+            {
+                desperfecto.cerrarDesperfecto();
+                Desperfectos.Remove(desperfecto);
+            }       
+        }
     }
 }
