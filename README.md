@@ -35,7 +35,7 @@ Base de datos: Stored procedures (SP)
 
 - Se introducen también stored procedures como servicios a consumirse desde la capa Persistencia para insertar, eliminar, actualizar, buscar y listar; en cada tabla o entidad de la base de datos.
 
-Diseño e implementación (a extender): 
+Diseño e implementación: 
 
 - BD: se incorpora proyecto DBTallerMecánico con tablas, stored procedures, etc.
 
