@@ -66,7 +66,7 @@ Diseño e implementación (a extender):
       -  1°: se cargan todos los desperfectos.
       -  2°: al comenzar con la carga de repuestos (doble clic en el desperfecto) se deshabilita la generación de desperfectos, para comenzar a cargar repuestos.
 
-- Organización en namespaces.
+- Organización en namespaces y regiones (para la capa de presentación).
 - Organización de código para la capa de Presentación en las regiones:
   -  Init:
   -  Gestión de errores.
