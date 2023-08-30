@@ -1,4 +1,4 @@
-# TallerMecanico
+# Taller Mecánico
 Challenge .NET 
 Autor: Nicolás Manuel Miracco
 
@@ -18,6 +18,7 @@ Base de datos: Estructura
   - Por ejemplo, al eliminar un Automóvil, se elimina en cascada: Automóvil -> Vehículo -> Presupuesto -> Desperfecto -> 
     DesperfectoRepuesto.
   - Esto es así porque se considera al desperfecto específico para un presupuesto, quien a la vez se relaciona con un vehículo.
+
 - Se definen restricciones de integridad para:
   - El Tipo de Automóvil: congruencia con el tipo enumerado solicitado (compacto, sedan, monovolumen, utilitario y lujo).
   - Valores monetarios, temporales o que representan cantidades: deben ser >= 0.
@@ -31,14 +32,14 @@ Base de datos: Stored procedures (SP)
     -  Repuesto más utilizado por Marca/Modelo en las reparaciones realizadas: se implementa por medio de tablas auxiliares y un cursor (ver comentarios en implementación).
     -  Promedio del Monto Total de Presupuestos por Marca/Modelo: se efectua un ensamble y un agrupamiento, como en el caso anterior, pero sin la necesidad de aplicar cursor.
     -  Sumatoria del Monto Total de Presupuestos para Autos y para Motos.
+
 - Se introducen también stored procedures como servicios a consumirse desde la capa Persistencia para insertar, eliminar, actualizar, buscar y listar; en cada tabla o entidad de la base de datos.
 
 Diseño e implementación (a extender): 
 
-- Patrones de diseño:
-  
+- Patrones de diseño:  
     - Patrón Strategy:
-      Utilizado para la asignación dinámica de turnos. Se incorpora al desarrollo la posibilidad de listar los presupuestos generados hasta el momento, para luego asignar automáticamente turnos.
+      Utilizado para la asignación dinámica de turnos. Se incorpora al desarrollo la posibilidad de listar los presupuestos generados hasta el momento, para luego   asignar automáticamente turnos.
       La asignación de la estrategia puede cambiar en ejecución, y a nivel desarrollo se puede extender, heredando de la clase abstracta StrategyTurno.
       Para la implementación actual se heredan dos estrategias:
         -  RandomTurno: a partir del último turno otorgado por el Taller mecánico, y de una semilla que define el rango aleatorio o amplitud, se designa un turno.
@@ -53,7 +54,6 @@ Diseño e implementación (a extender):
        
     -  Patrón MVC:
        Se aplica modelo de arquitectura en 4 capas (Presentación, Lógica, Persistencia y Modelo) que incorpora las características del patrón: Model View Controller.       
-       
 -  Funcionalidad adicional:
     -  Asignación de turnos.
     -  Selección de repuestos existentes:
@@ -86,13 +86,11 @@ Diseño e implementación (a extender):
 - Comentarios en código.
 
 -  Enlace a documentación que se mantendrá en actualización hasta la entrega final:
-
   -  https://drive.google.com/drive/folders/1DyXBphfs0FpLa678VIKQWvpebyLFZ_LB?usp=sharing
+      La documentación en drive incluye:
 
-  -  La documentación en drive incluye: 
-    - BD: Store procedures utilizados en los servicios, en las cargas y como apoyo auxiliar.
-    - BD: backup de toda la BD, listo para un local restore.
-    - BD: script total de toda la BD.
-    - General: capturas.
-    - Arquitectura 4 capas: se incorpora diagrama con la representación del flujo principal entre capas.
-
+      -  BD: Store procedures utilizados en los servicios, en las cargas y como apoyo auxiliar.
+      -  BD: Backup de toda la BD, listo para un local restore.
+      -  BD: Script total de toda la BD.
+      -  General: capturas.
+      -  Arquitectura 4 capas: se incorpora diagrama con la representación del flujo principal entre capas.
